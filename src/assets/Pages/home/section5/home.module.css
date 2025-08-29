@@ -1,0 +1,101 @@
+.pricingSection {
+  padding: 6rem 2rem;
+  background: linear-gradient(to bottom, #0a0a0a, #0b0f2b);
+  text-align: center;
+  color: white;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+
+/* Glow blur effect behind Pricing */
+.title::after {
+  content: "Pricing";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 4rem;
+  font-weight: 800;
+  color: white;
+  opacity: 0.4;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.cardsWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: linear-gradient(145deg, #1a1f3b, #121526);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 280px;
+  text-align: left;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.planTitle {
+  font-size: 1rem;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.features li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  color: #4ade80; /* green check */
+}
+
+.cta {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background: black;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 10px #4f46e5;
+}
+
+.cta:hover {
+  background: #1e1e2e;
+  box-shadow: 0 0 15px #4f46e5, inset 0 0 15px #4f46e5;
+}

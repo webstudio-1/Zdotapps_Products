@@ -1,0 +1,45 @@
+.section {
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  padding: 4rem 2rem;
+  color: white;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #cbd5e1;
+}
+
+.step {
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.iconWrapper {
+  background-color: #0f172a;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.icon {
+  font-size: 1.8rem;
+  color: #1d4ed8;
+}
+
+.stepTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.stepText {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}

@@ -1,0 +1,91 @@
+:root {
+  --bg-dark: #0d0d0d;
+  --bg-gradient-end: #1a1a40;
+  --card-bg: #2a237d;
+  --text-primary: #ffffff;
+  --text-secondary: #cfcfcf;
+  --text-muted: #bdbdbd;
+  --star-color: #7b5cff;
+  --feedback-color: #f1f1f1;
+}
+
+.testimonialsSection {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to bottom right, var(--bg-dark), var(--bg-gradient-end));
+  color: var(--text-primary);
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subheading {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.cardsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 320px;
+  text-align: left;
+  color: var(--text-primary);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.starIcon {
+  color: var(--star-color);
+  font-size: 1.2rem;
+}
+
+.feedback {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  color: var(--feedback-color);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

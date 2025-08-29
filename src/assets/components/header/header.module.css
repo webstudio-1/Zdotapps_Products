@@ -1,0 +1,56 @@
+.header {
+  background: linear-gradient(to bottom, #050014, #0a0228);
+  font-family: "Nunito", sans-serif;
+}
+
+.logo {
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+.navLink {
+  color: #fff !important;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #8aaaff !important;
+}
+
+.login {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.login:hover {
+  color: #8aaaff;
+}
+
+.joinNow {
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: none;
+  box-shadow: 0 0 8px #4c6fff, 0 0 16px #4c6fff;
+  transition: all 0.3s ease;
+}
+
+.joinNow:hover {
+  background: #111;
+  box-shadow: 0 0 12px #6a80ff, 0 0 24px #6a80ff;
+}
+
+/* Make the toggler border white */
+.navbar-toggler-icon {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Default Bootstrap uses a background SVG for the icon */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 255, 255, 0.85 %29)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
