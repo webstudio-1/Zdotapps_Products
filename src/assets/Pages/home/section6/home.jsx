@@ -8,21 +8,21 @@ const testimonials = [
     role: "VP of Operations at TFT",
     feedback:
       "This platform transformed how our team works. We've reduced manual tasks by 80% and increased productivity dramatically.",
-    img: "https://via.placeholder.com/40", // replace with real image
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80", // replace with real image
   },
   {
     name: "Jahnavi Gadiraju",
     role: "CTO at TFT",
     feedback:
       "The AI automation is incredible. What used to take hours now happens in minutes. It's like having a digital workforce.",
-    img: "https://via.placeholder.com/40", // replace with real image
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80", // replace with real image
   },
   {
     name: "Harika Gadiraju",
     role: "Project Manager at TFT",
     feedback:
       "Finally, all our tools work together seamlessly. The unified dashboard gives us insights we never had before.",
-    img: "https://via.placeholder.com/40", // replace with real image
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80", // replace with real image
   },
 ];
 
@@ -58,3 +58,4 @@ function Home6() {
 }
 
 export default Home6;
+

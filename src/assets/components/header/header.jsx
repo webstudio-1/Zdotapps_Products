@@ -27,13 +27,13 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 gap-2">
             <li className="nav-item">
-              <a className={`nav-link ${styles.navLink}`} href="#">Home</a>
+              <a className={`nav-link ${styles.navLink}`} href="/">Home</a>
             </li>
             <li className="nav-item">
               <a className={`nav-link ${styles.navLink}`} href="#">Features</a>
             </li>
             <li className="nav-item">
-              <a className={`nav-link ${styles.navLink}`} href="#">Pricing</a>
+              <a className={`nav-link ${styles.navLink}`} href="">Pricing</a>
             </li>
             <li className="nav-item">
               <a className={`nav-link ${styles.navLink}`} href="#">Resource</a>

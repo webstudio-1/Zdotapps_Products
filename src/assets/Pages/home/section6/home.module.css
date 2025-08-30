@@ -5,7 +5,7 @@
   --text-primary: #ffffff;
   --text-secondary: #cfcfcf;
   --text-muted: #bdbdbd;
-  --star-color: #7b5cff;
+  --star-color-filled: #7b5cff;
   --feedback-color: #f1f1f1;
 }
 
@@ -57,8 +57,9 @@
 }
 
 .starIcon {
-  color: var(--star-color);
+  color: var(--star-color-filled);
   font-size: 1.2rem;
+  fill: currentColor;
 }
 
 .feedback {
@@ -89,3 +90,4 @@
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
