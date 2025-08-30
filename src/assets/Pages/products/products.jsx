@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./products.module.css"; // keep your colors + shadows
-import { useNavigate } from "react-router-dom"; // <-- for navigation
 
 const productList = [
   {
@@ -20,7 +19,7 @@ const productList = [
     desc: "Vector graphics and illustration",
     img: "/vite.svg",
     btn: "Know More",
-    goToLogin: true, // 👈 custom flag
+    link: "/login", // 👈 direct link to login page
   },
   {
     name: "Z.hire",
@@ -49,11 +48,10 @@ const productList = [
 ];
 
 const Products = () => {
-  const navigate = useNavigate(); // 👈 react-router-dom hook
-
   const handleClick = (p) => {
-    if (p.goToLogin) {
-      navigate("/login"); // 👈 redirect to login page
+    if (p.link) {
+      // Open in new tab
+      window.open(p.link, '_blank');
     } else {
       alert(`${p.name} clicked!`); // or keep it simple
     }
