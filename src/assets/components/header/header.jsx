@@ -49,6 +49,14 @@ function Header() {
             </li>
             <li className="nav-item">
               <Link 
+                className={`nav-link ${styles.navLink} ${isActive("/products") ? styles.active : ""}`} 
+                to="/products"
+              >
+                Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
                 className={`nav-link ${styles.navLink} ${isActive("/features") ? styles.active : ""}`} 
                 to="/features"
               >
@@ -71,14 +79,6 @@ function Header() {
                 Resource
               </Link>
             </li>
-            <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/products") ? styles.active : ""}`} 
-                to="/products"
-              >
-                Products
-              </Link>
-            </li>
           </ul>
 
           {/* Right Side Buttons */}
@@ -90,7 +90,7 @@ function Header() {
               Login
             </Link>
             <Link 
-              to="/z.flow" 
+              to="/login" 
               className={`btn rounded-pill px-4 py-2 ${styles.joinNow} ${isActive("/z.flow") ? styles.active : ""}`}
             >
               Join Now

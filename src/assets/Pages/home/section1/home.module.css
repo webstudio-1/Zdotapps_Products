@@ -1,20 +1,19 @@
 /* Glow line effect */
 .lightEffect {
-  height: 2px;
+  height: 0.1px; /* make it visible */
   background: #ffffff;
   box-shadow:
-    0 0 20px 6px #fff,
-    0 0 70px 25px #4e00ff,
-    0 0 200px 80px rgba(78, 0, 255, 0.6);
+    0 -10px 20px 6px #fff,              /* white glow upwards */
+    0 -25px 70px 25px #ffffff,          /* purple glow upwards */
+    0 -80px 200px 80px rgba(255, 255, 255, 0.6); /* soft far glow upwards */
   width: 65%;
   left: 0;
   right: 0;
   position: absolute;
   margin: 0 auto;
-  transform: scaleY(5);
   border-radius: 20%;
-
 }
+
 
 /* CTA Button Styling */
 .ctaButton {

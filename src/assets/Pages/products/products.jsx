@@ -18,7 +18,7 @@ const productList = [
   {
     name: "Z.flow",
     desc: "Vector graphics and illustration",
-    img: "http://13.234.41.119/devenv/FACT-Ops/assets/img/LifeCykul.webp",
+    img: "http://13.234.41.119/devenv/FACT-Ops/assets/img/Zflow.png",
     btn: "Know More",
     link: "/login",
   },
@@ -51,11 +51,8 @@ const productList = [
 const Products = () => {
   const handleClick = (p) => {
     if (p.link) {
-      if (p.link.startsWith("http")) {
-        window.open(p.link, "_blank"); // open external links in new tab
-      } else {
-        window.location.href = p.link; // handle internal routes
-      }
+      // Always open in a new tab with security (noopener + noreferrer)
+      window.open(p.link, "_blank", "noopener,noreferrer");
     } else {
       alert(`${p.name} Coming Soon!`);
     }
@@ -77,7 +74,8 @@ const Products = () => {
                     className={styles.productImage}
                     alt={p.name}
                     onError={(e) => {
-                      e.target.src = "https://cdn-icons-png.flaticon.com/512/1178/1178475.png"; // Fallback icon
+                      e.target.src =
+                        "https://cdn-icons-png.flaticon.com/512/1178/1178475.png"; // Fallback icon
                     }}
                   />
                 )}
