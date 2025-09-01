@@ -37,7 +37,7 @@ const LayoutWrapper = ({ children }) => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/dev/zdotapps_products">
       <div className="App">
         <LayoutWrapper>
           <ScrollToTop />
