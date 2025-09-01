@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
 
 function Footer() {
@@ -10,7 +11,9 @@ function Footer() {
         <div className="row gy-4">
           {/* Brand Column */}
           <div className="col-lg-4 col-md-12">
-            <a href="#" className={styles.logo}>Z.</a>
+            <Link to="/" className={`${styles.logo}`}>
+              <img src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png" alt="LOGO" className="img-fluid" width={100} />
+            </Link>
             <p className={styles.tagline}>AI automation for modern teams.</p>
             <div className={`d-flex gap-2 ${styles.socials}`}>
               <a href="#" aria-label="Twitter" className={styles.socialLink}>Twitter</a>
@@ -24,24 +27,24 @@ function Footer() {
             <div className="row gy-4">
               <div className="col-6 col-lg-4">
                 <h4 className={styles.groupTitle}>Product</h4>
-                <a href="#" className={styles.link}>Features</a><br />
-                <a href="#" className={styles.link}>Integrations</a><br />
-                <a href="#" className={styles.link}>Pricing</a><br />
-                <a href="#" className={styles.link}>Changelog</a>
+                <Link to="/features" className={styles.link}>Features</Link><br />
+                <Link to="/products" className={styles.link}>Products</Link><br />
+                <Link to="/pricing" className={styles.link}>Pricing</Link><br />
+                <Link to="/z.flow" className={styles.link}>Z.Flow</Link>
               </div>
               <div className="col-6 col-lg-4">
                 <h4 className={styles.groupTitle}>Company</h4>
-                <a href="#" className={styles.link}>About</a><br />
-                <a href="#" className={styles.link}>Blog</a><br />
-                <a href="#" className={styles.link}>Careers</a><br />
-                <a href="#" className={styles.link}>Contact</a>
+                <Link to="/" className={styles.link}>Home</Link><br />
+                <Link to="/resource" className={styles.link}>Resources</Link><br />
+                <Link to="/login" className={styles.link}>Login</Link><br />
+                <Link to="/z.flow" className={styles.link}>Join Now</Link>
               </div>
               <div className="col-6 col-lg-4">
                 <h4 className={styles.groupTitle}>Resources</h4>
-                <a href="#" className={styles.link}>Docs</a><br />
-                <a href="#" className={styles.link}>API</a><br />
-                <a href="#" className={styles.link}>Guides</a><br />
-                <a href="#" className={styles.link}>Support</a>
+                <Link to="/resource" className={styles.link}>Documentation</Link><br />
+                <Link to="/features" className={styles.link}>Features Guide</Link><br />
+                <Link to="/products" className={styles.link}>Product Guide</Link><br />
+                <Link to="/pricing" className={styles.link}>Pricing Guide</Link>
               </div>
             </div>
           </div>
