@@ -122,11 +122,8 @@ const Products = () => {
 
   const handleClick = (product) => {
     if (product.link) {
-      // For internal links (not starting with http), in a full React app with
-      // client-side routing, you would typically use `react-router-dom`'s
-      // `useNavigate` hook or a `<Link>` component for a smoother SPA experience.
-      // For this example, `window.open` is retained as per the original code's behavior.
-      window.open(product.link, "_blank", "noopener,noreferrer");
+      // Opens in the same tab
+      window.location.href = product.link;
     } else {
       alert(`${product.name} Coming Soon!`);
     }

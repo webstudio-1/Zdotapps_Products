@@ -54,7 +54,7 @@ const hireData = [ // Renamed engageData to hireData for clarity within this com
     image: Zdot,
     ctaText: 'Discover Z.APPS',
     ctaLink: 'https://zdotapps.com/',
-    downloadLink: 'https://zdotapps.com/'
+    downloadLink: '/'
   }
 ];
 
