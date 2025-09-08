@@ -13,8 +13,7 @@ function Home5() {
         {plans.map((plan, i) => (
           <div key={i} className={styles.card}>
             <h4 className={styles.planTitle}>Basic Plan</h4>
-            <p className={styles.price}>$19/mo</p>
-
+            <p className={styles.price}>₹1900/mo</p>
             <ul className={styles.features}>
               <li>
                 <FiCheck className={styles.icon} /> Access to all agents

@@ -1,81 +1,337 @@
+/* products.module.css */
+
+/* Import Google Fonts - Add this to the top of your CSS file or in your public/index.html */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
 :root {
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --secondary: #6366f1;
-  --dark: #0a0228;
-  --light: #f9fafb;
-  --muted: #6b7280;
+  /* Provided Colors */
+  --primary-color: #EFC426;       /* Gold/Yellow */
+  --secondary-color: #1E40AF;    /* Darker Blue */
+  --accent-color: #3B82F6;       /* Lighter Blue */
+  --white: #FFFFFF;
+  --light-gray: #F3F4F6;
+  --dark-gray: #1F2937;
+  --text-color: #111827;         /* Very Dark Gray */
+  --transition-speed: 0.3s;
+  --border-radius: 8px;
+
+  /* RGB equivalents for shadows and translucent effects */
+  --text-color-rgb: 17, 24, 39;
+  --secondary-color-rgb: 30, 64, 175;
+  --accent-color-rgb: 59, 130, 246;
+
+  /* Consistent Spacing */
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 64px;
 }
 
+/* Base Body Styles */
+body {
+  color: var(--text-color);
+  line-height: 1.7; /* Slightly more relaxed line height */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box; /* Ensure consistent box model */
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Home Section Styles */
+.homeSection {
+  color: var(--white);
+  padding: 8rem 0 0 0; /* Generous padding for a hero section feel */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.homeTitle {
+  font-size: 3.8rem; /* Larger for impact */
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+  line-height: 1.2;
+}
+
+.highlightText {
+  color: var(--primary-color); /* Uses the primary gold color for highlight */
+}
+
+.homeSubtitle {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  color: var(--dark-gray);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
+
+.homeDescription {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Products Section */
 .productsSection {
-  background: linear-gradient(to bottom, #050014, #0a0228);
-  padding: 64px 0;
-  min-height: 100vh;
+  background: var(--light-gray); /* Using light-gray for the section background */
+  padding-bottom: 100px; /* Adjust top padding as homeSection now provides it */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+/* Section Title */
 .title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #fff;
+  font-size: 3.5rem; /* Larger title */
+  font-weight: 800;
+  color: var(--dark-gray); /* Using dark-gray for main title */
   text-align: center;
-  margin-bottom: 32px;
+  margin-top: var(--spacing-xl); /* Add top margin to separate from home section */
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.1;
+  position: relative;
 }
 
+.titleGradient {
+  background: -webkit-linear-gradient(45deg, var(--secondary-color), var(--accent-color)); /* Using provided blues for gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Search and Filter Controls */
+.controlsContainer {
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.searchInput,
+.filterSelect {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--light-gray); /* Using light-gray for border */
+  border-radius: 9999px; /* Pill shape */
+  font-size: 1rem;
+  color: var(--text-color); /* Using text-color for input text */
+  background-color: var(--white); /* Using white for input background */
+  box-shadow: 0 2px 8px rgba(var(--text-color-rgb), 0.04); /* Using text-color-rgb for subtle shadow */
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus,
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--accent-color); /* Using accent-color for focus border */
+  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.1); /* Using accent-color-rgb for focus shadow */
+}
+
+.filterSelect {
+  appearance: none; /* Remove default arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b5563'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Keep generic grey arrow for now, as specific icon color might be complex without a direct variable */
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem; /* Make space for custom arrow */
+}
+
+.noResults {
+  font-size: 1.2rem;
+  color: var(--dark-gray); /* Using dark-gray for muted text */
+  font-style: italic;
+  margin-top: var(--spacing-lg);
+}
+
+/* Responsive Title Adjustments */
+@media (max-width: 1200px) {
+  .homeTitle {
+    font-size: 3.2rem;
+  }
+  .homeSubtitle {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .homeSection {
+    padding: 6rem 0;
+  }
+  .homeTitle {
+    font-size: 2.8rem;
+  }
+  .homeSubtitle {
+    font-size: 1.4rem;
+  }
+  .homeDescription {
+    font-size: 1rem;
+  }
+  .title {
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-lg);
+  }
+  .productsSection {
+    padding-bottom: 80px;
+  }
+  .controlsContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .searchInput, .filterSelect {
+    width: 80%; /* Adjust width for smaller screens */
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeSection {
+    padding: 4rem 0;
+  }
+  .homeTitle {
+    font-size: 2.2rem;
+  }
+  .homeSubtitle {
+    font-size: 1.1rem;
+  }
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: var(--spacing-md);
+  }
+  .productsSection {
+    padding-bottom: 60px;
+  }
+  .searchInput, .filterSelect {
+    width: 90%;
+  }
+}
+
+/* Product Card */
 .card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(140, 160, 255, 0.2);
-  border-radius: 12px;
-  padding: 24px 16px;
+  background: var(--white); /* Using white for card background */
+  border: 1px solid var(--light-gray); /* Using light-gray for card border */
+  border-radius: 18px; /* More rounded */
+  padding: var(--spacing-md);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    border-color 0.3s ease;
-  box-shadow: 0 0 8px #4c6fff22, 0 0 16px #4c6fff11;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.4s ease;
+  box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04), 0 0 1px rgba(var(--text-color-rgb), 0.04); /* Using text-color-rgb for subtle shadow */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden; /* Ensures no content spills out during transform */
+  position: relative;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
-  border-color: #4c6fff66;
+  box-shadow: 0 16px 32px rgba(var(--text-color-rgb), 0.08), 0 0 2px rgba(var(--text-color-rgb), 0.08); /* Using text-color-rgb for medium shadow */
+  border-color: var(--accent-color); /* Subtle border highlight using accent color */
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 10px; /* Internal padding for card content */
+}
+
+/* Product Image Container & Image */
+.imageContainer {
+  height: 110px; /* Slightly taller image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
 }
 
 .productImage {
-  width: auto;
-  height: 40px;
-  margin: 0 auto 15px auto;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  max-width: 100px; /* Max width for images */
+  max-height: 100px; /* Max height for images */
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08)); /* Enhanced image shadow (keeping as generic black for neutrality) */
+  transition: transform 0.3s ease;
 }
 
+.card:hover .productImage {
+  transform: scale(1.08); /* Image scales slightly more on card hover */
+}
+
+/* Product Name */
 .productName {
-  font-size: 1.125rem;
+  font-size: 1.6rem; /* Larger product name */
   font-weight: 700;
-  margin-bottom: 8px;
-  color: #ffffff;
+  margin-bottom: var(--spacing-sm);
+  color: var(--dark-gray); /* Using dark-gray for product name */
 }
 
+/* Product Description */
 .description {
-  font-size: 0.95rem;
-  color: #cbd5e1;
-  margin-bottom: 16px;
+  font-size: 1.05rem; /* Slightly larger description text */
+  color: var(--text-color); /* Using text-color for description */
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1; /* Allows description to take available space */
+  line-height: 1.5;
 }
 
+/* Call-to-Action Button */
 .cta {
-  background: #000;
-  border: 1px solid #4c6fff66;
-  color: #fff;
-  font-size: 0.9rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color)); /* Using provided blues for button gradient */
+  border: none;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.9rem 1.2rem; /* More generous padding */
+  border-radius: 9999px; /* Fully rounded/pill shape */
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 8px #4c6fff66, 0 0 16px #4c6fff33;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 8px 20px rgba(var(--secondary-color-rgb), 0.3); /* Softer, branded shadow using secondary-color-rgb */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* More space for icon */
+  letter-spacing: 0.5px; /* Slightly spaced letters */
 }
 
 .cta:hover {
-  background: #111;
-  border-color: #6a80ff;
-  box-shadow: 0 0 12px #6a80ff, 0 0 24px #6a80ff55;
+  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color)); /* Reversed gradient for hover effect */
+  box-shadow: 0 12px 25px rgba(var(--secondary-color-rgb), 0.45); /* Enhanced shadow for hover */
+  transform: translateY(-3px) scale(1.02); /* More pronounced hover effect */
+}
+
+.btnText {
+  position: relative;
+  z-index: 1;
+}
+
+.btnIcon {
+  font-size: 1.3em; /* Larger icon */
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.cta:hover .btnIcon {
+  transform: translateX(6px); /* Icon moves further right */
+}
+
+/* Bootstrap Container Enhancements */
+.container {
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto;
+  padding: 0 15px; /* Default padding for smaller screens */
+}
+
+@media (min-width: 1200px) {
+  .container {
+    padding: 0; /* Remove side padding on large screens if container is max-width */
+  }
 }

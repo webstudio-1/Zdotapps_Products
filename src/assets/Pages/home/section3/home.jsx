@@ -5,7 +5,7 @@ import { FiZap, FiUsers, FiShield, FiBarChart2, FiCpu, FiGlobe } from "react-ico
 function Home3() {
   const features = [
     {
-      icon: <FiZap className={styles.icon} />,
+      icon: <FiZap className={styles.icon} />, // Applying class directly
       title: "Smart Automation",
       text: "AI-powered workflows that eliminate repetitive tasks and boost productivity."
     },
@@ -47,7 +47,7 @@ function Home3() {
         <div className="row g-4 justify-content-center">
           {features.map((feature, index) => (
             <div key={index} className="col-md-6 col-lg-4">
-              <div className={`${styles.card} h-100 p-5`}>
+              <div className={`${styles.card} h-100 p-4`}> {/* Changed to p-4 for 1.5rem padding */}
                 {feature.icon}
                 <h4 className={styles.cardTitle}>{feature.title}</h4>
                 <p className={styles.cardText}>{feature.text}</p>

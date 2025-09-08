@@ -50,7 +50,7 @@ function Header() {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${styles.navLink} ${isActive("/products") ? styles.active : ""}`} 
-                to="/products"
+                to="products"
               >
                 Products
               </Link>
@@ -58,7 +58,7 @@ function Header() {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${styles.navLink} ${isActive("/features") ? styles.active : ""}`} 
-                to="/features"
+                to="features"
               >
                 Features
               </Link>
@@ -66,7 +66,7 @@ function Header() {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${styles.navLink} ${isActive("/pricing") ? styles.active : ""}`} 
-                to="/pricing"
+                to="pricing"
               >
                 Pricing
               </Link>
@@ -74,7 +74,7 @@ function Header() {
             <li className="nav-item">
               <Link 
                 className={`nav-link ${styles.navLink} ${isActive("/resource") ? styles.active : ""}`} 
-                to="/resource"
+                to="resource"
               >
                 Resource
               </Link>
@@ -83,12 +83,12 @@ function Header() {
 
           {/* Right Side Buttons */}
           <div className="d-flex align-items-center gap-3">
-            <Link 
+            {/* <Link 
               to="/login" 
               className={`${styles.login} ${isActive("/login") ? styles.active : ""}`}
             >
               Login
-            </Link>
+            </Link> */}
             <Link 
               to="/login" 
               className={`btn rounded-pill px-4 py-2 ${styles.joinNow} ${isActive("/z.flow") ? styles.active : ""}`}
