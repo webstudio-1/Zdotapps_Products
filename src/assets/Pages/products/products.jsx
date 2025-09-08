@@ -4,18 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 // Import images correctly
 import giderImage from "../../images/gider_black.png";
-import zengageImage from "../../images/Zflow.png"; // Using Zflow as placeholder, consider dedicated image
+import zengageImage from "../../images/Zengage.png"; // Using Zflow as placeholder, consider dedicated image
 import zflowImage from "../../images/Zflow.png";
 import zhireImage from "../../images/Zhire.png";
 import zmeritImage from "../../images/Zmerit.png";
 import zgamesImage from "../../images/Zgames.png";
 import zauthImage from "../../images/Zauth.png";
+import ziot from "../../images/Ziot.png";
 
 // Recommendation: For a polished UI, consider having unique and descriptive icons/images
 // for each product (e.g., Z.engage for image editing might have a camera/brush icon).
 const productList = [
   {
-    name: "Z.engage",
+    name: "Z.Engage",
     desc: "Holistic employee wellbeing and community engagement platform",
     img: zengageImage, // Placeholder, ideally a unique image for Z.engage
     btn: "Know More",
@@ -23,7 +24,7 @@ const productList = [
     category: "Engagement"
   },
   {
-    name: "Z.flow",
+    name: "Z.Flow",
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
@@ -31,7 +32,7 @@ const productList = [
     category: "Productivity"
   },
   {
-    name: "Z.hire",
+    name: "Z.Hire",
     desc: "Comprehensive startup studio, professional services, and app development",
     img: zhireImage,
     btn: "Know More",
@@ -39,7 +40,7 @@ const productList = [
     category: "Business Services"
   },
   {
-    name: "Z.merit",
+    name: "Z.Merit",
     desc: "Rewarding loyalty and recognition programs",
     img: zmeritImage,
     btn: "Know More",
@@ -47,7 +48,7 @@ const productList = [
     category: "Rewards"
   },
   {
-    name: "Z.games",
+    name: "Z.Games",
     desc: "Interactive and engaging game development solutions",
     img: zgamesImage,
     btn: "Know More",
@@ -55,7 +56,7 @@ const productList = [
     category: "Entertainment"
   },
   {
-    name: "Z.auth",
+    name: "Z.Auth",
     desc: "Secure authentication & authorization services",
     img: zauthImage,
     btn: "Know More",
@@ -65,13 +66,13 @@ const productList = [
   {
     name: "Z.IOT",
     desc: "Internet of Things solutions for smart environments", // Unique description for Z.IOT
-    img: zauthImage, // Placeholder, ideally a unique image for Z.IOT
+    img: ziot, // Placeholder, ideally a unique image for Z.IOT
     btn: "Know More",
     link: "/z.iot",
     category: "Technology"
   },
   {
-    name: "giDER",
+    name: "gidER",
     desc: "Advanced digital photo processing & editing software",
     img: giderImage,
     btn: "Know More",

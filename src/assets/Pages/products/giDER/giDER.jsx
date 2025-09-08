@@ -5,24 +5,26 @@ import giderImg from './images/giDER.png'; // Replace with an actual authenticat
 const engageData = [
   {
     id: 1,
-    title: 'giDER – Smart Expense & Reimbursement Management',
-    subtitle: 'Simplifying expense tracking for teams and businesses',
+    title: 'gidER – Laser-Focused Task Execution Platform',
+    subtitle: 'Cut noise, stay in execution mode, and get things done.',
     description:
-      'giDER is a modern expense and reimbursement management solution that helps organizations control spending, streamline approvals, and ensure compliance. From startups to enterprises, giDER makes expense reporting effortless, transparent, and efficient. With automation, real-time insights, and digital workflows, giDER eliminates paperwork and empowers smarter financial decisions.',
+      'gidER is a unique execution-first task management tool designed for developers, teams, and managers. Unlike traditional project management platforms, giDER helps you achieve laser-sharp focus by stripping away unnecessary noise and presenting only what needs to be executed. With tasks broken down into granular detail, you get a true bottom-up approach while maintaining a clear top-down view. No need for a product owner — managers or individuals can upload tasks in bulk via CSV or add them one by one with priority, status, and deadline. giDER sets you in pure execution mode, helping you deliver with unmatched clarity and speed.',
     features: [
-      'Automated Expense Tracking – Capture and manage expenses instantly',
-      'Digital Approvals – Fast, paperless reimbursement workflows',
-      'Policy Compliance – Ensure every claim follows company rules',
-      'Receipt Upload & OCR – Scan, upload, and verify receipts with ease',
-      'Real-time Insights & Reports – Track spending across teams',
-      'Seamless Integrations – Connect with payroll and accounting tools'
+      'Granular Task Breakdown – Focus on execution at the atomic level',
+      'Laser-Sharp Focus – Cut the noise, see only what matters',
+      'Bulk Upload via CSV – Add hundreds of tasks in one go',
+      'Priority, Status & Timeline – The only fields that matter',
+      'gidBOX – Attach and manage related documents seamlessly',
+      'gidNOTES – Keep contextual notes directly linked to tasks',
+      'Bottom-Up + Top-Down View – Unique hybrid approach no other tool provides'
     ],
     image: giderImg, // Replace with the correct giDER image import
-    ctaText: 'Start Using giDER',
+    ctaText: 'Start Executing with gidER',
     ctaLink: 'https://zdotapps.com/gidER/login.php',
-    downloadLink: '#' // Replace with real link
+    downloadLink: '#'
   }
 ];
+
 
 
 const GiDER = () => {

@@ -10,7 +10,7 @@ const Resource = () => {
         <div className={styles.card}>
           <h2 className={styles.comingSoonText}>Coming Soon</h2>
           <p className={styles.description}>
-            Stay tuned! New features are on their way to make your experience
+            Stay tuned! New resource are on their way to make your experience
             even better.
           </p>
         </div>
