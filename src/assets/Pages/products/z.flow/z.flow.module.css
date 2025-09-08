@@ -1,0 +1,33 @@
+.zFlow {
+  background: linear-gradient(to bottom, #050014, #0a0228);
+  color: #fff;
+  padding: 4rem 1rem;
+}
+
+.zFlow h1 {
+  font-size: 3rem;
+}
+
+.zFlow p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* --- Cards --- */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.card svg {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
