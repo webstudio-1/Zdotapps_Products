@@ -18,8 +18,8 @@ const engageData = [
     ],
     image: gamesImg,
     ctaText: 'Play Now',
-    ctaLink: '#',
-    downloadLink: '#' // Replace with real link
+    ctaLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share',
+    downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share' // Replace with real link
   }
 ];
 
