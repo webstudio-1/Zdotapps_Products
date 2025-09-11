@@ -1,10 +1,11 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./header.module.css";
 
 function Header() {
+  const navigate = useNavigate();
   const location = useLocation();
-  
+
   const isActive = (path) => {
     if (path === "/" && location.pathname === "/") {
       return true;
@@ -15,17 +16,30 @@ function Header() {
     return false;
   };
 
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
+
   return (
-    <header className={`navbar navbar-expand-lg fixed-top  px-4 py-3 ${styles.header}`}>
+    <header className={`navbar navbar-expand-lg fixed-top px-2 px-sm-3 py-2 py-sm-3 ${styles.header}`}>
       <div className="container">
         {/* Logo */}
-        <Link to="/" className={`navbar-brand fw-bold fs-4 ${styles.logo}`}>
-          <img src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png" alt="LOGO" className="img-fluid" width={100} />
-        </Link>
+        <a 
+          href="#!" 
+          onClick={() => handleNavigate("/")} 
+          className="navbar-brand fw-bold fs-4 text-white"
+        >
+          <img 
+            src="http://13.234.41.119/devenv/z.apps_new/assets/images/zdotapps_white.png" 
+            alt="LOGO" 
+            className="img-fluid" 
+            width={100} 
+          />
+        </a>
 
         {/* Toggle for mobile */}
         <button
-          className="navbar-toggler border-0 shadow-none bg-white text-white"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -40,61 +54,61 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4 gap-2">
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/") ? styles.active : ""}`} 
-                to="/"
+              <a
+                href="#!"
+                className={`nav-link ${styles.navLink} ${isActive("/") ? styles.active : ""}`}
+                onClick={() => handleNavigate("/")}
               >
                 Home
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/products") ? styles.active : ""}`} 
-                to="products"
+              <a
+                href="#!"
+                className={`nav-link ${styles.navLink} ${isActive("/products") ? styles.active : ""}`}
+                onClick={() => handleNavigate("/products")}
               >
                 Products
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/features") ? styles.active : ""}`} 
-                to="features"
+              <a
+                href="#!"
+                className={`nav-link ${styles.navLink} ${isActive("/features") ? styles.active : ""}`}
+                onClick={() => handleNavigate("/features")}
               >
                 Features
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/pricing") ? styles.active : ""}`} 
-                to="pricing"
+              <a
+                href="#!"
+                className={`nav-link ${styles.navLink} ${isActive("/pricing") ? styles.active : ""}`}
+                onClick={() => handleNavigate("/pricing")}
               >
                 Pricing
-              </Link>
+              </a>
             </li>
             <li className="nav-item">
-              <Link 
-                className={`nav-link ${styles.navLink} ${isActive("/resource") ? styles.active : ""}`} 
-                to="resource"
+              <a
+                href="#!"
+                className={`nav-link ${styles.navLink} ${isActive("/resource") ? styles.active : ""}`}
+                onClick={() => handleNavigate("/resource")}
               >
                 Resource
-              </Link>
+              </a>
             </li>
           </ul>
 
           {/* Right Side Buttons */}
           <div className="d-flex align-items-center gap-3">
-            {/* <Link 
-              to="/login" 
-              className={`${styles.login} ${isActive("/login") ? styles.active : ""}`}
-            >
-              Login
-            </Link> */}
-            <Link 
-              to="/login" 
-              className={`btn rounded-pill px-4 py-2 ${styles.joinNow} ${isActive("/z.flow") ? styles.active : ""}`}
+            <a
+              href="#!"
+              className={`btn rounded-pill px-4 py-2 ${styles.joinNow} ${isActive("/login") ? styles.active : ""}`}
+              onClick={() => handleNavigate("/login")}
             >
               Join Now
-            </Link>
+            </a>
           </div>
         </div>
       </div>

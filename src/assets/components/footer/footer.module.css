@@ -1,73 +1,45 @@
-.footer {
-  background: radial-gradient(circle at 20% -20%, rgba(88, 101, 242, 0.25), transparent 45%),
-              radial-gradient(circle at 80% 0%, rgba(56, 189, 248, 0.2), transparent 40%),
-              #0b0b3d;
-  color: #e6e8ff;
-  padding: 64px 20px 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
+/* footer.module.css */
 
-.logo {
-  display: inline-block;
-  color: #fff;
-  font-weight: 800;
-  font-size: 28px;
-  text-decoration: none;
-  letter-spacing: 0.5px;
+.footer {
+  background-color: #1A1A3B;
+  color: #ffffff;
 }
 
 .tagline {
-  margin: 12px 0 20px;
-  color: #c9ccff;
-  font-size: 14px;
-}
-
-.socialLink {
-  color: #c9ccff;
-  font-size: 14px;
-  text-decoration: none;
-  padding: 6px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  transition: all 0.2s ease;
-}
-.socialLink:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.groupTitle {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
 }
 
 .link {
-  display: inline-block;
-  color: #c9ccff;
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
-  margin: 6px 0;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease-in-out;
 }
 
 .link:hover {
   color: #ffffff;
+  text-decoration: underline;
 }
 
-.copy {
-  color: #aab0ff;
-  font-size: 12px;
-}
-
-.legalLinks {
-  display: flex;
+/* Updated styles for social links to properly handle icons */
+.socialLink {
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%; /* Make it a circle */
+  transition: all 0.2s ease-in-out;
+  
+  /* Flexbox utilities to center the icon perfectly */
+  display: inline-flex;
   justify-content: center;
-  gap: 16px;
-  margin-top: 16px;
+  align-items: center;
+
+  /* Set a fixed size for a uniform look */
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem; /* Adjust icon size */
 }
 
+.socialLink:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}

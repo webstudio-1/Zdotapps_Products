@@ -1,240 +1,202 @@
 /* products.module.css */
 
-/* Import Google Fonts - Add this to the top of your CSS file or in your public/index.html */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 :root {
-  /* Provided Colors */
   --primary-color: #EFC426;       /* Gold/Yellow */
   --secondary-color: #1E40AF;    /* Darker Blue */
   --accent-color: #3B82F6;       /* Lighter Blue */
   --white: #FFFFFF;
   --light-gray: #F3F4F6;
   --dark-gray: #1F2937;
-  --text-color: #111827;         /* Very Dark Gray */
+  --text-color: #111827;
   --transition-speed: 0.3s;
   --border-radius: 8px;
 
-  /* RGB equivalents for shadows and translucent effects */
   --text-color-rgb: 17, 24, 39;
   --secondary-color-rgb: 30, 64, 175;
   --accent-color-rgb: 59, 130, 246;
 
-  /* Consistent Spacing */
   --spacing-sm: 16px;
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 64px;
 }
 
-/* Base Body Styles */
+/* Base */
 body {
   color: var(--text-color);
-  line-height: 1.7; /* Slightly more relaxed line height */
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box; /* Ensure consistent box model */
+  box-sizing: border-box;
 }
-
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
-/* Home Section Styles */
+/* ============================= */
+/* Home Section (Hero)           */
+/* ============================= */
 .homeSection {
-  color: var(--white);
-  padding: 8rem 0 0 0; /* Generous padding for a hero section feel */
+  background: black;
+  color: white;
+  padding: 8rem 0 6rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  height: 430px;
 }
 
 .homeTitle {
   font-size: 3.8rem; /* Larger for impact */
   font-weight: 800;
   margin-bottom: 1.5rem;
-  color: var(--secondary-color);
   line-height: 1.2;
 }
 
+
 .highlightText {
-  color: var(--primary-color); /* Uses the primary gold color for highlight */
+  color: var(--primary-color);
 }
 
-.homeSubtitle {
-  font-size: 1.8rem;
-  font-weight: 500;
-  margin-bottom: 2.5rem;
-  color: var(--dark-gray);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.4;
+/* Yellow underline */
+.underline {
+  width: 60px;
+  height: 3px;
+  margin: 0 auto 2rem auto;
+  border-radius: 2px;
 }
-
-.homeDescription {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: var(--dark-gray);
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Products Section */
-.productsSection {
-  background: var(--light-gray); /* Using light-gray for the section background */
-  padding-bottom: 100px; /* Adjust top padding as homeSection now provides it */
+.searchBox {
+  position: relative;             /* key for absolute positioning of icon */
   display: flex;
+  align-items: center;
+  width: 480px;                   /* adjust width */
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px;     /* left padding to make space for icon */
+  border: 1px solid #ccc;
+  border-radius: 20px;            /* optional rounded corners */
+  outline: none;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;                     /* distance from left edge */
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* ============================= */
+/* Products Section              */
+/* ============================= */
+.productsSection {
+  background: var(--light-gray);
+  padding-bottom: 100px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* Section Title */
 .title {
-  font-size: 3.5rem; /* Larger title */
+  font-size: 3.5rem;
   font-weight: 800;
-  color: var(--dark-gray); /* Using dark-gray for main title */
+  color: var(--dark-gray);
   text-align: center;
-  margin-top: var(--spacing-xl); /* Add top margin to separate from home section */
+  margin-top: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
   line-height: 1.1;
   position: relative;
 }
 
 .titleGradient {
-  background: -webkit-linear-gradient(45deg, var(--secondary-color), var(--accent-color)); /* Using provided blues for gradient */
+  background: -webkit-linear-gradient(45deg, var(--secondary-color), var(--accent-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
 
-/* Search and Filter Controls */
 .controlsContainer {
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* keeps it responsive */
 }
 
-.searchInput,
-.filterSelect {
-  padding: 0.75rem 1.25rem;
-  border: 1px solid var(--light-gray); /* Using light-gray for border */
-  border-radius: 9999px; /* Pill shape */
+
+.searchInput{
+  padding: 0.75rem 1.99rem;
+  border: 1px solid var(--light-gray);
   font-size: 1rem;
-  color: var(--text-color); /* Using text-color for input text */
-  background-color: var(--white); /* Using white for input background */
-  box-shadow: 0 2px 8px rgba(var(--text-color-rgb), 0.04); /* Using text-color-rgb for subtle shadow */
+  color: var(--text-color);
+  background-color: var(--white);
+  box-shadow: 0 2px 8px rgba(var(--text-color-rgb), 0.04);
   transition: all 0.3s ease;
+  width:900px;
+}
+
+.filterSelect {
+  padding: 0.95rem 1.25rem;
+  border: 1px solid var(--light-gray);
+  font-size: 1rem;
+  color: var(--text-color);
+  background-color: var(--white);
+  box-shadow: 0 2px 8px rgba(var(--text-color-rgb), 0.04);
+  transition: all 0.3s ease;
+  margin-left: 40px;
 }
 
 .searchInput:focus,
 .filterSelect:focus {
   outline: none;
-  border-color: var(--accent-color); /* Using accent-color for focus border */
-  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.1); /* Using accent-color-rgb for focus shadow */
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(var(--accent-color-rgb), 0.1);
 }
 
 .filterSelect {
-  appearance: none; /* Remove default arrow */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b5563'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Keep generic grey arrow for now, as specific icon color might be complex without a direct variable */
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b5563'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1em;
-  padding-right: 2.5rem; /* Make space for custom arrow */
+  padding-right: 2.5rem;
+  border-radius: 20px;
 }
 
 .noResults {
   font-size: 1.2rem;
-  color: var(--dark-gray); /* Using dark-gray for muted text */
+  color: var(--dark-gray);
   font-style: italic;
   margin-top: var(--spacing-lg);
 }
 
-/* Responsive Title Adjustments */
-@media (max-width: 1200px) {
-  .homeTitle {
-    font-size: 3.2rem;
-  }
-  .homeSubtitle {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .homeSection {
-    padding: 6rem 0;
-  }
-  .homeTitle {
-    font-size: 2.8rem;
-  }
-  .homeSubtitle {
-    font-size: 1.4rem;
-  }
-  .homeDescription {
-    font-size: 1rem;
-  }
-  .title {
-    font-size: 2.8rem;
-    margin-bottom: var(--spacing-lg);
-  }
-  .productsSection {
-    padding-bottom: 80px;
-  }
-  .controlsContainer {
-    flex-direction: column;
-    align-items: center;
-  }
-  .searchInput, .filterSelect {
-    width: 80%; /* Adjust width for smaller screens */
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  .homeSection {
-    padding: 4rem 0;
-  }
-  .homeTitle {
-    font-size: 2.2rem;
-  }
-  .homeSubtitle {
-    font-size: 1.1rem;
-  }
-  .title {
-    font-size: 2.2rem;
-    margin-bottom: var(--spacing-md);
-  }
-  .productsSection {
-    padding-bottom: 60px;
-  }
-  .searchInput, .filterSelect {
-    width: 90%;
-  }
-}
-
-/* Product Card */
+/* ============================= */
+/* Product Card                  */
+/* ============================= */
 .card {
-  background: var(--white); /* Using white for card background */
-  border: 1px solid var(--light-gray); /* Using light-gray for card border */
-  border-radius: 18px; /* More rounded */
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+  border-radius: 18px;
   padding: var(--spacing-md);
   text-align: center;
   transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
               box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
               border-color 0.4s ease;
-  box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04), 0 0 1px rgba(var(--text-color-rgb), 0.04); /* Using text-color-rgb for subtle shadow */
+  box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04), 0 0 1px rgba(var(--text-color-rgb), 0.04);
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden; /* Ensures no content spills out during transform */
+  overflow: hidden;
   position: relative;
 }
 
 .card:hover {
-  box-shadow: 0 16px 32px rgba(var(--text-color-rgb), 0.08), 0 0 2px rgba(var(--text-color-rgb), 0.08); /* Using text-color-rgb for medium shadow */
-  border-color: var(--accent-color); /* Subtle border highlight using accent color */
+  box-shadow: 0 16px 32px rgba(var(--text-color-rgb), 0.08), 0 0 2px rgba(var(--text-color-rgb), 0.08);
+  border-color: var(--accent-color);
 }
 
 .cardInner {
@@ -242,12 +204,11 @@ body {
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  padding: 10px; /* Internal padding for card content */
+  padding: 10px;
 }
 
-/* Product Image Container & Image */
 .imageContainer {
-  height: 110px; /* Slightly taller image container */
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,57 +216,54 @@ body {
 }
 
 .productImage {
-  max-width: 100px; /* Max width for images */
-  max-height: 100px; /* Max height for images */
+  max-width: 100px;
+  max-height: 100px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08)); /* Enhanced image shadow (keeping as generic black for neutrality) */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
   transition: transform 0.3s ease;
 }
 
 .card:hover .productImage {
-  transform: scale(1.08); /* Image scales slightly more on card hover */
+  transform: scale(1.08);
 }
 
-/* Product Name */
 .productName {
-  font-size: 1.6rem; /* Larger product name */
+  font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
-  color: var(--dark-gray); /* Using dark-gray for product name */
+  color: var(--dark-gray);
 }
 
-/* Product Description */
 .description {
-  font-size: 1.05rem; /* Slightly larger description text */
-  color: var(--text-color); /* Using text-color for description */
+  font-size: 1.05rem;
+  color: var(--text-color);
   margin-bottom: var(--spacing-md);
-  flex-grow: 1; /* Allows description to take available space */
+  flex-grow: 1;
   line-height: 1.5;
 }
 
-/* Call-to-Action Button */
 .cta {
-  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color)); /* Using provided blues for button gradient */
+  background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
   border: none;
   color: var(--white);
   font-size: 1rem;
   font-weight: 600;
-  padding: 0.9rem 1.2rem; /* More generous padding */
-  border-radius: 9999px; /* Fully rounded/pill shape */
+  padding: 0.9rem 1.2rem;
+  border-radius: 9999px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  box-shadow: 0 8px 20px rgba(var(--secondary-color-rgb), 0.3); /* Softer, branded shadow using secondary-color-rgb */
+  box-shadow: 0 8px 20px rgba(var(--secondary-color-rgb), 0.3);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* More space for icon */
-  letter-spacing: 0.5px; /* Slightly spaced letters */
+  gap: 10px;
+  letter-spacing: 0.5px;
 }
 
 .cta:hover {
-  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color)); /* Reversed gradient for hover effect */
-  box-shadow: 0 12px 25px rgba(var(--secondary-color-rgb), 0.45); /* Enhanced shadow for hover */
-  transform: translateY(-3px) scale(1.02); /* More pronounced hover effect */
+  background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+  box-shadow: 0 12px 25px rgba(var(--secondary-color-rgb), 0.45);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .btnText {
@@ -314,24 +272,138 @@ body {
 }
 
 .btnIcon {
-  font-size: 1.3em; /* Larger icon */
+  font-size: 1.3em;
   line-height: 1;
   transition: transform 0.3s ease;
 }
 
 .cta:hover .btnIcon {
-  transform: translateX(6px); /* Icon moves further right */
+  transform: translateX(6px);
 }
 
-/* Bootstrap Container Enhancements */
+/* ============================= */
+/* Container                     */
+/* ============================= */
 .container {
-  max-width: 1200px; /* Max width for content */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Default padding for smaller screens */
+  padding: 0 15px;
 }
 
 @media (min-width: 1200px) {
-  .container {
-    padding: 0; /* Remove side padding on large screens if container is max-width */
+  .container { padding: 0; }
+}
+
+/* ============================= */
+/* Responsive Adjustments        */
+/* ============================= */
+@media (max-width: 1200px) {
+  .homeTitle { font-size: 3.2rem; }
+}
+
+@media (max-width: 992px) {
+  .homeSection { padding: 6rem 0; }
+  .homeTitle { font-size: 2.8rem; }
+  .productsSection { padding-bottom: 80px; }
+  .controlsContainer {
+    flex-direction: column;
+    align-items: center;
   }
+  .searchBox { width: 80%; }
+  .searchInput, .filterSelect {
+    width: 80%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeSection { padding: 4rem 0; }
+  .homeTitle { font-size: 2.2rem; }
+  .productsSection { padding-bottom: 60px; }
+  .searchBox { width: 90%; }
+  .searchInput, .filterSelect { width: 90%; }
+}
+
+
+/* Circle CTA like glowing arrow button */
+/* Circle button with CSS arrow inside */
+.ctaCircle {
+  background: #EFC426; /* dark circle like your image */
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Glow halo */
+.ctaCircle::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  z-index: -1;
+  filter: blur(6px);
+}
+
+/* Hover effect */
+.ctaCircle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 6px 1.5px #000000;
+}
+
+/* Icon container */
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Arrow shape */
+/* Arrow shape - centered inside circle */
+.icon.arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid #000000;
+  border-right: 2px solid #000000;
+  transform: translate(-50%, -50%) rotate(45deg);
+
+}
+
+/* Add this to your products.module.css */
+
+/* Remove the previous .ctaCircleTryNow and .tryNowText styles if you added them */
+
+/* Add this new style for the 'Try Now' text link */
+.tryNowTextLink {
+  color: var(--dark-gray); /* Or choose a color that fits your design, e.g., var(--accent-color) */
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none; /* Remove underline by default */
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative; /* For potential hover effects */
+  display: inline-block; /* To allow transform effects */
+}
+
+.tryNowTextLink:hover {
+  color: var(--primary-color); /* Highlight color on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.ctaWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* space between circle button and text link */
 }

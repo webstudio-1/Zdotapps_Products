@@ -1,101 +1,93 @@
+/* Pricing Section Styling */
 .pricingSection {
-  padding: 6rem 2rem;
-  background: linear-gradient(to bottom, #0a0a0a, #0b0f2b);
-  text-align: center;
-  color: white;
-}
-
-.title {
-  font-size: 4rem;
-  font-weight: 800;
+  background-color: #1A1A3B;
+  padding: 6rem 1rem;
+  color: #fff;
   position: relative;
-  display: inline-block;
-  margin-bottom: 3rem;
+  overflow: hidden;
 }
 
-/* Glow blur effect behind Pricing */
-.title::after {
-  content: "Pricing";
+/* Base Pricing Card */
+.pricingCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Featured Card Styling */
+.featuredCard {
+  border-color: #4c6fff;
+  transform: scale(1.05); /* Make it stand out */
+  z-index: 2;
+}
+
+.pricingCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.featuredCard:hover {
+  transform: translateY(-8px) scale(1.07); /* Slightly more lift */
+}
+
+/* "Most Popular" Badge */
+.popularBadge {
   position: absolute;
-  top: 0;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 4rem;
-  font-weight: 800;
-  color: white;
-  opacity: 0.4;
-  filter: blur(12px);
-  z-index: -1;
+  background: #4c6fff;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 15px #4c6fff;
 }
 
-.cardsWrapper {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+/* Feature list check icon */
+.checkIcon {
+  margin-right: 0.75rem;
+  color: #22c55e; /* Bright green for positive affirmation */
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
-.card {
-  background: linear-gradient(145deg, #1a1f3b, #121526);
-  padding: 2rem;
-  border-radius: 1rem;
-  width: 280px;
-  text-align: left;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
-}
-
-.planTitle {
-  font-size: 1rem;
-  color: #cbd5e1;
-  margin-bottom: 0.5rem;
-}
-
-.price {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-}
-
-.features li {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  font-size: 0.95rem;
-  color: #e2e8f0;
-}
-
-.icon {
-  margin-right: 0.5rem;
-  color: #4ade80; /* green check */
-}
-
-.cta {
+/* CTA Button */
+.pricingCta {
   width: 100%;
-  padding: 0.8rem;
-  border: none;
+  padding: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 2rem;
   font-size: 1rem;
-  font-weight: 500;
-  background: black;
-  color: white;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: inset 0 0 10px #4f46e5;
 }
 
-.cta:hover {
-  background: #1e1e2e;
-  box-shadow: 0 0 15px #4f46e5, inset 0 0 15px #4f46e5;
+.pricingCta:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+}
+
+/* Featured Card's CTA Button */
+.featuredCard .pricingCta {
+  background: #4c6fff;
+  color: #fff;
+  border-color: #4c6fff;
+  box-shadow: 0 0 12px #4c6fff, 0 0 24px #4c6fff;
+}
+
+.featuredCard .pricingCta:hover {
+  background: #6a80ff;
+  box-shadow: 0 0 16px #6a80ff, 0 0 32px #6a80ff;
 }

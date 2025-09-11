@@ -4,27 +4,32 @@ import { useNavigate } from "react-router-dom";
 
 // Import images correctly
 import giderImage from "../../images/gider_black.png";
-import zengageImage from "../../images/Zengage.png"; // Using Zflow as placeholder, consider dedicated image
-import zflowImage from "../../images/Zflow.png";
-import zhireImage from "../../images/Zhire.png";
-import zmeritImage from "../../images/Zmerit.png";
-import zgamesImage from "../../images/Zgames.png";
-import zauthImage from "../../images/Zauth.png";
-import ziot from "../../images/Ziot.png";
+import zengageImage from "../../images/engage1.webp";
+import zflowImage from "../../images/flow.png";
+import zhireImage from "../../images/hire.png";
+import zmeritImage from "../../images/merit.png";
+import zgamesImage from "../../images/games.png";
+import zauthImage from "../../images/auth.png";
+import ziotImage from "../../images/IOT.png";
+import quiImage from "../../images/qui.png";
+import signImage from "../../images/sign.png";
+import formsImage from "../../images/zforms.png";
+import raiseImage from "../../images/raise.webp";
+import zquiImage from "../../images/qui.png";
 
 // Recommendation: For a polished UI, consider having unique and descriptive icons/images
 // for each product (e.g., Z.engage for image editing might have a camera/brush icon).
 const productList = [
   {
-    name: "Z.Engage",
-    desc: "Holistic employee wellbeing and community engagement platform",
+   
+    desc: "Engagement app for everyone’s needs",
     img: zengageImage, // Placeholder, ideally a unique image for Z.engage
     btn: "Know More",
     link: "/z.engage",
     category: "Engagement"
   },
   {
-    name: "Z.Flow",
+
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
@@ -32,53 +37,74 @@ const productList = [
     category: "Productivity"
   },
   {
-    name: "Z.Hire",
-    desc: "Comprehensive startup studio, professional services, and app development",
+    desc: "Hiring platform for smarter recruitment",
     img: zhireImage,
     btn: "Know More",
     link: "/z.hire",
     category: "Business Services"
   },
   {
-    name: "Z.Merit",
-    desc: "Rewarding loyalty and recognition programs",
+    desc: "Skill testing and evaluation made simple",
     img: zmeritImage,
     btn: "Know More",
     link: "/z.merit", // Empty link will trigger "Coming Soon!"
     category: "Rewards"
   },
   {
-    name: "Z.Games",
-    desc: "Interactive and engaging game development solutions",
+    desc: "Interactive social games for individuals and teams",
     img: zgamesImage,
     btn: "Know More",
     link: "/z.games",
     category: "Entertainment"
   },
   {
-    name: "Z.Auth",
-    desc: "Secure authentication & authorization services",
+    desc: "Secure authentication for enterprises",
     img: zauthImage,
     btn: "Know More",
     link: "/z.auth",
     category: "Security"
   },
   {
-    name: "Z.IOT",
-    desc: "Internet of Things solutions for smart environments", // Unique description for Z.IOT
-    img: ziot, // Placeholder, ideally a unique image for Z.IOT
+    desc: "Sustainability for smart cities", // Unique description for Z.IOT
+    img: ziotImage, // Placeholder, ideally a unique image for Z.IOT
     btn: "Know More",
     link: "/z.iot",
     category: "Technology"
   },
   {
-    name: "gidER",
-    desc: "Advanced digital photo processing & editing software",
+    desc: "Project execution app for tangible results",
     img: giderImage,
     btn: "Know More",
     link: "/giDER", // External link
     category: "Creative Tools"
+  },
+  {
+    desc: "Quizzes for instant engagement",
+    img: quiImage,
+    btn: "Know More",
+    link: "/giDER", // External link
+    category: "Creative Tools"
+  },{
+    desc: "Secure digital signatures on business documents",
+    img: signImage,
+    btn: "Know More",
+    link: "/giDER", // External link
+    category: "Creative Tools"
+  },
+  {
+    desc: "Interactive online forms for businesses",
+    img: formsImage,
+    btn: "Know More",
+    link: "/giDER", // External link
+    category: "Creative Tools"
+  },{
+    desc: "Fueling ventures and supporting causes",
+    img: raiseImage,
+    btn: "Know More",
+    link: "/giDER", // External link
+    category: "Creative Tools"
   }
+  
 ];
 
 const Products = () => {
@@ -142,39 +168,68 @@ const Products = () => {
   return (
     <section className={styles.productsSection}>
       {/* New Home Section for Products */}
-      <section className={styles.homeSection}>
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-10 col-md-11">
-              <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
-                Innovate. Create. Elevate. Explore Our <span className={styles.highlightText}>Products</span>.
+   <section className={styles.homeSection}>
+  <div className="container">
+    <div className="row justify-content-center text-center">
+      <div className="col-lg-10 col-md-11">
+        {/* Heading */}
+      <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
+                The AI suite that powers your <span className={styles.highlightText}>business</span>
               </h1>
-              <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
-                A Diverse Suite of Solutions for Every Business Need and Creative Endeavor.
-              </p>
-              <p className={`${styles.homeDescription} mb-5`}>
-                At the heart of our innovation lies a commitment to developing cutting-edge products that empower individuals and organizations. From enhancing employee engagement to streamlining business operations, fostering creativity, and ensuring robust security, our carefully crafted applications are designed to drive efficiency, inspire progress, and deliver exceptional value.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+
+
+        {/* Underline */}
+        <div className={styles.underline}></div>
+
+        {/* Search Box */}
+       {/* Search + Filter Controls */}
+<div className={`${styles.controlsContainer} d-flex justify-content-center`}>
+  {/* Search Box */}
+<div className={`${styles.controlsContainer} d-flex justify-content-center`}>
+  {/* Search Box */}
+  <div className={styles.searchBox}>
+    <i className={`fa fa-search ${styles.searchIcon}`} aria-hidden="true"></i>
+    <input
+      type="text"
+      placeholder="Search products..."
+      className={styles.searchInput}
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+  </div>
+</div>
+
+
+  {/* Filter Dropdown */}
+  <select
+    className={styles.filterSelect}
+    value={filterCategory}
+    onChange={(e) => setFilterCategory(e.target.value)}
+  >
+    {categories.map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
+    ))}
+  </select>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <div className="container">
 
         {/* Search and Filter Section */}
-        <div className="row g-4 align-items-center justify-content-end mb-3">
+        <div className="row g-4 align-items-center justify-content-end py-5">
+<center>
+       <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
+                Explore our <span className={styles.highlightText}>products</span>
+              </h1></center>
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-          <input
-            type="text"
-            placeholder="Search products..."
-            className={`${styles.searchInput} form-control flex-grow-1`}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          </div>
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-          <select
+          {/* <select
             className={`${styles.filterSelect} form-select`}
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
@@ -184,7 +239,7 @@ const Products = () => {
                 {category}
               </option>
             ))}
-          </select>
+          </select> */}
           </div>
         </div>
 
@@ -221,15 +276,29 @@ const Products = () => {
                     )}
                     <h3 className={styles.productName}>{product.name}</h3>
                     <p className={styles.description}>{product.desc}</p>
-                    <div className="mt-auto">
-                      <button
-                        className={styles.cta}
-                        onClick={() => handleClick(product)}
-                      >
-                        <span className={styles.btnText}>{product.btn}</span>
-                        <span className={styles.btnIcon}>→</span>
-                      </button>
-                    </div>
+                   <div className={`${styles.ctaWrapper}`}>
+  <button
+    className={styles.ctaCircle}
+    onClick={() => handleClick(product)}
+  >
+    <span
+      style={{ color: "#EFC426" }}
+      className={`${styles.icon} ${styles.arrow}`}
+    ></span>
+  </button>
+
+  <a
+    href="#"
+    onClick={(e) => {
+      e.preventDefault();
+      handleClick(product.tryNowLink);
+    }}
+    className={styles.tryNowTextLink}
+  >
+    Try Now
+  </a>
+</div>
+
                   </div>
                 </article>
               </div>

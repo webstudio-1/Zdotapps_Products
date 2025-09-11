@@ -1,48 +1,57 @@
-.section {
-  background: linear-gradient(to bottom, #0f172a, #1e293b);
-  padding: 4rem 2rem;
-  color: white;
-  text-align: center;
+/* Section Styling */
+.featureSection {
+  background-color: #1A1A3B;
+  padding: 6rem 1rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.subtitle {
-  font-size: 1rem;
-  color: #cbd5e1;
+/* Optional: Add the same subtle background glow for consistency */
+.featureSection::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(76, 111, 255, 0.1), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
 }
 
-.card {
-  background-color: #1e1b4b; /* Slightly darker than default bg, consistent */
-  border-radius: 0.75rem;
-  /* Padding now controlled by Bootstrap's p-4 in JSX (1.5rem) */
-  text-align: left;
+/* Feature Card Styling */
+.featureCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem; /* Balanced spacing between icon, title, and text */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Subtle initial shadow */
+  align-items: center; /* Center content horizontally */
 }
 
-.card:hover {
-  transform: translateY(-5px); /* Gentle lift on hover */
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* More pronounced, but soft shadow on hover */
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(76, 111, 255, 0.5);
 }
 
-/* Styles for the icon itself */
-.icon {
-  font-size: 2.2rem; /* Larger icon for prominence */
-  color: #38bdf8; /* Bright blue color for high visibility */
-  margin-bottom: 0.5rem; /* Space below the icon to separate from title */
-}
-
-.cardTitle {
-  font-size: 1.15rem; /* A bit larger than default for good hierarchy */
-  font-weight: 600;
-  color: white;
-  /* Margin handled by the gap property and icon margin-bottom */
-}
-
-.cardText {
-  font-size: 0.95rem; /* Slightly increased from default for better readability */
-  color: #cbd5e1;
-  line-height: 1.5; /* Improved line height for comfortable reading */
+/* Icon Wrapper for Centering and Styling */
+.featureCard .iconWrapper {
+  font-size: 2rem;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* Space between icon and title */
+  color: #4c6fff; /* Vibrant blue from your theme */
+  background-color: rgba(76, 111, 255, 0.1);
+  border: 1px solid rgba(76, 111, 255, 0.2);
+  flex-shrink: 0; /* Prevents the icon from shrinking */
 }

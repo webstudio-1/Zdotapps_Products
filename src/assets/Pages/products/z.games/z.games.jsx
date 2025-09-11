@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styles from './z.games.module.css';
 import gamesImg from './images/Tambola.jpg'; // Replace with actual games image
+import spellbeeImg from './images/spell_bee.jpg'; // Replace with actual games image
+import sudokoImg from './images/sudoko.png'; // Replace with actual games image
+
 
 const engageData = [
   {
@@ -18,7 +21,40 @@ const engageData = [
     ],
     image: gamesImg,
     ctaText: 'Play Now',
-    ctaLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share',
+    downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share' // Replace with real link
+  },
+  {
+    id: 2,
+    title: 'Z.SpellBee – Sharpen Your Spelling & Vocabulary',
+    subtitle: 'Fun, competition, and learning through spelling challenges',
+    description:
+      'Z.SpellBee is an engaging platform inside Station-S designed to boost vocabulary, spelling accuracy, and quick thinking. From practice rounds to competitive spelling battles, Z.SpellBee makes learning words fun and interactive. Whether you are preparing for contests or simply love language, it’s the perfect way to challenge your mind.',
+    features: [
+      'Word Challenges – Learn and spell new words daily',
+      'Rapid Fire – Quick spelling rounds to test speed',
+      'Vocabulary Builder – Improve language skills with practice',
+      'Team Battles – Compete in groups for added fun',
+      'Leaderboards – Track progress and celebrate winners'
+    ],
+    image: spellbeeImg, // Replace with your SpellBee image
+    ctaText: 'Start Spelling',
+    downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share' // Replace with real link
+  },
+  {
+    id: 3,
+    title: 'Z.Sudoku – Train Your Brain with Logic',
+    subtitle: 'Classic number puzzle for sharp minds',
+    description:
+      'Z.Sudoku inside Station-S brings the timeless number puzzle to life with interactive features and levels of difficulty. It’s designed to improve concentration, logical thinking, and problem-solving skills. Whether you’re a beginner or a puzzle master, Z.Sudoku offers endless fun while boosting your brainpower.',
+    features: [
+      'Multiple Difficulty Levels – Easy, Medium, Hard, and Expert',
+      'Daily Challenges – Keep your mind active every day',
+      'Hints & Notes – Learn strategies while solving',
+      'Timer Mode – Test speed and accuracy under pressure',
+      'Progress Tracker – Monitor improvement and achievements'
+    ],
+    image: sudokoImg, // Replace with your Sudoku image
+    ctaText: 'Play Sudoku',
     downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share' // Replace with real link
   }
 ];

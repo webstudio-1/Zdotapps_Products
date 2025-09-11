@@ -18,7 +18,7 @@
 /* Home Section Styles */
 .homeSection {
   color: var(--text-color);
-  padding: 8rem 0;
+  padding: 8rem 0 0 0;
   text-align: center;
 }
 

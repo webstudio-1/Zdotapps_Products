@@ -76,7 +76,7 @@ const Zengage = () => {
     <div className={styles.engagePage}>
       {/* New Home Section for Z.engage */}
       <section className={styles.homeSection}>
-        <div className="container py-5">
+        <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-lg-10 col-md-11">
               <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
