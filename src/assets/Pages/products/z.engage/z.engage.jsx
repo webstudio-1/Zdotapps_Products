@@ -1,171 +1,213 @@
 import React, { useState } from 'react';
 import styles from './z.engage.module.css';
-import carelon from './images/CE.webp'
-import lifecykul from './images/LC.webp'
-import campuslife from './images/CL.webp'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-const engageData = [
+// ✅ Imported images
+import yfsImage from './images/yfs.png';
+import lifeImage from './images/life.webp';
+import carelonImage from './images/carelon.webp';
+import campus_lifeImage from './images/campus_life.webp';
+import swagramImage from './images/swagram.png';
+import iosBadge from './images/ios.png';
+import playstoreBadge from './images/playstore.png';
+
+const cardsData = [
   {
-    id: 1,
-    title: 'Carelon.Engage – Employee Wellbeing',
-    subtitle: 'Holistic engagement through fitness, arts & recreation',
-    description:
-      'Carelon.Engage is a comprehensive platform that blends physical activity tracking with creative, recreational, and social modules. It motivates employees with leaderboards, fitness challenges, and community-driven events.',
+    title: 'Carelon',
+    bgColor: '#7952E0', // green
     features: [
-      'Fitness tracking (steps, walking, running, cycling)',
-      'Integration with Fitbit, Garmin, Apple, Health Connect',
-      'Arts & recreation (music, painting, cooking, sports)',
-      'Leaderboards & peer challenges'
+      'Track progress visually across stages.',
+      'Customize for sales, marketing, or service.',
+      'Filter opportunities by criteria.',
+      'Collaborate with your team in real-time.',
     ],
-    image: carelon,
-    ctaText: 'Explore App',
-    ctaLink: 'https://play.google.com/store/apps/details?id=com.carelon.service.app&hl=en_IN',
-    downloadLink: 'https://play.google.com/store/apps/details?id=com.carelon.service.app&hl=en_IN'
+    image: carelonImage,
+    alt: 'Mobile App Pipelines',
+    iosLink: 'https://apps.apple.com/in/app/carelon-engage/id1668110764',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.carelon.service.app&hl=en_IN',
   },
   {
-    id: 2,
-    title: 'LifeCykul – Fitness & Challenges',
-    subtitle: 'Stay fit, join challenges, and win rewards',
-    description:
-      'LifeCykul encourages healthy living by making fitness fun. Users can track their walks, runs, or cycling sessions, join competitive challenges, and even win rewards while staying active.',
+    title: 'CampusLife',
+    bgColor: '#5009B5', // blue
     features: [
-      'Track walking, running, and cycling',
-      'Participate in challenges & leaderboards',
-      'Attractive prizes for winners',
-      'Clean, gamified fitness experience'
+      'See full customer history at a glance.',
+      'Integrate emails, calls, and notes.',
+      'Never miss a follow-up again.',
+      'Personalize outreach with context.',
     ],
-    image: lifecykul,
-    ctaText: 'Explore App',
-    ctaLink: 'https://play.google.com/store/apps/details?id=life.cykul.com.lifeCykul&hl=en_IN',
-    downloadLink: 'https://play.google.com/store/apps/details?id=life.cykul.com.lifeCykul&hl=en_IN'
+    image: campus_lifeImage,
+    alt: 'Customer 360 View',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN',
+    iosLink: 'https://apps.apple.com/in/app/campus-life/id6737402090',
   },
   {
-    id: 3,
-    title: 'Campus.Life – Student Engagement',
-    subtitle: 'Connect, participate, and organize campus activities',
-    description:
-      'Campus.Life is designed for students, faculty, and administrators to stay engaged with campus events, book facilities, and receive personalized notifications for everything happening on campus.',
+    title: 'LifeCykul',
+    bgColor: '#32a739', // yellow
     features: [
-      'Event updates & notifications',
-      'Facility booking (gyms, halls, sports arenas)',
-      'Skill competitions & campus-wide activities',
-      'User-friendly campus management'
+      'Manage WhatsApp, Email, Calls in one place.',
+      'Auto-log every customer interaction.',
+      'Respond faster with templates.',
+      'Track response times and SLAs.',
     ],
-    image: campuslife,
-    ctaText: 'Explore App',
-    ctaLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN',
-    downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN'
-  }
+    image: lifeImage,
+    alt: 'WhatsApp Chat',
+    androidLink: 'https://play.google.com/store/apps/details?id=life.cykul.com.lifeCykul&hl=en_IN',
+    iosLink: 'https://apps.apple.com/in/app/life-cykul/id1410238739',
+  },
+  {
+    title: 'Swagraam',
+    bgColor: '#fe7200', // red
+    features: [
+      'Set triggers for follow-ups and reminders.',
+      'Auto-assign leads to the right rep.',
+      'Send welcome emails or SMS automatically.',
+      'Reduce manual work by 70%.',
+    ],
+    image: swagramImage,
+    alt: 'Workflow Automation',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.swagraam.service.app&hl=en_IN',
+  
+  },
+  {
+    title: 'Youth for Seva',
+    bgColor: '#8b0205', // purple
+    features: [
+      'Access CRM on iOS and Android.',
+      'Log calls, update deals, add notes on the go.',
+      'Works offline — syncs when back online.',
+      'Mobile-optimized for speed and ease.',
+    ],
+    image: yfsImage,
+    alt: 'Mobile CRM App',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.youthfor.seva.app&hl=en_IN',
+    iosLink: 'https://apps.apple.com/in/app/youth-for-seva/id6443999296',
+  },
 ];
 
 const Zengage = () => {
-  const [imageErrors, setImageErrors] = useState({});
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleImageError = (id) => {
-    setImageErrors(prev => ({
-      ...prev,
-      [id]: true
-    }));
-  };
-
-  const getFallbackImage = (title, color) => {
-    return `https://via.placeholder.com/300x400/${color}/FFFFFF?text=${encodeURIComponent(title)}`;
-  };
+  const goToSlide = (index) => setCurrentIndex(index);
+  const nextSlide = () =>
+    setCurrentIndex((prev) => (prev + 1) % cardsData.length);
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev - 1 + cardsData.length) % cardsData.length);
 
   return (
-    <div className={styles.engagePage}>
-      {/* New Home Section for Z.engage */}
-      <section className={styles.homeSection}>
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-10 col-md-11">
-              <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
-                Unlock Engagement. Empower Communities. <br /> Discover <span className={styles.highlightText}>Z.engage</span>.
-              </h1>
-              <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
-                Your All-in-One Platform for Holistic Engagement, Wellbeing, and Vibrant Community Building.
-              </p>
-              <p className={`${styles.homeDescription} mb-5`}>
-                Z.engage is a versatile and dynamic suite of applications designed to foster deeper connections, promote healthier lifestyles, and streamline community interactions across various domains. Whether it's enhancing employee wellbeing, energizing campus life, or making fitness a rewarding journey, Z.engage provides tailored experiences that drive participation and create thriving environments.
-              </p>
-              {/* Optional Call to Action */}
-              {/* <a href="#solutions" className={styles.homeCtaButton}>Explore Our Solutions</a> */}
+    <div className={styles.container}>
+      <h1 className={styles.h1}>
+        Everything you need to get organized and make more sales!
+      </h1>
+      <p className={styles.tagline}>
+        Streamline your workflow, boost productivity, and close more deals.
+      </p>
+
+      {/* Navigation Tabs */}
+      <div className={styles['nav-tabs']}>
+        {cardsData.map((card, index) => (
+          <button
+            key={index}
+            className={`${styles['tab-btn']} ${
+              currentIndex === index ? styles.active : ''
+            }`}
+            onClick={() => goToSlide(index)}
+          >
+            {card.title}
+          </button>
+        ))}
+      </div>
+
+      {/* Carousel */}
+      <div className={styles['carousel-container']}>
+        <div
+          className={styles['carousel-wrapper']}
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {cardsData.map((card, index) => (
+            <div
+              key={index}
+              className={styles['feature-card']}
+              style={{
+                backgroundColor:
+                  currentIndex === index ? card.bgColor : '#fffdf2',
+              }}
+            >
+              <div className={styles['feature-text']}>
+                <h2 className={styles['feature-text-h2']}>{card.title}</h2>
+                <ul>
+                  {card.features.map((feature, i) => (
+                    <li key={i} className={styles['feature-text-li']}>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Store badges */}
+                <div className={styles.storeBadges}>
+                  {card.iosLink && (
+                    <a
+                      href={card.iosLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Download ${card.title} on the App Store`}
+                    >
+                      <img src={iosBadge} alt="Download on the App Store" />
+                    </a>
+                  )}
+                  {card.androidLink && (
+                    <a
+                      href={card.androidLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Get ${card.title} on Google Play`}
+                    >
+                      <img src={playstoreBadge} alt="Get it on Google Play" />
+                    </a>
+                  )}
+                </div>
+
+                <button className={styles['btn-primary']}>Download Now</button>
+              </div>
+
+              <div className={styles['image-wrapper']}>
+                <img src={card.image} alt={card.alt} />
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </div>
 
-      {/* Existing Engagement Sections */}
-      {engageData.map((item, index) => (
-        <section key={item.id} className={`${styles.contentSection} py-5`}>
-          <div className="container py-5">
-            <div className={`row align-items-center g-4 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}>
-              
-              {/* Text Column */}
-              <div className="col-lg-6">
-                <div className={`${styles.contentWrapper} h-100 d-flex flex-column justify-content-center`}>
-                  <h2 className={`${styles.sectionTitle} display-5 fw-bold mb-3`}>
-                    {item.title}
-                  </h2>
-
-                  <p className={`${styles.sectionSubtitle} lead fw-semibold mb-3`}>
-                    {item.subtitle}
-                  </p>
-
-                  <p className={`${styles.sectionDescription} mb-4`}>
-                    {item.description}
-                  </p>
-
-                  <ul className={`${styles.featuresList} list-unstyled mb-4`}>
-                    {item.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className={`${styles.featureItem} d-flex align-items-center mb-3`}>
-                        <div className="me-3">
-                          <svg className={styles.checkIcon} width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Fixed Button with CSS module */}
-                  <a 
-                    href={item.downloadLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.downloadButton}
-                  >
-                    <i className="bi bi-download"></i>
-                    {item.ctaText}
-                  </a>
-
-                </div>
-              </div>
-
-              {/* Image Column */}
-              <div className="col-lg-6">
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={
-                      imageErrors[item.id]
-                        ? getFallbackImage(
-                            item.title,
-                            index === 0 ? '4F46E5' : index === 1 ? '10B981' : 'F59E0B'
-                          )
-                        : item.image
-                    }
-                    alt={item.title}
-                    className={`img-fluid rounded-3 shadow-lg ${styles.engageImage}`}
-                    onError={() => handleImageError(item.id)}
-                  />
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-      ))}
+      {/* Controls */}
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={styles['control-btn']}
+          onClick={prevSlide}
+          aria-label="Previous slide"
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <div className={styles.dots}>
+          {cardsData.map((_, index) => (
+            <span
+              key={index}
+              className={`${styles.dot} ${
+                currentIndex === index ? styles.active : ''
+              }`}
+              onClick={() => goToSlide(index)}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          className={styles['control-btn']}
+          onClick={nextSlide}
+          aria-label="Next slide"
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+      </div>
     </div>
   );
 };
