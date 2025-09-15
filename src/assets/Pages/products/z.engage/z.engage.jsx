@@ -13,6 +13,8 @@ import lifecykulScreen from './images/life.webp';
 import swagraamScreen from './images/swagram.png';
 import yfsScreen from './images/yfs.png';
 import engage from '../../../images/engage.png';
+import appstore from './images/appstore.svg';
+import googlePlay from './images/googles_store.svg';
 
 // Example features and images for each card
 const cardsData = [
@@ -26,8 +28,9 @@ const cardsData = [
       'Filter opportunities by criteria.',
       'Collaborate with your team in real-time.',
     ],
-    iosLink: 'https://apps.apple.com/',
-    androidLink: 'https://play.google.com/',
+    iosLink: 'https://apps.apple.com/in/app/carelon-engage/id1668110764',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.carelon.service.app',
+    
     image: carelonScreen,
     alt: 'Carelon app screenshot',
   },
@@ -41,8 +44,8 @@ const cardsData = [
       'Easy club management.',
       'Connect with campus resources.',
     ],
-    iosLink: 'https://apps.apple.com/',
-    androidLink: 'https://play.google.com/',
+    iosLink: 'https://apps.apple.com/in/app/campus-life/id6737402090',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&hl=en_IN',
     image: campuslifeScreen,
     alt: 'CampusLife app screenshot',
   },
@@ -56,8 +59,8 @@ const cardsData = [
       'Monitor health stats.',
       'Share achievements.',
     ],
-    iosLink: 'https://apps.apple.com/',
-    androidLink: 'https://play.google.com/',
+    iosLink: 'https://apps.apple.com/in/app/life-cykul/id1410238739',
+    androidLink: 'https://play.google.com/store/apps/details?id=life.cykul.com.lifeCykul&hl=en_IN',
     image: lifecykulScreen,
     alt: 'LifeCykul app screenshot',
   },
@@ -72,7 +75,7 @@ const cardsData = [
       'Share resources and info.',
     ],
     iosLink: 'https://apps.apple.com/',
-    androidLink: 'https://play.google.com/',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.swagraam.service.app&hl=en_IN',
     image: swagraamScreen,
     alt: 'Swagraam app screenshot',
   },
@@ -86,8 +89,9 @@ const cardsData = [
       'Connect with NGOs.',
       'Organize events and drives.',
     ],
-    iosLink: 'https://apps.apple.com/',
-    androidLink: 'https://play.google.com/',
+
+    iosLink: 'https://apps.apple.com/in/app/youth-for-seva/id6443999296',
+    androidLink: 'https://play.google.com/store/apps/details?id=com.youthfor.seva.app&hl=en_IN',
     image: yfsScreen,
     alt: 'Youth for Seva app screenshot',
   },
@@ -154,13 +158,13 @@ const Zengage = () => {
                 }}
               >
                 <div className={styles['feature-text']}>
-                  <div style={{ display: 'flex', alignItems: 'center', marginBottom: 65 }}>
+                  <div style={{ display: 'flex', alignItems: 'center' , marginLeft: 30}}>
                     <img
                       src={card.logo}
                       alt={`${card.title} logo`}
                       style={{
-                        width: 80,
-                        height: 80,
+                        width: 160,
+                        height: 160,
                         marginRight: 20,
                         borderRadius: 16,
                         background: '#fff',
@@ -170,27 +174,28 @@ const Zengage = () => {
                       {card.title}
                     </h2>
                   </div>
-                  <ul>
-                    {card.features.map((feature, i) => (
-                      <li key={i} className={styles['feature-text-li']}>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                <ul className={styles['tick-list']}>
+  {card.features.map((feature, i) => (
+    <li key={i} className={styles['feature-text-li']}>
+      {feature}
+    </li>
+  ))}
+</ul>
+
 
                   <div className={styles.storeBadges}>
                     {card.iosLink && (
                       <a href={card.iosLink} target="_blank" rel="noopener noreferrer">
-                        <img src={iosBadge} alt="Download on the App Store" />
+                        <img src={appstore} alt="Download on the App Store" />
                       </a>
                     )}
                     {card.androidLink && (
                       <a href={card.androidLink} target="_blank" rel="noopener noreferrer">
-                        <img src={playstoreBadge} alt="Get it on Google Play" />
+                        <img src={googlePlay} alt="Get it on Google Play" />
                       </a>
                     )}
                   </div>
-                     <div className={styles.dots} style={{ justifyContent: 'center', marginTop: 40, marginLeft: 410 }}>
+                     <div className={styles.dots} style={{ justifyContent: 'center', marginTop: 40, marginLeft: 310 }}>
             {cardsData.map((_, dotIdx) => (
               <span
                 key={dotIdx}

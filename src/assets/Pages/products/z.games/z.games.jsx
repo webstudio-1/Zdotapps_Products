@@ -5,18 +5,19 @@ import spellbeeImg from './images/spell_bee.jpg'; // Replace with actual games i
 import sudokoImg from './images/sudoko.png'; // Replace with actual games image
 
 
+
 const engageData = [
   {
     id: 1,
-    title: 'Z.games – Play & Learn at Station-S',
-    subtitle: 'Fun, engagement, and knowledge through interactive games',
+    
+    // subtitle: 'Z.games – Interactive fun and learning through games at Station-S.',
     description:
-      'Z.games is a vibrant platform inside Station-S where entertainment meets learning. From classic games to knowledge-based quizzes, Z.games fosters community engagement while sharpening minds. Whether you’re solving a puzzle, hunting for treasure, or testing your coding knowledge, Z.games makes every moment exciting.',
+     'Z.games is an interactive Station-S platform that blends fun and learning through classic games, quizzes, and puzzles, promoting engagement and mental agility.',
     features: [
       'Tambola – A fun community number game',
       'Crossword – Boost vocabulary & problem solving',
       'Treasure Hunt – Team-based exploration challenges',
-      'Hangman – Guess the words before time runs out',
+ 
       'MySQL Quiz – Test and improve your database skills'
     ],
     image: gamesImg,
@@ -25,33 +26,33 @@ const engageData = [
   },
   {
     id: 2,
-    title: 'Z.SpellBee – Sharpen Your Spelling & Vocabulary',
-    subtitle: 'Fun, competition, and learning through spelling challenges',
+  
+    // subtitle: 'Z.Yelling Bee – Fun yelling contests that boost vocabulary and learning.',
     description:
-      'Z.SpellBee is an engaging platform inside Station-S designed to boost vocabulary, spelling accuracy, and quick thinking. From practice rounds to competitive spelling battles, Z.SpellBee makes learning words fun and interactive. Whether you are preparing for contests or simply love language, it’s the perfect way to challenge your mind.',
+      'Z.Yelling Bee is a fun, interactive Station-S platform that improves vocabulary, yelling skills, and quick thinking through practice rounds and competitive spelling challenges.',
     features: [
-      'Word Challenges – Learn and spell new words daily',
-      'Rapid Fire – Quick spelling rounds to test speed',
-      'Vocabulary Builder – Improve language skills with practice',
+      
+      'Rapid Fire – Quick yelling rounds to test speed',
+ 
       'Team Battles – Compete in groups for added fun',
       'Leaderboards – Track progress and celebrate winners'
     ],
     image: spellbeeImg, // Replace with your SpellBee image
-    ctaText: 'Start Spelling',
+    ctaText: 'Start Yelling',
     downloadLink: 'https://play.google.com/store/apps/details?id=com.campus.life.app&pcampaignid=web_share' // Replace with real link
   },
   {
     id: 3,
-    title: 'Z.Sudoku – Train Your Brain with Logic',
-    subtitle: 'Classic number puzzle for sharp minds',
+   
+    // subtitle: 'Z.Sudoku – Classic number puzzle to boost logic and focus.',
     description:
-      'Z.Sudoku inside Station-S brings the timeless number puzzle to life with interactive features and levels of difficulty. It’s designed to improve concentration, logical thinking, and problem-solving skills. Whether you’re a beginner or a puzzle master, Z.Sudoku offers endless fun while boosting your brainpower.',
+      'Z.Sudoku offers classic Sudoku puzzles in varying levels to sharpen focus, logic, and problem-solving while keeping the mind entertained.',
     features: [
-      'Multiple Difficulty Levels – Easy, Medium, Hard, and Expert',
+     
       'Daily Challenges – Keep your mind active every day',
       'Hints & Notes – Learn strategies while solving',
       'Timer Mode – Test speed and accuracy under pressure',
-      'Progress Tracker – Monitor improvement and achievements'
+      'Progress Tracker – Monitor improvement and achievements' 
     ],
     image: sudokoImg, // Replace with your Sudoku image
     ctaText: 'Play Sudoku',
@@ -85,7 +86,7 @@ const Zgames = () => {
               <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
                 Play. Learn. Compete. <span className={styles.highlightText}>Z.games</span>
               </h1>
-              <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
+              {/* <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
                 Fun meets learning at Station-S.
               </p>
               <p className={`${styles.homeDescription} mb-5`}>
@@ -93,101 +94,89 @@ const Zgames = () => {
                 skill-building. From thrilling community games like Tambola and Treasure Hunt to
                 brain-teasing puzzles and coding quizzes, Z.games ensures there’s something for
                 everyone. Come, challenge your friends and celebrate the joy of play!
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Games Section */}
-      {engageData.map((item, index) => (
-        <section key={item.id} className={`${styles.contentSection} py-5`}>
-          <div className="container py-5">
-            <div
-              className={`row align-items-center g-4 ${
-                index % 2 === 1 ? 'flex-row-reverse' : ''
-              }`}
-            >
-              {/* Text Column */}
-              <div className="col-lg-6">
-                <div
-                  className={`${styles.contentWrapper} h-100 d-flex flex-column justify-content-center`}
-                >
-                  <h2 className={`${styles.sectionTitle} display-5 fw-bold mb-3`}>
-                    {item.title}
-                  </h2>
-
-                  <p className={`${styles.sectionSubtitle} lead fw-semibold mb-3`}>
-                    {item.subtitle}
-                  </p>
-
-                  <p className={`${styles.sectionDescription} mb-4`}>
-                    {item.description}
-                  </p>
-
-                  <ul className={`${styles.featuresList} list-unstyled mb-4`}>
-                    {item.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className={`${styles.featureItem} d-flex align-items-center mb-3`}
+      <section className={`${styles.contentSection} py-5`}>
+        <div className="container">
+          <div className="row g-4">
+            {engageData.map((item, index) => (
+              <div key={item.id} className="col-lg-4 d-flex align-items-stretch">
+                <div className={styles.gameCard}>
+                  <div className={styles.imageWrapper}>
+                    <img
+                      src={
+                        imageErrors[item.id]
+                          ? getFallbackImage(
+                              item.title,
+                              index === 0 ? '4F46E5' : index === 1 ? '10B981' : 'F59E0B'
+                            )
+                          : item.image
+                      }
+                      alt={item.title}
+                      className={`img-fluid rounded-3 shadow-lg ${styles.engageImage}`}
+                      onError={() => handleImageError(item.id)}
+                    />
+                  </div>
+                  <div className={`${styles.contentWrapper} h-100 d-flex flex-column justify-content-center`}>
+                    <h2 className={`${styles.sectionTitle} display-6 fw-bold mb-3`}>
+                      {item.title}
+                    </h2>
+                    <p className={`${styles.sectionSubtitle} lead fw-semibold mb-3`}>
+                      {item.subtitle}
+                    </p>
+                    <p className={`${styles.sectionDescription} mb-4`}>
+                      {item.description}
+                    </p>
+                    <ul className={`${styles.featuresList} list-unstyled mb-4`}>
+                      {item.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className={`${styles.featureItem} d-flex align-items-center mb-2`}
+                        >
+                          <div className="me-3">
+                            <svg
+                              className={styles.checkIcon}
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M20 6L9 17L4 12"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto">
+                      <a
+                        href={item.downloadLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.downloadButton}
                       >
-                        <div className="me-3">
-                          <svg
-                            className={styles.checkIcon}
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M20 6L9 17L4 12"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Fixed Button with CSS module */}
-                  <a
-                    href={item.downloadLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.downloadButton}
-                  >
-                    <i className="bi bi-controller"></i>
-                    {item.ctaText}
-                  </a>
+                        <i className="bi bi-controller"></i>
+                        {item.ctaText}
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Image Column */}
-              <div className="col-lg-6">
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={
-                      imageErrors[item.id]
-                        ? getFallbackImage(
-                            item.title,
-                            index === 0 ? '4F46E5' : index === 1 ? '10B981' : 'F59E0B'
-                          )
-                        : item.image
-                    }
-                    alt={item.title}
-                    className={`img-fluid rounded-3 shadow-lg ${styles.engageImage}`}
-                    onError={() => handleImageError(item.id)}
-                  />
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
     </div>
   );
 };

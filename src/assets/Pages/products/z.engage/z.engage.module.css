@@ -82,21 +82,24 @@
   background-color: #fffdf2;
   border-radius: 20px;
   overflow: hidden;
- 
+
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 30px;
-  gap: 30px;
-  transition: background-color 0.4s ease; /* ✅ add this line */
+  justify-content: space-between;   /* NEW: separate left and right */
+  align-items: flex-start;          /* NEW: align to the top */
+  padding: 40px;
+  gap: 40px;
+  transition: background-color 0.4s ease;
 }
 
 
 .feature-text {
   flex: 1;
-  min-width: 300px;
-   color: #ffffff;
+  min-width: 320px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;  /* NEW */
 }
+
 
 .feature-text-h2 {
   font-size: 2.2rem;
@@ -121,15 +124,25 @@
 
 }
 
-.feature-text-li::before {
-  content: "●";
-  color: #EFC426;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  font-size: 32px;
-  top: -57%;
+.tick-list {
+  list-style: none;           /* remove default bullets */
+  padding-left: 0;
 }
+
+.feature-text-li::before {
+  content: "✓";               /* the tick mark */
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 8px;
+  background-color: #fff;  /* green square */
+  color: #ffc800;                /* white tick */
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2em;
+  border-radius: 4px;         /* optional slight rounding */
+}
+
 
 .btn-primary {
   padding: 12px 28px;
@@ -287,6 +300,42 @@
   transform: translateY(-2px);
 }
 
+.feature-text-bottom {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.d-flex {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-badge-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.app-badge-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.app-badge-link img {
+  display: block;
+  height: 57px;
+  width: auto;
+  border-radius: 6px;
+}
+
 /* ... other styles ... */
 .form-container {
   background: rgba(255, 255, 255, 0.4); /* Semi-transparent white background */
@@ -303,6 +352,8 @@
 .logo img {
   width: 120px;
   margin-bottom: 30px;
+
+
 }
 
 .logo {
@@ -310,6 +361,7 @@
   margin: 0 auto 1rem;
   max-width: 150px;
   height: auto;
+
 }
 
 .input-group {
