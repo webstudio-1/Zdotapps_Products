@@ -7,8 +7,8 @@ const engageData = [
     id: 1,
     title: 'Z.auth – Secure Identity & Access Management',
     subtitle: 'Protecting your digital world with seamless authentication',
-    description:
-      'Z.auth is a next-generation authentication and authorization platform designed to keep your applications and data secure. From enterprises to startups, Z.auth provides scalable, reliable, and user-friendly security solutions. With advanced protocols, real-time monitoring, and adaptive authentication, we make security effortless while ensuring trust.',
+    // description:
+    //   'Z.auth is a next-generation authentication and authorization platform designed to keep your applications and data secure. From enterprises to startups, Z.auth provides scalable, reliable, and user-friendly security solutions. With advanced protocols, real-time monitoring, and adaptive authentication, we make security effortless while ensuring trust.',
     features: [
       'Single Sign-On (SSO) – One login for all your apps',
       'Multi-Factor Authentication (MFA) – Extra layer of protection',
@@ -53,12 +53,12 @@ const Zauth = () => {
               <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
                 Secure, seamless, and scalable identity solutions.
               </p>
-              <p className={`${styles.homeDescription} mb-5`}>
+              {/* <p className={`${styles.homeDescription} mb-5`}>
                 Z.auth empowers organizations to safeguard user accounts, protect sensitive data, 
                 and deliver frictionless access experiences. By combining modern authentication 
                 technologies with real-time analytics, Z.auth ensures that only the right people 
                 get the right access at the right time — securely and effortlessly.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

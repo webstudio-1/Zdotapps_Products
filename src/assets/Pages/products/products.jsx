@@ -10,7 +10,7 @@ import zhireImage from "../../images/hire.png";
 import zmeritImage from "../../images/merit.png";
 import zgamesImage from "../../images/games.png";
 import zauthImage from "../../images/auth.png";
-import ziotImage from "../../images/IOT.png";
+import kiraazee from "../../images/kiraazee.png";
 import quiImage from "../../images/qui.png";
 import signImage from "../../images/sign.png";
 import formsImage from "../../images/zforms.png";
@@ -33,7 +33,7 @@ const productList = [
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
-    link: "/login",
+    link: "/z.flow",
     category: "Productivity"
   },
   {
@@ -66,7 +66,7 @@ const productList = [
   },
   {
     desc: "Sustainability for smart cities", // Unique description for Z.IOT
-    img: ziotImage, // Placeholder, ideally a unique image for Z.IOT
+    img: kiraazee, // Placeholder, ideally a unique image for Z.IOT
     btn: "Know More",
     link: "/z.iot",
     category: "Technology"
