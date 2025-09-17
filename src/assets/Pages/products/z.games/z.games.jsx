@@ -251,7 +251,7 @@ const Zgames = () => {
         </div>
       </section>
       {/* Games Carousel and Form Section */}
-      <section className={`${styles.carouselFormSection} py-5`}>
+      <section className={`${styles.carouselFormSection} py-3`}>
         <div className="container-fluid">
           <div className="row">
             {/* Carousel Column */}
@@ -291,14 +291,14 @@ const Zgames = () => {
                         <div className={styles.cardContent}>
                           <h3 className={styles.cardTitle}>{item.title}</h3>
                           <p className={styles.cardSubtitle}>{item.subtitle}</p>
-                          <a
+                          {/* <a
                             href={item.downloadLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.cardButton}
                           >
                             {item.ctaText}
-                          </a>
+                          </a> */}
                         </div>
                       </div>
                     );
@@ -344,7 +344,7 @@ const Zgames = () => {
                   required 
                 />
                 
-               <p className="text-sm text-gray-200 font-medium mt-2 text-right">
+               <p className="text-sm text-gray-200 font-medium text-right">
                 Select your interests:
               </p>
                 
