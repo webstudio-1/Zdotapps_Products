@@ -88,7 +88,7 @@ const productList = [
     desc: "Secure digital signatures on business documents",
     img: signImage,
     btn: "Know More",
-    link: "/giDER", // External link
+    link: "/z.sign", // External link
     category: "Creative Tools"
   },
   {

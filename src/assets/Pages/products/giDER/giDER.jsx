@@ -1,162 +1,106 @@
-import React, { useState } from 'react';
-import styles from './giDER.module.css';
-import giderImg from './images/giDER.png'; // Replace with an actual authentication-related image
-
-const engageData = [
-  {
-    id: 1,
-    title: 'gidER – Laser-Focused Task Execution Platform',
-    subtitle: 'Cut noise, stay in execution mode, and get things done.',
-    description:
-      'gidER is a unique execution-first task management tool designed for developers, teams, and managers. Unlike traditional project management platforms, giDER helps you achieve laser-sharp focus by stripping away unnecessary noise and presenting only what needs to be executed. With tasks broken down into granular detail, you get a true bottom-up approach while maintaining a clear top-down view. No need for a product owner — managers or individuals can upload tasks in bulk via CSV or add them one by one with priority, status, and deadline. giDER sets you in pure execution mode, helping you deliver with unmatched clarity and speed.',
-    features: [
-      'Granular Task Breakdown – Focus on execution at the atomic level',
-      'Laser-Sharp Focus – Cut the noise, see only what matters',
-      'Bulk Upload via CSV – Add hundreds of tasks in one go',
-      'Priority, Status & Timeline – The only fields that matter',
-      'gidBOX – Attach and manage related documents seamlessly',
-      'gidNOTES – Keep contextual notes directly linked to tasks',
-      'Bottom-Up + Top-Down View – Unique hybrid approach no other tool provides'
-    ],
-    image: giderImg, // Replace with the correct giDER image import
-    ctaText: 'Start Executing with gidER',
-    ctaLink: 'https://zdotapps.com/gidER/login.php',
-    downloadLink: '#'
-  }
-];
-
-
+import React, { useState } from "react";
+import styles from "./giDER.module.css";
+import gidERImage from "../../../images/gider_black.png";
 
 const GiDER = () => {
-  const [imageErrors, setImageErrors] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleImageError = (id) => {
-    setImageErrors((prev) => ({
-      ...prev,
-      [id]: true
-    }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const getFallbackImage = (title, color) => {
-    return `https://via.placeholder.com/300x400/${color}/FFFFFF?text=${encodeURIComponent(
-      title
-    )}`;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Replace with your backend or email service call
+    alert(`Thanks, ${formData.name}! We received your message.`);
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <div className={styles.engagePage}>
-      {/* Z.auth Home Section */}
-      <section className={styles.homeSection}>
-        <div className="container py-5">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-10 col-md-11">
-            <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
-                Simplify. Track. <span className={styles.highlightText}>giDER</span>
-            </h1>
-            <p className={`${styles.homeSubtitle} lead fw-semibold mb-4`}>
-                Smart expense and reimbursement management for modern teams.
-            </p>
-            <p className={`${styles.homeDescription} mb-5`}>
-                giDER helps organizations streamline expense reporting, control budgets, 
-                and ensure compliance with ease. With automated tracking, digital approvals, 
-                and real-time insights, giDER reduces manual effort and delivers complete 
-                transparency — so your team can focus on what truly matters.
-            </p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className={styles.hero}>
+      {/* Left: marketing text */}
+      <div className={styles.content}>
+        <h1 className={styles.title}>
+          Simplify. Track. <span className={styles.highlight}>giDER</span>
+        </h1>
 
-      {/* Features Section */}
-      {engageData.map((item, index) => (
-        <section key={item.id} className={`${styles.contentSection} py-5`}>
-          <div className="container py-5">
-            <div
-              className={`row align-items-center g-4 ${
-                index % 2 === 1 ? 'flex-row-reverse' : ''
-              }`}
-            >
-              {/* Text Column */}
-              <div className="col-lg-6">
-                <div
-                  className={`${styles.contentWrapper} h-100 d-flex flex-column justify-content-center`}
-                >
-                  <h2 className={`${styles.sectionTitle} display-5 fw-bold mb-3`}>
-                    {item.title}
-                  </h2>
+        <p className={styles.subtitle}>Laser-Focused Task Execution Platform</p>
 
-                  <p className={`${styles.sectionSubtitle} lead fw-semibold mb-3`}>
-                    {item.subtitle}
-                  </p>
+        <p className={styles.description}>
+          giDER helps developers, teams, and managers cut the noise and stay in
+          pure execution mode. Bulk upload tasks, set priority & deadlines, and
+          maintain a crystal-clear view from top to bottom.
+        </p>
 
-                  <p className={`${styles.sectionDescription} mb-4`}>
-                    {item.description}
-                  </p>
+        <ul className={styles.features}>
+          <li>Granular Task Breakdown</li>
+          <li>Bulk Upload via CSV</li>
+          <li>Priority, Status & Timeline</li>
+          <li>gidBOX & gidNOTES Integrations</li>
+        </ul>
 
-                  <ul className={`${styles.featuresList} list-unstyled mb-4`}>
-                    {item.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className={`${styles.featureItem} d-flex align-items-center mb-3`}
-                      >
-                        <div className="me-3">
-                          <svg
-                            className={styles.checkIcon}
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M20 6L9 17L4 12"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <a
+          href="https://zdotapps.com/gidER/login.php"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.cta}
+        >
+          Start Executing with giDER
+        </a>
+      </div>
 
-                  {/* CTA Button */}
-                  <a
-                    href={item.ctaLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.downloadButton}
-                  >
-                    <i className="bi bi-shield-lock"></i>
-                    {item.ctaText}
-                  </a>
-                </div>
-              </div>
+      {/* Right: contact form */}
+      <div className={styles.formWrapper}>
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          {/* giDER Logo */}
+          <img
+            src={gidERImage}
+            alt="giDER Logo"
+            className={styles.formLogo}
+          />
 
-              {/* Image Column */}
-              <div className="col-lg-6">
-                <div className={styles.imageWrapper}>
-                  <img
-                    src={
-                      imageErrors[item.id]
-                        ? getFallbackImage(
-                            item.title,
-                            index === 0 ? '2563EB' : '10B981'
-                          )
-                        : item.image
-                    }
-                    alt={item.title}
-                    className={`img-fluid rounded-3 shadow-lg ${styles.engageImage}`}
-                    onError={() => handleImageError(item.id)}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      ))}
-    </div>
+          <label>
+            Name
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Email
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
   );
 };
 
