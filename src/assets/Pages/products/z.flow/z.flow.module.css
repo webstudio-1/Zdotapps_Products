@@ -140,6 +140,7 @@
   font-size: 15px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(239, 196, 38, 0.3);
+ 
 }
 
 .btn-primary:hover {
@@ -499,7 +500,7 @@
 
 .contactFormWrapper {
   flex: 1;
-  max-width: 480px;
+  max-width: 420px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -549,7 +550,7 @@
 
 .contactForm button {
   margin-top: 8px;
-  width: 50%;
+
   padding: 12px;
   border-radius: 10px;
   background: #EFC426;
@@ -558,7 +559,7 @@
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 110px;
+
   transition: opacity 0.3s ease;
   
 

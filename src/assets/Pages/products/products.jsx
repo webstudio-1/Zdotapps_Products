@@ -95,7 +95,7 @@ const productList = [
     desc: "Interactive online forms for businesses",
     img: formsImage,
     btn: "Know More",
-    link: "/giDER", // External link
+    link: "/z.form", // External link
     category: "Creative Tools"
   },{
     desc: "Fueling ventures and supporting causes",

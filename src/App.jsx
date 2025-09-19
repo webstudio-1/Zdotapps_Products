@@ -29,6 +29,7 @@ import Zgames from "./assets/Pages/products/z.games/z.games";
 import Zauth from "./assets/Pages/products/z.auth/z.auth";
 import GiDER from "./assets/Pages/products/giDER/giDER";
 import Zsign from "./assets/Pages/products/z.sign/z.sign";
+import Zform from "./assets/Pages/products/z.form/z.form";
 
 
 // ✅ Wrapper to show header/footer everywhere except login page
@@ -85,6 +86,7 @@ function App() {
             <Route path="z.hire" element={<Zhire />} />
             <Route path="giDER" element={<GiDER />} />
             <Route path="z.sign" element={<Zsign />} />
+            <Route path="z.form" element={<Zform />} />
 
           </Routes>
         </LayoutWrapper>

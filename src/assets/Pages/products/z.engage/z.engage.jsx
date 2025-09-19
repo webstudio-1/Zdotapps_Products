@@ -121,7 +121,7 @@ const Zengage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>One Platform from all your engagements</h1>
+      <h1 className={styles.h1}>One Platform for all your engagements</h1>
    
 
       {/* Navigation Tabs */}
@@ -163,8 +163,8 @@ const Zengage = () => {
                       src={card.logo}
                       alt={`${card.title} logo`}
                       style={{
-                        width: 160,
-                        height: 160,
+                        width: 100,
+                        height: 100,
                         marginRight: 20,
                         borderRadius: 16,
                         background: '#fff',
@@ -230,7 +230,7 @@ const Zengage = () => {
   <textarea placeholder="Your Message" required />
   
  <p className="text-sm text-gray-200 font-medium mt-2 text-right">
-  Select your interests:
+  Select your engagement path:
 </p>
 
   <div className={styles.chipContainer}>

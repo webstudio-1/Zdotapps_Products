@@ -86,7 +86,7 @@
   display: flex;
   justify-content: space-between;   /* NEW: separate left and right */
   align-items: flex-start;          /* NEW: align to the top */
-  padding: 40px;
+  padding: 30px;
   gap: 40px;
   transition: background-color 0.4s ease;
 }
@@ -129,19 +129,20 @@
   padding-left: 0;
 }
 
-.feature-text-li::before {
-  content: "✓";               /* the tick mark */
-  display: inline-block;
-  width: 1.2em;
-  height: 1.2em;
-  margin-right: 8px;
-  background-color: #fff;  /* green square */
-  color: #ffc800;                /* white tick */
-  font-weight: bold;
-  text-align: center;
-  line-height: 1.2em;
-  border-radius: 4px;         /* optional slight rounding */
+.feature-text-li {
+  display: flex;
+  align-items: center;      /* vertically center the icon */
 }
+
+.feature-text-li::before {
+  content: "●";
+  color: #ffc800;
+  font-size: 2.0em;         /* adjust size to taste */
+  margin-right: 8px;
+  line-height: 1;
+   margin-bottom: 5px;           /* no extra vertical space */
+}
+
 
 
 .btn-primary {
@@ -292,8 +293,7 @@
   height: 40px; /* Adjust as needed */
   width: auto; /* Maintain aspect ratio */
   transition: transform 0.2s ease-in-out;
-  border-radius: 10px;
-
+ 
 }
 
 .storeBadges img:hover {
@@ -550,7 +550,7 @@
 
 .contactFormWrapper {
   flex: 1;
-  max-width: 480px;
+  max-width: 420px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);

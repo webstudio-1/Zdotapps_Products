@@ -28,6 +28,9 @@ const Zhire = () => {
     "Intelligent categorization & scoring",
     "Automatic shortlisting",
     "Candidates notified & recruiter calls scheduled seamlessly",
+    "Smart skill matching for precise candidate–job fit",
+    "Real-time analytics with actionable hiring insights",
+    "Collaborative feedback for faster team decisions",
   ];
 
   return (
@@ -93,7 +96,7 @@ const Zhire = () => {
             <div className="row h-100 gx-3 gx-lg-4 align-items-start justify-content-between">
               {/* Left Side - Hero Content aligned to container left */}
               <div className="col-lg-6 d-flex">
-                <div className="p-3 p-lg-4 ps-0">
+                <div className="p-3 p-lg-3 ps-0">
                   {/* Main Title */}
                   <div className="mb-3 mb-lg-4">
                     <div className="d-flex align-items-center mb-2 mb-lg-3">
@@ -134,7 +137,7 @@ const Zhire = () => {
               <div className="col-lg-5 d-flex justify-content-lg-end">
                 <div className="p-3 p-lg-4 w-100 d-flex justify-content-lg-end pe-0">
                   <div style={{ maxWidth: "420px", width: "100%" }}>
-                    <h2 className="form-title text-white text-center mb-3 mt-2">Start Your Talent Hunt With Try<span className="yellow-text fw-bold"> Z.hire!</span></h2>
+                    <h2 className="form-title text-white text-center mb-3 mt-2">Start Your Talent Hunt With <span className="yellow-text fw-bold"> Z.hire!</span></h2>
                     <div className="card glass-card border-0 me-0" style={{ width: "100%" }}>
                       <div className="card-header bg-transparent border-0 text-center pb-0">
                         <div className="d-flex align-items-center justify-content-center mb-3">
@@ -188,7 +191,7 @@ const Zhire = () => {
                           />
                         </div>
 
-                        <div className="mb-4">
+                        {/* <div className="mb-4">
                           <label htmlFor="position" className="form-label text-white">
                             Position of Interest
                           </label>
@@ -207,9 +210,9 @@ const Zhire = () => {
                             <option value="sales">Sales Representative</option>
                             <option value="other">Other</option>
                           </select>
-                        </div>
+                        </div> */}
 
-                        <div className="text-center">
+                        <div className="text-start">
                           <button type="submit" className="btn btn-yellow px-4 py-2">
                             Submit Application
                           </button>
