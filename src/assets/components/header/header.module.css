@@ -1,0 +1,66 @@
+/* Updated background color */
+.header {
+  background-color: #000000;
+}
+
+.navLink {
+  color: #fff !important;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: #EFC426 !important;
+}
+
+.navLink.active {
+  color: #EFC426 !important;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Underline for the active link */
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: #EFC426;
+  border-radius: 1px;
+}
+
+.joinNow {
+  background: #000;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  box-shadow: 0 0 8px #EFC426, 0 0 16px #EFC426;
+  transition: all 0.3s ease;
+}
+
+.joinNow:hover {
+  background: #111;
+  color: #949090;
+  box-shadow: 0 0 12px #EFC426, 0 0 24px #EFC426;
+}
+
+.joinNow.active {
+  background: #EFC426 !important;
+  color: #fff !important;
+  box-shadow: 0 0 12px #EFC426, 0 0 24px #EFC426;
+}
+
+/* Make the toggler icon white */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28 255, 255, 255, 1 %29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Responsive adjustment for the active link underline */
+@media (max-width: 991.98px) {
+  .navLink.active::after {
+    left: 1%;
+    transform: none;
+  }
+}

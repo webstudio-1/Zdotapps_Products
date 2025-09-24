@@ -1,0 +1,195 @@
+/* ===== AUTH SECTION ===== */
+.authSection {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: linear-gradient(50deg, #1d1d13, #111611, #c9bc0b);
+}
+
+/* ===== BACKGROUND SHAPES ===== */
+.backgroundShapes {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08), transparent 70%);
+  z-index: 0;
+  /* animation: rotateBg 40s linear infinite; */
+}
+
+@keyframes rotateBg {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== LEFT CONTENT ===== */
+.leftContent {
+  position: relative;
+  z-index: 2;
+}
+
+.leftContent h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.leftContent h2 span {
+  color: #facc15; /* gold accent */
+}
+
+.leftContent p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.leftContent ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.leftContent ul li {
+  margin-bottom: 0.8rem;
+}
+
+/* ===== CONTACT CARD ===== */
+.contactCard {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contactCard h4 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.contactCard input,
+.contactCard textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 15px;
+  border: none;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.contactCard input::placeholder,
+.contactCard textarea::placeholder {
+  color: #eee;
+}
+
+.contactCard input:focus,
+.contactCard textarea:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+  background: rgba(255,255,255,0.35);
+}
+
+.contactCard button {
+  background: #facc15;
+  color: #111;
+  padding: 0.85rem 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.contactCard button:hover {
+  transform: translateY(-2px);
+  background: #eab308;
+}
+
+/* ===== FLOAT ANIMATION ===== */
+.floatAnim {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ===== FADE IN ANIMATIONS ===== */
+.fadeIn {
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+.fadeInDelay {
+  opacity: 0;
+  animation: fadeInUp 1s 0.5s forwards;
+}
+
+.fadeInDelay2 {
+  opacity: 0;
+  animation: fadeInUp 1s 1s forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+  .authSection {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  .contactCard {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .leftContent h2 { font-size: 2rem; }
+  .leftContent p { font-size: 1rem; }
+  .contactCard h4 { font-size: 1.4rem; }
+}
+
+.formInner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;           /* uniform spacing between inputs */
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* space under the logo */
+}
+
+.logoWrap img {
+  max-width: 120px;     /* adjust to your logo size */
+  height: auto;
+}
+
+.topHeading {
+  width: 100%;
+  text-align: center;       /* center horizontally */
+  margin-bottom: 2rem;      /* space below the heading */
+  display: flex;
+  justify-content: center;
+  color: #fff;  /* ensures flex center if needed */
+}
+.topHeading h2 {
+  font-size: 2.5rem;        /* adjust as desired */
+  font-weight: 600;
+}

@@ -1,0 +1,45 @@
+/* footer.module.css */
+
+.footer {
+  background-color: #0d0d0d;
+  color: #ffffff;
+}
+
+.tagline {
+  font-size: 0.9rem;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Updated styles for social links to properly handle icons */
+.socialLink {
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%; /* Make it a circle */
+  transition: all 0.2s ease-in-out;
+  
+  /* Flexbox utilities to center the icon perfectly */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Set a fixed size for a uniform look */
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem; /* Adjust icon size */
+}
+
+.socialLink:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}

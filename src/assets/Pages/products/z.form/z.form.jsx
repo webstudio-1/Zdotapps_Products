@@ -1,0 +1,159 @@
+import { useState } from 'react';
+import exampleImage from '../../../images/forms.png';
+import zformsLogo from '../../../images/forms_v2_wlogo.png';
+import zformsLogo1 from '../../../images/forms.png';
+
+// Bootstrap 5 based Z.forms landing + lead capture form
+export default function Zform() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    accept: false,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.accept) return; // should be prevented by required, keep as guard
+    console.log('Form submitted:', formData);
+    alert('Thank you for your interest in Z.forms! We will contact you soon.');
+  };
+
+  return (
+    <div
+      className="min-vh-100 d-flex align-items-center"
+      style={{ background: 'linear-gradient(135deg, #FFD700 0%, #FFF8DC 50%, #000 100%)' }}
+    >
+      <div className="container py-4 py-md-5">
+        <div className="row g-0 shadow-lg rounded-4 overflow-hidden bg-white" style={{ minHeight: 600 }}>
+          {/* Left Section - Hero (Glassmorphism only) */}
+          <div className="col-12 col-lg-6 position-relative d-flex align-items-center justify-content-center" style={{ minHeight: 600 }}>
+            <div
+              className="text-center p-4 p-md-5 rounded-4"
+              style={{
+                maxWidth: 560,
+                background: 'transparent',
+                borderColor: 'transparent',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)'
+              }}
+            >
+              {/* Z.forms logo */}
+              <img src={zformsLogo1} alt="Z.forms" width={200} className="" />
+              <p className="text-warning fs-3 mb-2 mt-2">Interactive Online Forms for Businesses</p>
+              <p
+                className="text-dark fs-5 mb-5"
+              >
+                Enable data collection, surveys, and workflows with simplicity and flexibility for your
+                business success.
+              </p>
+              <hr className="border-warning opacity-75" />
+              <ul
+                className="list-unstyled text-start text-dark m-0 fs-5"
+              >
+                <li className="d-flex align-items-center mb-2">
+                  <i className="bi bi-check-circle-fill text-warning me-2"></i>
+                  Custom Form Builder
+                </li>
+                <li className="d-flex align-items-center mb-2">
+                  <i className="bi bi-graph-up-arrow text-warning me-2"></i>
+                  Advanced Analytics
+                </li>
+                <li className="d-flex align-items-center mb-2">
+                  <i className="bi bi-diagram-3-fill text-warning me-2"></i>
+                  Workflow Integration
+                </li>
+                <li className="d-flex align-items-center mb-5">
+                  <i className="bi bi-shield-lock-fill text-warning me-2"></i>
+                  Secure Data Collection
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Section - Registration Form */}
+          <div className="col-12 col-lg-6 bg-black text-white d-flex align-items-center">
+            <div className="p-4 p-md-5 w-100" style={{ maxWidth: 480, marginInline: 'auto' }}>
+              {/* Replace heading with logo */}
+              <div className="text-center mb-2">
+                <img src={zformsLogo} alt="Z.forms" width={192} />
+              </div>
+              <p className="text-white-50 mb-4 text-center">Start building professional forms for your business</p>
+
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label className="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    className="form-control bg-transparent text-white border-secondary"
+                    placeholder="Name"
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="form-control bg-transparent text-white border-secondary"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Phone</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="form-control bg-transparent text-white border-secondary"
+                    placeholder="Phone"
+                    required
+                  />
+                </div>
+
+                <div className="form-check mb-3 mt-2">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="acceptTerms"
+                    name="accept"
+                    checked={formData.accept}
+                    onChange={handleInputChange}
+                    required
+                  />
+                  <label className="form-check-label" htmlFor="acceptTerms">
+                    I agree to the <span className="text-warning">Terms of Service</span> and{' '}
+                    <span className="text-warning">Privacy Policy</span>
+                  </label>
+                </div>
+
+                <div className="text-center">
+                  <button type="submit" className="btn btn-warning text-black fw-bold px-4 py-2 rounded-pill">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
