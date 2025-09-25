@@ -193,7 +193,7 @@ export default function App() {
       <div className="min-vh-100 bg-yellow-400 d-flex align-items-center justify-content-center p-4">
         <div className="container-fluid" style={{ maxWidth: '1452px' }}>
           {/* Single centered heading */}
-          <div className="text-center mt-4">
+          <div className="text-center mt-5">
             <img src={signLogo1} alt="z.sign" style={{ height: '100px' }} />
           </div>
           {/* Centered description above images */}

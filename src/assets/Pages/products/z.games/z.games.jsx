@@ -29,7 +29,7 @@ const Zgames = () => {
       id: 'sudoku',
       title: 'Sudoku',
       image: SudokuImg,
-      description: 'Sharpen your mind with classic Sudoku puzzles. grid is a new challenge for your logic and focus.'
+      description: 'Sharpen your mind with classic Sudoku puzzles. Every grid is a new challenge for your logic and focus.'
     },
     {
       id: 'spell-bee',
@@ -61,7 +61,7 @@ const Zgames = () => {
     alert('✨ Thank you! We’ll reach out soon.');
     setFormData({ name: '', email: '', message: '' });
     setSelectedTags([]);
-  }, [formData, selectedTags]);
+  }, []);
 
   const currentGame = games[activeIndex];
 
@@ -74,7 +74,7 @@ const Zgames = () => {
             Play. Learn. <span className={styles.glowText}>Compete.</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Welcome to <span className={styles.brand}>Z.games</span> — where fun meets brainpower.
+            Welcome to <span className={styles.brand}>Z.games</span> where fun meets brainpower.
           </p>
         </div>
       </section>
@@ -82,16 +82,6 @@ const Zgames = () => {
       {/* Main Content */}
       <section className={styles.mainSection}>
         <div className={styles.container}>
-          {/* Game Info */}
-          {/* <div className={styles.gameInfo}>
-            <div className={styles.gameHeader}>
-              <h2 className={styles.gameTitle}>{currentGame.title}</h2>
-              <div className={styles.divider}></div>
-            </div>
-            <p className={styles.gameDesc}>{currentGame.description}</p>
-            <button className={styles.joinBtn}>Play Now →</button>
-          </div> */}
-
           {/* Swiper */}
           <div className={styles.carousel}>
             <Swiper
@@ -105,33 +95,40 @@ const Zgames = () => {
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               className={styles.swiper}
             >
-              {games.map((game) => (
-                <SwiperSlide key={game.id} className={styles.slide}>
-                  <div className={styles.slideInner}>
-                    <div className={styles.imageSection}>
-                      <img src={game.image} alt={game.title} className={styles.slideImage} />
-                 
-                    </div>
-                    <div className={styles.textSection}>
-                      <div className={styles.gameHeader}>
-                        <h2 className={styles.gameTitle}>{game.title}</h2>
-                  
-                      </div>
-                      <p className={styles.gameDesc}>{game.description}</p>
-                      {/* <button className={styles.joinBtn}>Play Now →</button> */}
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+           {games.map((game) => (
+  <SwiperSlide key={game.id} className={styles.slide}>
+    <div className={styles.slideInner}>
+      <div className={styles.imageSection}>
+        <img src={game.image} alt={game.title} className={styles.slideImage} />
+      </div>
+      <div className={styles.textSection}>
+        <div className={styles.gameHeader}>
+          <h2 className={styles.gameTitle}>{game.title}</h2>
+        </div>
+        <p className={styles.gameDesc}>{game.description}</p>
+
+        {/* ✅ Login button below description */}
+<div className={`d-flex justify-content-start ${styles.loginBtnWrap}`}>
+  <a href="#" className={`btn btn-outline-warning ${styles.loginBtn}`}>
+    Login to z.games
+  </a>
+</div>
+
+      </div>
+    </div>
+  </SwiperSlide>
+))}
+
             </Swiper>
+            
           </div>
+        
 
           {/* Form */}
           <div className={styles.formCard}>
             <div className={styles.logoWrap}>
               <img src={games_whiteImg} alt="Z.games" className={styles.logo} />
             </div>
-            {/* <h3 className={styles.formTitle}>Join the Beta</h3> */}
             <form onSubmit={handleSubmit} className={styles.form}>
               <input
                 type="text"
@@ -157,7 +154,7 @@ const Zgames = () => {
                 rows="3"
               />
               <button type="submit" className={styles.submitBtn}>
-               Submit
+                Submit
               </button>
             </form>
           </div>

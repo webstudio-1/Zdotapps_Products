@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import hireLogo from "../../../images/hire.png";
+import hireLogo from "./images/z_hire_white.svg";
 import hireLogo1 from "../../../images/hire_wlogo.png";
 import zHireBg from "./images/z_hire.png";
 
@@ -75,7 +75,7 @@ const Zhire = () => {
         .glass-input:focus { background: rgba(255,255,255,0.15); border-color: rgba(255,193,7,0.5); box-shadow: 0 0 0 0.2rem rgba(255,193,7,0.25); color: white; }
         .feature-check { width: 32px; height: 32px; background-color: #ffc107; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .brand-text { font-size: 3rem; font-weight: bold; white-space: nowrap; }
-        .brand-logo { height: 90px; max-width: 100%; object-fit: contain; }
+        .brand-logo { height: 50px; max-width: 100%; object-fit: contain; }
         .yellow-text { color: #ffc107; }
         .feature-title { font-weight: 600; font-size: 1.25rem; color: #ffc107; }
         .feature-text { font-size: 1.125rem; line-height: 1.6; }
@@ -91,9 +91,9 @@ const Zhire = () => {
         <div className="overlay"></div>
 
         <div className="container-fluid content d-flex align-items-start">
-          <div className="container inner-wrap px-0">
+          <div className="container inner-wrap px-0 mt-5">
             <div className="text-center">
-              <img src={hireLogo1} alt="z.hire logo" className="brand-logo mt-2" style={{ height: "150px" }} />
+              <img src={hireLogo} alt="z.hire logo" className="brand-logo mt-2" style={{ height: "80px" }} />
             </div>
 
             <div className="row h-100 gx-3 gx-lg-4 align-items-start justify-content-between">

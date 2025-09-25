@@ -29,6 +29,7 @@ import Ziot from "./assets/Pages/products/z.iot/z.iot";
 import Zmerit from "./assets/Pages/products/z.merit/z.merit";
 import Zgames from "./assets/Pages/products/z.games/z.games";
 import Zauth from "./assets/Pages/products/z.auth/z.auth";
+import Zqui from "./assets/Pages/products/z.qui/z.qui";
 import GiDER from "./assets/Pages/products/giDER/giDER";
 import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
@@ -76,6 +77,7 @@ function App() {
             <Route path="z.flow" element={<ZFlow />} />
             <Route path="z.games" element={<Zgames />} />
             <Route path="z.auth" element={<Zauth />} />
+            <Route path="z.qui" element={<Zqui />} />
             <Route path="z.hire" element={<Zhire />} />
             <Route path="giDER" element={<GiDER />} />
             <Route path="z.sign" element={<Zsign />} />

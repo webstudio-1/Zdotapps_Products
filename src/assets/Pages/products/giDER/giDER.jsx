@@ -14,7 +14,7 @@ const GiDER = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Simplify. Track. <span className={styles.highlight}>giDER</span>
+          Simplify. Track. <span className={styles.highlight}>gidER</span>
         </h1>
 
         <p className={styles.subtitle}>Laser-Focused Task Execution Platform</p>
@@ -32,9 +32,13 @@ const GiDER = () => {
           <li>gidBOX & gidNOTES Integrations</li>
         </ul>
 
-        <button className={styles.cta} onClick={handleButtonClick}>
-          Login gidER
-        </button>
+  <a
+  className={`btn btn-outline-warning btn-lg ${styles.cta}`}
+
+>
+  Login to gidER
+</a>
+
       </div>
 
       <div className={styles.formWrapper}>

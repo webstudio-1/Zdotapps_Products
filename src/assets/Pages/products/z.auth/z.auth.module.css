@@ -7,8 +7,25 @@
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
   color: #fff;
-  background: linear-gradient(50deg, #1d1d13, #111611, #c9bc0b);
+
+  /* 🔽 Background image instead of gradient */
+  background: url('./images/auth_back.png') no-repeat center center;
+  background-size: cover;
+
 }
+
+.btn-yellow {
+  background-color: #ffc107; /* Bootstrap warning yellow */
+  color: #000;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-yellow:hover {
+  background-color: #e0a800; /* darker shade on hover */
+  color: #fff;
+}
+
 
 /* ===== BACKGROUND SHAPES ===== */
 .backgroundShapes {
@@ -19,6 +36,7 @@
               radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08), transparent 70%);
   z-index: 0;
   /* animation: rotateBg 40s linear infinite; */
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 @keyframes rotateBg {
@@ -115,9 +133,6 @@
 }
 
 /* ===== FLOAT ANIMATION ===== */
-.floatAnim {
-  animation: floatCard 6s ease-in-out infinite;
-}
 
 @keyframes floatCard {
   0%, 100% { transform: translateY(0); }
@@ -177,7 +192,7 @@
 }
 
 .logoWrap img {
-  max-width: 120px;     /* adjust to your logo size */
+  max-width: 190px;     /* adjust to your logo size */
   height: auto;
 }
 

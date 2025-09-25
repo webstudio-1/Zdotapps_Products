@@ -102,14 +102,14 @@ const Zmerit = () => {
                   </svg>
                   <p className="mb-0 fs-5 text-white"><strong className="text-warning">Scalable & Secure</strong> – Supports large-scale testing with enterprise-grade security.</p>             
                 </div>
-         <div className="d-flex justify-content-center align-items-start">
-  <p className="mb-0 fs-3 text-white text-center">
+         <div className="d-flex align-items-start mt-3 ">
+  <p className="mb-0 fs-3 text-white">
     <strong className="text-warning">
       <a
         href="https://zdotapps.com/ZdotMerit/screening"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-warning text-decoration-none"
+        className="btn btn-outline-warning btn-lg text-decoration-none"
       >
         Login to Z.merit
       </a>

@@ -24,16 +24,17 @@ const Ziot = () => {
             </h1>
    <p className={styles.description}>
               Kirazee brings Consumers, Businesses, and Delivery partners together in one powerful app order, manage, and deliver with ease.
-              <a
+          
+            </p>
+                <a
                 href="https://kirazee.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="yellow-text fw-bold"
+                className="btn btn-outline-warning btn-lg yellow-text fw-bold"
               >
                 {" "}
                 Login to Kirazee
               </a>
-            </p>
           </div>
 
           <div className={styles.formCol}>
