@@ -1,0 +1,146 @@
+/* Page background */
+.page {}
+
+/* Search and filter */
+.resultsText {
+  color: #212529;
+}
+
+/* Card base */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid #e9ecef;
+  border-radius: 0.6rem;
+  padding: 1.5rem;
+  height: 100%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: none; /* No shadow by default */
+}
+
+.card:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* hover shadow for grid */
+  transform: translateY(-2px);
+}
+
+/* Department badge */
+.deptBadge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 10rem;
+}
+
+/* Title */
+.title {
+  color: #212529;
+}
+
+/* Pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #dee2e6;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  border-radius: 10rem;
+}
+
+.pillIcon {
+  font-size: 0.8rem;
+  color: #212529;
+}
+
+/* Apply button */
+.applyBtn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.applyBtn:hover {
+  background-color: #ffca2c;
+  color: #212529;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* === List view styles === */
+.listCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 110px;
+  padding: 40px;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: none; /* No shadow by default */
+}
+
+.listCard:hover {
+  box-shadow: 2px 2px 10px #ffca2c; /* shadow on hover */
+  transform: translateY(-2px);
+}
+
+.listContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.listCard .deptBadge {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.listCard .title {
+  flex: 1;
+  margin: 0;
+}
+
+.metaWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.listCard .actions {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .listContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .metaWrap {
+    margin: 0.75rem 0;
+  }
+  .listCard .actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

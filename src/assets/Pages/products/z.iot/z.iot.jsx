@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./z.iot.module.css";
 import kirazeeeImage from "./images/kirazee_1.png";
-import kirazeeImage from "../../../images/kiraazee.png"; // Replace video with image
+import kirazeeImage from "../../../images/kirazee_new.png"; // Replace video with image
 
 const Ziot = () => {
   return (

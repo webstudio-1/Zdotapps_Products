@@ -30,7 +30,7 @@ export default function Zform() {
   return (
     <div
       className="min-vh-100 d-flex align-items-center"
-      style={{ background: 'linear-gradient(135deg, #FFD700 0%, #FFF8DC 50%, #000 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #000 0%, #FFF8DC 50%, #000 100%)' }}
     >
       <div className="container py-4 py-md-5">
         <div className="row g-0 shadow-lg rounded-4 overflow-hidden bg-white" style={{ minHeight: 600 }}>
@@ -71,10 +71,17 @@ export default function Zform() {
                   <i className="bi bi-diagram-3-fill text-warning me-2"></i>
                   Workflow Integration
                 </li>
-                <li className="d-flex align-items-center mb-5">
-                  <i className="bi bi-shield-lock-fill text-warning me-2"></i>
-                  Secure Data Collection
-                </li>
+               <li className="d-flex align-items-center">
+  <i className="bi bi-shield-lock-fill text-warning me-2"></i>
+  Secure Data Collection
+</li>
+
+<div className="mt-4">
+  <a href="#" className="btn btn-outline-warning btn-lg">
+    Login to z.forms
+  </a>
+</div>
+
               </ul>
             </div>
           </div>

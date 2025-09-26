@@ -190,15 +190,15 @@ export default function App() {
         }
       `}</style>
       
-      <div className="min-vh-100 bg-yellow-400 d-flex align-items-center justify-content-center p-4">
-        <div className="container-fluid" style={{ maxWidth: '1452px' }}>
+      <div className="min-vh-100 bg-yellow-400 d-flex align-items-center justify-content-center">
+        <div className="container-fluid mb-5" style={{ maxWidth: '1452px' }}>
           {/* Single centered heading */}
-          <div className="text-center mt-5">
+          <div className="text-center">
             <img src={signLogo1} alt="z.sign" style={{ height: '100px' }} />
           </div>
           {/* Centered description above images */}
           <div className="text-center mb-4 description-banner">
-            <p className="text-white mb-5 mt-2 fs-3">Complete electronic signature solution with draw, type, and document signing capabilities</p>
+            <p className="text-white mb-3 mt-0 fs-3">Complete electronic signature solution with draw, type, and document signing capabilities</p>
           </div>
           
           <div className="d-flex">
@@ -497,9 +497,9 @@ export default function App() {
                   <div className="d-flex justify-content-center">
                     <button
                       type="submit"
-                      className="btn btn-black rounded-5 fw-medium text-center"
+                      className="btn btn-black rounded-3 fw-lg text-center"
                     >
-                      Get started
+                      Submit
                     </button>
                   </div>
                 </form>
