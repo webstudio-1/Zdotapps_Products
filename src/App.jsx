@@ -24,12 +24,12 @@ import Pricing from "./assets/Pages/pricing/pricing";
 import Resource from "./assets/Pages/resource/resource";
 import About from "./assets/Pages/about/about";
 import Careers from "./assets/Pages/careers/careers";
+import JobDetails from "./assets/Pages/details/details";
 import Zengage from "./assets/Pages/products/z.engage/z.engage";
 import Ziot from "./assets/Pages/products/z.iot/z.iot";
 import Zmerit from "./assets/Pages/products/z.merit/z.merit";
 import Zgames from "./assets/Pages/products/z.games/z.games";
 import Zauth from "./assets/Pages/products/z.auth/z.auth";
-import Zqui from "./assets/Pages/products/z.qui/z.qui";
 import GiDER from "./assets/Pages/products/giDER/giDER";
 import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
@@ -40,8 +40,9 @@ import ZappsLanding from "./assets/Pages/home/zappsLanding";
 const LayoutWrapper = ({ children }) => {
   const location = useLocation();
   const isLoginPage = location.pathname.endsWith("/login");
+  const isDetailsPage = location.pathname.includes("/careers/details");
 
-  if (isLoginPage) {
+  if (isLoginPage || isDetailsPage) {
     return <>{children}</>;
   }
 
@@ -70,6 +71,7 @@ function App() {
             <Route path="resource" element={<Resource />} />
             <Route path="about" element={<About />} />
             <Route path="careers" element={<Careers />} />
+            <Route path="careers/details" element={<JobDetails />} />
             <Route path="login" element={<Login />} />
             <Route path="z.engage" element={<Zengage />} />
             <Route path="z.merit" element={<Zmerit />} />
@@ -77,7 +79,6 @@ function App() {
             <Route path="z.flow" element={<ZFlow />} />
             <Route path="z.games" element={<Zgames />} />
             <Route path="z.auth" element={<Zauth />} />
-            <Route path="z.qui" element={<Zqui />} />
             <Route path="z.hire" element={<Zhire />} />
             <Route path="giDER" element={<GiDER />} />
             <Route path="z.sign" element={<Zsign />} />

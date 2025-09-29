@@ -173,11 +173,10 @@ body {
   padding: var(--spacing-md);
   text-align: center;
 
-  /* 🔑 Added/updated for full-card click & hover */
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.4s ease;
+  /* MODIFIED: Removed cursor: pointer */
+  transition: box-shadow 0.3s ease, border-color 0.4s ease; /* Removed transform */
 
-  box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04), 
+  box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04),
               0 0 1px rgba(var(--text-color-rgb), 0.04);
   display: flex;
   flex-direction: column;
@@ -187,11 +186,11 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(var(--text-color-rgb), 0.08),
-              0 0 2px rgba(var(--text-color-rgb), 0.08);
-  border-color: var(--primary-color);
+  /* MODIFIED: Removed transform and box-shadow */
+  /* If you want ABSOLUTELY no visual feedback on card hover, remove border-color too */
+  /* border-color: var(--primary-color); */
 }
+
 
 .cardInner {
   display: flex;
@@ -217,9 +216,10 @@ body {
   transition: transform 0.3s ease;
 }
 
-.card:hover .productImage {
+/* MODIFIED: Removed this hover effect as it was part of the "hand movement" */
+/* .card:hover .productImage {
   transform: scale(1.08);
-}
+} */
 
 .productName {
   font-size: 1.6rem;
@@ -236,7 +236,7 @@ body {
   line-height: 1.5;
 }
 
-/* Circle CTA styles remain if needed elsewhere */
+/* Circle CTA styles remain - these should still have hover effects */
 .ctaCircle {
   background: #EFC426;
   border: none;
@@ -343,5 +343,3 @@ body {
   .searchBox { width: 90%; }
   .searchInput, .filterSelect { width: 90%; }
 }
-
-

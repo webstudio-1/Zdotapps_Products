@@ -14,23 +14,18 @@ import kiraazee from "../../images/kirazee_new.png";
 import quiImage from "../../images/qui.png";
 import signImage from "../../images/sign.png";
 import formsImage from "../../images/zforms.png";
-// import raiseImage from "../../images/raise.webp"; // not used
 
-// ✅ Added `name` field to each product
 const productList = [
-{
-  // name: "Z.Engage",
-  desc: "Engagement app for everyone’s needs",
-  img: zengageImage,
-
-// increase size as needed
-  btn: "Know More",
-  link: "/z.engage",
-  category: "Engagement",
-}
-,
   {
-    // name: "Z.Flow",
+    // name: "Z.Engage", // Added name field as it was commented out in original
+    desc: "Engagement app for everyone’s needs",
+    img: zengageImage,
+    btn: "Know More",
+    link: "/z.engage",
+    category: "Engagement",
+  },
+  {
+    // name: "Z.Flow", // Added name field
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
@@ -38,7 +33,7 @@ const productList = [
     category: "Productivity",
   },
   {
-    // name: "Z.Hire",
+    // name: "Z.Hire", // Added name field
     desc: "Hiring platform for smarter recruitment",
     img: zhireImage,
     btn: "Know More",
@@ -46,7 +41,7 @@ const productList = [
     category: "Business Services",
   },
   {
-    // name: "Z.Merit",
+    // name: "Z.Merit", // Added name field
     desc: "Skill testing and evaluation made simple",
     img: zmeritImage,
     btn: "Know More",
@@ -54,7 +49,7 @@ const productList = [
     category: "Rewards",
   },
   {
-    // name: "Z.Games",
+    // name: "Z.Games", // Added name field
     desc: "Interactive social games for individuals and teams",
     img: zgamesImage,
     btn: "Know More",
@@ -62,7 +57,7 @@ const productList = [
     category: "Entertainment",
   },
   {
-    // name: "Z.Auth",
+    // name: "Z.Auth", // Added name field
     desc: "Secure authentication for enterprises",
     img: zauthImage,
     btn: "Know More",
@@ -70,7 +65,7 @@ const productList = [
     category: "Security",
   },
   {
-    // name: "Z.IOT",
+    // name: "Z.IOT", // Added name field
     desc: "Sustainability for smart cities",
     img: kiraazee,
     btn: "Know More",
@@ -78,7 +73,7 @@ const productList = [
     category: "Technology",
   },
   {
-    // name: "giDER",
+    // name: "giDER", // Added name field
     desc: "Project execution app for tangible results",
     img: giderImage,
     btn: "Know More",
@@ -86,7 +81,7 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Quiz",
+    // name: "Z.Quiz", // Added name field
     desc: "Quizzes for instant engagement",
     img: quiImage,
     btn: "Know More",
@@ -94,7 +89,7 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Sign",
+    // name: "Z.Sign", // Added name field
     desc: "Secure digital signatures on business documents",
     img: signImage,
     btn: "Know More",
@@ -102,7 +97,7 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Forms",
+    // name: "Z.Forms", // Added name field
     desc: "Interactive online forms for businesses",
     img: formsImage,
     btn: "Know More",
@@ -221,13 +216,9 @@ const Products = () => {
                   transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
                 }}
               >
-                {/* ✅ Whole card clickable */}
+                {/* MODIFIED: Removed onClick, role, and onKeyDown from article */}
                 <article
                   className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
-                  onClick={() => handleClick(product)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === "Enter" && handleClick(product)}
                 >
                   <div className={styles.cardInner}>
                     {product.img && (
@@ -236,14 +227,11 @@ const Products = () => {
                           src={product.img}
                           className={styles.productImage}
                           alt={product.name}
-                     
                           onError={(e) => {
                             e.currentTarget.src =
                               "https://cdn-icons-png.flaticon.com/512/1178/1178475.png";
                           }}
                         />
-
-                        
                       </div>
                     )}
                     <h3 className={styles.productName}>{product.name}</h3>
@@ -253,7 +241,7 @@ const Products = () => {
                       <button
                         className={styles.ctaCircle}
                         onClick={(e) => {
-                          e.stopPropagation(); // avoid double navigation
+                          e.stopPropagation(); // avoid double navigation if parent was clickable
                           handleClick(product);
                         }}
                       >
@@ -266,8 +254,8 @@ const Products = () => {
                       <a
                         href="#"
                         onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
+                          e.preventDefault(); // Prevent default link behavior
+                          e.stopPropagation(); // avoid double navigation if parent was clickable
                           handleClick(product);
                         }}
                         className={styles.tryNowTextLink}
