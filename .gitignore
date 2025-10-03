@@ -22,3 +22,23 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Python
+__pycache__/
+*.py[cod]
+
+# Env / secrets
+.env
+*.env
+
+# SQLite / runtime DBs
+*.sqlite3
+
+# Media uploads (app-generated)
+backend/media/
+media/
+uploads/
+
+# Node
+node_modules/
+dist/
+build/
