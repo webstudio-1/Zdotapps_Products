@@ -825,8 +825,6 @@ const ServiceTypesSection = () => {
   );
 };
 
-
-
 // Process Flow Component
 const ProcessFlow = () => {
   const readyToUseSteps = [
@@ -952,11 +950,8 @@ const ProcessFlow = () => {
         </div>
       </div>
     </section>
-    
   );
 };
-
-
 
 // Main Page Component
 export default function ZappsLanding() {
