@@ -80,9 +80,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'zdotapps',        # Your MySQL database name
-        'USER': 'root',            # Your MySQL username
-        'PASSWORD': 'root',  # Your MySQL password
-        'HOST': 'localhost',       # Usually localhost
+        'USER': 'zda_devenviron',            # Your MySQL username
+        'PASSWORD': '7XxqiZw391vCIl6MudTk',  # Your MySQL password
+        'HOST': 'zdotapps-devenviron.cvuouqwaej9d.ap-south-1.rds.amazonaws.com',       # Usually localhost
         'PORT': '3306',            # Default MySQL port
     }
 }

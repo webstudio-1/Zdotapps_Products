@@ -16,7 +16,7 @@ class JobApplication(models.Model):
 
     class Meta:
         # managed = False # Remove this if you want Django to manage the table
-        db_table = 'jobapplication'
+        db_table = 'JobApplication'
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email_address}"
