@@ -85,6 +85,7 @@
   padding: 2rem 2.5rem;
   box-shadow: 0 25px 50px rgba(0,0,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .contactCard h4 {
@@ -189,6 +190,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 1.5rem; /* space under the logo */
+  
 }
 
 .logoWrap img {
@@ -208,3 +210,17 @@
   font-size: 2.5rem;        /* adjust as desired */
   font-weight: 600;
 }
+.leftLogo {
+  margin-bottom: 20px; /* space between logo and heading */
+  text-align: center;   /* center the logo */
+  opacity: 0.9; /* Set opacity to 70%, you can adjust this value */
+}
+
+
+.leftLogo img {
+  max-width: 350px; /* adjust logo size */
+
+
+}
+
+

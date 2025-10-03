@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Step 1: Import useNavigate
 import exampleImage from '../../../images/forms.png';
 import zformsLogo from '../../../images/forms_v2_wlogo.png';
 import zformsLogo1 from '../../../images/forms.png';
@@ -11,6 +12,8 @@ export default function Zform() {
     phone: '',
     accept: false,
   });
+
+  const navigate = useNavigate();  // Step 2: Get the navigate function
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -25,6 +28,10 @@ export default function Zform() {
     if (!formData.accept) return; // should be prevented by required, keep as guard
     console.log('Form submitted:', formData);
     alert('Thank you for your interest in Z.forms! We will contact you soon.');
+  };
+
+  const handleLoginRedirect = () => {
+    navigate('/login'); // Step 3: Redirect to the Gider login page
   };
 
   return (
@@ -43,7 +50,7 @@ export default function Zform() {
                 background: 'transparent',
                 borderColor: 'transparent',
                 backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)'
+                WebkitBackdropFilter: 'blur(12px)',
               }}
             >
               {/* Z.forms logo */}
@@ -72,15 +79,15 @@ export default function Zform() {
                   Workflow Integration
                 </li>
                <li className="d-flex align-items-center">
-  <i className="bi bi-shield-lock-fill text-warning me-2"></i>
-  Secure Data Collection
-</li>
+                  <i className="bi bi-shield-lock-fill text-warning me-2"></i>
+                  Secure Data Collection
+                </li>
 
-<div className="mt-4">
-  <a href="#" className="btn btn-outline-warning btn-lg">
-    Login to z.forms
-  </a>
-</div>
+                <div className="mt-4">
+                  <button onClick={handleLoginRedirect} className="btn btn-warning btn-lg">
+                    Login to Z.forms
+                  </button>
+                </div>
 
               </ul>
             </div>

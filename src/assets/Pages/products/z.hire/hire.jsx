@@ -96,7 +96,7 @@ const Zhire = () => {
               <img src={hireLogo} alt="z.hire logo" className="brand-logo mt-2" style={{ height: "80px" }} />
             </div>
 
-            <div className="row h-100 gx-3 gx-lg-4 align-items-start justify-content-between">
+            <div className="row h-100 gx-3 gx-lg-4 align-items-start justify-content-between mt-3">
               {/* Left content with real copy */}
               <div className="col-lg-6 d-flex">
                 <div className="p-3 ps-0">
@@ -122,17 +122,18 @@ const Zhire = () => {
                     <p className="cta-text text-white mb-3">
                       Ready to revolutionize your hiring process?
                     </p>
-                <p className="cta-subtitle mb-0">
+    <p className="cta-subtitle mb-0">
   Smarter hiring starts here{" "}
   <a
     href="https://zdotapps.com/zdotHire/login.php"
     target="_blank"
     rel="noopener noreferrer"
-    className="yellow-text fw-bold text-decoration-none"
+    className="btn btn-warning btn-lg fw-bold ms-2"
   >
-  Login to Z.hire
+    Login to Z.hire
   </a>
 </p>
+
 
                   </div>
                 </div>

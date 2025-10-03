@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // For React Router navigation if needed
 import styles from "./z.qui.module.css";
-import quiLogo from "../../../images/qui.png"; // your logo
+import quiLogo from "../../../images/qui.png"; // Your logo
 
 function QuizCard({ title, questions }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -13,6 +14,7 @@ function QuizCard({ title, questions }) {
     if (option === questions[currentQuestion].answer) {
       setScore(score + 1);
     }
+
     setTimeout(() => {
       if (currentQuestion + 1 < questions.length) {
         setCurrentQuestion(currentQuestion + 1);
@@ -26,12 +28,9 @@ function QuizCard({ title, questions }) {
   return (
     <div className={styles.card}>
       <h2 className={styles.quizTitle}>{title}</h2>
-
       {!isFinished ? (
         <>
-          <h3 className={styles.question}>
-            {questions[currentQuestion].question}
-          </h3>
+          <h3 className={styles.question}>{questions[currentQuestion].question}</h3>
           <div className={styles.options}>
             {questions[currentQuestion].options.map((option, index) => (
               <button
@@ -57,8 +56,7 @@ function QuizCard({ title, questions }) {
       ) : (
         <div className={styles.result}>
           <p>
-            ✅ You scored <strong>{score}</strong> /{" "}
-            <strong>{questions.length}</strong>
+            ✅ You scored <strong>{score}</strong> / <strong>{questions.length}</strong>
           </p>
           <button
             className={styles.restartBtn}
@@ -78,8 +76,9 @@ function QuizCard({ title, questions }) {
 }
 
 export default function ZQui() {
+  const navigate = useNavigate(); // For internal navigation if needed
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [selectedCategory, setSelectedCategory] = useState("web"); // default web
+  const [selectedCategory, setSelectedCategory] = useState("web"); // default category
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -92,7 +91,13 @@ export default function ZQui() {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  // Each category has 3 quizzes
+  // Redirect to Gider login
+  const handleLoginRedirect = () => {
+    window.location.href = "https://gider.com/login"; // Replace with actual Gider login URL
+    // If you want internal route: navigate("/login");
+  };
+
+  // Quiz Data
   const quizData = {
     web: [
       {
@@ -152,12 +157,7 @@ export default function ZQui() {
           },
           {
             question: "Which file has app permissions?",
-            options: [
-              "MainActivity.java",
-              "strings.xml",
-              "AndroidManifest.xml",
-              "build.gradle",
-            ],
+            options: ["MainActivity.java", "strings.xml", "AndroidManifest.xml", "build.gradle"],
             answer: "AndroidManifest.xml",
           },
         ],
@@ -308,6 +308,21 @@ export default function ZQui() {
           <button type="submit">Submit</button>
         </form>
       </div>
+
+      {/* RIGHT-ALIGNED LOGIN BUTTON */}
+
+<div className={styles.loginContainer}>
+  <button
+    className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
+    onClick={() => {
+      // Redirect directly to Gider login page
+      window.location.href = "login"; // <-- Replace with actual Gider login URL
+    }}
+  >
+    Login to Z.Qui
+  </button>
+</div>
+
     </section>
   );
 }

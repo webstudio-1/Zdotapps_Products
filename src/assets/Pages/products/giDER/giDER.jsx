@@ -7,7 +7,7 @@ const GiDER = () => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/login");
+    navigate("/login"); // Redirects to gidER login page
   };
 
   return (
@@ -32,20 +32,20 @@ const GiDER = () => {
           <li>gidBOX & gidNOTES Integrations</li>
         </ul>
 
-  <a
-  className={`btn btn-outline-warning btn-lg ${styles.cta}`}
-
->
-  Login to gidER
-</a>
-
+        {/* Updated Login button */}
+        <button
+          className={`btn btn-warning btn-lg ${styles.cta}`}
+          onClick={handleButtonClick}
+        >
+          Login to gidER
+        </button>
       </div>
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm}>
-            <h5>Start executing your projects with</h5>
+          <h5>Start executing your projects with</h5>
           <img src={gidERImage} alt="giDER Logo" className={styles.formLogo} />
-        
+
           <label>
             Name
             <input type="text" name="name" placeholder="Your Name" />
@@ -56,12 +56,11 @@ const GiDER = () => {
           </label>
           <label>
             Message
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            style={{ height: "90px" }}
-          />
-
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              style={{ height: "90px" }}
+            />
           </label>
           <button type="submit">Send Message</button>
         </form>

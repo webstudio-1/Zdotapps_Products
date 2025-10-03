@@ -66,7 +66,7 @@ const productList = [
   },
   {
     // name: "Z.IOT", // Added name field
-    desc: "Sustainability for smart cities",
+    desc: "Unified Platform for Kirana Stores",
     img: kiraazee,
     btn: "Know More",
     link: "/z.iot",

@@ -189,7 +189,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 3rem 0 5rem 0;
+  margin: 1rem 0 3rem 0;
 }
 
 .categoryButtons button {
@@ -240,3 +240,17 @@
     margin-left: 0;
   }
 }
+
+.loginContainer {
+  display: flex;
+  justify-content: center; /* Align button right */
+  margin-top: 20px;
+}
+
+.loginBtn {
+  padding: 13px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 22rem;
+}
+

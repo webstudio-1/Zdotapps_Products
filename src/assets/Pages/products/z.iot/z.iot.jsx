@@ -30,7 +30,7 @@ const Ziot = () => {
                 href="https://kirazee.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-outline-warning btn-lg yellow-text fw-bold"
+                className="btn btn-warning btn-lg yellow-text fw-bold"
               >
                 {" "}
                 Login to Kirazee

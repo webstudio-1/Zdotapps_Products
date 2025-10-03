@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+// Define your API base URL here
+// Make sure this matches the address where your backend server is running
+const API_BASE_URL = "http://localhost:8000";
+
 // Inline styles for modern look (move to CSS file in production)
 const styles = {
   bg: {
@@ -206,9 +210,11 @@ export default function JobDetails() {
   const [submittingOTP, setSubmittingOTP] = useState(false);
   const [resendCount, setResendCount] = useState(0);
   const [otpError, setOtpError] = useState("");
+  const [sendingOTP, setSendingOTP] = useState(false);
 
   const phoneRef = useRef(null);
   const intlRef = useRef(null);
+  const formDataRef = useRef(null);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -230,7 +236,35 @@ export default function JobDetails() {
     setResumeName(file ? file.name : "Choose file or drag and drop");
   };
 
-  const handleSubmit = (e) => {
+  const sendOTP = async (email) => {
+    setSendingOTP(true); // Set loading state
+    setOtpError(""); // Clear previous errors
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/send-otp/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error sending OTP:', error);
+      setOtpError(error.message || 'Failed to send OTP. Please try again.');
+      return null; // Indicate failure
+    } finally {
+      setSendingOTP(false); // Clear loading state
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -250,6 +284,7 @@ export default function JobDetails() {
     if (form["linkedin-link"]?.value) formData.append("linkedin_link", form["linkedin-link"].value);
     if (form["figma-link"]?.value) formData.append("figma_link", form["figma-link"].value);
 
+    // Basic client-side validation
     if (!formData.get("first_name") || !formData.get("last_name") || !formData.get("email_address") ||
         !formData.get("phone_number") || !formData.get("upload_resume") ||
         !formData.get("years_of_experience") || !formData.get("heard_about_us")) {
@@ -262,13 +297,25 @@ export default function JobDetails() {
       return;
     }
 
-    if (!formData.get("phone_number") || formData.get("phone_number").replace(/\D/g, "").length < 10) {
+    // This check is a bit simplistic as intl-tel-input handles validity, but good for a basic check
+    if (!formData.get("phone_number") || formData.get("phone_number").replace(/\D/g, "").length < 7) { // Min 7 for basic validity
       alert("Please enter a valid phone number.");
       return;
     }
 
-    setOtpOpen(true);
-    window.pendingFormData = formData;
+
+    formDataRef.current = formData; // Store formData for later use in OTP verification
+    const email = formData.get("email_address");
+
+    setSendingOTP(true); // Indicate that OTP is being sent
+    const otpSent = await sendOTP(email);
+
+    if (otpSent) {
+      setOtpOpen(true);
+    } else {
+      // Handle the case where OTP sending failed (error already set by sendOTP)
+    }
+    setSendingOTP(false); // Reset sending OTP state
   };
 
   const updateOtpDigit = (index, value) => {
@@ -276,6 +323,14 @@ export default function JobDetails() {
     const next = [...otpDigits];
     next[index] = onlyNum;
     setOtpDigits(next);
+
+    // Auto-focus next input
+    if (onlyNum && index < otpDigits.length - 1) {
+      const nextInput = document.getElementById(`otp-input-${index + 1}`); // Use an ID to target
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
   };
 
   const verifyOtp = async () => {
@@ -286,43 +341,71 @@ export default function JobDetails() {
     }
 
     setSubmittingOTP(true);
+    setOtpError("");
 
-    setTimeout(async () => {
-      setSubmittingOTP(false);
-      setOtpOpen(false);
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/verify-otp/`, { // Use API_BASE_URL
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formDataRef.current.get("email_address"),
+          otp: code
+        })
+      });
 
-      try {
-        const response = await fetch("/api/contact/", {
+      if (response.ok) {
+        // If OTP is verified, proceed to submit the form data
+        const submitResponse = await fetch(`${API_BASE_URL}/api/contact/`, { // Use API_BASE_URL
           method: "POST",
-          body: window.pendingFormData,
+          body: formDataRef.current, // formDataRef.current already contains all form data
         });
 
-        if (response.ok) {
+        if (submitResponse.ok) {
           alert("Application submitted successfully!");
+          setOtpOpen(false);
+          // Clear form and reset states
+          const form = document.querySelector("form");
+          if (form) form.reset(); // Resets all form fields
+          setResumeName("Choose file or drag and drop");
+          setOtpDigits(["", "", "", "", "", ""]);
+          setResendCount(0);
+          setOtpError("");
         } else {
-          const data = await response.json();
-          console.error("Backend error:", data);
-          alert("Error submitting form. Check console for details.");
+          const data = await submitResponse.json();
+          console.error("Form submission error:", data);
+          alert(`Error submitting form: ${data.message || "Unknown error"}. Check console for details.`);
         }
-      } catch (err) {
-        console.error("Network error:", err);
-        alert("Network error. Please try again later.");
+      } else {
+        const errorData = await response.json();
+        setOtpError(errorData.message || errorData.error || "Invalid verification code. Please try again.");
       }
-
-      const form = document.querySelector("form");
-      if (form) form.reset();
-      setResumeName("Choose file or drag and drop");
-      setOtpDigits(["", "", "", "", "", ""]);
-    }, 1000);
+    } catch (err) {
+      console.error("Network error during OTP verification or form submission:", err);
+      setOtpError("Network error. Please try again later.");
+    } finally {
+      setSubmittingOTP(false);
+    }
   };
 
-  const resendOtp = () => {
+  const resendOtp = async () => {
     if (resendCount >= 3) {
-      alert("Maximum resend attempts reached. Please try again later.");
+      setOtpError("Maximum resend attempts reached. Please try again later.");
       return;
     }
-    setResendCount((c) => c + 1);
-    alert("A new verification code has been sent to your email.");
+
+    if (formDataRef.current) {
+      const email = formDataRef.current.get("email_address");
+      setSendingOTP(true); // Indicate resending OTP
+      const otpSent = await sendOTP(email);
+      if (otpSent) {
+        setResendCount((c) => c + 1);
+        setOtpDigits(["", "", "", "", "", ""]);
+        setOtpError(""); // Clear any previous OTP error
+      }
+      setSendingOTP(false); // Reset sending OTP state
+    }
   };
 
   if (!job) {
@@ -449,7 +532,20 @@ export default function JobDetails() {
                 </div>
               </div>
               <div className="d-flex justify-content-center mt-4">
-                <button type="submit" className="btn btn-outline-warning" style={styles.btn}>Submit Application</button>
+                <button
+                  type="submit"
+                  className="btn btn-outline-warning"
+                  style={styles.btn}
+                  disabled={sendingOTP} // Disable button while OTP is being sent
+                >
+                  {sendingOTP ? (
+                    <>
+                      <i className="fa-solid fa-spinner fa-spin me-2"></i>Sending OTP...
+                    </>
+                  ) : (
+                    "Submit Application"
+                  )}
+                </button>
               </div>
             </form>
           </div>
@@ -460,7 +556,7 @@ export default function JobDetails() {
             <div className="bg-white rounded-3 shadow p-4" style={{width:'min(520px, 92vw)'}}>
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <h5 className="mb-0">Email Verification</h5>
-                <button className="btn btn-sm btn-outline-secondary" onClick={()=>setOtpOpen(false)}>
+                <button className="btn btn-sm btn-outline-secondary" onClick={()=>setOtpOpen(false)} type="button">
                   <i className="fa-solid fa-xmark"></i>
                 </button>
               </div>
@@ -470,17 +566,50 @@ export default function JobDetails() {
               </div>
               <div className="d-flex justify-content-center gap-2 mb-2">
                 {otpDigits.map((d, i)=> (
-                  <input key={i} className="form-control text-center" style={{width:48}} value={d} onChange={(e)=>updateOtpDigit(i, e.target.value)} maxLength={1} />
+                  <input
+                    key={i}
+                    id={`otp-input-${i}`} // Added ID for better auto-focus targeting
+                    className="form-control text-center"
+                    style={{width:48}}
+                    value={d}
+                    onChange={(e)=>updateOtpDigit(i, e.target.value)}
+                    maxLength={1}
+                    disabled={submittingOTP}
+                    onKeyUp={(e) => {
+                      if (e.key === 'Backspace' && !e.target.value && i > 0) {
+                        document.getElementById(`otp-input-${i - 1}`).focus(); // Focus previous input
+                      } else if (e.target.value && i < otpDigits.length - 1) {
+                        document.getElementById(`otp-input-${i + 1}`).focus(); // Focus next input
+                      }
+                    }}
+                  />
                 ))}
               </div>
               {!!otpError && <div className="text-danger small text-center mb-2">{otpError}</div>}
               <div className="d-flex justify-content-center gap-2">
-       
-                <button className="btn btn-outline-secondary" onClick={resendOtp}>
-                  <i className="fa-solid fa-redo me-2"></i>Resend Code
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={resendOtp}
+                  disabled={sendingOTP} // Disable while resending
+                  type="button"
+                >
+                  {sendingOTP ? (
+                    <><i className="fa-solid fa-spinner fa-spin me-2"></i>Sending...</>
+                  ) : (
+                    <><i className="fa-solid fa-redo me-2"></i>Resend Code ({3 - resendCount} left)</>
+                  )}
                 </button>
-                         <button className="btn btn-success" disabled={submittingOTP} onClick={verifyOtp}>
-                  {submittingOTP ? <><i className="fa-solid fa-spinner fa-spin me-2"></i>Verifying...</> : <><i className="fa-solid fa-check me-2"></i>Verify & Submit</>}
+                <button
+                  className="btn btn-success"
+                  disabled={submittingOTP || sendingOTP} // Disable while submitting or sending
+                  onClick={verifyOtp}
+                  type="button"
+                >
+                  {submittingOTP ? (
+                    <><i className="fa-solid fa-spinner fa-spin me-2"></i>Verifying...</>
+                  ) : (
+                    <><i className="fa-solid fa-check me-2"></i>Verify & Submit</>
+                  )}
                 </button>
               </div>
             </div>

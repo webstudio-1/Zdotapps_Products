@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'zdot_app',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -128,11 +130,58 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email settings
+# Email settings - Using SMTP backend for actual email sending
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'      # Gmail SMTP server
 EMAIL_PORT = 587                   # TLS port
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'prasad.g@station-s.org'       # Replace with your email
-EMAIL_HOST_PASSWORD = 'vzwd gfeu frsh ozdr'      # Use App Password (not normal Gmail password!)
+EMAIL_HOST_USER = 'bindhurani.k@station-s.org'       # Replace with your email
+EMAIL_HOST_PASSWORD = 'vtfd utya wqjz msip'      # Use App Password (not normal Gmail password!)
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",  # Add this line
+    "http://127.0.0.1:5174", # Add this line
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+# Cache configuration for OTP storage
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+    }
+}
+
+# settings.py
+# ... (existing settings)
+
+# Media files (user-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# ... (rest of your settings)

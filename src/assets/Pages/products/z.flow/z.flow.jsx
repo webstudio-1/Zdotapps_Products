@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate for React Router v6+
 import styles from './z.flow.module.css';
 import flowIllustration from '../../../images/flow.png';
 
@@ -16,18 +17,6 @@ const cardsData = [
     image: flowIllustration,
     alt: 'Journey map (Step 1 → Step 2 → Step 3) with arrows, and a highlighted drop-off at Step 2',
   },
-  // {
-  //   title: 'Bottleneck Detection',
-  //   bgColor: '#EFC426',
-  //   features: [
-  //     'Funnel analytics to reveal drop-offs',
-  //     'Heatmaps for clicks and interactions',
-  //     'Auto-flagged workflow inefficiencies',
-  //     'Clear, actionable insights',
-  //   ],
-  //   image: flowIllustration,
-  //   alt: 'Funnel chart with percentages shrinking step by step, with a red alert icon on the highest drop-off',
-  // },
   {
     title: 'Optimization Insights',
     bgColor: '#EFC426',
@@ -56,12 +45,12 @@ const cardsData = [
 
 const ZFlow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();  // Initialize navigate for redirection
 
   // ---- Chips select state ----
   const [selectedTags, setSelectedTags] = useState([]);
   const chipOptions = [
     'Clickstream Analytics',
-    // 'Bottleneck Detection',
     'Optimization Insights',
     'Analytics Dashboard',
   ];
@@ -78,6 +67,11 @@ const ZFlow = () => {
     e.preventDefault();
     console.log('Selected tags:', selectedTags);
     alert(`Form submitted with interests: ${selectedTags.join(', ')}`);
+  };
+
+  // Redirect to the login page
+  const handleLoginRedirect = () => {
+    navigate('/login');  // Replace '/login' with your actual login page path
   };
 
   return (
@@ -142,6 +136,18 @@ const ZFlow = () => {
                             {feature}
                           </li>
                         ))}
+
+                        {/* Extra button only for Clickstream Analytics */}
+                        {card.title === 'Clickstream Analytics' && (
+                          <div style={{ marginTop: '15px', marginLeft: '20px' }}>
+                            <button
+                              className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
+                              onClick={handleLoginRedirect}  // Trigger the redirect
+                            >
+                              Login to z.flow
+                            </button>
+                          </div>
+                        )}
                       </ul>
 
                       <div
@@ -208,7 +214,6 @@ const ZFlow = () => {
                 <button type="submit" className={styles['btn-primary']}>
                   Submit
                 </button>
-           
               </form>
             </div>
           </div>

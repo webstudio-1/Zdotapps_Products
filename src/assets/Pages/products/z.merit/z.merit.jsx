@@ -109,7 +109,7 @@ const Zmerit = () => {
         href="https://zdotapps.com/ZdotMerit/screening"
         target="_blank"
         rel="noopener noreferrer"
-        className="btn btn-outline-warning btn-lg text-decoration-none"
+        className="btn btn-warning btn-lg text-decoration-none"
       >
         Login to Z.merit
       </a>

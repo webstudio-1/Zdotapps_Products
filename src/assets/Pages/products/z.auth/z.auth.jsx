@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './z.auth.module.css';
 import aAuthLogo from '../../../images/auth_wlogo.png'; // ← your logo file
+
 import { Link } from "react-router-dom";
 
 export default function ZAuth() {
@@ -20,8 +21,12 @@ export default function ZAuth() {
   return (
     <section className={styles.authSection}>
       <div className={styles.backgroundShapes}></div>
+      
 
       <div className="container h-150">
+               <div className={styles.leftLogo}>
+    <img src={aAuthLogo} alt="Z.auth Logo" />
+  </div>
         {/* Top Center Heading */}
         <div className={styles.topHeading}>
           {/* <h1 className={styles.fadeIn}>
@@ -29,9 +34,10 @@ export default function ZAuth() {
           </h1> */}
         </div>
 
-        <div className="row align-items-center h-100 g-5">
+        <div className="mb-5 row align-items-center h-100 g-5">
           {/* Left Content */}
          <div className={`col-lg-6 ${styles.leftContent}`}>
+     
   <h2 className={styles.fadeIn}>
     Authenticate. Authorize. <span>Z.auth</span>
   </h2>
@@ -48,7 +54,7 @@ export default function ZAuth() {
   </ul>
 
 <h5 className="text-start">
-  <Link to="#" className={`btn btn-outline-warning btn-lg ${styles.btnYellow}`}>
+  <Link to="/login" className={`btn btn-warning btn-lg ${styles.btnYellow}`}>
     Login to z.auth
   </Link>
 </h5>

@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards, Navigation } from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/navigation';
@@ -14,6 +15,8 @@ import SortonymImg from './images/sortonym.png';
 import games_whiteImg from '../../../images/games_wlogo.png';
 
 const Zgames = () => {
+  const navigate = useNavigate();
+
   const [selectedTags, setSelectedTags] = useState([]);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,6 +66,10 @@ const Zgames = () => {
     setSelectedTags([]);
   }, []);
 
+  const handleLoginClick = useCallback(() => {
+    navigate('/login'); // GiDER login route
+  }, [navigate]);
+
   const currentGame = games[activeIndex];
 
   return (
@@ -95,34 +102,33 @@ const Zgames = () => {
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               className={styles.swiper}
             >
-           {games.map((game) => (
-  <SwiperSlide key={game.id} className={styles.slide}>
-    <div className={styles.slideInner}>
-      <div className={styles.imageSection}>
-        <img src={game.image} alt={game.title} className={styles.slideImage} />
-      </div>
-      <div className={styles.textSection}>
-        <div className={styles.gameHeader}>
-          <h2 className={styles.gameTitle}>{game.title}</h2>
-        </div>
-        <p className={styles.gameDesc}>{game.description}</p>
+              {games.map((game) => (
+                <SwiperSlide key={game.id} className={styles.slide}>
+                  <div className={styles.slideInner}>
+                    <div className={styles.imageSection}>
+                      <img src={game.image} alt={game.title} className={styles.slideImage} />
+                    </div>
+                    <div className={styles.textSection}>
+                      <div className={styles.gameHeader}>
+                        <h2 className={styles.gameTitle}>{game.title}</h2>
+                      </div>
+                      <p className={styles.gameDesc}>{game.description}</p>
 
-        {/* ✅ Login button below description */}
-<div className={`d-flex justify-content-start ${styles.loginBtnWrap}`}>
-  <a href="#" className={`btn btn-outline-warning ${styles.loginBtn}`}>
-    Login to z.games
-  </a>
-</div>
-
-      </div>
-    </div>
-  </SwiperSlide>
-))}
-
+                      {/* ✅ Updated login button */}
+                      <div className={`d-flex justify-content-start ${styles.loginBtnWrap}`}>
+                        <button
+                          className={`btn btn-warning ${styles.loginBtn}`}
+                          onClick={handleLoginClick}
+                        >
+                          Login to Z.games
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
             </Swiper>
-            
           </div>
-        
 
           {/* Form */}
           <div className={styles.formCard}>

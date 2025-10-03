@@ -28,6 +28,7 @@ import JobDetails from "./assets/Pages/details/details";
 import Zengage from "./assets/Pages/products/z.engage/z.engage";
 import Ziot from "./assets/Pages/products/z.iot/z.iot";
 import Zmerit from "./assets/Pages/products/z.merit/z.merit";
+import Zqui from "./assets/Pages/products/z.qui/z.qui";
 import Zgames from "./assets/Pages/products/z.games/z.games";
 import Zauth from "./assets/Pages/products/z.auth/z.auth";
 import GiDER from "./assets/Pages/products/giDER/giDER";
@@ -82,6 +83,7 @@ function App() {
             <Route path="z.hire" element={<Zhire />} />
             <Route path="giDER" element={<GiDER />} />
             <Route path="z.sign" element={<Zsign />} />
+            <Route path="z.qui" element={<Zqui />} />
             <Route path="z.form" element={<Zform />} />
             <Route path="zapps" element={<ZappsLanding />} />
 
