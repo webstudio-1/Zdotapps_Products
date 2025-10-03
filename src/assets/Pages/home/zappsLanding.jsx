@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Globe,
   Smartphone,
@@ -261,24 +261,379 @@ const styles = `
   .max-w-4xl { max-width: 56rem; margin: 0 auto; }
   .max-w-2xl { max-width: 42rem; margin: 0 auto; }
   .mx-auto { margin-left: auto; margin-right: auto; }
+
+  /* Hero Section Specific Styles */
+  .hero-section {
+    background-color: #1C1A1A; /* Dark background from image */
+    color: #FFFFFF;
+    padding: 10rem 1rem; /* Adjust padding for better visual match */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px; /* Ensure sufficient height */
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Space out title/description and products */
+    align-items: flex-start; /* Align content to the top */
+    gap: 4rem; /* Gap between left and right sections */
+  }
+
+  .hero-text-content {
+    flex: 1; /* Take up available space */
+    max-width: 600px; /* Limit width of text content */
+    text-align: left;
+    padding-top: 2rem; /* Align with products visually */
+  }
+
+  .hero-title {
+    font-size: 3.5rem; /* Larger font size */
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #FFC94A; /* Yellow for the title */
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem; /* Subtitle font size */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #FFFFFF;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #F3F3F3; /* Light grey for description */
+  }
+
+  .hero-button {
+    background-color: #FFC94A;
+    color: #1C1A1A; /* Dark text for button */
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem; /* Slightly rounded corners */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .hero-button:hover {
+    background-color: #E6B842;
+  }
+
+  .featured-products {
+    flex-shrink: 0; /* Don't allow this section to shrink */
+    width: 380px; /* Fixed width for the products section */
+    background-color: transparent; /* No background for this section */
+    color: #FFFFFF;
+    padding: 2rem 0; /* Padding for the product cards section */
+  }
+
+  .featured-products-title {
+    font-size: 1.90rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    // padding-left: 1.5rem; 
+  }
+
+  .product-card {
+    background-color: #333333; /* Darker grey for product cards */
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .product-card:hover {
+    background-color: #444444;
+  }
+
+  .product-card-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #FFC94A; /* Yellow background for icon */
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .product-card-icon svg {
+    color: #1C1A1A; /* Dark icon color */
+  }
+
+  .product-card-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #F3F3F3; /* Light text for title */
+  }
+
+  .product-card-description {
+    font-size: 0.875rem;
+    color: #CCCCCC; /* Lighter grey for description */
+    line-height: 1.4;
+  }
+
+  /* Automatic Scrolling Styles */
+  .scrollable-products-container {
+    max-height: 400px; /* Adjust this value as needed to control visible area */
+    overflow: hidden; /* Hide the default scrollbar, as we'll animate content */
+    position: relative; /* Needed for positioning context for children */
+  }
+
+  .scrolling-content {
+    display: flex;
+    flex-direction: column;
+    animation: scrollProducts linear infinite; 
+    animation-duration: 20s; /* Adjust for desired speed */
+  }
+
+  @keyframes scrollProducts {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      /* This value might need fine-tuning if card heights are very dynamic.
+         For consistent card heights, -100% works well with duplicated content. */
+      transform: translateY(-50%); /* Adjusted to scroll through one full set of duplicated cards */
+    }
+  }
+
+  /* Pause animation on hover */
+  .scrollable-products-container:hover .scrolling-content {
+    animation-play-state: paused;
+  }
+
+  /* Responsive adjustments for Hero Section */
+  @media (max-width: 1024px) {
+    .hero-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+    .hero-text-content {
+      max-width: 100%;
+      text-align: center;
+      padding-top: 0;
+    }
+    .hero-title {
+      font-size: 3rem;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+    }
+    .featured-products {
+      width: 100%;
+      max-width: 450px; /* Limit width on smaller screens */
+      padding: 0;
+    }
+    .featured-products-title {
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 8rem 1rem;
+      min-height: auto;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Studios Section Styles */
+  .studios-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .studio-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    color: #888888;
+  }
+  
+  .studio-tab.active {
+    color: #FFC94A;
+    background-color: #333333;
+    border: 1px solid #FFC94A;
+  }
+  
+  .studio-card {
+    background: linear-gradient(135deg, #1C1A1A 0%, #333333 100%);
+    border: 1px solid #FFC94A;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    box-shadow: 0 4px 20px rgba(255, 201, 74, 0.1);
+  }
+  
+  .studio-content {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .studio-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFC94A;
+    margin-bottom: 1rem;
+  }
+  
+  .studio-description {
+    font-size: 1rem;
+    color: #F3F3F3;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .studio-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .studio-image {
+    flex: 1;
+    max-width: 40%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .studio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .studio-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .studio-button.primary {
+    background-color: #FFC94A;
+    color: #1C1A1A;
+  }
+  
+  .studio-button.secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 1px solid #FFC94A;
+  }
+  
+  .studio-button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .studio-button.primary:hover {
+    background-color: #E6B842;
+  }
+  
+  .studio-button.secondary:hover {
+    background-color: #333333;
+  }
 `;
+
+// Define a reusable ProductCard component for cleanliness
+const ProductCard = ({ title, description, opacity }) => (
+  <div className="product-card" style={opacity ? { opacity } : {}}>
+    <div className="product-card-icon">
+      <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>z.</span>
+    </div>
+    <div>
+      <p className="product-card-title">{title}</p>
+      <p className="product-card-description">{description}</p>
+    </div>
+  </div>
+);
 
 // Hero Section Component
 const HeroSection = () => {
+  // Define product data once
+  const products = [
+    { title: 'z.Hhre', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'Campus.Life', description: 'A smart platform to enhance campus experience and streamline student services.' },
+    { title: 'z.engage', description: 'An intelligent engagement tool to foster community and boost user interaction.' },
+    { title: 'z.Assist', description: 'Your personal AI assistant for task management and productivity enhancement.' },
+    { title: 'z.Analytics', description: 'Advanced analytics platform for deep insights into your business data.' },
+    { title: 'z.Connect', description: 'Seamless communication and collaboration suite for modern teams.' },
+  ];
+
   return (
-    <section className="py-20 px-4" style={{ background: 'linear-gradient(180deg,#333333 0%, #1C1A1A 100%)', color: '#FFFFFF' }}>
-      <div className="container text-center">
-        <h1 className="display-5 fw-bold mb-3">Three Studios, <span style={{ color: '#FFC94A' }}>Endless Possibilities</span></h1>
-        <p className="lead mx-auto" style={{ maxWidth: '46rem', color: '#F3F3F3' }}>
-          Choose from our specialized studios for Web Studio, Apps Studio, and Agent Studio. Get started with ready-to-use templates or build completely custom solutions.
-        </p>
-        <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 mt-4">
-          <button className="btn btn-primary text-dark fw-semibold btn-lg px-4" style={{ backgroundColor: '#FFC94A', borderColor: '#FFC94A' }}>
-             Explore Templates
-          </button>
-          <button className="btn btn-secondary btn-lg px-4" style={{ borderColor: '#FFFFFF', color: '#FFFFFF' }}>
-            Custom Development
-          </button>
+    <section className="hero-section">
+      <div className="hero-content">
+        {/* Left Side: Text Content */}
+        <div className="hero-text-content">
+          <h1 className="hero-title">Cutting-edge AI Products and Services.</h1>
+          <h2 className="hero-subtitle">Built to understand and solve for YOU.</h2>
+          <p className="hero-description">
+            Whether it's a world-class web platform, a market-shaping app, or an intelligent agent, zdotApps makes it intelligent and insight-driven.
+          </p>
+          <a href="#" className="hero-button">
+            Start Your Project ↗
+          </a>
+        </div>
+
+        {/* Right Side: Featured Products */}
+        <div className="featured-products">
+          <h3 className="featured-products-title">Featured <span style={{ color: '#FFC94A' }}>Products</span></h3>
+          <div className="scrollable-products-container">
+            <div className="scrolling-content">
+              {/* Render the products (original set) */}
+              {products.map((product, index) => (
+                <ProductCard
+                  key={`original-${index}`}
+                  title={product.title}
+                  description={product.description}
+                  opacity={product.opacity} // If you need a specific card to be faded
+                />
+              ))}
+
+              {/* Duplicate the products for seamless scrolling */}
+              {products.map((product, index) => (
+                <ProductCard
+                  key={`duplicate-${index}`} // Use a different key for duplicates
+                  title={product.title}
+                  description={product.description}
+                  opacity={product.opacity}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -287,89 +642,83 @@ const HeroSection = () => {
 
 // Studios Section Component
 const StudiosSection = () => {
-  const studios = [
-    {
+  const [activeStudio, setActiveStudio] = useState('web');
+
+  const studios = {
+    web: {
       id: 'web',
       title: 'Web Studio',
-      description: 'Professional websites and web applications',
-      icon: Globe,
-      color: 'bg-black',
-      services: ['Responsive Websites', 'E-commerce Platforms', 'Web Applications', 'Landing Pages'],
-      templates: '50+ Templates',
-      startingPrice: '$299'
+      description: 'Create stunning, fully responsive websites with a wide range of ready-to-use templates. Effortlessly customize layouts, colors, and features to perfectly align with your brand’s identity, vision, and business goals.',
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=Web+Studio'
     },
-    {
+    app: {
       id: 'app',
-      title: 'App Studio', 
-      description: 'Mobile applications for iOS and Android',
-      icon: Smartphone,
-      color: 'bg-black',
-      services: ['iOS & Android Apps', 'Cross-platform Solutions', 'App Store Optimization', 'Mobile UI/UX'],
-      templates: '30+ Templates',
-      startingPrice: '$599'
+      title: 'App Studio',
+      description: 'Develop innovative mobile applications for iOS and Android platforms, ensuring a seamless user experience. From concept to launch, we build high-performance apps that drive engagement and meet your specific business needs.',
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=App+Studio'
     },
-    {
+    agent: {
       id: 'agent',
       title: 'Agent Studio',
-      description: 'AI-powered agents and automation solutions',
-      icon: Bot,
-      color: 'bg-black',
-      services: ['AI Chatbots', 'Process Automation', 'Custom AI Agents', 'Integration Solutions'],
-      templates: '20+ Templates', 
-      startingPrice: '$399'
+      description: 'Leverage the power of AI with custom-built intelligent agents and automation solutions. Streamline operations, enhance customer service, and gain competitive advantage with our cutting-edge AI technologies.',
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=Agent+Studio'
     }
-  ];
+  };
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4" style={{backgroundColor: '#1C1A1A'}}>
       <div className="container">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Our Studios</h2>
-          <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#1C1A1A' }}>
-            Three specialized departments, each focused on delivering exceptional results in their domain.
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold" style={{color: '#FFFFFF'}}>Your problem-Our <span style={{color: '#FFC94A'}}>studios</span> for solutions.</h2>
+          <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#888888' }}>
+            Our three studios are designed to build and scale your businesses.
           </p>
         </div>
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-          {studios.map((studio) => {
-            const IconComponent = studio.icon;
-            return (
-              <div key={studio.id} className="col">
-                <div className="card shadow-sm h-100 border-0">
-                  <div className="card-body">
-                    <div className="d-flex align-items-center gap-3 mb-3">
-                      <div className={`icon-circle ${studio.color}`} style={{ width: 52, height: 52 }}>
-                        <IconComponent
-                          size={24}
-                          color={studio.id === 'web' ? 'var(--secondary-foreground)' :
-                                 studio.id === 'app' ? 'var(--primary-foreground)' :
-                                 'var(--secondary-foreground)'}
-                        />
-                      </div>
-                      <div>
-                        <h3 className="h5 mb-1">{studio.title}</h3>
-                        <p className="text-muted mb-0">{studio.description}</p>
-                      </div>
-                    </div>
-                    <ul className="feature-list mb-4">
-                      {studio.services.map((service, index) => (
-                        <li key={index}>
-                          <CheckCircle size={16} color="var(--secondary)" />
-                          {service}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="d-flex justify-content-between mb-3" style={{ color: '#1C1A1A' }}>
-                      <span>{studio.templates}</span>
-                      <span>From {studio.startingPrice}</span>
-                    </div>
-                    <button className="btn w-100 text-dark fw-semibold" style={{ backgroundColor: '#FFC94A' }}>
-                      Explore {studio.title}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        
+        {/* Studio Tabs */}
+        <div className="studios-header">
+          <div 
+            className={`studio-tab ${activeStudio === 'web' ? 'active' : ''}`}
+            onClick={() => setActiveStudio('web')}
+          >
+            Web Studio
+          </div>
+          <div 
+            className={`studio-tab ${activeStudio === 'app' ? 'active' : ''}`}
+            onClick={() => setActiveStudio('app')}
+          >
+            App Studio
+          </div>
+          <div 
+            className={`studio-tab ${activeStudio === 'agent' ? 'active' : ''}`}
+            onClick={() => setActiveStudio('agent')}
+          >
+            Agent Studio
+          </div>
+        </div>
+        
+        {/* Studio Card */}
+        <div className="studio-card">
+          <div className="studio-content">
+            <h3 className="studio-title">{studios[activeStudio].title}</h3>
+            <p className="studio-description">{studios[activeStudio].description}</p>
+            <div className="studio-buttons">
+              <a href="#" className="studio-button primary">
+                Ready to use ↗
+              </a>
+              <a href="#" className="studio-button secondary">
+                Customize ↗
+              </a>
+            </div>
+          </div>
+          <div className="studio-image">
+            {studios[activeStudio].imageUrl && (
+              <img
+                src={studios[activeStudio].imageUrl}
+                alt={`${studios[activeStudio].title} illustration`}
+              />
+            )}
+          </div>
         </div>
       </div>
     </section>
@@ -380,127 +729,92 @@ const StudiosSection = () => {
 const ServiceTypesSection = () => {
   const serviceTypes = [
     {
-      id: 'ready-to-use',
-      title: 'Ready to Use',
-      subtitle: 'Pre-designed Templates',
-      description: 'Choose from our collection of professionally designed templates, customize with your content, and launch quickly.',
+      id: "ready-to-use",
+      title: "Ready to Use",
+      description:
+        "Choose from our collection of professionally designed templates, customize with your content, and launch quickly.",
       icon: Zap,
-      color: 'bg-black',
-      timeline: '1-3 days',
-      features: [
-        '50+ Professional Templates',
-        'Easy Customization Form', 
-        'Quick Setup Process',
-        'Immediate Deployment',
-        'Basic Support Included',
-        'Mobile Responsive'
-      ],
-      process: [
-        'Browse Templates',
-        'Select Your Favorite', 
-        'Fill Customization Form',
-        'Make Payment',
-        'Get Your Product'
-      ],
-      pricing: 'Fixed Price',
-      highlight: 'Fast & Affordable'
     },
     {
-      id: 'custom-build',
-      title: 'Custom Build',
-      subtitle: 'Tailored Solutions',
-      description: 'Work with our expert team to create a completely custom solution designed specifically for your unique requirements.',
+      id: "custom-build",
+      title: "Custom Build",
+      description:
+        "Work with our expert team to create a completely custom solution designed specifically for your unique requirements.",
       icon: Wrench,
-      color: 'bg-brand-primary', 
-      timeline: '2-8 weeks',
-      features: [
-        '100% Custom Design',
-        'Unlimited Revisions',
-        'Personal Project Manager',
-        'Advanced Functionality Solutions', 
-        'Premium Support',
-        'Full Source Code'
-      ],
-      process: [
-        'Initial Consultation',
-        'Requirements Gathering',
-        'Design & Development',
-        'Testing & Refinement', 
-        'Delivery & Training'
-      ],
-      pricing: 'Quote-based',
-      highlight: 'Fully Customized'
-    }
+    },
+    {
+      id: "fast-delivery",
+      title: "Quick Turnaround",
+      description:
+        "We understand the importance of speed. Our projects move fast to ensure no hassle for you.",
+      icon: Clock,
+    },
+    {
+      id: "scalable",
+      title: "Built for Scale",
+      description:
+        "Our solutions are designed to grow with your business—stable, secure, and scalable.",
+      icon: Star,
+    },
   ];
 
   return (
-    <section className="py-20 px-4 section-bg">
+    <section className="py-20 px-4" style={{ backgroundColor: "#1C1A1A" }}>
       <div className="container">
+        {/* Heading */}
         <div className="text-center mb-5">
-          <h2 className="fw-bold">Choose Your Approach</h2>
-          <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#1C1A1A' }}>
-            We offer two distinct service models to match your timeline, budget, and customization needs.
+          <h2 className="fw-bold" style={{ color: "#FFC94A" }}>
+            ZdotApps
+          </h2>
+          <h3 className="fw-semibold text-light">
+            Your partner in speed and scale.
+          </h3>
+          <p
+            className="mx-auto"
+            style={{
+              fontSize: "1.125rem",
+              maxWidth: "42rem",
+              color: "#D1D1D1",
+            }}
+          >
+            Our teams understand business, technology, and smart integration to
+            succeed.
           </p>
         </div>
-        <div className="row row-cols-1 row-cols-lg-2 g-4">
+
+        {/* Cards */}
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {serviceTypes.map((service) => {
             const IconComponent = service.icon;
             return (
               <div key={service.id} className="col">
-                <div className="card h-100 shadow-sm border-0">
-                  <div className="card-body p-4">
-                    <div className="d-flex align-items-start gap-3 mb-4">
-                      <div className={`icon-circle ${service.color}`} style={{ width: 64, height: 64 }}>
-                        <IconComponent size={32} color={service.id === 'ready-to-use' ? 'var(--secondary-foreground)' : 'var(--primary-foreground)'} />
-                      </div>
-                      <div className="flex-1">
-                        <div className="highlight-box mb-2">{service.highlight}</div>
-                        <h3 className="h4 mb-1">{service.title}</h3>
-                        <p className="text-muted mb-2">{service.subtitle}</p>
-                        <p className="mb-0" style={{ color: 'var(--foreground)' }}>{service.description}</p>
-                      </div>
-                    </div>
-                    <div className="row g-4 mb-4">
-                      <div className="col-12 col-md-6">
-                        <h4 className="h6 text-uppercase text-muted">Features</h4>
-                        <ul className="feature-list mt-2">
-                          {service.features.map((feature, index) => (
-                            <li key={index}>
-                              <div style={{ width: '6px', height: '6px', backgroundColor: 'var(--secondary)', borderRadius: '50%' }}></div>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <h4 className="h6 text-uppercase text-muted">Process</h4>
-                        <ul className="feature-list mt-2">
-                          {service.process.map((step, index) => (
-                            <li key={index}>
-                              <div style={{ width: '20px', height: '20px', backgroundColor: 'var(--secondary)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 'bold', color: 'var(--secondary-foreground)' }}>
-                                {index + 1}
-                              </div>
-                              {step}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between align-items-center p-3 rounded mb-3" style={{ backgroundColor: '#F3F3F3', color: '#333333' }}>
-                      <div className="d-flex align-items-center gap-2">
-                        <Clock size={16} color="#1C1A1A" />
-                        <span>Timeline: {service.timeline}</span>
-                      </div>
-                      <div className="d-flex align-items-center gap-2">
-                        <Star size={16} color="#1C1A1A" />
-                        <span>{service.pricing}</span>
-                      </div>
-                </div>
-                    <button className="btn w-100 btn-lg text-dark fw-semibold" style={{ backgroundColor: '#FFC94A' }}>
-                      <CreditCard size={20} className="me-2" />
-                      Get Started with {service.title}
-                    </button>
+                <div
+                  className="card h-100 text-center"
+                  style={{
+                    backgroundColor: "#0d0d0d",
+                    border: "none",
+                    borderRadius: "16px",
+                    padding: "24px",
+                  }}
+                >
+                  <div className="mb-3">
+                    <IconComponent size={40} color="#facc15" />
                   </div>
+                  <h5
+                    className="fw-bold mb-2"
+                    style={{ color: "#ffffff", fontSize: "1.1rem" }}
+                  >
+                    {service.title}
+                  </h5>
+                  <p
+                    style={{
+                      color: "#d4d4d4",
+                      fontSize: "0.95rem",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    {service.description}
+                  </p>
                 </div>
               </div>
             );
@@ -510,6 +824,8 @@ const ServiceTypesSection = () => {
     </section>
   );
 };
+
+
 
 // Process Flow Component
 const ProcessFlow = () => {
@@ -636,8 +952,11 @@ const ProcessFlow = () => {
         </div>
       </div>
     </section>
+    
   );
 };
+
+
 
 // Main Page Component
 export default function ZappsLanding() {
