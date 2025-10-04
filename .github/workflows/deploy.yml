@@ -1,0 +1,40 @@
+name: Deploy zdotapps_products (run on EC2)
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-zdotapps-products
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Save SSH key
+        run: |
+          echo "${{ secrets.EC2_KEY }}" > private_key.pem
+          chmod 600 private_key.pem
+
+      - name: SSH and deploy on EC2 (run your 4 commands)
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key_path: private_key.pem
+          script: |
+            set -eo pipefail
+            APP_DIR=/home/ec2-user/dev/zdotapps_products
+            { set +e; source /etc/profile 2>/dev/null; source ~/.bashrc 2>/dev/null; set -e; } || true
+            cd "$APP_DIR"
+            git fetch origin master
+            git reset --hard origin/master
+            git clean -fd
+            sudo systemctl reload nginx || true
+            rm -rf dist/
+            npm ci || npm install
+            npm run build
+            echo "✅ Deployed latest master for zdotapps_products"
