@@ -767,7 +767,7 @@ const ProductCard = ({ title, description, opacity }) => (
 const HeroSection = () => {
   // Define product data once
   const products = [
-    { title: 'z.Hhre', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.Hire', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
     { title: 'Campus.Life', description: 'A smart platform to enhance campus experience and streamline student services.' },
     { title: 'z.engage', description: 'An intelligent engagement tool to foster community and boost user interaction.' },
     { title: 'z.Assist', description: 'Your personal AI assistant for task management and productivity enhancement.' },
@@ -989,7 +989,7 @@ const ServiceTypesSection = () => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    style={{ width: "70px", objectFit: "contain" }}
+                    style={{ width: "90px", objectFit: "contain", padding: "10px"}}
                   />
                 </div>
                 <h5
