@@ -1116,7 +1116,7 @@ const PricingSection = () => {
   const plans = [
     {
       title: "Free",
-      price: "₹699",
+      price: "₹69",
       features: [
         { text: "Complete Documentation", included: true },
         { text: "Working Materials in Figma", included: false },
@@ -1127,7 +1127,7 @@ const PricingSection = () => {
     },
     {
       title: "Pro",
-      price: "₹1500",
+      price: "₹150",
       features: [
         { text: "Complete Documentation", included: true },
         { text: "Working Materials in Figma", included: true },
@@ -1138,7 +1138,7 @@ const PricingSection = () => {
     },
     {
       title: "Exclusive",
-      price: "₹3999",
+      price: "₹99",
       features: [
         { text: "Complete Documentation", included: true },
         { text: "Working Materials in Figma", included: true },
