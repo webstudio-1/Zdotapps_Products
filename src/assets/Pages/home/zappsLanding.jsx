@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import studioImage from '../../images/img_studio.png';
-import industryIcon from '../../images/ecomerce.png';
+import ecomerceIcon from '../../images/ecomerce.png';
 import eventsIcon from '../../images/events.png';
 import hospitalIcon from '../../images/hospital.png';
 import universityIcon from '../../images/university.png';
@@ -1031,7 +1031,7 @@ const ProcessFlow = () => {
         <div className="industry-cards">
           <div className="industry-card">
 <div className="industry-icon">
-  <img src={industryIcon} alt="Industry Icon" width="60" />
+  <img src={ecomerceIcon} alt="Industry Icon" width="60" />
 </div>
 
             <h3 className="industry-title">E-Commerce</h3>
