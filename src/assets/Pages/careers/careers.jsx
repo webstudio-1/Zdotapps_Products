@@ -84,58 +84,61 @@ export default function Careers() {
       </div>
 
       {/* Search and Filter */}
-      <div className="mb-4">
-        <div className="row g-2 align-items-center">
-          <div className="col-12 col-lg-8">
-            <div className="input-group">
-              <span className="input-group-text bg-light border-0 text-muted">
-                <i className="bi bi-search"></i>
-              </span>
-              <input
-                className="form-control bg-light border-0"
-                placeholder="Search jobs by title, department, skills, or experience..."
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-          </div>
-
-          <div className="col-8 col-lg-3">
-            <div className="input-group">
-              <span className="input-group-text bg-light border-0 text-muted">
-                <i className="bi bi-building"></i>
-              </span>
-              <select
-                className="form-select bg-light border-0"
-                value={selectedDepartment}
-                onChange={handleDepartmentFilter}
-              >
-                {departments.map((dept) => (
-                  <option key={dept} value={dept}>
-                    {dept}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="col-4 col-lg-1 d-flex justify-content-end gap-2">
-            <button
-              className={`btn ${viewMode === "grid" ? "btn-warning" : "btn-outline-secondary"} text-dark`}
-              onClick={() => handleViewToggle("grid")}
-            >
-              <i className="bi bi-grid-3x3-gap"></i>
-            </button>
-            <button
-              className={`btn ${viewMode === "list" ? "btn-warning" : "btn-outline-secondary"} text-dark`}
-              onClick={() => handleViewToggle("list")}
-            >
-              <i className="bi bi-list"></i>
-            </button>
-          </div>
+<div className="mb-4">
+  <div className="border rounded-3 p-4" style={{ backgroundColor: "#ffffffff" }}>
+    <div className="row g-2 align-items-center">
+      <div className="col-12 col-lg-8">
+        <div className="input-group">
+          <span className="input-group-text bg-light border-0 text-muted">
+            <i className="bi bi-search"></i>
+          </span>
+          <input
+            className="form-control bg-light border-0"
+            placeholder="Search jobs by title, department, skills, or experience..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
         </div>
-        <div className={`mt-2 small ${styles.resultsText}`}>All jobs</div>
       </div>
+
+      <div className="col-8 col-lg-3">
+        <div className="input-group">
+          <span className="input-group-text bg-light border-0 text-muted">
+            <i className="bi bi-building"></i>
+          </span>
+          <select
+            className="form-select bg-light border-0"
+            value={selectedDepartment}
+            onChange={handleDepartmentFilter}
+          >
+            {departments.map((dept) => (
+              <option key={dept} value={dept}>
+                {dept}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="col-4 col-lg-1 d-flex justify-content-end gap-2">
+        <button
+          className={`btn ${viewMode === "grid" ? "btn-warning" : "btn-outline-secondary"} text-dark`}
+          onClick={() => handleViewToggle("grid")}
+        >
+          <i className="bi bi-grid-3x3-gap"></i>
+        </button>
+        <button
+          className={`btn ${viewMode === "list" ? "btn-warning" : "btn-outline-secondary"} text-dark`}
+          onClick={() => handleViewToggle("list")}
+        >
+          <i className="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+    <div className={`mt-2 small ${styles.resultsText}`}>All jobs</div>
+  </div>
+</div>
+
 
       {/* Job Cards */}
       <div className="row g-4 mb-4">

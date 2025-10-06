@@ -7,24 +7,32 @@ const API_BASE_URL = "http://localhost:8000";
 
 // Inline styles for modern look (move to CSS file in production)
 const styles = {
-  bg: {
+bg: {
     background: "#f7faff",
     minHeight: "100vh",
     padding: "40px 0",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-  },
-  card: {
+},
+
+card: {
     background: "#fff",
     borderRadius: "2rem",
     boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
     padding: "2.5rem",
     width: "80%",
-  },
+    height: "800px", /* Adjust this value to the desired height */
+    display: "flex", /* Make card a flex container */
+    flexDirection: "column", /* Arrange content vertically */
+    alignItems: "center", /* Center content horizontally */
+    justifyContent: "center", /* Center content vertically */
+},
+
+
   badge: {
     background: "#eaf1fb",
-    color: "#ffc107",
+    color: "#000000ff",
     border: "none",
     fontWeight: 500,
     borderRadius: "1rem",
@@ -32,7 +40,7 @@ const styles = {
     fontSize: "1em",
   },
   tabs: {
-    background: "#f1f5fd",
+    // background: "#0055ffff",
     borderRadius: "2rem",
     padding: "0.25rem",
     display: "flex",
@@ -43,7 +51,7 @@ const styles = {
   tabBtn: {
     border: "none",
     background: "transparent",
-    color: "#ffc107",
+    color: "#000000ff",
     fontWeight: 600,
     borderRadius: "2rem",
     padding: "0.5em 1.5em",
@@ -55,11 +63,11 @@ const styles = {
   },
   tabBtnActive: {
     background: "#ffc107",
-    color: "#fff",
+    color: "#131212ff",
     boxShadow: "0 2px 8px rgba(99,102,241,0.08)",
   },
   input: {
-    borderRadius: "1rem",
+    borderRadius: "0.3rem",
     border: "1.5px solid #e0e7ef",
     background: "#f8fafc",
   },
@@ -419,9 +427,9 @@ export default function JobDetails() {
   return (
     <div style={styles.bg}>
       <div style={styles.card}>
-        <div className="row g-5 align-items-stretch flex-grow-1">
+        <div className="row g-5 align-items-stretch flex-grow-1 mt-2">
           {/* Left: Job Details */}
-          <div className="col-12 col-lg-6 pe-lg-5 d-flex flex-column">
+          <div className="col-12 col-lg-7 pe-lg-5 d-flex flex-column">
             <h1 className="h2 fw-bold mb-3 text-warning text-center">{job.title}</h1>
             <div className="d-flex flex-wrap gap-2 mb-4 fs-6 justify-content-center">
               <span style={styles.badge}><i className="fa-solid fa-briefcase me-2"></i>{job.experience}</span>
@@ -467,7 +475,7 @@ export default function JobDetails() {
             </ul>
           </div>
           {/* Right: Form */}
-          <div className="col-12 col-lg-6 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
+          <div className="col-12 col-lg-5 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
             <div className="mb-3 text-center">
               <h2 className="h3 fw-semibold mb-1 text-warning">Apply for this Position</h2>
             </div>

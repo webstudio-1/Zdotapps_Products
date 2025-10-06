@@ -13,9 +13,13 @@ import shopIcon from '../../images/shop.png';
 import schoolsIcon from '../../images/schools.png';
 import child_careIcon from '../../images/child_care.png';
 import readyImg from "../../images/ready.png";
-import customImg from "../../images/custom.png";
-import fastImg from "../../images/retaill.png";
+import customImg from "../../images/retaill.png";
+import fastImg from "../../images/custom.png";
 import retailImg from "../../images/retail.png";
+import updated_logoIcon from '../../images/updated_logo.png';
+
+
+
 import {
   Globe,
   Smartphone,
@@ -345,7 +349,7 @@ const styles = `
 
   .featured-products {
     flex-shrink: 0; /* Don't allow this section to shrink */
-    width: 380px; /* Fixed width for the products section */
+    width: 420px; /* Fixed width for the products section */
     background-color: transparent; /* No background for this section */
     color: #FFFFFF;
     // padding: 2rem 0; 
@@ -365,10 +369,10 @@ const styles = `
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    height: 100px;
+    height: 120px;
   }
 
   .product-card:hover {
@@ -391,16 +395,17 @@ const styles = `
   }
 
   .product-card-title {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0rem;
     color: #F3F3F3; /* Light text for title */
+      line-height: 1.4;
   }
 
   .product-card-description {
-    font-size: 0.875rem;
+    font-size: 0.850rem;
     color: #CCCCCC; /* Lighter grey for description */
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   /* Automatic Scrolling Styles */
@@ -752,9 +757,10 @@ const styles = `
 // Define a reusable ProductCard component for cleanliness
 const ProductCard = ({ title, description, opacity }) => (
   <div className="product-card" style={opacity ? { opacity } : {}}>
-    <div className="product-card-icon">
-      <span style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>z.</span>
-    </div>
+  <div className="product-card-icon">
+<img src={updated_logoIcon} alt="Product Icon" style={{ height: '60px', objectFit: 'contain' }} />
+</div>
+
     <div>
       <p className="product-card-title">{title}</p>
       <p className="product-card-description">{description}</p>
@@ -768,11 +774,11 @@ const HeroSection = () => {
   // Define product data once
   const products = [
     { title: 'z.Hire', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'Campus.Life', description: 'A smart platform to enhance campus experience and streamline student services.' },
-    { title: 'z.engage', description: 'An intelligent engagement tool to foster community and boost user interaction.' },
-    { title: 'z.Assist', description: 'Your personal AI assistant for task management and productivity enhancement.' },
-    { title: 'z.Analytics', description: 'Advanced analytics platform for deep insights into your business data.' },
-    { title: 'z.Connect', description: 'Seamless communication and collaboration suite for modern teams.' },
+    { title: 'Campus.Life', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.engage', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.Assist', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.Analytics', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.Connect', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
   ];
 
   return (
@@ -920,30 +926,30 @@ const ServiceTypesSection = () => {
   const serviceTypes = [
     {
       id: "ready-to-use",
-      title: "Ready to Use",
+      title: "Instant Product Launches",
       description:
-        "Choose from our collection of professionally designed templates, customize with your content, and launch quickly.",
+        "Launch websites, apps, or backend solutions quickly without delays.",
       image: readyImg,
     },
     {
       id: "custom-build",
-      title: "Custom Build",
+      title: "Quick turnaround cycles",
       description:
-        "Work with our expert team to create a completely custom solution designed specifically for your unique requirements.",
+        "We understand the importance of speed. Our turnovers are quick to ensure no hassle.",
       image: customImg,
     },
     {
       id: "fast-delivery",
-      title: "Quick Turnaround",
+      title: "Built for Scale",
       description:
-        "We understand the importance of speed. Our projects move fast to ensure no hassle for you.",
+        "Our teams work at godspeed to deliver for scaling your businesses.",
       image: fastImg,
     },
     {
       id: "scalable",
-      title: "Built for Scale",
+      title: "Reliable Support",
       description:
-        "Our solutions are designed to grow with your business—stable, secure, and scalable.",
+        "Get expert guidance whenever you need it for smooth operations.",
       image: retailImg,
     },
   ];

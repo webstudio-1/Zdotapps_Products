@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Import images
 import giderImage from "../../images/gider_black.png";
-import zengageImage from "../../images/engage1.webp";
+import zengageImage from "../../images/new_engage.png";
 import zflowImage from "../../images/flow.png";
 import zhireImage from "../../images/hire.png";
 import zmeritImage from "../../images/merit.png";

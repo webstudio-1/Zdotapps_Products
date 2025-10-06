@@ -35,6 +35,7 @@ import GiDER from "./assets/Pages/products/giDER/giDER";
 import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
 import ZappsLanding from "./assets/Pages/home/zappsLanding";
+import WebStudio from "./assets/Pages/web/web";
 
 
 // ✅ Wrapper to show header/footer everywhere except login page
@@ -86,6 +87,8 @@ function App() {
             <Route path="z.qui" element={<Zqui />} />
             <Route path="z.form" element={<Zform />} />
             <Route path="zapps" element={<ZappsLanding />} />
+            {/* Studios */}
+            <Route path="studios/web" element={<WebStudio />} />
 
           </Routes>
         </LayoutWrapper>
