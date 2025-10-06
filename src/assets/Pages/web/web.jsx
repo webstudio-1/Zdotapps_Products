@@ -338,7 +338,7 @@ function App() {
                   <span style={{ color: '#F2C94C' }}>Health care</span>
                 </div>
                 <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We Achieved Results for
+                  How We really achieved Results for
                   <br />[Project Name]
                 </div>
               </div>
