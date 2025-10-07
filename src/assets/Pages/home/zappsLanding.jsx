@@ -80,7 +80,7 @@ const styles = `
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 1rem;
   }
@@ -514,6 +514,8 @@ const styles = `
     justify-content: space-between;
     gap: 2rem;
     box-shadow: 0 4px 20px rgba(255, 201, 74, 0.1);
+    height:35rem;
+ 
   }
   
   .studio-content {
@@ -522,14 +524,14 @@ const styles = `
   }
   
   .studio-title {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #FFC94A;
     margin-bottom: 1rem;
   }
   
   .studio-description {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #F3F3F3;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -579,7 +581,7 @@ const styles = `
     max-width: 30%;
     border-radius: 1.5rem;
     overflow: hidden;
-    height: 300px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -621,7 +623,8 @@ const styles = `
   .industry-cards {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: -1.5px;
+    line-height: 90px;
     flex-wrap: wrap;
   }
   
@@ -629,7 +632,7 @@ const styles = `
     background-color: #333333;
     border-radius: 1rem;
     padding: 2rem;
-    width: 270px;
+    width: 345px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -709,7 +712,7 @@ const styles = `
     background-color: #0d0d0d;
     border-radius: 1rem;
     padding: 2rem;
-    width: 250px;
+    width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1026,7 +1029,7 @@ const ServiceTypesSection = () => {
 // Process Flow Component - Solutions for Every Industry
 const ProcessFlow = () => {
   return (
-    <section className="industry-solutions">
+  <section className="industry-solutions">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2>Solutions for Every <span>Industry</span></h2>
@@ -1034,87 +1037,122 @@ const ProcessFlow = () => {
             From startups to enterprises, we deliver tailored digital solutions that fit your world.
           </p>
         </div>
-        <div className="industry-cards">
-          <div className="industry-card">
-<div className="industry-icon">
-  <img src={ecomerceIcon} alt="Industry Icon" width="60" />
-</div>
+        <div className="row g-4 industry-cards">
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={ecomerceIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">E-Commerce</h3>
+            </div>
+          </div>
 
-            <h3 className="industry-title">E-Commerce</h3>
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={eventsIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Events</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={hospitalIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Hospital</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={universityIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">University</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={hotelIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Resorts & Hotels</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={food_courtIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Food-Court</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={technologyIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Technology</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={manufacturingIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Manufacturing</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={sportsIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Sports</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={shopIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Retail Shop</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={schoolsIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Schools</h3>
+            </div>
+          </div>
+
+          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+            <div className="industry-card">
+              <div className="industry-icon">
+                <img src={child_careIcon} alt="Industry Icon" width="60" />
+              </div>
+              <h3 className="industry-title">Child Care</h3>
+            </div>
           </div>
           
-          <div className="industry-card">
-       <div className="industry-icon">
-  <img src={eventsIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Events</h3>
-          </div>
-          
-          <div className="industry-card">
-         <div className="industry-icon">
-  <img src={hospitalIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Hospital</h3>
-          </div>
-            <div className="industry-card">
-          <div className="industry-icon">
-  <img src={universityIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">University</h3>
-          </div>
-            <div className="industry-card">
-          <div className="industry-icon">
-  <img src={hotelIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Resorts & Hotels</h3>
-          </div>
-            <div className="industry-card">
-         <div className="industry-icon">
-  <img src={food_courtIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Food-Court</h3>
-          </div>
-            <div className="industry-card">
-         <div className="industry-icon">
-  <img src={technologyIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Technology</h3>
-          </div>
-            <div className="industry-card">
-          <div className="industry-icon">
-  <img src={manufacturingIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Manufacturing</h3>
-          </div>
-            <div className="industry-card">
-         <div className="industry-icon">
-  <img src={sportsIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Sports</h3>
-          </div>
-            <div className="industry-card">
-        <div className="industry-icon">
-  <img src={shopIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Retail Shop</h3>
-          </div>
-            <div className="industry-card">
-      <div className="industry-icon">
-  <img src={schoolsIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Schools</h3>
-          </div>
-          
-          <div className="industry-card">
-       <div className="industry-icon">
-  <img src={child_careIcon} alt="Industry Icon" width="60" />
-</div>
-            <h3 className="industry-title">Child Care</h3>
-          </div>
-          <button class = "btn btn-warning btn-lg">View all</button>
+        </div>
+        <div className="text-center mt-4">
+          {/* <button className="btn btn-warning btn-lg">View all</button> */}
         </div>
       </div>
     </section>
+
   );
 };
 
@@ -1263,41 +1301,41 @@ const PricingSection = () => {
     fontSize: '1.1rem',
   };
 
-  return (
-    <section style={containerStyle}>
-      <h2 style={headingStyle}>Choose a plan that suits for your business</h2>
-      <div style={plansContainerStyle}>
-        {plans.map((plan, index) => (
-          <div
-            key={index}
-            style={{
-              ...planCardStyle,
-              ...planCardHoverStyle // You might want to handle hover with state for a more precise effect
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0px)'}
-          >
-            <div style={titleStyle}>{plan.title}</div>
-            <div style={priceStyle}>{plan.price}</div>
-            <div style={billingStyle}>Per month, billed annually</div>
-            <a href="#" style={{...ctaButtonStyle}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E6B842'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFC94A'}>
-              Try It For Free
-            </a>
-            <ul style={featuresListStyle}>
-              {plan.features.map((feature, i) => (
-                <li key={i} style={featureItemStyle}>
-                  <span style={feature.included ? checkStyle : crossStyle}>
-                    {feature.included ? '✓' : '✗'}
-                  </span>
-                  <span style={{ color: 'white' }}>{feature.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  // return (
+  //   <section style={containerStyle}>
+  //     <h2 style={headingStyle}>Choose a plan that suits for your business</h2>
+  //     <div style={plansContainerStyle}>
+  //       {plans.map((plan, index) => (
+  //         <div
+  //           key={index}
+  //           style={{
+  //             ...planCardStyle,
+  //             ...planCardHoverStyle // You might want to handle hover with state for a more precise effect
+  //           }}
+  //           onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
+  //           onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0px)'}
+  //         >
+  //           <div style={titleStyle}>{plan.title}</div>
+  //           <div style={priceStyle}>{plan.price}</div>
+  //           <div style={billingStyle}>Per month, billed annually</div>
+  //           <a href="#" style={{...ctaButtonStyle}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E6B842'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFC94A'}>
+  //             Try It For Free
+  //           </a>
+  //           <ul style={featuresListStyle}>
+  //             {plan.features.map((feature, i) => (
+  //               <li key={i} style={featureItemStyle}>
+  //                 <span style={feature.included ? checkStyle : crossStyle}>
+  //                   {feature.included ? '✓' : '✗'}
+  //                 </span>
+  //                 <span style={{ color: 'white' }}>{feature.text}</span>
+  //               </li>
+  //             ))}
+  //           </ul>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </section>
+  // );
 };
 
 // Final CTA Section Component

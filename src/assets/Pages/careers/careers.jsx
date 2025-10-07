@@ -73,7 +73,7 @@ export default function Careers() {
   };
 
   return (
-    <div className={`container mt-4 ${styles.page}`}>
+    <div className={`container mt-4 py-5 ${styles.page}`}>
       {/* Header */}
       <div className="text-center mb-4">
         <h1 className="display-5 fw-bold text-dark mt-5 py-3">Career Opportunities at Z.Apps</h1>
@@ -82,9 +82,10 @@ export default function Careers() {
           looking for passionate professionals to help shape the future of our company.
         </p>
       </div>
+      
 
       {/* Search and Filter */}
-<div className="mb-4">
+<div className="mb-4 py-2">
   <div className="border rounded-3 p-4" style={{ backgroundColor: "#ffffffff" }}>
     <div className="row g-2 align-items-center">
       <div className="col-12 col-lg-8">
@@ -99,12 +100,13 @@ export default function Careers() {
             onChange={handleSearch}
           />
         </div>
+        
       </div>
 
       <div className="col-8 col-lg-3">
         <div className="input-group">
           <span className="input-group-text bg-light border-0 text-muted">
-            <i className="bi bi-building"></i>
+            <i className="fas fa-filter filter-icon"></i>
           </span>
           <select
             className="form-select bg-light border-0"

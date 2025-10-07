@@ -16,6 +16,7 @@ import { FaArrowRight } from "react-icons/fa";
 import updated_logoImage from '../../images/updated_logo.png';
 import updated_k_logoImage from '../../images/updated_k_logo.png';
 import ecomerceImage from '../../images/ecomerce.png';
+import custom_buildImage from '../../images/custom_build.png';
 
 
 function App() {
@@ -46,81 +47,109 @@ function App() {
       </section>
       
       {/* Built to cater to your requirement section */}
-      <section
-        className="py-5"
+<section
+  className="py-5"
+  style={{
+    backgroundColor: '#0f0f0f',
+    backgroundImage:
+      'radial-gradient(1200px 300px at 50% 0%, rgba(242,201,76,0.08), rgba(0,0,0,0)), radial-gradient(800px 200px at 50% 100%, rgba(242,201,76,0.06), rgba(0,0,0,0))'
+  }}
+>
+  <div className="container">
+    <div className="text-center mb-5">
+      <h2 className="fw-bold mb-2" style={{ color: '#ffffff', fontSize: 40 }}>
+        Built to cater to your requirement-
+      </h2>
+      <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 40 }}>
+        Quick and reliable models.
+      </div>
+      <p
+        className="mt-3"
         style={{
-          backgroundColor: '#0f0f0f',
-          backgroundImage:
-            'radial-gradient(1200px 300px at 50% 0%, rgba(242,201,76,0.08), rgba(0,0,0,0)), radial-gradient(800px 200px at 50% 100%, rgba(242,201,76,0.06), rgba(0,0,0,0))'
+          color: 'rgba(255,255,255,0.8)',
+          maxWidth: 900,
+          margin: '0 auto'
         }}
       >
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-2" style={{ color: '#ffffff', fontSize: 40 }}>Built to cater to your requirement-</h2>
-            <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 40 }}>Quick and reliable models.</div>
-            <p className="mt-3" style={{ color: 'rgba(255,255,255,0.8)', maxWidth: 900, margin: '0 auto' }}>
-              Pick a template and go live in minutes, or let us craft a fully custom project
-              designed around your brand and goals.
+        Pick a template and go live in minutes, or let us craft a fully custom project
+        designed around your brand and goals.
+      </p>
+    </div>
+
+    <div className="row g-4 justify-content-center">
+      {/* Ready to use */}
+      <div className="col-md-6 col-lg-3 col-xl-4">
+        <div className="h-100 p-3 position-relative">
+          <img
+            src={custom_buildImage}
+            alt="Custom Build Image"
+            className="img-fluid rounded mb-3 w-100"
+            style={{
+              border: '1px solid rgba(242,201,76,0.15)',
+              height: 320,
+              objectFit: 'cover',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
+              borderRadius: 27,
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              overflow: 'hidden',
+             
+          
+            }}
+          />
+
+          {/* Overlay Text */}
+          <div
+            className="position-absolute start-0 top-0 p-3 text-start text-white mt-3 py-3"
+            style={{ zIndex: 1 }}
+          >
+            <h5 className="fw-bold mb-2" style={{ color: '#F2C94C', fontSize: 28, padding: '20px'}}>
+              Ready to use
+            </h5>
+            <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)', padding: '20px',  marginTop: '-40px', fontSize: 16 }}>
+              Pick from our library of templates<br></br> and launch your website in minutes fully customizable and responsive.
             </p>
-          </div>
-
-          <div className="row g-4 justify-content-center">
-            {/* Ready to use */}
-            <div className="col-md-6 col-lg-3 col-xl-4">
-              <div
-                className="h-100 p-3"
-                style={{
-                  background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
-                  borderRadius: 22,
-                  border: '1px solid rgba(242,201,76,0.15)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
-                }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=1200&auto=format&fit=crop&q=60"
-                  alt="Ready to use preview"
-                  className="img-fluid rounded mb-3 w-100"
-                  style={{ border: '1px solid rgba(242,201,76,0.12)', height: 220, objectFit: 'cover' }}
-                />
-                <h5 className="fw-bold mb-2" style={{ color: '#F2C94C', fontSize: 28 }}>Ready to use</h5>
-                <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  Pick from our library of templates and
-                  launch your website in minutes – fully
-                  customizable and responsive.
-                </p>
-                <a href="#" className="text-decoration-none" style={{ color: '#F2C94C', fontWeight: 600 }}>explore now ↗</a>
-              </div>
-            </div>
-
-            {/* Custom Build */}
-            <div className="col-md-6 col-lg-4 col-xl-4">
-              <div
-                className="h-100 p-3"
-                style={{
-                  background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))',
-                  borderRadius: 22,
-                  border: '1px solid rgba(242,201,76,0.15)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
-                }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1555371363-5a49f5c4e6c9?w=1200&auto=format&fit=crop&q=60"
-                  alt="Custom build preview"
-                  className="img-fluid rounded mb-3 w-100"
-                  style={{ border: '1px solid rgba(242,201,76,0.12)', height: 220, objectFit: 'cover' }}
-                />
-                <h5 className="fw-bold mb-2" style={{ color: '#F2C94C', fontSize: 28 }}>Custom Build</h5>
-                <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                  We craft solutions from scratch to
-                  match your exact needs – engineered,
-                  designed, and optimized for impact.
-                </p>
-                <a href="#" className="text-decoration-none" style={{ color: '#F2C94C', fontWeight: 600 }}>explore now ↗</a>
-              </div>
-            </div>
+            <button className="btn btn-outline-warning btn-lg mt-5 ms-3">explore now ↗</button>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Custom Build */}
+      <div className="col-md-6 col-lg-4 col-xl-4">
+        <div className="h-100 p-3 position-relative">
+          <img
+            src={custom_buildImage}
+            alt="Custom Build Image"
+            className="img-fluid rounded mb-3 w-100"
+            style={{
+              border: '1px solid rgba(242,201,76,0.15)',
+              height: 320,
+              objectFit: 'cover',
+              borderRadius: 27,
+              boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+              overflow: 'hidden',
+            }}
+          />
+
+          {/* Overlay Text */}
+          <div
+            className="position-absolute start-0 top-0 p-3 text-start text-white mt-3 py-3"
+            style={{ zIndex: 1}}
+          >
+            <h5 className="fw-bold mb-2" style={{ color: '#F2C94C', fontSize: 28,  padding: '20px' }}>
+              Custom Build
+            </h5>
+            <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)',  padding: '20px', marginTop: '-40px', fontSize: 16}}>
+              We craft solutions from scratch <br></br>to match your exact needs engineered, designed, and optimized for impact.
+            </p>
+             <button className="btn btn-outline-warning btn-lg mt-5 ms-3">explore now ↗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
       {/* Trending Ready-to-use Websites section */}
       <section className="py-5 text-center" style={{ backgroundColor: '#0f0f0f' }}>
@@ -258,42 +287,91 @@ function App() {
       </div>
     </section>
       {/* We Don't Just Say It, We Deliver section */}
-      <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
-        <div className="container">
-          <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
-            We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
-          </h2>
-          <div className="row g-4 align-items-stretch">
-            {/* Left image */}
-            <div className="col-lg-6">
-              <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
-                alt="Support team"
-                className="img-fluid w-100"
-                style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
-              />
-            </div>
-            {/* Right stacked cards */}
-            <div className="col-lg-6 d-flex flex-column gap-3">
-              {[{
-                title: 'Quick around Cycles',
-                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.'
-              },{
-                title: 'Built for Scale',
-                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.'
-              },{
-                title: 'Reliable Support',
-                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.'
-              }].map((card, idx) => (
-                <div key={idx} className="p-4" style={{ background: 'rgba(21,21,21,0.85)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 10px 24px rgba(0,0,0,0.45)' }}>
-                  <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>{card.title}</h4>
-                  <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>{card.text}</p>
-                </div>
-              ))}
-            </div>
+  <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
+  <div className="container">
+    <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
+      We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
+    </h2>
+    <div className="row g-4 align-items-stretch">
+      {/* Left image */}
+      <div className="col-lg-6">
+        <img
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
+          alt="Support team"
+          className="img-fluid w-100"
+          style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
+        />
+      </div>
+      {/* Right stacked cards with vertical scrolling */}
+      <div className="col-lg-6 d-flex flex-column gap-3">
+        <div
+          className="scroll-container"
+          style={{
+            height: '410px',
+            overflowY: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <div
+            className="scroll-content"
+            style={{
+              animation: 'scroll 10s linear infinite',
+              display: 'flex',
+              flexDirection: 'column',
+              gap:'20px',
+            }}
+          >
+            {[{
+              title: 'Quick around Cycles',
+              text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.'
+            }, {
+              title: 'Built for Scale',
+              text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.'
+            }, {
+              title: 'Reliable Support',
+              text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.'
+            }, {
+              title: 'Built for Scale',
+              text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.'
+            }].map((card, idx) => (
+              <div
+                key={idx}
+                className="p-4"
+                style={{
+                  background: 'rgba(21,21,21,0.85)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
+                }}
+              >
+                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
+                  {card.title}
+                </h4>
+                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  {card.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style jsx>{`
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+`}</style>
+
 
       {/* Discover How We Deliver Outstanding Results section */}
       <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
@@ -375,7 +453,7 @@ function App() {
       </section>
 
       {/* Don't just take our word for it section */}
-      <section className="py-5" style={{ backgroundColor: '#0b0b0b', minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
+      <section className="py-5" style={{ backgroundColor: '#0b0b0b', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
         <div className="container">
           <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
           <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
@@ -418,7 +496,7 @@ function App() {
                 <div className="row g-5 align-items-center justify-content-center">
                   {[left, right].map((t, i) => (
                     <div key={i} className="col-md-6">
-                      <div className="d-flex gap-4 align-items-center" style={{ background: 'radial-gradient(1200px 400px at 50% -10%, rgba(242,201,76,0.08), rgba(0,0,0,0))' }}>
+                      <div className="d-flex gap-4 align-items-center">
                         <img
                           src={t.img}
                           alt={t.name}

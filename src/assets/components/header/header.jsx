@@ -33,7 +33,8 @@ function Header() {
 
   return (
     <header
-      className="navbar navbar-expand-lg navbar-light border-bottom py-3"
+    className="navbar navbar-expand-lg navbar-light border-bottom py-3 fixed-top"
+
       style={{ background: "#F9ECC5" }}
     >
       <div className="container">

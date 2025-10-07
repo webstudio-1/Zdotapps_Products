@@ -132,6 +132,7 @@ body {
   justify-content: flex-end;
 }
 
+
 /* Responsive: stack on small screens */
 @media (max-width: 768px) {
   .listContent {
@@ -146,3 +147,5 @@ body {
     justify-content: flex-start;
   }
 }
+
+

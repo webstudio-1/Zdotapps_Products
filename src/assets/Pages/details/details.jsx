@@ -21,8 +21,8 @@ card: {
     borderRadius: "2rem",
     boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
     padding: "2.5rem",
-    width: "80%",
-    height: "800px", /* Adjust this value to the desired height */
+    width: "90%",
+    height: "850px", /* Adjust this value to the desired height */
     display: "flex", /* Make card a flex container */
     flexDirection: "column", /* Arrange content vertically */
     alignItems: "center", /* Center content horizontally */
@@ -81,6 +81,26 @@ card: {
     fontWeight: 600,
     padding: "0.5em 2em",
   },
+
+};
+  const salaryNoteStyle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginTop: "1rem",
+  marginBottom: "1.5rem",
+  padding: "12px 16px",
+  backgroundColor: "#d4edda",
+  border: "1px solid #c3e6cb",
+  borderRadius: "8px",
+  fontSize: "0.9rem",
+  color: "#155724",
+  textAlign: "center",
+  maxWidth: "80%",
+  marginLeft: "auto",
+  marginRight: "auto",
+  width: "fit-content",
+  gap: "0.75rem"
 };
 
 function useExternalResource(hrefOrSrc, type) {
@@ -139,18 +159,25 @@ export default function JobDetails() {
       noticePeriod: "Immediate Joinees",
       department: "Technology",
       responsibilities: [
-        "Design and build advanced applications for the Android platform.",
+        "Design and build advanced Android applications using Kotlin and Java.",
         "Collaborate with cross-functional teams to define, design, and ship new features.",
-        "Work with outside data sources and APIs.",
-        "Unit-test code for robustness, including edge cases, usability, and general reliability.",
-        "Continuously discover, evaluate, and implement new technologies to maximize development efficiency."
+        "Ensure performance, quality, and compliance to accessibility standards.",
+        "Help maintain code quality, organization, and automation.",
+        "Integrate RESTful APIs and third-party SDKs.",
+        "Guide architectural decisions and lead technical discussions.",
+        "Continuously discover, evaluate, and implement new technologies.",
+        "Mentor junior developers and contribute to team knowledge sharing."
+      
       ],
       qualifications: [
-        "Bachelor’s degree in Computer Science or related field.",
-        "4+ years of Android development experience.",
-        "Strong knowledge of Android SDK, different versions of Android, and how to deal with different screen sizes.",
-        "Familiarity with RESTful APIs to connect Android applications to back-end services.",
-        "Experience with offline storage, threading, and performance tuning."
+        "Bachelor's degree in Computer Science, Engineering, or related field.",
+        "4+ years of professional Android development experience.",
+        "Proficient in Kotlin and Java.",
+        "Strong understanding of Android SDK, screen sizes, and third-party libraries.",
+        "Experience with offline storage, threading, and performance tuning.",
+        "Solid understanding of mobile development lifecycle.",
+        "Experience with CI/CD tools, Git, and Agile methodologies."
+
       ]
     },
     {
@@ -160,18 +187,23 @@ export default function JobDetails() {
       noticePeriod: "Immediate Joinees",
       department: "Technology",
       responsibilities: [
-        "Design and build advanced applications for the iOS platform.",
-        "Collaborate with cross-functional teams to define, design, and ship new features.",
-        "Unit-test code for robustness, including edge cases, usability, and general reliability.",
-        "Work on bug fixing and improving application performance.",
-        "Continuously discover, evaluate, and implement new technologies to maximize development efficiency."
+        "Design and build advanced applications for the iOS platform using Swift.",
+        "Collaborate with product, design, and backend teams to define app features and architecture.",
+        "Ensure performance, quality, and responsiveness of applications.",
+        "Identify and fix bugs, bottlenecks, and performance issues.",
+        "Maintain code quality, organization, and automated testing.",
+        "Keep up to date with the latest iOS trends and technologies.",
+        "Review code, mentor junior developers, and enforce best practices.",
+        "Manage deployment and releases to the App Store."
       ],
       qualifications: [
-        "Bachelor’s degree in Computer Science or related field.",
-        "4+ years of iOS development experience.",
-        "Proficient with Objective-C or Swift and Cocoa Touch.",
-        "Experience with iOS frameworks such as Core Data, Core Animation, etc.",
-        "Familiarity with RESTful APIs to connect iOS applications to back-end services."
+        "Bachelor's degree in Computer Science, Engineering, or a related field.",
+        "4+ years of experience in iOS development.",
+        "Proficient in Swift and familiar with Objective-C.",
+        "Strong understanding of iOS frameworks (UIKit, CoreData, CoreAnimation, etc.).",
+        "Experience with RESTful APIs, JSON, and third-party libraries.",
+        "Knowledge of MVC, MVVM, and Clean Architecture.",
+        "Familiarity with Xcode, Git, and CI/CD pipelines."
       ]
     },
     {
@@ -181,18 +213,21 @@ export default function JobDetails() {
       noticePeriod: "Immediate Joinees",
       department: "Creative & Design",
       responsibilities: [
-        "Translate UI/UX design wireframes to actual code that will produce visual elements of the application.",
-        "Work with designers to bridge the gap between graphical design and technical implementation.",
-        "Develop new user-facing features.",
-        "Build reusable code and libraries for future use.",
-        "Ensure the technical feasibility of UI/UX designs."
+        "Translate UI/UX wireframes into responsive interfaces using HTML, CSS, JS.",
+        "Collaborate with teams to ensure quality experiences.",
+        "Design intuitive and functional UIs.",
+        "Optimize for performance and scalability.",
+        "Conduct usability testing and gather feedback.",
+        "Ensure design consistency across platforms.",
+        "Stay updated on trends, regulations, and technologies."
       ],
       qualifications: [
-        "Bachelor’s degree in Design, Computer Science, or related field.",
-        "2+ years of experience in UI/UX development.",
-        "Proficient understanding of web markup, including HTML5, CSS3.",
-        "Basic understanding of server-side CSS pre-processing platforms.",
-        "Good understanding of JavaScript frameworks, such as React or Angular."
+        "Bachelor's degree in Design or related field.",
+        "2–6 years in UI/UX or frontend development.",
+        "Experienced in Figma, Adobe XD, Sketch.",
+        "Skilled with HTML5, CSS3, JS, Bootstrap/Tailwind.",
+        "Knowledge of React.js, Vue.js, Angular is a plus.",
+        "Understanding of accessibility and mobile-first design."
       ]
     }
   ];
@@ -437,11 +472,16 @@ export default function JobDetails() {
               <span style={styles.badge}><i className="fa-solid fa-clock me-2"></i>{job.noticePeriod || "Immediate Joinees"}</span>
               <span style={styles.badge}><i className="fa-solid fa-users me-2"></i>Multiple openings</span>
             </div>
+                    <div style={salaryNoteStyle}>
+          <i class="fas fa-bolt"></i>
+  Salary is not a constraint for the right candidate.
+</div>
             {job.salaryNote && (
               <div className="alert alert-light border d-inline-flex align-items-center py-2 px-3 mb-3 mx-auto" role="alert">
                 <i className="fa-solid fa-bolt text-warning me-2"></i>
                 <span>{job.salaryNote}</span>
               </div>
+              
             )}
             <div style={styles.tabs}>
               <button
@@ -465,6 +505,10 @@ export default function JobDetails() {
                 <i className="fa-solid fa-star"></i> Skills
               </button>
             </div>
+
+
+
+
             <ul className="list-unstyled ms-2 fs-6">
               {(activeTab === "responsibilities" ? job.responsibilities : job.qualifications || ["No specific qualifications listed for this position."]).map((item, i) => (
                 <li key={i} className="mb-3 d-flex align-items-start">
@@ -474,50 +518,65 @@ export default function JobDetails() {
               ))}
             </ul>
           </div>
+          
           {/* Right: Form */}
           <div className="col-12 col-lg-5 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
             <div className="mb-3 text-center">
-              <h2 className="h3 fw-semibold mb-1 text-warning">Apply for this Position</h2>
+              <h2 className="fw-bold mb-1 text-warning">Apply for this Position</h2>
             </div>
             <form onSubmit={handleSubmit} className="d-flex flex-column flex-grow-1">
               <div className="row g-3 fs-6">
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">First Name *</label>
+                  <label className="form-label fw-semibold">First Name 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <input className="form-control" name="first-name" placeholder="Enter your first name" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Last Name *</label>
+                  <label className="form-label fw-semibold">Last Name 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <input className="form-control" name="last-name" placeholder="Enter your last name" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Email *</label>
+                  <label className="form-label fw-semibold">Email 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <input type="email" className="form-control" name="email" placeholder="Enter your email" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Phone Number *</label>
+                  <label className="form-label fw-semibold">Phone Number 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <input ref={phoneRef} className="form-control" name="phone" placeholder="Enter your phone number" required style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
                   <label className="form-label fw-semibold">
-                    Upload Resume * <i className="fa-solid fa-circle-info text-primary ms-1" title="PDF, DOC, or DOCX"></i>
+                    Upload Resume 
+                    <span class="required-asterisk text-danger">*</span>
                   </label>
                   <input type="file" id="resume" name="resume" className="form-control" accept=".pdf,.doc,.docx" onChange={handleFileChange} required style={styles.input} />
                   <div className="form-text">{resumeName}</div>
                 </div>
                 <div className="col-12 col-md-6">
+                  <i class="fab fa-github text-warning"></i>&nbsp;
                   <label className="form-label fw-semibold">GitHub</label>
                   <input className="form-control" name="github-link" placeholder="Your GitHub profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
+                  <i class="fab fa-linkedin text-warning"></i>&nbsp;
                   <label className="form-label fw-semibold">LinkedIn</label>
                   <input className="form-control" name="linkedin-link" placeholder="Your LinkedIn profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
+                  <i class="fab fa-figma text-warning"></i>&nbsp;
                   <label className="form-label fw-semibold">Figma</label>
                   <input className="form-control" name="figma-link" placeholder="Your Figma profile link" style={styles.input} />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Years of Experience *</label>
+                  <label className="form-label fw-semibold">Years of Experience 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <select className="form-select" name="years-of-experience" required style={styles.input}>
                     <option value="">Select an option</option>
                     {[1,2,3,4,5,6,7,8,9].map((y)=> (
@@ -527,7 +586,9 @@ export default function JobDetails() {
                   </select>
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">How did you hear about us? *</label>
+                  <label className="form-label fw-semibold">How did you hear about us? 
+                     <span class="required-asterisk text-danger">*</span>
+                  </label>
                   <select className="form-select" name="how-you-heard-us?" required style={styles.input}>
                     <option value="">Select an option</option>
                     <option>LinkedIn</option>
