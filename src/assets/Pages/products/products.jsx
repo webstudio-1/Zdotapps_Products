@@ -17,7 +17,6 @@ import formsImage from "../../images/zforms.png";
 
 const productList = [
   {
-    // name: "Z.Engage", // Added name field as it was commented out in original
     desc: "Engagement app for everyone’s needs",
     img: zengageImage,
     btn: "Know More",
@@ -25,7 +24,6 @@ const productList = [
     category: "Engagement",
   },
   {
-    // name: "Z.Flow", // Added name field
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
@@ -33,7 +31,6 @@ const productList = [
     category: "Productivity",
   },
   {
-    // name: "Z.Hire", // Added name field
     desc: "Hiring platform for smarter recruitment",
     img: zhireImage,
     btn: "Know More",
@@ -41,7 +38,6 @@ const productList = [
     category: "Business Services",
   },
   {
-    // name: "Z.Merit", // Added name field
     desc: "Skill testing and evaluation made simple",
     img: zmeritImage,
     btn: "Know More",
@@ -49,7 +45,6 @@ const productList = [
     category: "Rewards",
   },
   {
-    // name: "Z.Games", // Added name field
     desc: "Interactive social games for individuals and teams",
     img: zgamesImage,
     btn: "Know More",
@@ -57,7 +52,6 @@ const productList = [
     category: "Entertainment",
   },
   {
-    // name: "Z.Auth", // Added name field
     desc: "Secure authentication for enterprises",
     img: zauthImage,
     btn: "Know More",
@@ -65,7 +59,6 @@ const productList = [
     category: "Security",
   },
   {
-    // name: "Z.IOT", // Added name field
     desc: "Unified Platform for Kirana Stores",
     img: kiraazee,
     btn: "Know More",
@@ -73,7 +66,6 @@ const productList = [
     category: "Technology",
   },
   {
-    // name: "giDER", // Added name field
     desc: "Project execution app for tangible results",
     img: giderImage,
     btn: "Know More",
@@ -81,7 +73,6 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Quiz", // Added name field
     desc: "Quizzes for instant engagement",
     img: quiImage,
     btn: "Know More",
@@ -89,7 +80,6 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Sign", // Added name field
     desc: "Secure digital signatures on business documents",
     img: signImage,
     btn: "Know More",
@@ -97,7 +87,6 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    // name: "Z.Forms", // Added name field
     desc: "Interactive online forms for businesses",
     img: formsImage,
     btn: "Know More",
@@ -130,7 +119,6 @@ const Products = () => {
     if (searchTerm) {
       current = current.filter(
         (p) =>
-          p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.category.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -215,8 +203,8 @@ const Products = () => {
                   transform: isVisible ? "translateY(0)" : "translateY(20px)",
                   transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
                 }}
+                onClick={() => handleClick(product)} // Make the entire card clickable
               >
-                {/* MODIFIED: Removed onClick, role, and onKeyDown from article */}
                 <article
                   className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
                 >
@@ -241,7 +229,7 @@ const Products = () => {
                       <button
                         className={styles.ctaCircle}
                         onClick={(e) => {
-                          e.stopPropagation(); // avoid double navigation if parent was clickable
+                          e.stopPropagation(); // Avoid double navigation if parent was clickable
                           handleClick(product);
                         }}
                       >
@@ -255,7 +243,7 @@ const Products = () => {
                         href="#"
                         onClick={(e) => {
                           e.preventDefault(); // Prevent default link behavior
-                          e.stopPropagation(); // avoid double navigation if parent was clickable
+                          e.stopPropagation(); // Avoid double navigation if parent was clickable
                           handleClick(product);
                         }}
                         className={styles.tryNowTextLink}

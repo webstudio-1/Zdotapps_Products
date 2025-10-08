@@ -172,8 +172,7 @@ body {
   border-radius: 18px;
   padding: var(--spacing-md);
   text-align: center;
-
-  /* MODIFIED: Removed cursor: pointer */
+  cursor: pointer;
   transition: box-shadow 0.3s ease, border-color 0.4s ease; /* Removed transform */
 
   box-shadow: 0 6px 16px rgba(var(--text-color-rgb), 0.04),

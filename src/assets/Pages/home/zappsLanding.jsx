@@ -18,6 +18,7 @@ import fastImg from "../../images/custom.png";
 import retailImg from "../../images/retail.png";
 import updated_logoIcon from '../../images/updated_logo.png';
 
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 
 import {
@@ -77,6 +78,7 @@ const styles = `
     line-height: 1.6;
     color: var(--foreground);
     background-color: var(--background);
+    overflow-x: hidden;
   }
 
   .container {
@@ -287,7 +289,7 @@ const styles = `
   .hero-section {
     background-color: #1C1A1A; /* Dark background from image */
     color: #FFFFFF;
-    padding: 9.5rem 1rem; /* Adjust padding for better visual match */
+    padding: 12.5rem 1rem; /* Adjust padding for better visual match */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -527,19 +529,21 @@ const styles = `
     font-size: 3rem;
     font-weight: 700;
     color: #FFC94A;
-    margin-bottom: 1rem;
+   
   }
   
   .studio-description {
     font-size: 1.5rem;
     color: #F3F3F3;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-top: 4.5rem;
   }
   
   .studio-buttons {
     display: flex;
     gap: 1rem;
+      margin-top: 4.5rem;
+    
   }
   
   .studio-button {
@@ -829,7 +833,8 @@ const HeroSection = () => {
             </div>
             
           </div>
- <button class="btn btn-warning btn-md mt-3 float-end">View All ↗</button>
+ {/* <button class="btn btn-warning btn-md mt-3 float-end">View All ↗</button> */}
+  <p class="mt-3 float-end text-warning fs-5">View All ↗</p>
 
 
 
@@ -849,27 +854,32 @@ const StudiosSection = () => {
       id: 'web',
       title: 'Web Studio',
       description: 'Create stunning, fully responsive websites with a wide range of ready-to-use templates. Effortlessly customize layouts, colors, and features to perfectly align with your brand’s identity, vision, and business goals.',
-      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=Web+Studio'
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=Web+Studio',
+      link: '/studios/web', // Link for React Router
     },
     app: {
       id: 'app',
       title: 'App Studio',
       description: 'Develop innovative mobile applications for iOS and Android platforms, ensuring a seamless user experience. From concept to launch, we build high-performance apps that drive engagement and meet your specific business needs.',
-      imageUrl: '  https://placehold.co/400x300/FFC94A/1C1A1A?text=App+Studio'
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=App+Studio',
+      link: '/studios/app', // Link for React Router
     },
     agent: {
       id: 'agent',
       title: 'Agent Studio',
       description: 'Leverage the power of AI with custom-built intelligent agents and automation solutions. Streamline operations, enhance customer service, and gain competitive advantage with our cutting-edge AI technologies.',
-      imageUrl: '  https://placehold.co/400x300/FFC94A/1C1A1A?text=Agent+Studio'
+      imageUrl: 'https://placehold.co/400x300/FFC94A/1C1A1A?text=Agent+Studio',
+      link: '/studios/agent', // Link for React Router
     }
   };
 
   return (
-    <section className="py-20 px-4" style={{backgroundColor: '#1C1A1A'}}>
+    <section className="py-20 px-4" style={{ backgroundColor: '#1C1A1A' }}>
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold" style={{color: '#FFFFFF'}}>Your problem-Our <span style={{color: '#FFC94A'}}>studios</span> for solutions.</h2>
+          <h2 className="text-3xl font-bold" style={{ color: '#FFFFFF' }}>
+            Your problem-Our <span style={{ color: '#FFC94A' }}>studios</span> for solutions.
+          </h2>
           <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#888888' }}>
             Our three studios are designed to build and scale your businesses.
           </p>
@@ -898,26 +908,26 @@ const StudiosSection = () => {
         </div>
         
         {/* Studio Card */}
-        <div className="studio-card">
+        <Link to={studios[activeStudio].link} className="studio-card" style={{ textDecoration: 'none' }}>
           <div className="studio-content">
             <h3 className="studio-title">{studios[activeStudio].title}</h3>
             <p className="studio-description">{studios[activeStudio].description}</p>
             <div className="studio-buttons">
-              <a href="#" className="studio-button primary">
+              <Link to={studios[activeStudio].link} className="studio-button primary">
                 Ready to use ↗
-              </a>
-              <a href="#" className="studio-button secondary">
+              </Link>
+              <Link to={studios[activeStudio].link} className="studio-button secondary">
                 Customize ↗
-              </a>
+              </Link>
             </div>
           </div>
-     <div className="studio-image">
-  <img
-    src={studioImage}
-    alt="Studio illustration"
-  />
-</div>
-        </div>
+          <div className="studio-image">
+            <img
+              src={studioImage}
+              alt="Studio illustration"
+            />
+          </div>
+        </Link>
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ export default function ZAuth() {
       <div className={styles.backgroundShapes}></div>
       
 
-      <div className="container h-150">
+      <div className="container h-150 mt-5">
                <div className={styles.leftLogo}>
     <img src={aAuthLogo} alt="Z.auth Logo" />
   </div>

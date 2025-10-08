@@ -60,7 +60,7 @@ const Zhire = () => {
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
-          height: calc(100svh - var(--header-height));
+          height: calc(110svh - var(--header-height));
           position: relative;
           display: flex;
           align-items: stretch;
@@ -91,8 +91,8 @@ const Zhire = () => {
         <div className="overlay"></div>
 
         <div className="container-fluid content d-flex align-items-start">
-          <div className="container inner-wrap px-0 mt-5">
-            <div className="text-center">
+          <div className="container inner-wrap px-0 mt-5 py-5">
+            <div className="text-center mt-5">
               <img src={hireLogo} alt="z.hire logo" className="brand-logo mt-2" style={{ height: "80px" }} />
             </div>
 

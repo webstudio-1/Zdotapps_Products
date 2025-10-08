@@ -39,8 +39,8 @@ export default function Zform() {
       className="min-vh-100 d-flex align-items-center"
       style={{ background: 'linear-gradient(135deg, #000 0%, #FFF8DC 50%, #000 100%)' }}
     >
-      <div className="container py-4 py-md-5">
-        <div className="row g-0 shadow-lg rounded-4 overflow-hidden bg-white" style={{ minHeight: 600 }}>
+      <div className="container py-4 py-md-5 mt-5">
+        <div className="row g-0 shadow-lg rounded-4 overflow-hidden bg-white mt-5" style={{ minHeight: 600 }}>
           {/* Left Section - Hero (Glassmorphism only) */}
           <div className="col-12 col-lg-6 position-relative d-flex align-items-center justify-content-center" style={{ minHeight: 600 }}>
             <div

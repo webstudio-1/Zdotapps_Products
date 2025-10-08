@@ -10,23 +10,24 @@ const styles = {
 bg: {
     background: "#f7faff",
     minHeight: "100vh",
-    padding: "40px 0",
+    // padding: "40px 0",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
 },
 
 card: {
-    background: "#fff",
+    // background: "#fff",
     borderRadius: "2rem",
-    boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
+    // boxShadow: "6px 8px 32px rgba(0,0,0,0.40)",
     padding: "2.5rem",
-    width: "90%",
-    height: "850px", /* Adjust this value to the desired height */
+    width: "95%",
+    height: "950px", /* Adjust this value to the desired height */
     display: "flex", /* Make card a flex container */
     flexDirection: "column", /* Arrange content vertically */
     alignItems: "center", /* Center content horizontally */
     justifyContent: "center", /* Center content vertically */
+    
 },
 
 
@@ -40,21 +41,21 @@ card: {
     fontSize: "1em",
   },
   tabs: {
-    // background: "#0055ffff",
-    borderRadius: "2rem",
-    padding: "0.25rem",
-    display: "flex",
+    background: "#fff",
+    borderRadius: "3rem",
+    padding: "0.5rem",
+    display: "inline-flex",
     gap: "0.5rem",
-    justifyContent: "center",
-    marginBottom: "1.5rem",
+    border: "1px solid #f0f0f0",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
   },
   tabBtn: {
     border: "none",
     background: "transparent",
-    color: "#000000ff",
+    color: "#DAA520", // Gold color for inactive text
     fontWeight: 600,
     borderRadius: "2rem",
-    padding: "0.5em 1.5em",
+    padding: "1em 1.5em",
     transition: "background 0.2s, color 0.2s",
     fontSize: "1em",
     display: "flex",
@@ -64,7 +65,8 @@ card: {
   tabBtnActive: {
     background: "#ffc107",
     color: "#131212ff",
-    boxShadow: "0 2px 8px rgba(99,102,241,0.08)",
+    fontWeight: 'bold',
+    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
   },
   input: {
     borderRadius: "0.3rem",
@@ -460,12 +462,36 @@ export default function JobDetails() {
   }
 
   return (
+    
     <div style={styles.bg}>
+      
       <div style={styles.card}>
-        <div className="row g-5 align-items-stretch flex-grow-1 mt-2">
+<button
+  className="btn btn-white rounded-circle d-flex justify-content-start align-items-center"
+  style={{
+    width: '50px',
+    height: '50px',
+    marginRight: '106rem',
+    boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
+  }}
+>
+  <i
+    className="bi bi-arrow-left"
+    style={{
+      fontSize: '1.5rem',
+      color: '#efc426',
+      fontWeight: 'bold',  // Set fontWeight to bold
+      transform: 'scale(1.2)',
+    }}
+  />
+</button>
+ <div className="row g-5 align-items-stretch flex-grow-1">
           {/* Left: Job Details */}
-          <div className="col-12 col-lg-7 pe-lg-5 d-flex flex-column">
-            <h1 className="h2 fw-bold mb-3 text-warning text-center">{job.title}</h1>
+       
+          <div className="col-12 col-lg-6 pe-lg-5 d-flex flex-column">
+            <h1 className="h1 fw-bold mb-3 text-warning text-center">{job.title}</h1>
+       
+      
             <div className="d-flex flex-wrap gap-2 mb-4 fs-6 justify-content-center">
               <span style={styles.badge}><i className="fa-solid fa-briefcase me-2"></i>{job.experience}</span>
               <span style={styles.badge}><i className="fa-solid fa-sitemap me-2"></i>{job.department}</span>
@@ -483,33 +509,32 @@ export default function JobDetails() {
               </div>
               
             )}
-            <div style={styles.tabs}>
-              <button
-                style={{
-                  ...styles.tabBtn,
-                  ...(activeTab === "responsibilities" ? styles.tabBtnActive : {}),
-                }}
-                onClick={() => setActiveTab("responsibilities")}
-                type="button"
-              >
-                <i className="fa-solid fa-list-check"></i> Responsibilities
-              </button>
-              <button
-                style={{
-                  ...styles.tabBtn,
-                  ...(activeTab === "qualifications" ? styles.tabBtnActive : {}),
-                }}
-                onClick={() => setActiveTab("qualifications")}
-                type="button"
-              >
-                <i className="fa-solid fa-star"></i> Skills
-              </button>
+            <div className="d-flex justify-content-center mb-4">
+              <div style={styles.tabs}>
+                <button
+                  style={{
+                    ...styles.tabBtn,
+                    ...(activeTab === "responsibilities" ? styles.tabBtnActive : {}),
+                  }}
+                  onClick={() => setActiveTab("responsibilities")}
+                  type="button"
+                >
+                  <i className="fa-solid fa-list"></i> Responsibilities
+                </button>
+                <button
+                  style={{
+                    ...styles.tabBtn,
+                    ...(activeTab === "qualifications" ? styles.tabBtnActive : {}),
+                  }}
+                  onClick={() => setActiveTab("qualifications")}
+                  type="button"
+                >
+                  <i className="fa-solid fa-graduation-cap"></i> Skills & Qualifications
+                </button>
+              </div>
             </div>
 
-
-
-
-            <ul className="list-unstyled ms-2 fs-6">
+            <ul className="list-unstyled ms-2 fs-5">
               {(activeTab === "responsibilities" ? job.responsibilities : job.qualifications || ["No specific qualifications listed for this position."]).map((item, i) => (
                 <li key={i} className="mb-3 d-flex align-items-start">
                   <i className="fa-solid fa-circle-check text-warning me-2 mt-1"></i>
@@ -520,12 +545,13 @@ export default function JobDetails() {
           </div>
           
           {/* Right: Form */}
-          <div className="col-12 col-lg-5 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
+          <div className="col-12 col-lg-6 ps-lg-5 border-start d-flex flex-column h-100" style={{borderColor:'#e9ecef'}}>
             <div className="mb-3 text-center">
-              <h2 className="fw-bold mb-1 text-warning">Apply for this Position</h2>
+              <h1 className="fw-bold mb-1 text-warning">Apply for this Position</h1>
+                   <p className="fs-6">Fill out the form below to submit your application</p>
             </div>
             <form onSubmit={handleSubmit} className="d-flex flex-column flex-grow-1">
-              <div className="row g-3 fs-6">
+              <div className="row g-4 fs-6">
                 <div className="col-12 col-md-6">
                   <label className="form-label fw-semibold">First Name 
                      <span class="required-asterisk text-danger">*</span>
@@ -544,12 +570,20 @@ export default function JobDetails() {
                   </label>
                   <input type="email" className="form-control" name="email" placeholder="Enter your email" required style={styles.input} />
                 </div>
-                <div className="col-12 col-md-6">
-                  <label className="form-label fw-semibold">Phone Number 
-                     <span class="required-asterisk text-danger">*</span>
-                  </label>
-                  <input ref={phoneRef} className="form-control" name="phone" placeholder="Enter your phone number" required style={styles.input} />
-                </div>
+             <div className="col-12 col-md-6 ">
+  <label className="form-label fw-semibold">Phone Number 
+    <span className="required-asterisk text-danger">*</span>
+  </label>
+  <input 
+    ref={phoneRef} 
+    className="form-control" 
+    name="phone" 
+    placeholder="Enter your phone number" 
+    required 
+    style={{ ...styles.input, width: "130%" }} // increased width
+  />
+</div>
+
                 <div className="col-12 col-md-6">
                   <label className="form-label fw-semibold">
                     Upload Resume 
@@ -600,10 +634,10 @@ export default function JobDetails() {
                   </select>
                 </div>
               </div>
-              <div className="d-flex justify-content-center mt-4">
+              <div className="d-flex justify-content-center mt-4 py-5">
                 <button
                   type="submit"
-                  className="btn btn-outline-warning"
+                  className="btn btn-warning"
                   style={styles.btn}
                   disabled={sendingOTP} // Disable button while OTP is being sent
                 >

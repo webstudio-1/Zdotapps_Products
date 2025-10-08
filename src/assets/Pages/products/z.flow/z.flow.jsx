@@ -119,8 +119,8 @@ const ZFlow = () => {
                         style={{
                           display: 'flex',
                           alignItems: 'center',
-                          marginBottom: 65,
-                          marginLeft: 35,
+                          marginTop: 30,
+                          marginLeft: 30,
                         }}
                       >
                         <h2
