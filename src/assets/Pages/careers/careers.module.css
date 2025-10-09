@@ -204,6 +204,14 @@ body {
   margin-left: 1.5rem;
 }
 
+.searchInputWrapper input {
+  border-color: #ccc; /* Default border color */
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+.searchInputWrapper input:focus {
+  border-color: #EFC426 !important; /* Focused border color */
+}
 
 /* === Responsive Styles === */
 @media (max-width: 992px) {
