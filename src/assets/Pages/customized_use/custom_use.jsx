@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from "react";
 import styles from "./custom_use.module.css";
-import hero1 from "../../images/HomeBanner.jpg"; // Step 1 - hero visual
-import hero2 from "../../images/engage1.webp";   // Step 2 - design/style moodboard
-import hero3 from "../../images/ecomerce.png";   // Step 3 - pages/products context
-import hero4 from "../../images/custom_build.png"; // Step 4 - custom build/contact
+// External images per step (provided by user)
+const hero1Url = "https://res.cloudinary.com/dgq3d45tf/image/upload/c_pad,b_gen_fill,h_1000,ar_4:3/v1760002886/freepik__what-type-of-website-do-you-want-to-build-related-__59816_ibo8bt.png"; // Step 1 - Type (padded 4:3)
+const hero2Url = "https://res.cloudinary.com/dgq3d45tf/image/upload/v1760002889/freepik__what-type-of-website-do-you-want-to-build-related-__59817_mnghbv.png"; // Step 2 - Style
+const hero3Url = "https://res.cloudinary.com/dgq3d45tf/image/upload/v1760003261/freepik__a-thoughtful-individual-explores-various-website-s__59818_h3h54m.png"; // Step 3 - Pages
+import hero4 from "../../images/custom_build.png"; // Step 4 - Contact
 
 function RadioOption({ id, name, label, value, selected, onChange }) {
   return (
@@ -100,19 +101,28 @@ export default function CustomUse() {
   }
 
   return (
-    <section className={`mt-5 ${styles.pageWrap}`}>
+    <section className={` ${styles.pageWrap}`}>
       <div className={styles.container}>
-        <h1 className={`mt-4 ${styles.title}`}>
-          Your idea, <span className={styles.accent}>our expertise</span> build
-          your site now.
-        </h1>
+        <div
+          style={{
+            display: "inline-block",
+            padding: "12px 18px",
+            borderRadius: "14px",
+            zIndex: 2,
+          }}
+        >
+          <h1 className={`mt-5 pt-3 ${styles.title}`} style={{ margin: 0, textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
+            Your idea, <span className={styles.accent}>our expertise</span> build
+            your site now.
+          </h1>
+        </div>
 
         <div className={styles.card}>
           <div className={styles.mediaWrap}>
             {/* swap images per step for visual parity with reference */}
             <img
-              src={step === 0 ? hero1 : step === 1 ? hero2 : step === 2 ? hero3 : hero4}
-              alt="preview"
+              src={step === 0 ? hero1Url : step === 1 ? hero2Url : step === 2 ? hero3Url : hero4}
+              alt={step === 0 ? "Choose website type" : step === 1 ? "Choose website style" : step === 2 ? "Pick your pages" : "Contact / custom build"}
             />
             {step > STEP.TYPE && (
               <button className={styles.backCircle} onClick={back}>
@@ -120,7 +130,7 @@ export default function CustomUse() {
               </button>
             )}
           </div>
-
+          
           <div className={styles.formWrap}>
             {step === STEP.TYPE && (
               <>
@@ -288,7 +298,7 @@ export default function CustomUse() {
 
             {step === STEP.CONTACT && (
               <>
-                <h2 className={styles.question}>Station-S</h2>
+                <h2 className={styles.question}>zdotapps</h2>
                 {!submitted ? (
                   <form
                     className={styles.contactForm}
@@ -327,13 +337,17 @@ export default function CustomUse() {
                 )}
               </>
             )}
-
+              <p className={styles.helperText}>
+                {step < STEP.CONTACT
+                  ? step === STEP.PAGES
+                    ? "Almost There — Let's Finish Your Website!"
+                    : "A Few More Steps to Launch Your Website"
+                  : <span className={styles.successText}>You're all set!</span>}
+              </p>
             {/* Footer controls */}
             <div className={styles.controls}>
-              <div className={styles.progressDots}>
-                {[0, 1, 2, 3].map((i) => (
-                  <span key={i} className={i <= step ? styles.dotActive : styles.dot} />
-                ))}
+              <div className={styles.progressCount}>
+                <span>{step + 1} / 4</span>
               </div>
               <div className={styles.buttonRow}>
                 <button className={styles.secondaryBtn} disabled={step === STEP.TYPE} onClick={back}>
@@ -350,14 +364,8 @@ export default function CustomUse() {
             </div>
           </div>
         </div>
-
-        <p className={styles.helperText}>
-          {step < STEP.CONTACT
-            ? step === STEP.PAGES
-              ? "Almost There — Let's Finish Your Website!"
-              : "A Few More Steps to Launch Your Website"
-            : "You're all set!"}
-        </p>
+        
+      
       </div>
     </section>
   );

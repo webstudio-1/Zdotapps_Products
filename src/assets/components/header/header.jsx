@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../../images/zdotapps.png";
+import styles from "./header.module.css";
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const headerRef = useRef(null);
 
   const isActive = (path) => {
     if (path === "/" && location.pathname === "/") return true;
@@ -14,7 +17,26 @@ function Header() {
 
   const handleNavigate = (path) => {
     navigate(path);
+    setActiveDropdown(null); // Close dropdown after navigation
   };
+
+  const handleDropdownToggle = (label) => {
+    setActiveDropdown(activeDropdown === label ? null : label);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const navItems = [
     { label: "Products", path: "/products" },
@@ -33,9 +55,8 @@ function Header() {
 
   return (
     <header
-    className="navbar navbar-expand-lg navbar-light border-bottom py-3 fixed-top"
-
-      style={{ background: "#F9ECC5" }}
+      ref={headerRef}
+      className={`navbar navbar-expand-lg navbar-light border-bottom py-3 fixed-top ${styles.glassmorphismHeader}`}
     >
       <div className="container">
         {/* Logo */}
@@ -89,33 +110,35 @@ function Header() {
                     <a
                       href="#"
                       className="nav-link dropdown-toggle text-dark"
-                      id="studioDropdown"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleDropdownToggle(item.label);
+                      }}
                     >
                       {item.label}
                     </a>
 
-                    {/* Dropdown Menu */}
-                    <ul className="dropdown-menu border-0 shadow-sm rounded-3">
-                      {item.dropdown.map((subItem) => (
-                        <li key={subItem.label}>
-                          <a
-                            href="#"
-                            className={`dropdown-item ${
-                              isActive(subItem.path) ? "fw-bold" : ""
-                            }`}
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleNavigate(subItem.path);
-                            }}
-                          >
-                            {subItem.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Horizontal Dropdown Menu */}
+                    {activeDropdown === item.label && (
+                      <ul className={`dropdown-menu border-0 shadow-sm rounded-3 ${styles.horizontalDropdown} ${styles.show}`}>
+                        {item.dropdown.map((subItem) => (
+                          <li key={subItem.label} className={styles.horizontalDropdownItem}>
+                            <a
+                              href="#"
+                              className={`dropdown-item ${styles.yellowHighlight} ${
+                                isActive(subItem.path) ? styles.active : ""
+                              }`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleNavigate(subItem.path);
+                              }}
+                            >
+                              {subItem.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </>
                 )}
               </li>
