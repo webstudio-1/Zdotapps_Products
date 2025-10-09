@@ -79,6 +79,7 @@
     color: var(--gray-900);
     min-height: 100vh;
     overflow-x: hidden;
+    margin-top: 4rem;
   }
   
   /* Hero Section */

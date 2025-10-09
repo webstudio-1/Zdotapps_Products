@@ -44,7 +44,7 @@ export default function Careers() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("All Departments");
-  const [viewMode, setViewMode] = useState("list"); // Default to "list" to match the image
+  const [viewMode, setViewMode] = useState("grid"); // Default to "list" to match the image
   const [filteredJobs, setFilteredJobs] = useState(jobData);
 
   const filteredJobsMemo = useMemo(() => {
@@ -104,6 +104,8 @@ export default function Careers() {
                     outline: "none",
                     height: "48px",
                     borderRadius: "8px",
+                    
+                    
                   }}
                 />
                 <i className={`bi bi-search ${styles.searchIcon}`}></i>

@@ -36,6 +36,7 @@ import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
 import ZappsLanding from "./assets/Pages/home/zappsLanding";
 import WebStudio from "./assets/Pages/web/web";
+import CustomUse from "./assets/Pages/customized_use/custom_use";
 
 
 // ✅ Wrapper to show header/footer everywhere except login page
@@ -89,6 +90,7 @@ function App() {
             <Route path="zapps" element={<ZappsLanding />} />
             {/* Studios */}
             <Route path="studios/web" element={<WebStudio />} />
+            <Route path="studios/web/custom-build" element={<CustomUse />} />
 
           </Routes>
         </LayoutWrapper>

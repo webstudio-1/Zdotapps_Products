@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 // Using global Header/Footer from LayoutWrapper; keep page content only
 
 // Import your custom components here
@@ -20,6 +21,7 @@ import custom_buildImage from '../../images/custom_build.png';
 
 
 function App() {
+  const navigate = useNavigate();
   return (
     <div className="App" style={{ backgroundColor: '#0b0b0b', color: '#ffffff' }}>
 
@@ -38,7 +40,7 @@ function App() {
               <p className="mb-4" style={{ color: 'rgba(255,255,255,0.85)', fontSize: 18 }}>
                 We craft platforms that scale, perform, and inspire. From concept to code, our studio blends design precision with engineering excellence to help you launch faster, grow smarter, and stay unforgettable.
               </p>
-              <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }}>
+              <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }} onClick={() => navigate('/studios/web/custom-build')}>
                 Start Your Project <FaArrowRight style={{ marginLeft: 6 }} />
               </button>
             </div>
@@ -108,7 +110,7 @@ function App() {
             <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)', padding: '20px',  marginTop: '-40px', fontSize: 16 }}>
               Pick from our library of templates<br></br> and launch your website in minutes fully customizable and responsive.
             </p>
-            <button className="btn btn-outline-warning btn-lg mt-5 ms-3">explore now ↗</button>
+            <button className="btn btn-outline-warning btn-lg mt-5 ms-3" onClick={() => navigate('/studios/web/custom-build')}>explore now ↗</button>
           </div>
         </div>
       </div>
@@ -141,7 +143,7 @@ function App() {
             <p className="mb-2" style={{ color: 'rgba(255,255,255,0.8)',  padding: '20px', marginTop: '-40px', fontSize: 16}}>
               We craft solutions from scratch <br></br>to match your exact needs engineered, designed, and optimized for impact.
             </p>
-             <button className="btn btn-outline-warning btn-lg mt-5 ms-3">explore now ↗</button>
+             <button className="btn btn-outline-warning btn-lg mt-5 ms-3" onClick={() => navigate('/studios/web/custom-build')}>explore now ↗</button>
           </div>
         </div>
       </div>

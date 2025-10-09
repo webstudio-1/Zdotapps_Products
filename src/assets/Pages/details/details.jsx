@@ -73,10 +73,11 @@ card: {
     border: "1.5px solid #e0e7ef",
     background: "#f8fafc",
   },
-  inputFocus: {
-    borderColor: "#ffc107",
-    boxShadow: "0 0 0 2px #2563eb22",
-  },
+inputFocus: {
+  borderColor: "#ff0000",  // Red border color
+  boxShadow: "0 0 0 2px #2563eb22",
+},
+
   btn: {
     borderRadius: "2rem",
     borderWidth: 2,
@@ -474,6 +475,7 @@ export default function JobDetails() {
     marginRight: '106rem',
     boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.3)',
   }}
+  onClick={() => navigate(-1)} // Use navigate(-1) to go back to the previous page
 >
   <i
     className="bi bi-arrow-left"
@@ -485,6 +487,7 @@ export default function JobDetails() {
     }}
   />
 </button>
+
  <div className="row g-5 align-items-stretch flex-grow-1">
           {/* Left: Job Details */}
        
