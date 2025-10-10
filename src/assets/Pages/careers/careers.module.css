@@ -213,6 +213,8 @@ body {
   border-color: #EFC426 !important; /* Focused border color */
 }
 
+
+
 /* === Responsive Styles === */
 @media (max-width: 992px) {
   .listContent {

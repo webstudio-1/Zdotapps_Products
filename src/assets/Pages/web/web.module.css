@@ -46,34 +46,24 @@
     font-size: 1.5rem;
   }
   
-  /* Footer specific styles */
-  footer {
-    background-color: #1a1a1a; /* Dark footer */
-  }
-  
-  footer a {
-    color: var(--bs-light);
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    color: var(--bs-primary);
-  }
-  
-  .footer .input-group .form-control {
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-  }
-  
-  .footer .input-group .btn {
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-  }
-  
   /* Carousel controls for testimonials */
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     filter: invert(100%); /* Make arrows visible on dark background */
   }
 
-  
+  .row.g-4 > [class*='col-'] {
+  display: flex;
+}
+
+.row.g-4 > [class*='col-'] > div {
+  flex: 1;
+}
+
+/* Responsive text size tweak */
+@media (max-width: 768px) {
+  .row.g-4 > [class*='col-'] > div {
+    min-height: 380px;
+  }
+}
+
