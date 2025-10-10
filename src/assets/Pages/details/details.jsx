@@ -1,3 +1,4 @@
+import { Focus } from "lucide-react";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -70,13 +71,12 @@ card: {
   },
   input: {
     borderRadius: "0.3rem",
-    border: "1.5px solid #e0e7ef",
+    // --- CHANGE 1: Updated the default border color to #ccc ---
+    border: "1.5px solid #ccc", 
     background: "#f8fafc",
   },
-inputFocus: {
-  borderColor: "#ff0000",  // Red border color
-  boxShadow: "0 0 0 2px #2563eb22",
-},
+  // The inputFocus object is no longer needed as we are using a <style> tag for the :focus state
+  // inputFocus: { ... },
 
   btn: {
     borderRadius: "2rem",
@@ -465,6 +465,19 @@ export default function JobDetails() {
   return (
     
     <div style={styles.bg}>
+      {/* --- CHANGE 2: Added <style> tag for focus effects --- */}
+      <style>{`
+        .form-control, .form-select {
+          /* Adds a smooth transition to border color and box-shadow */
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+          /* Overrides Bootstrap's default blue to your desired yellow */
+          border-color: #EFC426 !important;
+          box-shadow: 0 0 0 0.25rem rgba(239, 196, 38, 0.25) !important;
+        }
+      `}</style>
       
       <div style={styles.card}>
 <button
@@ -583,7 +596,7 @@ export default function JobDetails() {
     name="phone" 
     placeholder="Enter your phone number" 
     required 
-    style={{ ...styles.input, width: "130%" }} // increased width
+    style={{ ...styles.input, width: "130%" }} 
   />
 </div>
 

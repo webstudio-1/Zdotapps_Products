@@ -712,7 +712,7 @@ const styles = `
     flex-wrap: wrap;
   }
   
-  .service-card {
+ .service-card {
     background-color: #0d0d0d;
     border-radius: 1rem;
     padding: 2rem;
@@ -729,6 +729,7 @@ const styles = `
     transform: translateY(-4px);
     background-color: #1a1a1a;
   }
+
   
   .service-icon {
     width: 60px;
@@ -780,12 +781,12 @@ const ProductCard = ({ title, description, opacity }) => (
 const HeroSection = () => {
   // Define product data once
   const products = [
-    { title: 'z.Hire', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'Campus.Life', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'z.engage', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'z.Assist', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'z.Analytics', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
-    { title: 'z.Connect', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.' },
+    { title: 'z.Hire', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '../z.hire' },
+    { title: 'Campus.Life', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '#' },
+    { title: 'z.engage', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '../z.engage' },
+    { title: 'z.Assist', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '#' },
+    { title: 'z.Analytics', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '#' },
+    { title: 'z.Connect', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '#' },
   ];
 
   return (
@@ -810,41 +811,37 @@ const HeroSection = () => {
             <div className="scrolling-content">
               {/* Render the products (original set) */}
               {products.map((product, index) => (
-                <ProductCard
-                  key={`original-${index}`}
-                  title={product.title}
-                  description={product.description}
-                  opacity={product.opacity} // If you need a specific card to be faded
-                />
+                <Link to={`/product/${product.slug}`} key={`original-${index}`} style={{ textDecoration: 'none' }}>
+                  <ProductCard
+                    title={product.title}
+                    description={product.description}
+                    opacity={product.opacity} // If you need a specific card to be faded
+                  />
+                </Link>
               ))}
 
               {/* Duplicate the products for seamless scrolling */}
               {products.map((product, index) => (
-                <ProductCard
-                  key={`duplicate-${index}`} // Use a different key for duplicates
-                  title={product.title}
-                  description={product.description}
-                  opacity={product.opacity}
-                  
-                />
-               
+                <Link to={`/product/${product.slug}`} key={`duplicate-${index}`} style={{ textDecoration: 'none' }}>
+                  <ProductCard
+                    title={product.title}
+                    description={product.description}
+                    opacity={product.opacity}
+                  />
+                </Link>
               ))}
-
             </div>
-            
           </div>
- {/* <button class="btn btn-warning btn-md mt-3 float-end">View All ↗</button> */}
-  <p class="mt-3 float-end text-warning fs-5">View All ↗</p>
-
-
-
+<p className="mt-3 float-end text-warning fs-5">
+  <Link to="/products" className="text-warning text-decoration-none">
+    View All ↗
+  </Link>
+</p>
         </div>
-        
       </div>
     </section>
   );
 };
-
 // Studios Section Component
 const StudiosSection = () => {
   const [activeStudio, setActiveStudio] = useState('web');
@@ -1034,7 +1031,6 @@ const ServiceTypesSection = () => {
     </section>
   );
 };
-
 
 // Process Flow Component - Solutions for Every Industry
 const ProcessFlow = () => {

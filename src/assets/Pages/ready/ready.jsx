@@ -24,15 +24,15 @@ const Ready = () => {
   // --- UPDATED DATA: Now an array of objects with names and image URLs ---
   // Using placeholder images from picsum.photos for demonstration
   const searchData = [
-    { id: "hc", name: "health care", imageUrl: "https://picsum.photos/seed/healthcare/400/250" },
-    { id: "ec", name: "e-commerce", imageUrl: "https://picsum.photos/seed/ecommerce/400/250" },
-    { id: "it", name: "it service", imageUrl: "https://picsum.photos/seed/itservice/400/250" },
-    { id: "mfg", name: "manufacturing", imageUrl: "https://picsum.photos/seed/manufacturing/400/250" },
-    { id: "edu", name: "edu tech", imageUrl: "https://picsum.photos/seed/edutech/400/250" },
-    { id: "fin", name: "finance", imageUrl: "https://picsum.photos/seed/finance/400/250" },
-    { id: "food", name: "food", imageUrl: "https://picsum.photos/seed/food/400/250" },
-    { id: "evt", name: "events", imageUrl: "https://picsum.photos/seed/events/400/250" },
-    { id: "spt", name: "sports", imageUrl: "https://picsum.photos/seed/sports/400/250" }
+    { id: "hc", name: "Health care", imageUrl: "https://picsum.photos/seed/healthcare/400/250" },
+    { id: "ec", name: "E-Commerce", imageUrl: "https://picsum.photos/seed/ecommerce/400/250" },
+    { id: "it", name: "IT Software", imageUrl: "https://picsum.photos/seed/itservice/400/250" },
+    { id: "mfg", name: "Manufacturing", imageUrl: "https://picsum.photos/seed/manufacturing/400/250" },
+    { id: "edu", name: "Edu Tech", imageUrl: "https://picsum.photos/seed/edutech/400/250" },
+    { id: "fin", name: "Finance", imageUrl: "https://picsum.photos/seed/finance/400/250" },
+    { id: "food", name: "Food", imageUrl: "https://picsum.photos/seed/food/400/250" },
+    { id: "evt", name: "Events", imageUrl: "https://picsum.photos/seed/events/400/250" },
+    { id: "spt", name: "Sports", imageUrl: "https://picsum.photos/seed/sports/400/250" }
   ];
 
   // --- UPDATED FILTER LOGIC: Access the 'name' property ---
@@ -66,6 +66,7 @@ const Ready = () => {
 
   return (
     <div className={styles.container}>
+     <h1 className="fw-bold" style={{ color: '#ffffff' }}>Pick the <span style={{ color: '#F2C94C' }}>Website </span>Template You Love</h1>
       <div className={styles.searchWrapper}>
         {/* The Search Bar */}
         <div className={`${styles.searchBar} ${showSuggestions ? styles.suggestionsActive : ''}`}>

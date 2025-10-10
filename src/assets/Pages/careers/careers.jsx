@@ -119,7 +119,18 @@ export default function Careers() {
                   className="form-select"
                   value={selectedDepartment}
                   onChange={handleDepartmentFilter}
-                  style={{boxShadow: "none", outline: "none", height: "48px", borderRadius: "8px", paddingRight: "30px", backgroundPosition: "right 0.75rem center"}}
+                   style={{
+    boxShadow: "none",
+    outline: "none",
+    height: "48px",
+    borderRadius: "8px",
+    paddingRight: "30px",
+    backgroundPosition: "right 0.75rem center",
+    borderColor: "#ccc",
+    transition: "border-color 0.3s ease",
+  }}
+  onFocus={(e) => (e.target.style.borderColor = "#EFC426")}
+  onBlur={(e) => (e.target.style.borderColor = "#ccc")}
                 >
                   {departments.map((dept) => (
                     <option key={dept} value={dept}>

@@ -32,6 +32,7 @@
   position: relative;
   width: 100%;
   max-width: 580px; /* A standard, comfortable width for a search bar */
+  margin-bottom: 10rem;
 }
 
 .searchBar {
