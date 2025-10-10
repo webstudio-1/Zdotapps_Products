@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styles from "./footer.module.css"; // Your CSS module
+import styles from "./footer.module.css";
+//import Zdotapps_Style_Guide from "/Zdotapps_Style_Guide.pdf";
 
 function Footer() {
   const year = new Date().getFullYear();
   const [showDown, setShowDown] = useState(true);
 
-  // Scroll functions for navigator
+  // Scroll functions
   const scrollUp = () => {
     window.scrollBy({ top: -window.innerHeight, behavior: "smooth" });
   };
@@ -14,7 +15,18 @@ function Footer() {
     window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
   };
 
-  // Show/hide down button when at bottom
+  // ✅ Download Style Guide PDF only
+  const handleStyleGuideClick = (e) => {
+    e.preventDefault();
+    const link = document.createElement("a");
+    link.href = "Zdotapps_Style_Guide.pdf"; // public path
+    link.download = "Zdotapps_Style_Guide.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Hide down arrow when at bottom
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY + window.innerHeight;
@@ -78,6 +90,16 @@ function Footer() {
                 <div className="col-6">
                   <h6 className="text-white fw-bold mb-3">Quick Links</h6>
                   <ul className="list-unstyled m-0">
+                    <li className="mb-2">
+                      {/* ✅ Only downloads the file */}
+                      <a
+                        href="/Zdotapps_Style_Guide.pdf"
+                        className={styles.link}
+                        onClick={handleStyleGuideClick}
+                      >
+                        Style Guide
+                      </a>
+                    </li>
                     <li className="mb-2"><a href="#" className={styles.link}>About Us</a></li>
                     <li className="mb-2"><a href="#" className={styles.link}>Contact Support</a></li>
                     <li className="mb-2"><a href="#" className={styles.link}>Privacy Policy</a></li>

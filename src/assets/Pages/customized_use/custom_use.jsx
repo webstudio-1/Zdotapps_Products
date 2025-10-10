@@ -337,31 +337,27 @@ export default function CustomUse() {
                 )}
               </>
             )}
-              <p className={styles.helperText}>
-                {step < STEP.CONTACT
-                  ? step === STEP.PAGES
-                    ? "Almost There — Let's Finish Your Website!"
-                    : "A Few More Steps to Launch Your Website"
-                  : <span className={styles.successText}>You're all set!</span>}
-              </p>
-            {/* Footer controls */}
-            <div className={styles.controls}>
-              <div className={styles.progressCount}>
-                <span>{step + 1} / 4</span>
+              
+            {/* Footer controls - hide after submission */}
+            {!submitted && (
+              <div className={styles.controls}>
+                <div className={styles.progressCount}>
+                  <span></span>
+                </div>
+                <div className={styles.buttonRow}>
+                  <button className={styles.secondaryBtn} disabled={step === STEP.TYPE} onClick={back}>
+                    Back
+                  </button>
+                  <button
+                    className={styles.nextBtn}
+                    onClick={next}
+                    disabled={!canGoNext}
+                  >
+                    {step === STEP.CONTACT ? "Submit" : "Next →"}
+                  </button>
+                </div>
               </div>
-              <div className={styles.buttonRow}>
-                <button className={styles.secondaryBtn} disabled={step === STEP.TYPE} onClick={back}>
-                  Back
-                </button>
-                <button
-                  className={styles.nextBtn}
-                  onClick={next}
-                  disabled={!canGoNext}
-                >
-                  {step === STEP.CONTACT ? "Submit" : "Next →"}
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         

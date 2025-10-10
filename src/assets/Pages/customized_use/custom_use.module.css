@@ -1,16 +1,21 @@
 .pageWrap {
   background: #1c1a1a; /* style-guide Dark Grey (text bg) */
   min-height: 100vh;
+  min-height: 100dvh; /* Use dynamic viewport height for better mobile support */
   display: flex;
   align-items: flex-start;
   justify-content: center;
   /* extra top padding so heading never collides with site header */
   padding: 96px 16px 64px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
+  box-sizing: border-box;
+  padding: 0 16px;
 }
 
 .title {
@@ -124,6 +129,11 @@
   cursor: pointer;
 }
 
+.primaryBtn {
+  width: 50%;
+  justify-self: center;
+}
+
 .contactForm { display: grid; gap: 10px; }
 .input, .textarea {
   background: rgba(255,255,255,0.06);
@@ -152,6 +162,10 @@
 @media (max-width: 640px) {
   .title { font-size: 28px; }
   .mediaWrap img { height: 220px; }
+  .pageWrap { padding: 64px 8px 32px; }
+  .container { padding: 0 8px; }
+  .card { padding: 16px; gap: 16px; }
+  .primaryBtn { width: 80%; }
 }
 
 
