@@ -134,13 +134,14 @@ const styles = `
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
     transition: all 0.3s ease;
   }
 
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 20px rgba(255, 202, 58, 0.938);
+    
   }
 
   .badge {
@@ -649,6 +650,7 @@ const styles = `
   .industry-card:hover {
     transform: translateY(-4px);
     background-color: #444444;
+     box-shadow: 0 5px 20px rgba(255, 202, 58, 0.938);
   }
   
   .industry-icon {
@@ -910,12 +912,12 @@ const StudiosSection = () => {
             <h3 className="studio-title">{studios[activeStudio].title}</h3>
             <p className="studio-description">{studios[activeStudio].description}</p>
             <div className="studio-buttons">
-              <Link to={studios[activeStudio].link} className="studio-button primary">
-                Ready to use ↗
-              </Link>
-              <Link to={studios[activeStudio].link} className="studio-button secondary">
+            <Link to="/ready" className="studio-button primary">
+              Ready to use ↗
+            </Link>
+              <Link to="/products" className="studio-button secondary">
                 Customize ↗
-              </Link>
+              </Link> 
             </div>
           </div>
           <div className="studio-image">
@@ -1450,10 +1452,10 @@ const FinalCTASection = () => {
   return (
     <section style={containerStyle}>
       {/* Badge */}
-      <div style={badgeStyle}>
+      {/* <div style={badgeStyle}>
         <span>✨</span>
         Ready to get started?
-      </div>
+      </div> */}
       {/* Main Heading */}
       <h2 style={headingStyle}>Ready to Build the Future?</h2>
       {/* Subheading */}

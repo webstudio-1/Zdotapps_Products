@@ -258,33 +258,100 @@ function App() {
           </div>
           <div className="row g-4 justify-content-center align-items-stretch">
             {/* Card 1: Ready to use */}
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="d-flex flex-column justify-content-end text-white h-100" style={{ borderRadius: '24px', padding: '2.5rem', minHeight: '450px', background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-                <h3 className="fw-bold mb-3" style={{ color: '#F2C94C', fontSize: '2rem' }}>
-                  Ready to use
-                </h3>
-                <p className="mb-4" style={{ fontSize: '1.05rem', maxWidth: '480px' }}>
-                  Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
-                </p>
-                <Link to="/ready" className="fw-bold text-decoration-none" style={{ color: '#F2C94C', fontSize: '1.1rem' }}>
-                  explore now ↗
-                </Link>
-              </div>
-            </div>
+  <div className="col-12 col-md-6 col-lg-4">
+  <Link
+    to="/ready"
+    style={{ textDecoration: "none" }}
+  >
+    <div
+      className="d-flex flex-column justify-content-end text-white h-100"
+      style={{
+        borderRadius: "24px",
+        padding: "2.5rem",
+        minHeight: "450px",
+        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        cursor: "pointer", // Makes it look clickable
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-5px)";
+        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      <h3
+        className="fw-bold mb-3"
+        style={{ color: "#F2C94C", fontSize: "2rem" }}
+      >
+        Ready to use
+      </h3>
+      <p
+        className="mb-4"
+        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
+      >
+        Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
+      </p>
+      <span
+        className="fw-bold"
+        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
+      >
+        explore now ↗
+      </span>
+    </div>
+  </Link>
+</div>
             {/* Card 2: Custom Build */}
-            <div className="col-12 col-md-6 col-lg-4">
-              <div className="d-flex flex-column justify-content-end text-white h-100" style={{ borderRadius: '24px', padding: '2.5rem', minHeight: '450px', background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-                <h3 className="fw-bold mb-3" style={{ color: '#F2C94C', fontSize: '2rem' }}>
-                  Custom Build
-                </h3>
-                <p className="mb-4" style={{ fontSize: '1.05rem', maxWidth: '480px' }}>
-                  We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
-                </p>
-                <Link to="/studios/web/custom-build" className="fw-bold text-decoration-none" style={{ color: '#F2C94C', fontSize: '1.1rem' }}>
-                  explore now ↗
-                </Link>
-              </div>
-            </div>
+       <div className="col-12 col-md-6 col-lg-4">
+  <Link to="/studios/web/custom-build" style={{ textDecoration: "none" }}>
+    <div
+      className="d-flex flex-column justify-content-end text-white h-100"
+      style={{
+        borderRadius: "24px",
+        padding: "2.5rem",
+        minHeight: "450px",
+        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        cursor: "pointer",
+        transition: "transform 0.3s ease, boxShadow 0.3s ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-5px)";
+        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "none";
+      }}
+    >
+      <h3
+        className="fw-bold mb-3"
+        style={{ color: "#F2C94C", fontSize: "2rem" }}
+      >
+        Custom Build
+      </h3>
+      <p
+        className="mb-4"
+        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
+      >
+        We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
+      </p>
+      <span
+        className="fw-bold"
+        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
+      >
+        explore now ↗
+      </span>
+    </div>
+  </Link>
+</div>
           </div>
         </div>
       </section>
