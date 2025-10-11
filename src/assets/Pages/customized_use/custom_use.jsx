@@ -124,11 +124,6 @@ export default function CustomUse() {
               src={step === 0 ? hero1Url : step === 1 ? hero2Url : step === 2 ? hero3Url : hero4}
               alt={step === 0 ? "Choose website type" : step === 1 ? "Choose website style" : step === 2 ? "Pick your pages" : "Contact / custom build"}
             />
-            {step > STEP.TYPE && (
-              <button className={styles.backCircle} onClick={back}>
-                ←
-              </button>
-            )}
           </div>
           
           <div className={styles.formWrap}>
@@ -326,9 +321,6 @@ export default function CustomUse() {
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                     />
-                    <button type="submit" className={styles.primaryBtn}>
-                      I'm Interested
-                    </button>
                   </form>
                 ) : (
                   <div className={styles.successBox}>

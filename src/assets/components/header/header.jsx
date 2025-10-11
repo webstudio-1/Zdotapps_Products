@@ -39,7 +39,6 @@ function Header() {
   }, []);
 
   const navItems = [
-    { label: "Products", path: "/products" },
     { 
       label: "Studios", 
       dropdown: [
@@ -48,6 +47,7 @@ function Header() {
         { label: "Agent Studio", path: "/studios/agent" },
       ]
     },
+    { label: "Products", path: "/products" },
     { label: "Resources", path: "/resource" },
     { label: "About Us", path: "/about" },
     { label: "Careers", path: "/careers" },
