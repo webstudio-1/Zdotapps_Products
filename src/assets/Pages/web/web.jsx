@@ -177,6 +177,8 @@ const ProcessFlow = () => {
 
 function App() {
   const navigate = useNavigate();
+  const [flipReady, setFlipReady] = useState(false);
+  const [flipCustom, setFlipCustom] = useState(false);
 
   // --- Data for the new "Services That Power Your Growth" section ---
   const servicesData = [
@@ -216,195 +218,173 @@ function App() {
   ];
 
   return (
-    <div className="App" style={{ backgroundColor: '#0b0b0b', color: '#ffffff' }}>
+    <div className="App" style={{ backgroundColor: '#212529', color: '#ffffff' }}>
 
-      {/* Hero Section */}
-      <section className="hero-section py-5 position-relative" style={{ background: '#0b0b0b', minHeight: '100vh', display: 'flex', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=1920&auto=format&fit=crop&q=60)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="container">
+      {/* Hero: centered title + left text/right flip cards in one section */}
+      <section className="position-relative" style={{ minHeight: '100vh',backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="position-absolute w-100 text-center mt-5 py-5">
+          <h1 className="fw-bold mt-5" style={{ color: '#F2C94C', fontSize: 50, lineHeight: 1.10, marginBottom: 1 }}>
+            Web Studio
+            <br/> <span style={{ fontSize: 40, }}>We Engineer Your Web vision</span>
+          </h1>
+          <p className="mb-0" style={{ color: 'rgba(255,255,255,0.9)', fontSize: 25 }}>
+            We create powerful digital platforms that help you launch faster and grow smarter.
+          </p>
+        </div>
+        <div className="container" style={{ paddingTop: 320 }}>
           <div className="row align-items-center">
-            <div className="col-lg-6 mt-5">
-              <h1 className="fw-bold" style={{ color: '#F2C94C', fontSize: 65, lineHeight: 1.2 }}>
-                Web Studio
-                <br /> We Engineer
-                <br /> Your Web vision
-              </h1>
-                  <div className="col-lg-12 mt-4 mt-lg-0">
-              <p className="mb-4" style={{ color: 'rgba(255,255,255,0.85)', fontSize: 24 }}>
-                We create powerful digital platforms that help you launch faster and grow smarter.
+            {/* Left Column: Text and Button */}
+            <div className="col-lg-6 mb-4 mb-lg-0">
+              <h2 className="fw-bold mt-5 pt-5 py-2" style={{ color: '#ffffff', fontSize: 40 }}>
+                Built for your needs:
+              </h2>
+              <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 30 }}>
+                Quick, reliable, and ready to launch.
+              </div>
+              <p className="mt-3" style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.25rem' }}>
+                Choose a template or get a custom project tailored to your brand.
               </p>
               <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }} onClick={() => navigate('/studios/web/custom-build')}>
                 Start Your Project <FaArrowRight style={{ marginLeft: 6 }} />
               </button>
             </div>
-            </div>
-    
-          </div>
-        </div>
-      </section>
-      
-      {/* Built to cater to your requirement section */}
-      <section className="py-5" style={{ backgroundColor: '#444444' }}>
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-0" style={{ color: '#ffffff', fontSize: 40 }}>
-              Built to cater to your requirement-
-            </h2>
-            <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 40 }}>
-              Quick and reliable models.
-            </div>
-            <p className="mt-0" style={{ color: 'rgba(255, 255, 255, 0.8)', maxWidth: 900, margin: '0 auto', fontSize: '24px' }}>
-              Pick a template and go live in minutes, or let us craft a fully custom project designed around your brand and goals.
-            </p>
-          </div>
-          <div className="row g-4 justify-content-center align-items-stretch">
-            {/* Card 1: Ready to use */}
-  <div className="col-12 col-md-6 col-lg-4">
-  <Link
-    to="/ready"
-    style={{ textDecoration: "none" }}
-  >
-    <div
-      className="d-flex flex-column justify-content-end text-white h-100"
-      style={{
-        borderRadius: "24px",
-        padding: "2.5rem",
-        minHeight: "450px",
-        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        cursor: "pointer", // Makes it look clickable
-        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      <h3
-        className="fw-bold mb-3"
-        style={{ color: "#F2C94C", fontSize: "2rem" }}
-      >
-        Ready to use
-      </h3>
-      <p
-        className="mb-4"
-        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
-      >
-        Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
-      </p>
-      <span
-        className="fw-bold"
-        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
-      >
-        explore now ↗
-      </span>
-    </div>
-  </Link>
-</div>
-            {/* Card 2: Custom Build */}
-       <div className="col-12 col-md-6 col-lg-4">
-  <Link to="/studios/web/custom-build" style={{ textDecoration: "none" }}>
-    <div
-      className="d-flex flex-column justify-content-end text-white h-100"
-      style={{
-        borderRadius: "24px",
-        padding: "2.5rem",
-        minHeight: "450px",
-        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        cursor: "pointer",
-        transition: "transform 0.3s ease, boxShadow 0.3s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      <h3
-        className="fw-bold mb-3"
-        style={{ color: "#F2C94C", fontSize: "2rem" }}
-      >
-        Custom Build
-      </h3>
-      <p
-        className="mb-4"
-        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
-      >
-        We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
-      </p>
-      <span
-        className="fw-bold"
-        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
-      >
-        explore now ↗
-      </span>
-    </div>
-  </Link>
-</div>
-          </div>
-        </div>
-      </section>
 
-      {/* Trending Ready-to-use Websites section */}
-      <section className="py-5" style={{ backgroundColor: '#424242' }}>
-        <div className="container">
-          <h2 className="fw-bold mb-5 text-center" style={{ color: '#ffffff' }}>
-            Choose the Website <span style={{ color: '#F2C94C' }}>That Works for You</span>
-          </h2>
-          <div className="row align-items-center">
-            {/* Left Column: Image */}
-            <div className="col-lg-6 mb-4 mb-lg-0">
-              <img src={com_leftImage} alt="Designer choosing a website template" className="img-fluid rounded-4" />
-            </div>
-            {/* Right Column: Content */}
-            <div className="col-lg-6 ps-lg-5">
-              <h3 className="fw-normal lh-base" style={{ color: '#ffffff', fontSize: '2.25rem' }}>
-                From startups to enterprises <br />
-                <span className="fw-bold" style={{ color: '#F2C94C' }}>
-                  we've got a template for every need.
-                </span>
-              </h3>
-              <ul className="list-unstyled mt-4">
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Basic Websites
-                </li>
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Corporate Websites
-                </li>
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  E-Commerce Websites
-                </li>
-                <li className="d-flex align-items-center fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Content Management Websites
-                </li>
-              </ul>
+            {/* Right Column: Flipping Cards */}
+            <div className="col-lg-6 mb-5 pb-5 pb-lg-5 mb-lg-5">
+              <div className="row g-4 justify-content-center"> {/* Center cards within the column */}
+                {/* Card 1: Ready to use (Flip) */}
+                <div className="col-12 col-md-6"> {/* Cards take full width on small, half on medium+ */}
+                  <div
+                    className={`flip-card h-100 ${flipReady ? "flipped" : ""}`}
+                    onClick={() => setFlipReady((v) => !v)}
+                    role="button"
+                    aria-label="Ready to use"
+                  >
+                    <div className="flip-card-inner">
+                      <div
+                        className="flip-card-front d-flex flex-column justify-content-end text-white h-100"
+                        style={{
+                          borderRadius: "24px",
+                          padding: "2.5rem",
+                          minHeight: "350px", // Adjusted minHeight for better fit with image
+                          background: `url(${ready_to_useImage})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      >
+                        <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "1.5rem" }}>Ready to use</h3> {/* Adjusted font size */}
+                        <p className="mb-5" style={{ fontSize: "1rem", maxWidth: "480px" }}> {/* Adjusted font size */}
+                          Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
+                        </p>
+                        <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1rem" }}>tap to explore ↺</span> {/* Adjusted font size */}
+                      </div>
+                      <div
+                        className="flip-card-back d-flex flex-column justify-content-center align-items-center text-white h-100"
+                        style={{
+                          borderRadius: "24px",
+                          padding: "2.5rem",
+                          minHeight: "350px", // Adjusted minHeight
+                          background: "#1e1e1e",
+                        }}
+                      >
+                        <h4 className="fw-bold mb-4" style={{ color: "#F2C94C" }}>Explore</h4>
+                        <div className="d-flex gap-3 justify-content-center" style={{ flexWrap: 'nowrap' }}>
+                          <button
+                            className="btn btn-lg rounded-pill px-4"
+                            style={{ backgroundColor: "#F2C94C", color: "#0b0b0b", border: "none", fontSize: "0.9rem" }} // Adjusted font size
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/ready?cat=products`);
+                            }}
+                          >
+                            Products
+                          </button>
+                          <button
+                            className="btn btn-outline-light btn-lg rounded-pill px-4"
+                            style={{ borderColor: "#F2C94C", color: "#F2C94C", fontSize: "0.9rem" }} // Adjusted font size
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/ready?cat=services`);
+                            }}
+                          >
+                            Services
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 2: Custom Build (Flip) */}
+                <div className="col-12 col-md-6"> {/* Cards take full width on small, half on medium+ */}
+                  <div
+                    className={`flip-card h-100 ${flipCustom ? "flipped" : ""}`}
+                    onClick={() => setFlipCustom((v) => !v)}
+                    role="button"
+                    aria-label="Custom Build"
+                  >
+                    <div className="flip-card-inner">
+                      <div
+                        className="flip-card-front d-flex flex-column justify-content-end text-white h-100"
+                        style={{
+                          borderRadius: "24px",
+                          padding: "2.5rem",
+                          minHeight: "350px", // Adjusted minHeight
+                          background: `url(${custom_buildImage})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
+                        }}
+                      >
+                        <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "1.5rem" }}>Custom Build</h3> {/* Adjusted font size */}
+                        <p className="mb-4" style={{ fontSize: "1rem", maxWidth: "480px" }}> {/* Adjusted font size */}
+                          We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
+                        </p>
+                        <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1rem" }}>tap to explore ↺</span> {/* Adjusted font size */}
+                      </div>
+                      <div
+                        className="flip-card-back d-flex flex-column justify-content-center align-items-center text-white h-100"
+                        style={{
+                          borderRadius: "24px",
+                          padding: "2.5rem",
+                          minHeight: "350px", // Adjusted minHeight
+                          background: "#1e1e1e",
+                        }}
+                      >
+                        <h4 className="fw-bold mb-4" style={{ color: "#F2C94C" }}>Explore</h4>
+                        <div className="d-flex gap-3 justify-content-center" style={{ flexWrap: 'nowrap' }}>
+                          <button
+                            className="btn btn-lg rounded-pill px-4"
+                            style={{ backgroundColor: "#F2C94C", color: "#0b0b0b", border: "none", fontSize: "0.9rem" }} // Adjusted font size
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/studios/web/custom-build?cat=products`);
+                            }}
+                          >
+                            Products
+                          </button>
+                          <button
+                            className="btn btn-outline-light btn-lg rounded-pill px-4"
+                            style={{ borderColor: "#F2C94C", color: "#F2C94C", fontSize: "0.9rem" }} // Adjusted font size
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/studios/web/custom-build?cat=services`);
+                            }}
+                          >
+                            Services
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+     
 
       {/* Services That Power Your Growth section - UPDATED */}
       <section className="py-5" style={{ backgroundColor: '#343434' }}>
@@ -612,8 +592,23 @@ function App() {
         </div>
       </section>
 
-      {/* Added Styles for the new Industry Section */}
+      {/* Added Styles */}
       <style>{`
+        .flip-card { perspective: 1200px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .7s ease; }
+        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+        .flip-card-back { transform: rotateY(180deg); }
+
+        /* Remove any dark default shadows */
+        .flip-card, .flip-card-front, .flip-card-back { box-shadow: none !important; }
+
+        /* Yellow glow on hover */
+        .flip-card:hover .flip-card-front,
+        .flip-card:hover .flip-card-back {
+          box-shadow: 0 16px 40px rgba(242, 201, 76, 0.35), 0 0 0 1px rgba(242, 201, 76, 0.5) inset;
+          border-radius: 24px;
+        }
         .industry-card {
           background-color: #343434;
           border-radius: 16px;
