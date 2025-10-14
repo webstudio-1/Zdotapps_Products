@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import studioImage from '../../images/img_studio.png';
 import ecomerceIcon from '../../images/ecomerce.png';
 import eventsIcon from '../../images/events.png';
@@ -18,7 +18,7 @@ import fastImg from "../../images/custom.png";
 import retailImg from "../../images/retail.png";
 import updated_logoIcon from '../../images/updated_logo.png';
 
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 
 
 import {
@@ -34,7 +34,8 @@ import {
   Wrench,
   CheckCircle,
   Clock,
-  Star
+  Star,
+  Search // <-- Import the Search icon
 } from 'lucide-react';
 
 // Embedded CSS styles
@@ -101,28 +102,18 @@ const styles = `
     transition: all 0.2s ease;
     font-size: 1rem;
   }
+.btn-secondary {
+  background-color: #E6B842;
+  color: var(--primary);
+  border: 2px solid #E6B842; /* same as background color */
+}
 
-  .btn-primary {
-    background-color: var(--secondary);
-    color: var(--secondary-foreground);
-  }
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  transform: translateY(-2px);
+}
 
-  .btn-primary:hover {
-    background-color: #E6B842;
-    transform: translateY(-2px);
-  }
-
-  .btn-secondary {
-    background-color: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-  }
-
-  .btn-secondary:hover {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    transform: translateY(-2px);
-  }
 
   .btn-lg {
     padding: 1rem 2rem;
@@ -140,7 +131,7 @@ const styles = `
 
   .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 5px 20px rgba(255, 202, 58, 0.938);
+    box-shadow: 0 0px 20px rgba(255, 202, 58, 0.938);
     
   }
 
@@ -350,19 +341,83 @@ const styles = `
     background-color: #E6B842;
   }
 
+  /* --- NEW SEARCH BAR STYLES START --- */
+  .hero-search-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #303134;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.5rem;
+    padding-left: 1rem;
+    width: 100%;
+    max-width: 650px;
+    cursor: text;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .hero-search-wrapper:focus-within {
+    box-shadow: 0 0 0 2px var(--secondary); /* Yellow ring on focus */
+  }
+
+  .hero-search-wrapper svg {
+    flex-shrink: 0;
+    margin-right: 0.75rem;
+  }
+
+  .hero-search-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e8eaed; /* Light text color */
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .hero-search-input::placeholder {
+    color: #9AA0A6; /* Placeholder text color */
+  }
+
+  .hero-search-button {
+    background-color: var(--secondary);
+    color: #1C1A1A;
+    border: none;
+    border-radius: 9999px; /* Pill shape */
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .hero-search-button:hover {
+    background-color: #E6B842;
+  }
+  
+  .dropdown-option {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    color: #e8eaed;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-option:hover {
+    background-color: #444;
+  }
+  /* --- NEW SEARCH BAR STYLES END --- */
+
   .featured-products {
     flex-shrink: 0; /* Don't allow this section to shrink */
     width: 420px; /* Fixed width for the products section */
     background-color: transparent; /* No background for this section */
     color: #FFFFFF;
-    // padding: 2rem 0; 
   }
 
   .featured-products-title {
     font-size: 1.90rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
-    // padding-left: 1.5rem; 
   }
 
   .product-card {
@@ -430,8 +485,6 @@ const styles = `
       transform: translateY(0%);
     }
     100% {
-      /* This value might need fine-tuning if card heights are very dynamic.
-         For consistent card heights, -100% works well with duplicated content. */
       transform: translateY(-50%); /* Adjusted to scroll through one full set of duplicated cards */
     }
   }
@@ -467,6 +520,10 @@ const styles = `
     .featured-products-title {
       text-align: center;
       padding-left: 0;
+    }
+    .hero-search-wrapper {
+        margin-left: auto;
+        margin-right: auto;
     }
   }
 
@@ -507,19 +564,25 @@ const styles = `
     border: 1px solid #FFC94A;
   }
   
-  .studio-card {
-    background: linear-gradient(135deg, #181716ff 0%, #755d15ff 100%);
-    border: 1px solid #FFC94A;
-    border-radius: 1rem;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    box-shadow: 0 4px 20px rgba(255, 201, 74, 0.1);
-    height:35rem;
- 
-  }
+.studio-card {
+  background: linear-gradient(135deg, #181716ff 0%, #755d15ff 100%);
+  border: 1px solid #FFC94A;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 4px 20px rgba(255, 201, 74, 0.1);
+  height: 35rem;
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* smooth animation */
+}
+
+.studio-card:hover {
+ box-shadow: 0 0px 30px rgba(255, 202, 58, 0.938);
+  transform: translateY(-6px); /* optional lift effect */
+}
+
   
   .studio-content {
     flex: 1;
@@ -625,38 +688,39 @@ const styles = `
     color: #F3F3F3;
   }
   
-  .industry-cards {
-    display: flex;
-    justify-content: center;
-    gap: -1.5px;
-    line-height: 90px;
-    flex-wrap: wrap;
-  }
+.industry-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0rem; /* ✅ spacing between cards */
+}
+
   
-  .industry-card {
-    background-color: #333333;
-    border-radius: 1rem;
-    padding: 2rem;
-    width: 345px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
+.industry-card {
+  background-color: #333333;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%; /* let Bootstrap grid control width */
+  max-width: 250px; /* optional limit for nicer look */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
   
   .industry-card:hover {
     transform: translateY(-4px);
     background-color: #444444;
-     box-shadow: 0 5px 20px rgba(255, 202, 58, 0.938);
+     box-shadow: 0 0px 20px rgba(255, 202, 58, 0.938);
   }
   
   .industry-icon {
     width: 60rem;
     height: 60px;
-    // background-color: #FFC94A;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
@@ -781,7 +845,22 @@ const ProductCard = ({ title, description, opacity }) => (
 
 // Hero Section Component
 const HeroSection = () => {
-  // Define product data once
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('');
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearchOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [searchRef]);
+
   const products = [
     { title: 'z.Hire', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '../z.hire' },
     { title: 'Campus.Life', description: 'A smart hiring platform to simplify recruitment and connect the right candidates faster.', slug: '#' },
@@ -801,44 +880,102 @@ const HeroSection = () => {
           <p className="hero-description">
             Whether it's a world-class web platform, a market-shaping app, or an intelligent agent, zdotApps makes it intelligent and insight-driven.
           </p>
-          <a href="#" className="hero-button">
-            Start Your Project ↗
-          </a>
+
+          {/* --- UPDATED SEARCH BAR --- */}
+          <div ref={searchRef} className="search-bar-container" style={{ position: 'relative', marginTop: '2rem' }}>
+            <div className="hero-search-wrapper" onClick={() => setSearchOpen(true)}>
+              <Search size={20} color="#9AA0A6" />
+              <input
+                type="text"
+                placeholder="Search Studio..."
+                className="hero-search-input"
+                value={selectedValue}
+                onChange={(e) => setSelectedValue(e.target.value)}
+              />
+              <button className="hero-search-button">Search</button>
+            </div>
+
+            {searchOpen && (
+              <div
+                className="dropdown-options"
+                style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 8px)',
+                  left: 0,
+                  backgroundColor: '#303134',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+                  borderRadius: '8px',
+                  width: '100%',
+                  zIndex: 10,
+                  overflow: 'hidden'
+                }}
+              >
+                {['Web Studio', 'App Studio', 'Agentic Studio'].map((option) => (
+                  <div
+                    key={option}
+                    className="dropdown-option"
+                    onClick={() => {
+                      setSelectedValue(option);
+                      setSearchOpen(false);
+                    }}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* --- END UPDATED SEARCH BAR --- */}
+
+          {/* Bottom Buttons */}
+{/* Bottom Buttons */}
+{selectedValue && (
+  <div
+    className="hero-buttons mt-3"
+    style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}
+  >
+    <Link to="/products" className="btn btn-secondary">
+      Ready to Use
+    </Link>
+    <Link to="/services" className="btn btn-secondary">
+      Custom Build
+    </Link>
+  </div>
+)}
+
+
         </div>
 
         {/* Right Side: Featured Products */}
         <div className="featured-products">
-          <h3 className="featured-products-title">Featured <span style={{ color: '#FFC94A' }}>Products</span></h3>
+          <h3 className="featured-products-title">
+            Featured <span style={{ color: '#FFC94A' }}>Products</span>
+          </h3>
           <div className="scrollable-products-container">
             <div className="scrolling-content">
-              {/* Render the products (original set) */}
               {products.map((product, index) => (
                 <Link to={`/product/${product.slug}`} key={`original-${index}`} style={{ textDecoration: 'none' }}>
                   <ProductCard
                     title={product.title}
                     description={product.description}
-                    opacity={product.opacity} // If you need a specific card to be faded
                   />
                 </Link>
               ))}
-
-              {/* Duplicate the products for seamless scrolling */}
               {products.map((product, index) => (
                 <Link to={`/product/${product.slug}`} key={`duplicate-${index}`} style={{ textDecoration: 'none' }}>
                   <ProductCard
                     title={product.title}
                     description={product.description}
-                    opacity={product.opacity}
                   />
                 </Link>
               ))}
             </div>
           </div>
-<p className="mt-3 float-end text-warning fs-5">
-  <Link to="/products" className="text-warning text-decoration-none">
-    View All ↗
-  </Link>
-</p>
+          <p className="mt-3 float-end text-warning fs-5">
+            <Link to="/products" className="text-warning text-decoration-none">
+              View All ↗
+            </Link>
+          </p>
         </div>
       </div>
     </section>
@@ -933,7 +1070,6 @@ const StudiosSection = () => {
 };
 
 // Service Types Section Component
-// Service Types Section Component
 const ServiceTypesSection = () => {
   const serviceTypes = [
     {
@@ -970,25 +1106,32 @@ const ServiceTypesSection = () => {
     <section className="py-20 px-4" style={{ backgroundColor: "#1C1A1A" }}>
       <div className="container">
         {/* Heading */}
-        <div className="text-center mb-5">
-          <h2 className="fw-bold" style={{ color: "#FFC94A" }}>
-            ZdotApps
-          </h2>
-          <h3 className="fw-semibold text-light">
-            Your partner in speed and scale.
-          </h3>
-          <p
-            className="mx-auto"
-            style={{
-              fontSize: "1.125rem",
-              maxWidth: "42rem",
-              color: "#D1D1D1",
-            }}
-          >
-            Our teams understand business, technology, and smart integration to
-            succeed.
-          </p>
-        </div>
+<div className="text-center mb-5">
+  <h2 className="fw-bold">
+    <img 
+      src={updated_logoIcon}  
+      alt="Z Logo" 
+      style={{ height: "50px"}} 
+    />
+    <span style={{ color: "#FFFFFF" }}> apps</span>
+  </h2>
+  <h3 className="fw-semibold text-light">
+    Your partner in speed and scale.
+  </h3>
+  <p
+    className="mx-auto"
+    style={{
+      fontSize: "1.125rem",
+      maxWidth: "42rem",
+      color: "#D1D1D1",
+    }}
+  >
+    Our teams understand business, technology, and smart integration to succeed.
+  </p>
+</div>
+
+
+
 
         {/* Cards */}
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -1046,7 +1189,7 @@ const ProcessFlow = () => {
           </p>
         </div>
         <div className="row g-4 industry-cards">
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={ecomerceIcon} alt="Industry Icon" width="60" />
@@ -1055,7 +1198,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={eventsIcon} alt="Industry Icon" width="60" />
@@ -1064,7 +1207,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={hospitalIcon} alt="Industry Icon" width="60" />
@@ -1073,7 +1216,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={universityIcon} alt="Industry Icon" width="60" />
@@ -1082,7 +1225,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={hotelIcon} alt="Industry Icon" width="60" />
@@ -1091,7 +1234,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={food_courtIcon} alt="Industry Icon" width="60" />
@@ -1100,7 +1243,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={technologyIcon} alt="Industry Icon" width="60" />
@@ -1109,7 +1252,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={manufacturingIcon} alt="Industry Icon" width="60" />
@@ -1118,7 +1261,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={sportsIcon} alt="Industry Icon" width="60" />
@@ -1127,7 +1270,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={shopIcon} alt="Industry Icon" width="60" />
@@ -1136,7 +1279,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={schoolsIcon} alt="Industry Icon" width="60" />
@@ -1145,7 +1288,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={child_careIcon} alt="Industry Icon" width="60" />
@@ -1156,7 +1299,6 @@ const ProcessFlow = () => {
           
         </div>
         <div className="text-center mt-4">
-          {/* <button className="btn btn-warning btn-lg">View all</button> */}
         </div>
       </div>
     </section>
@@ -1165,191 +1307,13 @@ const ProcessFlow = () => {
 };
 
 const PricingSection = () => {
-  const plans = [
-    {
-      title: "Free",
-      price: "₹69",
-      features: [
-        { text: "Complete Documentation", included: true },
-        { text: "Working Materials in Figma", included: false },
-        { text: "100GB Cloud Storage", included: false },
-        { text: "Email Automation", included: false },
-        { text: "Premium Support", included: false },
-      ]
-    },
-    {
-      title: "Pro",
-      price: "₹150",
-      features: [
-        { text: "Complete Documentation", included: true },
-        { text: "Working Materials in Figma", included: true },
-        { text: "100GB Cloud Storage", included: true },
-        { text: "Email Automation", included: false },
-        { text: "Premium Support", included: false },
-      ]
-    },
-    {
-      title: "Exclusive",
-      price: "₹99",
-      features: [
-        { text: "Complete Documentation", included: true },
-        { text: "Working Materials in Figma", included: true },
-        { text: "100GB Cloud Storage", included: true },
-        { text: "Email Automation", included: true },
-        { text: "Premium Support", included: true },
-      ]
-    }
-  ];
-
-  // Define consistent styles using CSS variables where possible, or fallbacks
-  const containerStyle = {
-    background: '#1C1A1A', // Dark background from hero section
-    padding: '4rem 1rem',
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-
-  };
-
-  const headingStyle = {
-    color: '#FFC94A', // Yellow from theme
-    marginBottom: '2rem',
-    textAlign: 'center',
-    fontSize: '2rem', // Slightly larger for impact
-    fontWeight: '700',
-  };
-
-  const plansContainerStyle = {
-    display: 'flex',
-    gap: '2rem',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-  };
-
-  const planCardStyle = {
-    background: '#333333', // Dark grey card background
-    borderRadius: '1rem', // Match theme radius
-    padding: '2rem',
-    width: '370px',
-    textAlign: 'center',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-    transition: 'transform 0.3s ease', // Add subtle hover effect
-  };
-
-  const planCardHoverStyle = {
-    transform: 'translateY(-4px)', // Lift on hover
-    boxShadow: '0 8px 25px rgba(0,0,0,0.4)',
-  };
-
-  const titleStyle = {
-    color: '#FFC94A', // Yellow for titles
-    fontSize: '1.25rem',
-    marginBottom: '0.5rem',
-    fontWeight: '600',
-  };
-
-  const priceStyle = {
-    fontSize: '2.5rem', // Larger price font
-    fontWeight: 'bold',
-    color: 'white',
-    margin: '0.5rem 0',
-  };
-
-  const billingStyle = {
-    color: '#CCCCCC', // Light grey for billing info
-    fontSize: '0.875rem',
-    marginBottom: '1.5rem',
-  };
-
-  const ctaButtonStyle = {
-    background: '#FFC94A', // Yellow button
-    color: '#1C1A1A', // Dark text
-    border: 'none',
-    padding: '0.75rem 1.5rem',
-    borderRadius: '0.5rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    width: '100%',
-    marginBottom: '1.5rem',
-    transition: 'background-color 0.2s ease',
-    textDecoration: 'none',
-    display: 'inline-block',
-  };
-
-  const ctaButtonHoverStyle = {
-    backgroundColor: '#E6B842', // Slightly darker yellow on hover
-  };
-
-  const featuresListStyle = {
-    textAlign: 'left',
-    fontSize: '0.875rem',
-    lineHeight: '1.6',
-    listStyle: 'none',
-    padding: 0,
-    margin: 0,
-  };
-
-  const featureItemStyle = {
-    margin: '0.5rem 0',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-  };
-
-  const checkStyle = {
-    color: '#FFC94A', // Yellow checkmark
-    fontWeight: 'bold',
-    fontSize: '1.1rem',
-  };
-
-  const crossStyle = {
-    color: '#ff6b6b', // Red cross
-    fontWeight: 'bold',
-    fontSize: '1.1rem',
-  };
-
-  // return (
-  //   <section style={containerStyle}>
-  //     <h2 style={headingStyle}>Choose a plan that suits for your business</h2>
-  //     <div style={plansContainerStyle}>
-  //       {plans.map((plan, index) => (
-  //         <div
-  //           key={index}
-  //           style={{
-  //             ...planCardStyle,
-  //             ...planCardHoverStyle // You might want to handle hover with state for a more precise effect
-  //           }}
-  //           onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-  //           onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0px)'}
-  //         >
-  //           <div style={titleStyle}>{plan.title}</div>
-  //           <div style={priceStyle}>{plan.price}</div>
-  //           <div style={billingStyle}>Per month, billed annually</div>
-  //           <a href="#" style={{...ctaButtonStyle}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#E6B842'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFC94A'}>
-  //             Try It For Free
-  //           </a>
-  //           <ul style={featuresListStyle}>
-  //             {plan.features.map((feature, i) => (
-  //               <li key={i} style={featureItemStyle}>
-  //                 <span style={feature.included ? checkStyle : crossStyle}>
-  //                   {feature.included ? '✓' : '✗'}
-  //                 </span>
-  //                 <span style={{ color: 'white' }}>{feature.text}</span>
-  //               </li>
-  //             ))}
-  //           </ul>
-  //         </div>
-  //       ))}
-  //     </div>
-  //   </section>
-  // );
+  return null;
 };
 
 // Final CTA Section Component
 const FinalCTASection = () => {
   const containerStyle = {
-    background: '#FFC94A', // Bright yellow background
+    background: '#FFC94A',
     padding: '4rem 1rem',
     textAlign: 'center',
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
@@ -1359,28 +1323,15 @@ const FinalCTASection = () => {
     justifyContent: 'center',
   };
 
-  const badgeStyle = {
-    background: '#F3F3F3', // Light grey background for badge
-    color: '#1C1A1A', // Dark text
-    borderRadius: '2rem',
-    padding: '0.5rem 1rem',
-    fontSize: '0.875rem',
-    fontWeight: '600',
-    marginBottom: '1rem',
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '0.5rem',
-  };
-
   const headingStyle = {
-    fontSize: '2.5rem', // Large heading
+    fontSize: '2.5rem',
     fontWeight: '700',
-    color: '#1C1A1A', // Dark text for contrast
+    color: '#1C1A1A',
     marginBottom: '1rem',
   };
 
   const subheadingStyle = {
-    fontSize: '1rem',
+    fontSize: '1.5rem',
     color: '#1C1A1A',
     maxWidth: '600px',
     margin: '0 auto 2rem',
@@ -1394,8 +1345,8 @@ const FinalCTASection = () => {
   };
 
   const primaryButtonStyle = {
-    background: '#1C1A1A', // Dark button
-    color: '#FFC94A', // Yellow text
+    background: '#1C1A1A',
+    color: '#FFC94A',
     border: 'none',
     padding: '0.75rem 1.5rem',
     borderRadius: '0.5rem',
@@ -1410,8 +1361,8 @@ const FinalCTASection = () => {
 
   const secondaryButtonStyle = {
     background: 'transparent',
-    color: '#1C1A1A', // Dark text
-    border: '2px solid #1C1A1A', // Dark border
+    color: '#1C1A1A',
+    border: '2px solid #1C1A1A',
     padding: '0.75rem 1.5rem',
     borderRadius: '0.5rem',
     fontWeight: '600',
@@ -1451,27 +1402,18 @@ const FinalCTASection = () => {
 
   return (
     <section style={containerStyle}>
-      {/* Badge */}
-      {/* <div style={badgeStyle}>
-        <span>✨</span>
-        Ready to get started?
-      </div> */}
-      {/* Main Heading */}
       <h2 style={headingStyle}>Ready to Build the Future?</h2>
-      {/* Subheading */}
       <p style={subheadingStyle}>
-        Let's transform your ideas into powerful applications that drive real business results. Our team is ready to make it happen.
+        World Class Apps, Built to Last.
       </p>
-      {/* Buttons */}
       <div style={buttonsContainerStyle}>
         <a href="#" style={primaryButtonStyle}>
           Get In Touch →
         </a>
-        <a href="#" style={secondaryButtonStyle}>
+        {/* <a href="#" style={secondaryButtonStyle}>
           View Our Work
-        </a>
+        </a> */}
       </div>
-      {/* Features */}
       <div style={featuresContainerStyle}>
         <div style={featureBoxStyle}>
           <h3 style={featureTitleStyle}>Free Consultation</h3>
@@ -1500,7 +1442,6 @@ export default function ZappsLanding() {
         <ServiceTypesSection />
         <ProcessFlow />
         <PricingSection />
-        {/* Add the Final CTA Section here */}
         <FinalCTASection />
       </div>
     </>

@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaSearch } from "react-icons/fa"; // Added FaSearch
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Import your existing images
-// import updated_logoImage from '../../images/updated_logo.png';
-// import updated_k_logoImage from '../../images/updated_k_logo.png';
-// import ecomerceImage from '../../images/ecomerce.png';
 import custom_buildImage from '../../images/custom_build.png';
 import ready_to_useImage from '../../images/ready_to_use.png';
 import com_leftImage from '../../images/com_left.jpg';
@@ -19,21 +16,7 @@ import performanceImage from '../../images/performance.png';
 import multi_languageImage from '../../images/multi_language.png';
 import scalingImage from '../../images/scaling.png';
 
-// --- (ACTION REQUIRED) ---
-// 1. Import the 8 images for your new services section here.
-// Example:
-// import bespokeWebsitesImage from '../../images/services/bespoke-websites.jpg';
-// import uiUxImage from '../../images/services/ui-ux.jpg';
-// import seoImage from '../../images/services/seo.jpg';
-// import maintenanceImage from '../../images/services/maintenance.jpg';
-// import digitalOptimizationImage from '../../images/services/digital-optimization.jpg';
-// import securityImage from '../../images/services/security.jpg';
-// import multiLanguageImage from '../../images/services/multi-language.jpg';
-// import scalingImage from '../../images/services/scaling.jpg';
-
-// --- (ACTION REQUIRED) ---
-// 2. Import the 12 icon images for the "Solutions for Every Industry" section.
-//    Replace these placeholder paths with your actual image locations.
+// Import the 12 icon images for the "Solutions for Every Industry" section.
 import ecomerceIcon from '../../images/ecomerce.png';
 import eventsIcon from '../../images/events.png';
 import hospitalIcon from '../../images/hospital.png';
@@ -48,7 +31,149 @@ import schoolsIcon from '../../images/schools.png';
 import child_careIcon from '../../images/child_care.png';
 
 
-// --- NEW SECTION COMPONENT ---
+// --- NEW SEARCH COMPONENT ---
+const StudioSearch = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
+  const [studioSelected, setStudioSelected] = useState(false);
+
+  const studios = ["Ready to use", "Custom Build"];
+
+  const handleSelectStudio = (studio) => {
+    setSearchTerm(studio);
+    setStudioSelected(studio);
+    setIsFocused(false);
+  };
+
+  // Using a timeout to allow the click on a suggestion to register before the suggestions disappear on blur.
+  const handleBlur = () => {
+    setTimeout(() => {
+      setIsFocused(false);
+    }, 150);
+  };
+
+  const renderButtons = (studio) => {
+    switch (studio) {
+      case "Ready to use":
+        return (
+          <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
+            <button style={buttonStyle}>Products</button>
+            <button style={buttonStyle}>Services</button>
+          </div>
+        );
+      case "Custom Build":
+        return (
+          <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
+            <button style={buttonStyle}>Products</button>
+            <button style={buttonStyle}>Services</button>
+          </div>
+        );
+      // case "Agentic Studio":
+      //   return (
+      //     <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
+      //       <button style={buttonStyle}>Products</button>
+      //       <button style={buttonStyle}>Services</button>
+      //     </div>
+      //   );
+      default:
+        return null;
+    }
+  };
+
+  const buttonStyle = {
+    flex: 1,
+    backgroundColor: '#F2C94C',
+    color: '#0b0b0b',
+    border: '1px solid #666',
+    borderRadius: '12px',
+    padding: '12px 20px',
+    fontWeight: '500',
+    cursor: 'pointer',
+  };
+
+  return (
+    <div style={{ position: 'relative', maxWidth: '500px', margin: 'auto' }}>
+      {/* Search Bar Input */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#333',
+        borderRadius: '50px',
+        padding: '8px',
+        //  border: '1px solid #F2C94C'
+      }}>
+        <FaSearch style={{ color: '#aaa', margin: '0 10px' }} />
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            if (studioSelected) setStudioSelected(false);
+          }}
+          onFocus={() => setIsFocused(true)}
+          onBlur={handleBlur}
+          placeholder="Search Studio..."
+          style={{
+            flexGrow: 1,
+            background: 'transparent',
+            border: 'none',
+            color: 'white',
+            fontSize: '1rem',
+            outline: 'none'
+          }}
+        />
+        <button style={{
+          backgroundColor: '#F2C94C',
+          color: '#0b0b0b',
+          border: 'none',
+          borderRadius: '50px',
+          padding: '10px 24px',
+          fontWeight: 'bold',
+          cursor: 'pointer'
+        }}>
+          Search
+        </button>
+      </div>
+
+      {/* Suggestions Dropdown */}
+      {isFocused && !studioSelected && (
+        <div style={{
+          backgroundColor: '#333',
+          borderRadius: '16px',
+          marginTop: '10px',
+          padding: '10px 0',
+          position: 'absolute',
+          width: '100%',
+          zIndex: 10
+        }}>
+          {studios
+            .filter(studio => studio.toLowerCase().includes(searchTerm.toLowerCase()))
+            .map(studio => (
+              <div
+                key={studio}
+                onMouseDown={() => handleSelectStudio(studio)}
+                style={{
+                  padding: '12px 20px',
+                  color: 'white',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor = '#444'}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}
+              >
+                {studio}
+              </div>
+            ))}
+        </div>
+      )}
+
+      {/* Conditional Buttons */}
+      {studioSelected && renderButtons(studioSelected)}
+    </div>
+  );
+};
+
+
+// --- Industry Solutions Section ---
 const ProcessFlow = () => {
   return (
   <section className="industry-solutions py-5" style={{ backgroundColor: '#2a2a2a' }}>
@@ -60,114 +185,30 @@ const ProcessFlow = () => {
           </p>
         </div>
         <div className="row g-4 industry-cards">
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={ecomerceIcon} alt="E-Commerce Icon" width="60" />
-              </div>
-              <h3 className="industry-title">E-Commerce</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={eventsIcon} alt="Events Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Events</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={hospitalIcon} alt="Hospital Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Hospital</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={universityIcon} alt="University Icon" width="60" />
-              </div>
-              <h3 className="industry-title">University</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={hotelIcon} alt="Resorts & Hotels Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Resorts & Hotels</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={food_courtIcon} alt="Food-Court Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Food-Court</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={technologyIcon} alt="Technology Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Technology</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={manufacturingIcon} alt="Manufacturing Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Manufacturing</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={sportsIcon} alt="Sports Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Sports</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={shopIcon} alt="Retail Shop Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Retail Shop</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={schoolsIcon} alt="Schools Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Schools</h3>
-            </div>
-          </div>
-
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
-            <div className="industry-card">
-              <div className="industry-icon">
-                <img src={child_careIcon} alt="Child Care Icon" width="60" />
-              </div>
-              <h3 className="industry-title">Child Care</h3>
-            </div>
-          </div>
-          
+            {/* Industry Cards Data */}
+            {[
+                { icon: ecomerceIcon, title: 'E-Commerce' },
+                { icon: eventsIcon, title: 'Events' },
+                { icon: hospitalIcon, title: 'Hospital' },
+                { icon: universityIcon, title: 'University' },
+                { icon: hotelIcon, title: 'Resorts & Hotels' },
+                { icon: food_courtIcon, title: 'Food-Court' },
+                { icon: technologyIcon, title: 'Technology' },
+                { icon: manufacturingIcon, title: 'Manufacturing' },
+                { icon: sportsIcon, title: 'Sports' },
+                { icon: shopIcon, title: 'Retail Shop' },
+                { icon: schoolsIcon, title: 'Schools' },
+                { icon: child_careIcon, title: 'Child Care' },
+            ].map((item, index) => (
+                <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div className="industry-card">
+                        <div className="industry-icon">
+                            <img src={item.icon} alt={`${item.title} Icon`} width="60" />
+                        </div>
+                        <h3 className="industry-title">{item.title}</h3>
+                    </div>
+                </div>
+            ))}
         </div>
       </div>
     </section>
@@ -175,7 +216,7 @@ const ProcessFlow = () => {
 };
 
 
-// --- Testimonials (extract hooks to top-level component) ---
+// --- Testimonials Section ---
 const Testimonials = () => {
   const testimonials = [
     {
@@ -226,7 +267,7 @@ const Testimonials = () => {
           ←
         </button>
         <div>
-          {[0, 1, 2].map((d) => (
+          {[...Array(testimonials.length)].map((_, d) => (
             <span key={d} style={{ display: 'inline-block', width: 10, height: 10, margin: '0 6px', borderRadius: '50%', backgroundColor: index % testimonials.length === d ? '#F2C94C' : 'rgba(255,255,255,0.25)' }} />
           ))}
         </div>
@@ -239,69 +280,51 @@ const Testimonials = () => {
 };
 
 
+// --- Main AppStudio Component ---
 function AppStudio() {
   const navigate = useNavigate();
 
-  // --- Data for the new "Services That Power Your Growth" section ---
   const servicesData = [
-    {
-      title: 'Bespoke Websites',
-      // Replace placeholder with your imported image, e.g., image: bespokeWebsitesImage
-      image: bespokeImage,
-    },
-    {
-      title: 'UI/UX',
-      image: ui_uxImage,
-    },
-    {
-      title: 'SEO',
-      image: seoImage,
-    },
-    {
-      title: 'Maintenance',
-      image: maintanceImage,
-    },
-    {
-      title: 'Digital Optimization',
-      image: digitalImage,
-    },
-    {
-      title: 'Performance & Security',
-      image: performanceImage,
-    },
-    {
-      title: 'Multi Language Support',
-      image: multi_languageImage,
-    },
-    {
-      title: 'Scaling',
-      image: scalingImage,
-    },
+    { title: 'Bespoke Websites', image: bespokeImage },
+    { title: 'UI/UX', image: ui_uxImage },
+    { title: 'SEO', image: seoImage },
+    { title: 'Maintenance', image: maintanceImage },
+    { title: 'Digital Optimization', image: digitalImage },
+    { title: 'Performance & Security', image: performanceImage },
+    { title: 'Multi Language Support', image: multi_languageImage },
+    { title: 'Scaling', image: scalingImage },
   ];
 
   return (
     <div className="App" style={{ backgroundColor: '#0b0b0b', color: '#ffffff' }}>
 
       {/* Hero Section */}
-      <section className="hero-section py-5 position-relative" style={{ background: '#0b0b0b', minHeight: '100vh', display: 'flex', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=1920&auto=format&fit=crop&q=60)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="container">
-          <div className="row align-items-center">
+      <section className="hero-section position-relative" style={{ background: '#0b0b0b', minHeight: '100vh', display: 'flex', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=1920&auto=format&fit=crop&q=60)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="container mb-5">
+            <h1 className="fw-bold text-center" style={{ color: '#F2C94C', fontSize: 65, lineHeight: 1.2, position: 'relative', top: '-20px' }}>
+                App Studio
+            </h1>
+          <div className="row align-items-center mb-5">
+            {/* Left Column: Text Content */}
             <div className="col-lg-6 mt-5">
               <h1 className="fw-bold" style={{ color: '#F2C94C', fontSize: 65, lineHeight: 1.2 }}>
-                App Studio
-                <br /> We Engineer
+                 We Engineer
                 <br /> Your App Vision
               </h1>
-                  <div className="col-lg-12 mt-4 mt-lg-0">
-              <p className="mb-4" style={{ color: 'rgba(255,255,255,0.85)', fontSize: 24 }}>
-                We build high‑performance mobile and web apps to help you launch faster and scale smarter.
-              </p>
-              <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }} onClick={() => navigate('/studios/app_studio')}>
-                Start Your Project <FaArrowRight style={{ marginLeft: 6 }} />
-              </button>
+              <div className="col-lg-12 mt-4 mt-lg-0">
+                  <p className="mb-4" style={{ color: 'rgba(255,255,255,0.85)', fontSize: 24 }}>
+                    We build high‑performance mobile and web apps to help you launch faster and scale smarter.
+                  </p>
+                  <button className="btn btn-lg rounded-pill px-4" style={{ backgroundColor: '#F2C94C', color: '#0b0b0b', border: 'none' }} onClick={() => navigate('/contact')}>
+                    Start Your Project <FaArrowRight style={{ marginLeft: 6 }} />
+                  </button>
+              </div>
             </div>
+            
+            {/* Right Column: Search Bar Component */}
+            <div className="col-lg-6 mt-5">
+                <StudioSearch />
             </div>
-    
           </div>
         </div>
       </section>
@@ -322,100 +345,35 @@ function AppStudio() {
           </div>
           <div className="row g-4 justify-content-center align-items-stretch">
             {/* Card 1: Ready to use */}
-  <div className="col-12 col-md-6 col-lg-4">
-  <Link
-    to="/ready"
-    style={{ textDecoration: "none" }}
-  >
-    <div
-      className="d-flex flex-column justify-content-end text-white h-100"
-      style={{
-        borderRadius: "24px",
-        padding: "2.5rem",
-        minHeight: "450px",
-        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        cursor: "pointer", // Makes it look clickable
-        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      <h3
-        className="fw-bold mb-3"
-        style={{ color: "#F2C94C", fontSize: "2rem" }}
-      >
-        Ready to use
-      </h3>
-      <p
-        className="mb-4"
-        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
-      >
-        Pick from our library of templates and launch your website in minutes — fully customizable and responsive.
-      </p>
-      <span
-        className="fw-bold"
-        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
-      >
-        explore now ↗
-      </span>
-    </div>
-  </Link>
-</div>
+            <div className="col-12 col-md-6 col-lg-4">
+              <Link to="/ready" style={{ textDecoration: "none" }}>
+                <div
+                  className="d-flex flex-column justify-content-end text-white h-100"
+                  style={{ borderRadius: "24px", padding: "2.5rem", minHeight: "450px", background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer", transition: "transform 0.3s ease, box-shadow 0.3s ease" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+                >
+                  <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "2rem" }}>Ready to use</h3>
+                  <p className="mb-4" style={{ fontSize: "1.05rem", maxWidth: "480px" }}>Pick from our library of templates and launch your website in minutes — fully customizable and responsive.</p>
+                  <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1.1rem" }}>explore now ↗</span>
+                </div>
+              </Link>
+            </div>
             {/* Card 2: Custom Build */}
-       <div className="col-12 col-md-6 col-lg-4">
-  <Link to="/studios/web/custom-build" style={{ textDecoration: "none" }}>
-    <div
-      className="d-flex flex-column justify-content-end text-white h-100"
-      style={{
-        borderRadius: "24px",
-        padding: "2.5rem",
-        minHeight: "450px",
-        background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        cursor: "pointer",
-        transition: "transform 0.3s ease, boxShadow 0.3s ease",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
-        e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      <h3
-        className="fw-bold mb-3"
-        style={{ color: "#F2C94C", fontSize: "2rem" }}
-      >
-        Custom Build
-      </h3>
-      <p
-        className="mb-4"
-        style={{ fontSize: "1.05rem", maxWidth: "480px" }}
-      >
-        We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.
-      </p>
-      <span
-        className="fw-bold"
-        style={{ color: "#F2C94C", fontSize: "1.1rem" }}
-      >
-        explore now ↗
-      </span>
-    </div>
-  </Link>
-</div>
+            <div className="col-12 col-md-6 col-lg-4">
+              <Link to="/studios/web/custom-build" style={{ textDecoration: "none" }}>
+                <div
+                  className="d-flex flex-column justify-content-end text-white h-100"
+                  style={{ borderRadius: "24px", padding: "2.5rem", minHeight: "450px", background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer", transition: "transform 0.3s ease, boxShadow 0.3s ease" }}
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+                >
+                  <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "2rem" }}>Custom Build</h3>
+                  <p className="mb-4" style={{ fontSize: "1.05rem", maxWidth: "480px" }}>We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.</p>
+                  <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1.1rem" }}>explore now ↗</span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -427,11 +385,9 @@ function AppStudio() {
             Choose the Website <span style={{ color: '#F2C94C' }}>That Works for You</span>
           </h2>
           <div className="row align-items-center">
-            {/* Left Column: Image */}
             <div className="col-lg-6 mb-4 mb-lg-0">
               <img src={com_leftImage} alt="Designer choosing a website template" className="img-fluid rounded-4" />
             </div>
-            {/* Right Column: Content */}
             <div className="col-lg-6 ps-lg-5">
               <h3 className="fw-normal lh-base" style={{ color: '#ffffff', fontSize: '2.25rem' }}>
                 From startups to enterprises <br />
@@ -440,37 +396,19 @@ function AppStudio() {
                 </span>
               </h3>
               <ul className="list-unstyled mt-4">
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Basic Websites
-                </li>
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Corporate Websites
-                </li>
-                <li className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  E-Commerce Websites
-                </li>
-                <li className="d-flex align-items-center fs-5" style={{ color: '#ffffff' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                  </svg>
-                  Content Management Websites
-                </li>
+                {[ "Basic Websites", "Corporate Websites", "E-Commerce Websites", "Content Management Websites" ].map((item, index) => (
+                    <li key={index} className="d-flex align-items-center mb-3 fs-5" style={{ color: '#ffffff' }}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F2C94C" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="me-3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        {item}
+                    </li>
+                ))}
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services That Power Your Growth section - UPDATED */}
+      {/* Services That Power Your Growth section */}
       <section className="py-5" style={{ backgroundColor: '#343434' }}>
         <div className="container">
           <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>
@@ -481,16 +419,7 @@ function AppStudio() {
               <div key={index} className="col-12 col-sm-6 col-lg-3">
                 <div
                   className="d-flex align-items-center justify-content-center text-center p-3 h-100"
-                  style={{
-                    backgroundImage: `url(${service.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: '16px',
-                    minHeight: '220px',
-                    color: '#F2C94C',
-                    transition: 'transform 0.3s ease-in-out',
-                    cursor: 'pointer'
-                  }}
+                  style={{ backgroundImage: `url(${service.image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '16px', minHeight: '220px', color: '#F2C94C', transition: 'transform 0.3s ease-in-out', cursor: 'pointer' }}
                   onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
                   onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                 >
@@ -502,7 +431,7 @@ function AppStudio() {
         </div>
       </section>
       
-      {/* --- NEW SECTION INSERTED HERE --- */}
+      {/* Industry Solutions Section */}
       <ProcessFlow />
 
       {/* We Don't Just Say It, We Deliver section */}
@@ -512,15 +441,17 @@ function AppStudio() {
             We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
           </h2>
           <div className="row g-4 align-items-stretch">
-            {/* Left image */}
             <div className="col-lg-6">
               <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60" alt="Support team" className="img-fluid w-100" style={{ borderRadius: 20, height: 420, objectFit: 'cover' }} />
             </div>
-            {/* Right stacked cards with vertical scrolling */}
             <div className="col-lg-6 d-flex flex-column gap-3">
-              <div className="scroll-container" style={{ height: '410px', overflowY: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+              <div className="scroll-container" style={{ height: '410px', overflowY: 'hidden', position: 'relative' }}>
                 <div className="scroll-content" style={{ animation: 'scroll 10s linear infinite', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  {[{ title: 'Quick around Cycles', text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.' }, { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }, { title: 'Reliable Support', text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.' }, { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }].map((card, idx) => (
+                  {[...Array(2)].flatMap(() => [
+                    { title: 'Quick around Cycles', text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.' }, 
+                    { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }, 
+                    { title: 'Reliable Support', text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.' }
+                  ]).map((card, idx) => (
                     <div key={idx} className="p-4" style={{ background: 'rgba(21,21,21,0.85)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 10px 24px rgba(0,0,0,0.45)' }}>
                       <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>{card.title}</h4>
                       <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>{card.text}</p>
@@ -535,12 +466,9 @@ function AppStudio() {
       
       {/* Keyframes for scrolling animation */}
       <style>{`
-        @keyframes scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-100%); }
-        }
+        @keyframes scroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        .scroll-container:hover .scroll-content { animation-play-state: paused; }
       `}</style>
-
 
       {/* Discover How We Deliver Outstanding Results section */}
       <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
@@ -549,45 +477,25 @@ function AppStudio() {
             Discover How We Deliver <span style={{ color: '#F2C94C' }}>Outstanding Results</span>
           </h2>
           <div className="row g-5 justify-content-center">
-            {/* Card 1 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=60" alt="Case study 1" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>E-Commerce</span>
+            {/* Case Study Cards */}
+            {[
+                {img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=60", cat: "E-Commerce", title: "How We Achieved Results for [Project Name]"},
+                {img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&auto=format&fit=crop&q=60", cat: "Health care", title: "How We really achieved Results for [Project Name]"},
+                {img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&q=60", cat: "Tech", title: "How We Achieved Results for [Project Name]"}
+            ].map((card, index) => (
+                <div key={index} className="col-md-6 col-lg-4">
+                    <div className="h-100">
+                    <img src={card.img} alt={`Case study ${index+1}`} className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
+                    <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
+                        <span>Case study</span><span className="mx-2">•</span><span>{card.cat}</span>
+                    </div>
+                    <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>{card.title}</div>
+                    </div>
                 </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We Achieved Results for<br />[Project Name]
-                </div>
-              </div>
-            </div>
-            {/* Card 2 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=60" alt="Case study 2" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>Health care</span>
-                </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We really achieved Results for<br />[Project Name]
-                </div>
-              </div>
-            </div>
-            {/* Card 3 */}
-            <div className="col-md-6 col-lg-4">
-              <div className="h-100">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&auto=format&fit=crop&q=60" alt="Case study 3" className="img-fluid w-100" style={{ borderRadius: 18, height: 240, objectFit: 'cover' }} />
-                <div className="mt-3" style={{ color: '#F2C94C', fontWeight: 600 }}>
-                  <span>Case study</span><span className="mx-2" style={{ color: '#F2C94C' }}>•</span><span style={{ color: '#F2C94C' }}>Tech</span>
-                </div>
-                <div className="fw-bold mt-2" style={{ color: '#ffffff' }}>
-                  How We Achieved Results for<br />[Project Name]
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="d-flex justify-content-end mt-4">
-            <button className="btn rounded-pill px-4 py-2" style={{ borderColor: '#F2C94C', color: '#F2C94C', borderWidth: 2, borderStyle: 'solid', background: 'transparent' }}>
+            <button className="btn rounded-pill px-4 py-2" style={{ borderColor: '#F2C94C', color: '#F2C94C', borderWidth: 2, background: 'transparent' }}>
               View all <FaArrowRight />
             </button>
           </div>
@@ -595,11 +503,10 @@ function AppStudio() {
       </section>
 
       {/* Don't just take our word for it section */}
-      <section className="py-5" style={{ backgroundColor: '#0b0b0b', minHeight: '50vh', display: 'flex', alignItems: 'center' }}>
+      <section className="py-5" style={{ backgroundColor: '#0b0b0b', display: 'flex', alignItems: 'center' }}>
         <div className="container">
           <div className="text-center mb-2" style={{ color: '#F2C94C' }}>3940+ Happy Z.apps users</div>
           <h2 className="fw-bold text-center mb-5" style={{ color: '#ffffff' }}>Don't just take our <span style={{ color: '#F2C94C' }}>words</span></h2>
-
           <Testimonials />
         </div>
       </section>
@@ -607,17 +514,12 @@ function AppStudio() {
       {/* Ready to Build the Future? section */}
       <section className="py-5 text-dark text-center" style={{ backgroundColor: '#F2C94C' }}>
         <div className="container py-4">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mb-3" style={{ backgroundColor: 'rgba(0,0,0,0.08)', color: '#0b0b0b', fontWeight: 600 }}>
-            <span>⚡</span>
-            <span>Ready to get started?</span>
-          </div>
           <h2 className="fw-bold mb-3" style={{ fontSize: 42 }}>Ready to Build the Future?</h2>
-          <p className="mb-4" style={{ maxWidth: 760, margin: '0 auto' }}>
-            Let's transform your ideas into powerful applications that drive real business results. Our team is ready to make it happen.
+          <p className="mb-4" style={{ maxWidth: 760, margin: '0 auto', fontSize: 25 }}>
+           World Class Apps, Built to Last.
           </p>
           <div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
             <button className="btn btn-dark rounded-pill px-4 py-2">Get In Touch →</button>
-            <button className="btn btn-outline-dark rounded-pill px-4 py-2" style={{ borderWidth: 2 }}>View Our Work</button>
           </div>
           <div className="row g-4 justify-content-center text-start" style={{ maxWidth: 900, margin: '0 auto' }}>
             <div className="col-12 col-md-4">
@@ -636,7 +538,7 @@ function AppStudio() {
         </div>
       </section>
 
-      {/* Added Styles for the new Industry Section */}
+      {/* Added Styles for the Industry Section */}
       <style>{`
         .industry-card {
           background-color: #343434;
