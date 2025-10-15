@@ -934,10 +934,10 @@ const HeroSection = () => {
     className="hero-buttons mt-3"
     style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}
   >
-    <Link to="/products" className="btn btn-secondary">
+    <Link to="/ready" className="btn btn-secondary">
       Ready to Use
     </Link>
-    <Link to="/services" className="btn btn-secondary">
+    <Link to="/studios/web/custom-build" className="btn btn-secondary">
       Custom Build
     </Link>
   </div>
@@ -1052,7 +1052,7 @@ const StudiosSection = () => {
             <Link to="/ready" className="studio-button primary">
               Ready to use ↗
             </Link>
-              <Link to="/products" className="studio-button secondary">
+              <Link to="/studios/web/custom-build" className="studio-button secondary">
                 Customize ↗
               </Link> 
             </div>
@@ -1184,7 +1184,7 @@ const ProcessFlow = () => {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2>Solutions for Every <span>Industry</span></h2>
-          <p className="mx-auto" style={{ fontSize: '1.125rem', maxWidth: '42rem', color: '#F3F3F3' }}>
+          <p className="mx-auto" style={{ fontSize: '1.2rem', maxWidth: '42rem', color: '#F3F3F3' }}>
             From startups to enterprises, we deliver tailored digital solutions that fit your world.
           </p>
         </div>

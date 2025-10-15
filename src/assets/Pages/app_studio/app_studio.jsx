@@ -36,6 +36,11 @@ const StudioSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   const [studioSelected, setStudioSelected] = useState(false);
+  
+  // --- MODIFICATION START ---
+  // 1. Initialize the useNavigate hook
+  const navigate = useNavigate();
+  // --- MODIFICATION END ---
 
   const studios = ["Ready to use", "Custom Build"];
 
@@ -57,24 +62,24 @@ const StudioSearch = () => {
       case "Ready to use":
         return (
           <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
-            <button style={buttonStyle}>Products</button>
-            <button style={buttonStyle}>Services</button>
+            {/* --- MODIFICATION START --- */}
+            {/* 2. Added onClick handlers for navigation */}
+            <button style={buttonStyle} onClick={() => navigate('/ready')}>Products</button>
+            <button style={buttonStyle} onClick={() => navigate('/ready')}>Services</button>
+            {/* --- MODIFICATION END --- */}
           </div>
         );
       case "Custom Build":
         return (
           <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
-            <button style={buttonStyle}>Products</button>
-            <button style={buttonStyle}>Services</button>
+            {/* --- MODIFICATION START --- */}
+            {/* 3. Added onClick handlers for navigation */}
+            <button style={buttonStyle} onClick={() => navigate('/studios/web/custom-build')}>Products</button>
+            <button style={buttonStyle} onClick={() => navigate('/studios/web/custom-build')}>Services</button>
+            {/* --- MODIFICATION END --- */}
           </div>
         );
-      // case "Agentic Studio":
-      //   return (
-      //     <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
-      //       <button style={buttonStyle}>Products</button>
-      //       <button style={buttonStyle}>Services</button>
-      //     </div>
-      //   );
+
       default:
         return null;
     }
@@ -97,12 +102,12 @@ const StudioSearch = () => {
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        backgroundColor: '#333',
+        backgroundColor: '#ffffffff',
         borderRadius: '50px',
         padding: '8px',
         //  border: '1px solid #F2C94C'
       }}>
-        <FaSearch style={{ color: '#aaa', margin: '0 10px' }} />
+        <FaSearch style={{ color: '#aaaaaaff', margin: '0 10px' }} />
         <input
           type="text"
           value={searchTerm}
@@ -123,8 +128,8 @@ const StudioSearch = () => {
           }}
         />
         <button style={{
-          backgroundColor: '#F2C94C',
-          color: '#0b0b0b',
+          backgroundColor: '#383838ff',
+          color: '#ffffffff',
           border: 'none',
           borderRadius: '50px',
           padding: '10px 24px',
@@ -138,8 +143,8 @@ const StudioSearch = () => {
       {/* Suggestions Dropdown */}
       {isFocused && !studioSelected && (
         <div style={{
-          backgroundColor: '#333',
-          borderRadius: '16px',
+          backgroundColor: '#474642ff',
+          borderRadius: '14px',
           marginTop: '10px',
           padding: '10px 0',
           position: 'absolute',
@@ -200,7 +205,7 @@ const ProcessFlow = () => {
                 { icon: schoolsIcon, title: 'Schools' },
                 { icon: child_careIcon, title: 'Child Care' },
             ].map((item, index) => (
-                <div key={index} className="col-lg-3 col-md-4 col-sm-6 col-12">
+                <div key={index} className="col-lg-2 col-md-4 col-sm-6 col-12">
                     <div className="industry-card">
                         <div className="industry-icon">
                             <img src={item.icon} alt={`${item.title} Icon`} width="60" />
@@ -328,57 +333,7 @@ function AppStudio() {
           </div>
         </div>
       </section>
-      
-      {/* Built to cater to your requirement section */}
-      <section className="py-5" style={{ backgroundColor: '#444444' }}>
-        <div className="container">
-          <div className="text-center mb-5">
-            <h2 className="fw-bold mb-0" style={{ color: '#ffffff', fontSize: 40 }}>
-              Built to cater to your requirement-
-            </h2>
-            <div className="fw-bold" style={{ color: '#F2C94C', fontSize: 40 }}>
-              Quick and reliable models.
-            </div>
-            <p className="mt-0" style={{ color: 'rgba(255, 255, 255, 0.8)', maxWidth: 900, margin: '0 auto', fontSize: '24px' }}>
-              Pick a template and go live in minutes, or let us craft a fully custom project designed around your brand and goals.
-            </p>
-          </div>
-          <div className="row g-4 justify-content-center align-items-stretch">
-            {/* Card 1: Ready to use */}
-            <div className="col-12 col-md-6 col-lg-4">
-              <Link to="/ready" style={{ textDecoration: "none" }}>
-                <div
-                  className="d-flex flex-column justify-content-end text-white h-100"
-                  style={{ borderRadius: "24px", padding: "2.5rem", minHeight: "450px", background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${ready_to_useImage})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer", transition: "transform 0.3s ease, box-shadow 0.3s ease" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-                >
-                  <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "2rem" }}>Ready to use</h3>
-                  <p className="mb-4" style={{ fontSize: "1.05rem", maxWidth: "480px" }}>Pick from our library of templates and launch your website in minutes — fully customizable and responsive.</p>
-                  <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1.1rem" }}>explore now ↗</span>
-                </div>
-              </Link>
-            </div>
-            {/* Card 2: Custom Build */}
-            <div className="col-12 col-md-6 col-lg-4">
-              <Link to="/studios/web/custom-build" style={{ textDecoration: "none" }}>
-                <div
-                  className="d-flex flex-column justify-content-end text-white h-100"
-                  style={{ borderRadius: "24px", padding: "2.5rem", minHeight: "450px", background: `linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%), url(${custom_buildImage})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer", transition: "transform 0.3s ease, boxShadow 0.3s ease" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.3)"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-                >
-                  <h3 className="fw-bold mb-3" style={{ color: "#F2C94C", fontSize: "2rem" }}>Custom Build</h3>
-                  <p className="mb-4" style={{ fontSize: "1.05rem", maxWidth: "480px" }}>We craft websites from scratch to match your exact needs — designed, developed, and optimized for impact.</p>
-                  <span className="fw-bold" style={{ color: "#F2C94C", fontSize: "1.1rem" }}>explore now ↗</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Trending Ready-to-use Websites section */}
       <section className="py-5" style={{ backgroundColor: '#424242' }}>
         <div className="container">
           <h2 className="fw-bold mb-5 text-center" style={{ color: '#ffffff' }}>
@@ -417,14 +372,29 @@ function AppStudio() {
           <div className="row g-4">
             {servicesData.map((service, index) => (
               <div key={index} className="col-12 col-sm-6 col-lg-3">
-                <div
-                  className="d-flex align-items-center justify-content-center text-center p-3 h-100"
-                  style={{ backgroundImage: `url(${service.image})`, backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '16px', minHeight: '220px', color: '#F2C94C', transition: 'transform 0.3s ease-in-out', cursor: 'pointer' }}
-                  onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-                  onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                >
-                  <h4 className="fw-bold m-0 mt-5">{service.title}</h4>
-                </div>
+            <div
+  className="d-flex align-items-center justify-content-center text-center p-3 h-100"
+  style={{
+    backgroundImage: `url(${service.image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius: '16px',
+    minHeight: '220px',
+    color: '#F2C94C',
+    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out', // Adding box-shadow transition
+    cursor: 'pointer',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.transform = 'scale(1.03)';
+    e.currentTarget.style.boxShadow = '0 0px 20px rgba(255, 202, 58, 0.938)'; // Box shadow on hover
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.transform = 'scale(1)';
+    e.currentTarget.style.boxShadow = 'none'; // Remove box shadow when not hovering
+  }}
+>
+  <h4 className="fw-bold m-0 mt-5">{service.title}</h4>
+</div>
               </div>
             ))}
           </div>
@@ -540,31 +510,84 @@ function AppStudio() {
 
       {/* Added Styles for the Industry Section */}
       <style>{`
-        .industry-card {
-          background-color: #343434;
-          border-radius: 16px;
-          padding: 2rem 1.5rem;
-          text-align: center;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .industry-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-        }
-        .industry-icon {
-          margin-bottom: 1.5rem;
-        }
-        .industry-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: #ffffff;
-        }
+        /* Solutions for Every Industry Section */
+  .industry-solutions {
+    background-color: #1C1A1A;
+    padding: 5rem 1rem;
+    color: #FFFFFF;
+  }
+  
+  .industry-solutions h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+  }
+  
+  .industry-solutions h2 span {
+    color: #FFC94A;
+  }
+  
+  .industry-solutions p {
+    font-size: 1.125rem;
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    color: #F3F3F3;
+  }
+  
+.industry-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0rem; /* ✅ spacing between cards */
+}
+
+  
+.industry-card {
+  background-color: #333333;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%; /* let Bootstrap grid control width */
+  max-width: 250px; /* optional limit for nicer look */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+  
+  .industry-card:hover {
+    transform: translateY(-4px);
+    background-color: #444444;
+     box-shadow: 0 0px 20px rgba(255, 202, 58, 0.938);
+  }
+  
+  .industry-icon {
+    width: 60rem;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .industry-icon svg {
+    width: 30px;
+    height: 30px;
+    color: #1C1A1A;
+  }
+  
+  .industry-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
       `}</style>
 
     </div>

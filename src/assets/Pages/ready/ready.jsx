@@ -9,10 +9,10 @@ const SearchIcon = ({ className }) => (
 );
 
 const HistoryIcon = ({ className }) => (
-  <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className}>
-    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z"></path>
-  </svg>
+ <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 7L14.1314 14.8686C13.7354 15.2646 13.5373 15.4627 13.309 15.5368C13.1082 15.6021 12.8918 15.6021 12.691 15.5368C12.4627 15.4627 12.2646 15.2646 11.8686 14.8686L9.13137 12.1314C8.73535 11.7354 8.53735 11.5373 8.30902 11.4632C8.10817 11.3979 7.89183 11.3979 7.69098 11.4632C7.46265 11.5373 7.26465 11.7354 6.86863 12.1314L2 17M22 7H15M22 7V14" stroke="#636363ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 );
+
+
 
 
 const Ready = () => {
@@ -93,7 +93,7 @@ const Ready = () => {
               onMouseDown={() => handleSuggestionClick(suggestion)} // <-- Use new handler
             >
               <HistoryIcon className={styles.historyIcon} />
-              <span>{suggestion.name}</span> {/* <-- Access name property */}
+              <span className='ms-3'>{suggestion.name}</span> {/* <-- Access name property */}
             </div>
           ))}
         </div>

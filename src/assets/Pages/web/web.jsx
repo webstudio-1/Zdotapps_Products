@@ -60,7 +60,7 @@ const ProcessFlow = () => {
           </p>
         </div>
         <div className="row g-4 industry-cards">
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={ecomerceIcon} alt="E-Commerce Icon" width="60" />
@@ -69,7 +69,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={eventsIcon} alt="Events Icon" width="60" />
@@ -78,7 +78,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={hospitalIcon} alt="Hospital Icon" width="60" />
@@ -87,7 +87,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={universityIcon} alt="University Icon" width="60" />
@@ -96,7 +96,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={hotelIcon} alt="Resorts & Hotels Icon" width="60" />
@@ -105,7 +105,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={food_courtIcon} alt="Food-Court Icon" width="60" />
@@ -114,7 +114,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={technologyIcon} alt="Technology Icon" width="60" />
@@ -123,7 +123,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={manufacturingIcon} alt="Manufacturing Icon" width="60" />
@@ -132,7 +132,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={sportsIcon} alt="Sports Icon" width="60" />
@@ -141,7 +141,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={shopIcon} alt="Retail Shop Icon" width="60" />
@@ -150,7 +150,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={schoolsIcon} alt="Schools Icon" width="60" />
@@ -159,7 +159,7 @@ const ProcessFlow = () => {
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+          <div className="col-lg-2 col-md-4 col-sm-6 col-12">
             <div className="industry-card">
               <div className="industry-icon">
                 <img src={child_careIcon} alt="Child Care Icon" width="60" />
@@ -395,23 +395,30 @@ function App() {
           <div className="row g-4">
             {servicesData.map((service, index) => (
               <div key={index} className="col-12 col-sm-6 col-lg-3">
-                <div
-                  className="d-flex align-items-center justify-content-center text-center p-3 h-100"
-                  style={{
-                    backgroundImage: `url(${service.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: '16px',
-                    minHeight: '220px',
-                    color: '#F2C94C',
-                    transition: 'transform 0.3s ease-in-out',
-                    cursor: 'pointer'
-                  }}
-                  onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-                  onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                >
-                  <h4 className="fw-bold m-0 mt-5">{service.title}</h4>
-                </div>
+   <div
+  className="d-flex align-items-center justify-content-center text-center p-3 h-100"
+  style={{
+    backgroundImage: `url(${service.image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    borderRadius: '16px',
+    minHeight: '220px',
+    color: '#F2C94C',
+    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out', // Adding box-shadow transition
+    cursor: 'pointer',
+  }}
+  onMouseOver={(e) => {
+    e.currentTarget.style.transform = 'scale(1.03)';
+    e.currentTarget.style.boxShadow = '0 0px 20px rgba(255, 202, 58, 0.938)'; // Box shadow on hover
+  }}
+  onMouseOut={(e) => {
+    e.currentTarget.style.transform = 'scale(1)';
+    e.currentTarget.style.boxShadow = 'none'; // Remove box shadow when not hovering
+  }}
+>
+  <h4 className="fw-bold m-0 mt-5">{service.title}</h4>
+</div>
+
               </div>
             ))}
           </div>
@@ -422,21 +429,23 @@ function App() {
       <ProcessFlow />
 
       {/* We Don't Just Say It, We Deliver section */}
-      <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
+   <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
         <div className="container">
           <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
             We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
           </h2>
           <div className="row g-4 align-items-stretch">
-            {/* Left image */}
             <div className="col-lg-6">
               <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60" alt="Support team" className="img-fluid w-100" style={{ borderRadius: 20, height: 420, objectFit: 'cover' }} />
             </div>
-            {/* Right stacked cards with vertical scrolling */}
             <div className="col-lg-6 d-flex flex-column gap-3">
-              <div className="scroll-container" style={{ height: '410px', overflowY: 'hidden', position: 'relative', display: 'flex', flexDirection: 'column' }}>
+              <div className="scroll-container" style={{ height: '410px', overflowY: 'hidden', position: 'relative' }}>
                 <div className="scroll-content" style={{ animation: 'scroll 10s linear infinite', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  {[{ title: 'Quick around Cycles', text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.' }, { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }, { title: 'Reliable Support', text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.' }, { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }].map((card, idx) => (
+                  {[...Array(2)].flatMap(() => [
+                    { title: 'Quick around Cycles', text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.' }, 
+                    { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }, 
+                    { title: 'Reliable Support', text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.' }
+                  ]).map((card, idx) => (
                     <div key={idx} className="p-4" style={{ background: 'rgba(21,21,21,0.85)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 10px 24px rgba(0,0,0,0.45)' }}>
                       <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>{card.title}</h4>
                       <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>{card.text}</p>
@@ -450,13 +459,10 @@ function App() {
       </section>
       
       {/* Keyframes for scrolling animation */}
-      <style jsx="true">{`
-        @keyframes scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-100%); }
-        }
+     <style>{`
+        @keyframes scroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        .scroll-container:hover .scroll-content { animation-play-state: paused; }
       `}</style>
-
 
       {/* Discover How We Deliver Outstanding Results section */}
       <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
@@ -606,34 +612,87 @@ function App() {
         /* Yellow glow on hover */
         .flip-card:hover .flip-card-front,
         .flip-card:hover .flip-card-back {
-          box-shadow: 0 16px 40px rgba(242, 201, 76, 0.35), 0 0 0 1px rgba(242, 201, 76, 0.5) inset;
+          box-shadow: 0 16px 40px rgba(255, 191, 0, 0.35), 0 0 0 1px rgba(242, 201, 76, 0.5) inset;
           border-radius: 24px;
         }
-        .industry-card {
-          background-color: #343434;
-          border-radius: 16px;
-          padding: 2rem 1.5rem;
-          text-align: center;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .industry-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-        }
-        .industry-icon {
-          margin-bottom: 1.5rem;
-        }
-        .industry-title {
-          font-size: 1.25rem;
-          font-weight: 600;
-          color: #ffffff;
-        }
+         /* Solutions for Every Industry Section */
+  .industry-solutions {
+    background-color: #1C1A1A;
+    padding: 5rem 1rem;
+    color: #FFFFFF;
+  }
+  
+  .industry-solutions h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #FFFFFF;
+  }
+  
+  .industry-solutions h2 span {
+    color: #FFC94A;
+  }
+  
+  .industry-solutions p {
+    font-size: 1.125rem;
+    text-align: center;
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    color: #F3F3F3;
+  }
+  
+.industry-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0rem; /* ✅ spacing between cards */
+}
+
+  
+.industry-card {
+  background-color: #333333;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%; /* let Bootstrap grid control width */
+  max-width: 250px; /* optional limit for nicer look */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+  
+  .industry-card:hover {
+    transform: translateY(-4px);
+    background-color: #444444;
+     box-shadow: 0 0px 20px rgba(255, 202, 58, 0.938);
+  }
+  
+  .industry-icon {
+    width: 60rem;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .industry-icon svg {
+    width: 30px;
+    height: 30px;
+    color: #1C1A1A;
+  }
+  
+  .industry-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+  }
       `}</style>
 
     </div>
