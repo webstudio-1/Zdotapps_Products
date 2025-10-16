@@ -95,7 +95,7 @@ const styles = `
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: var(--radius);
+    border-radius: 50px;
     font-weight: var(--font-weight-medium);
     text-decoration: none;
     cursor: pointer;
@@ -103,7 +103,7 @@ const styles = `
     font-size: 1rem;
   }
 .btn-secondary {
-  background-color: #E6B842;
+  background-color: #ddb531ff;
   color: var(--primary);
   border: 2px solid #E6B842; /* same as background color */
 }

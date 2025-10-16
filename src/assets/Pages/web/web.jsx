@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 // Import your existing images
 // import updated_logoImage from '../../images/updated_logo.png';
 // import updated_k_logoImage from '../../images/updated_k_logo.png';
@@ -18,7 +17,6 @@ import digitalImage from '../../images/digital.png';
 import performanceImage from '../../images/performance.png';
 import multi_languageImage from '../../images/multi_language.png';
 import scalingImage from '../../images/scaling.png';
-
 // --- (ACTION REQUIRED) ---
 // 1. Import the 8 images for your new services section here.
 // Example:
@@ -46,7 +44,6 @@ import sportsIcon from '../../images/sports.png';
 import shopIcon from '../../images/shop.png';
 import schoolsIcon from '../../images/schools.png';
 import child_careIcon from '../../images/child_care.png';
-
 
 // --- NEW SECTION COMPONENT ---
 const ProcessFlow = () => {
@@ -179,6 +176,9 @@ function App() {
   const navigate = useNavigate();
   const [flipReady, setFlipReady] = useState(false);
   const [flipCustom, setFlipCustom] = useState(false);
+
+  // --- NEW --- State to control the scrolling animation pause
+  const [isScrollingPaused, setIsScrollingPaused] = useState(false);
 
   // --- Data for the new "Services That Power Your Growth" section ---
   const servicesData = [
@@ -428,41 +428,155 @@ function App() {
       {/* --- NEW SECTION INSERTED HERE --- */}
       <ProcessFlow />
 
-      {/* We Don't Just Say It, We Deliver section */}
-   <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
-        <div className="container">
-          <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
-            We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
-          </h2>
-          <div className="row g-4 align-items-stretch">
-            <div className="col-lg-6">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60" alt="Support team" className="img-fluid w-100" style={{ borderRadius: 20, height: 420, objectFit: 'cover' }} />
-            </div>
-            <div className="col-lg-6 d-flex flex-column gap-3">
-              <div className="scroll-container" style={{ height: '410px', overflowY: 'hidden', position: 'relative' }}>
-                <div className="scroll-content" style={{ animation: 'scroll 10s linear infinite', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  {[...Array(2)].flatMap(() => [
-                    { title: 'Quick around Cycles', text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.' }, 
-                    { title: 'Built for Scale', text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.' }, 
-                    { title: 'Reliable Support', text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.' }
-                  ]).map((card, idx) => (
-                    <div key={idx} className="p-4" style={{ background: 'rgba(21,21,21,0.85)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 10px 24px rgba(0,0,0,0.45)' }}>
-                      <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>{card.title}</h4>
-                      <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>{card.text}</p>
-                    </div>
-                  ))}
-                </div>
+{/* We Don't Just Say It, We Deliver section -- FULLY CORRECTED */}
+<section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
+  <div className="container">
+    <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
+      We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
+    </h2>
+    <div className="row g-4 align-items-stretch">
+      <div className="col-lg-6">
+        <img
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
+          alt="Support team"
+          className="img-fluid w-100"
+          style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
+        />
+      </div>
+      <div className="col-lg-6 d-flex flex-column gap-3">
+        <div
+          className="scroll-container"
+          style={{
+            height: '410px',
+            overflowY: 'hidden',
+            position: 'relative',
+          }}
+          // --- CHANGE 1: Added event handlers ---
+          onMouseEnter={() => setIsScrollingPaused(true)}
+          onMouseLeave={() => setIsScrollingPaused(false)}
+        >
+          <div
+            className="scroll-content"
+            style={{
+              // --- CHANGE 2: Added animationPlayState controlled by state ---
+              animation: 'scroll 11s linear infinite',
+              animationPlayState: isScrollingPaused ? 'paused' : 'running',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            {/* Original cards */}
+            {[
+              {
+                title: 'Quick around Cycles',
+                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
+              },
+              {
+                title: 'Built for Scale',
+                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
+              },
+              {
+                title: 'Reliable Support',
+                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx}
+                className="p-4"
+                style={{
+                  background: 'rgba(21,21,21,0.85)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
+                  marginTop: '20px', // Add margin between cards
+                }}
+              >
+                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
+                  {card.title}
+                </h4>
+                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  {card.text}
+                </p>
               </div>
-            </div>
+            ))}
+            
+            {/* Cloned cards for infinite loop */}
+            {[
+              {
+                title: 'Quick around Cycles',
+                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
+              },
+              {
+                title: 'Built for Scale',
+                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
+              },
+              {
+                title: 'Reliable Support',
+                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx + 3} // Ensure unique keys
+                className="p-4"
+                style={{
+                  background: 'rgba(21,21,21,0.85)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
+                  marginTop: '20px', // Add margin between cards
+                }}
+              >
+                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
+                  {card.title}
+                </h4>
+                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  {card.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-      
-      {/* Keyframes for scrolling animation */}
-     <style>{`
-        @keyframes scroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-        .scroll-container:hover .scroll-content { animation-play-state: paused; }
-      `}</style>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Keyframes for scrolling animation */}
+<style>
+  {`
+    @keyframes scroll { 
+      0% { transform: translateY(0); } 
+      100% { transform: translateY(-50%); } 
+    }
+
+    /* --- CHANGE 3: Removed the non-working :hover rule --- */
+    /*
+    .scroll-container:hover .scroll-content { 
+      animation-play-state: paused; 
+    }
+    */
+
+    /* The fade effect remains the same */
+    .scroll-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        #0f0f0f 0%,
+        rgba(15, 15, 15, 0) 20%,
+        rgba(15, 15, 15, 0) 80%,
+        #0f0f0f 100%
+      );
+      pointer-events: none;
+    }
+    
+  `}
+</style>
+
 
       {/* Discover How We Deliver Outstanding Results section */}
       <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
@@ -569,17 +683,14 @@ function App() {
       {/* Ready to Build the Future? section */}
       <section className="py-5 text-dark text-center" style={{ backgroundColor: '#F2C94C' }}>
         <div className="container py-4">
-          <div className="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-pill mb-3" style={{ backgroundColor: 'rgba(0,0,0,0.08)', color: '#0b0b0b', fontWeight: 600 }}>
-            <span>⚡</span>
-            <span>Ready to get started?</span>
-          </div>
+   
           <h2 className="fw-bold mb-3" style={{ fontSize: 42 }}>Ready to Build the Future?</h2>
           <p className="mb-4" style={{ maxWidth: 760, margin: '0 auto' }}>
             Let's transform your ideas into powerful applications that drive real business results. Our team is ready to make it happen.
           </p>
           <div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
             <button className="btn btn-dark rounded-pill px-4 py-2">Get In Touch →</button>
-            <button className="btn btn-outline-dark rounded-pill px-4 py-2" style={{ borderWidth: 2 }}>View Our Work</button>
+            {/* <button className="btn btn-outline-dark rounded-pill px-4 py-2" style={{ borderWidth: 2 }}>View Our Work</button> */}
           </div>
           <div className="row g-4 justify-content-center text-start" style={{ maxWidth: 900, margin: '0 auto' }}>
             <div className="col-12 col-md-4">
@@ -654,8 +765,8 @@ function App() {
   background-color: #333333;
   border-radius: 1rem;
   padding: 1.5rem;
-  width: 100%; /* let Bootstrap grid control width */
-  max-width: 250px; /* optional limit for nicer look */
+  width: 100%; 
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -673,7 +784,7 @@ function App() {
   }
   
   .industry-icon {
-    width: 60rem;
+    // width: 60rem;
     height: 60px;
     border-radius: 0.5rem;
     display: flex;

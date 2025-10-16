@@ -12,9 +12,6 @@ const HistoryIcon = ({ className }) => (
  <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 7L14.1314 14.8686C13.7354 15.2646 13.5373 15.4627 13.309 15.5368C13.1082 15.6021 12.8918 15.6021 12.691 15.5368C12.4627 15.4627 12.2646 15.2646 11.8686 14.8686L9.13137 12.1314C8.73535 11.7354 8.53735 11.5373 8.30902 11.4632C8.10817 11.3979 7.89183 11.3979 7.69098 11.4632C7.46265 11.5373 7.26465 11.7354 6.86863 12.1314L2 17M22 7H15M22 7V14" stroke="#636363ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 );
 
-
-
-
 const Ready = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -32,7 +29,9 @@ const Ready = () => {
     { id: "fin", name: "Finance", imageUrl: "https://picsum.photos/seed/finance/400/250" },
     { id: "food", name: "Food", imageUrl: "https://picsum.photos/seed/food/400/250" },
     { id: "evt", name: "Events", imageUrl: "https://picsum.photos/seed/events/400/250" },
-    { id: "spt", name: "Sports", imageUrl: "https://picsum.photos/seed/sports/400/250" }
+    { id: "spt", name: "Sports", imageUrl: "https://picsum.photos/seed/sports/400/250" },
+    { id: "all", name: "All", imageUrl: "https://picsum.photos/seed/sports/400/250" }
+    
   ];
 
   // --- UPDATED FILTER LOGIC: Access the 'name' property ---
@@ -61,7 +60,7 @@ const Ready = () => {
   // --- NEW HANDLER: For the "View" button to redirect ---
   const handleViewClick = () => {
     // Replace with your actual login page URL
-    window.location.href = 'http://localhost:5173/dev/zdotapps_products/login';
+    window.location.href = 'https://zdotapps.com/gidER/login.php';
   };
 
   return (
@@ -94,14 +93,18 @@ const Ready = () => {
             >
               <HistoryIcon className={styles.historyIcon} />
               <span className='ms-3'>{suggestion.name}</span> {/* <-- Access name property */}
-            </div>
+            </div>           
           ))}
-        </div>
+        {/* <button className={styles.allButton}>
+          All
+        </button> */}
+
+        </div>  
+ 
       </div>
-      
-      {/* --- NEW SECTION: Conditionally render the selected template --- */}
-      {selectedTemplate && (
-        <div className={styles.templateDisplay}>
+                   {selectedTemplate && (
+    <div className={`${styles.templateDisplay} mb-5`}>
+
           <img 
             src={selectedTemplate.imageUrl} 
             alt={selectedTemplate.name} 
@@ -118,7 +121,11 @@ const Ready = () => {
             View
           </button>
         </div>
-      )}
+      )} 
+
+      
+      {/* --- NEW SECTION: Conditionally render the selected template --- */}
+
     </div>
   );
 };
