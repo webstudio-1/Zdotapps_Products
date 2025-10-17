@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Import images
 import giderImage from "../../images/gider_black.png";
-import zengageImage from "../../images/new_engage.png";
+import zengageImage from "../../images/engage.png";
 import zflowImage from "../../images/flow.png";
 import zhireImage from "../../images/hire.png";
 import zmeritImage from "../../images/merit.png";
@@ -13,7 +13,7 @@ import zauthImage from "../../images/auth.png";
 import kiraazee from "../../images/kirazee_new.png";
 import quiImage from "../../images/qui.png";
 import signImage from "../../images/sign.png";
-import formsImage from "../../images/zforms.png";
+import formsImage from "../../images/gforms.png";
 
 const productList = [
   {

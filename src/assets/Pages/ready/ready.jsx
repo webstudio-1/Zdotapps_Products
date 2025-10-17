@@ -98,9 +98,7 @@ const Ready = () => {
         {/* <button className={styles.allButton}>
           All
         </button> */}
-
         </div>  
- 
       </div>
                    {selectedTemplate && (
     <div className={`${styles.templateDisplay} mb-5`}>
@@ -122,10 +120,6 @@ const Ready = () => {
           </button>
         </div>
       )} 
-
-      
-      {/* --- NEW SECTION: Conditionally render the selected template --- */}
-
     </div>
   );
 };
