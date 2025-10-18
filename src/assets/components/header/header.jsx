@@ -44,7 +44,7 @@ function Header() {
       dropdown: [
         { label: "Web Studio", path: "/studios/web" },
         { label: "App Studio", path: "/studios/app_studio" },
-        { label: "Agent Studio", path: "/studios/agent" },
+        { label: "Agent Studio", path: "agent" },
       ]
     },
     { label: "Products", path: "/products" },

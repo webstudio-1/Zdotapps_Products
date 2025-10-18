@@ -13,7 +13,7 @@ import zauthImage from "../../images/auth.png";
 import kiraazee from "../../images/kirazee_new.png";
 import quiImage from "../../images/qui.png";
 import signImage from "../../images/sign.png";
-import formsImage from "../../images/gforms.png";
+import formsImage from "../../images/forms.png";
 
 const productList = [
   {

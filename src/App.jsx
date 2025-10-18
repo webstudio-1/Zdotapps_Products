@@ -39,6 +39,7 @@ import Ready from "./assets/Pages/ready/ready"
 import WebStudio from "./assets/Pages/web/web";
 import CustomUse from "./assets/Pages/customized_use/custom_use";
 import AppStudio from "./assets/Pages/app_studio/app_studio";
+import AgenticStudio from "./assets/Pages/agentic_studio/agentic_studio";
 
 
 // ✅ Wrapper to show header/footer everywhere except login page
@@ -95,7 +96,7 @@ function App() {
             <Route path="studios/web/custom-build" element={<CustomUse />} />
             <Route path="studios/app_studio" element={<AppStudio />} />
             <Route path="studios/app_studio" element={<AppStudio />} />
-            
+             <Route path="studios/agentic_studio" element={<AgenticStudio />} />
           </Routes>
         </LayoutWrapper>
       </div>
