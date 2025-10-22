@@ -77,7 +77,7 @@ function QuizCard({ title, questions }) {
 
 export default function ZQui() {
   const navigate = useNavigate(); // For internal navigation if needed
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "", message: "" });
   const [selectedCategory, setSelectedCategory] = useState("web"); // default category
 
   const handleChange = (e) =>
@@ -86,9 +86,9 @@ export default function ZQui() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(
-      `Form submitted:\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+      `Form submitted:\nFirst Name: ${formData.firstName}\nLast Name: ${formData.lastName}\nEmail: ${formData.email}\nMessage: ${formData.message}`
     );
-    setFormData({ name: "", email: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", message: "" });
   };
 
   // Redirect to Gider login
@@ -244,7 +244,7 @@ export default function ZQui() {
 
   return (
     <section className={styles.quizContainer}>
-      <div className={styles.header}>
+      <div className={`mt-5 ${styles.header}`}>
         <h1>Z.Qui – Quick Quizzes</h1>
         <p>Select a category to see 3 quizzes</p>
 
@@ -281,31 +281,38 @@ export default function ZQui() {
 
         {/* RIGHT SIDE: Contact Form */}
         <form className={styles.form} onSubmit={handleSubmit}>
-          <img src={quiLogo} alt="logo" className={styles.logo} />
+        <img src={quiLogo} alt="logo" className={styles.logo} style={{ width: "160px", alignItems: "center" }} />
           <input
             type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
             onChange={handleChange}
             required
           />
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Email ID"
             value={formData.email}
             onChange={handleChange}
             required
           />
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="Message"
             value={formData.message}
             onChange={handleChange}
-            required
           ></textarea>
-          <button type="submit">Submit</button>
+          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
         </form>
       </div>
 

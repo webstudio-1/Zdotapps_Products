@@ -95,8 +95,7 @@ function App() {
             <Route path="studios/web" element={<WebStudio />} />
             <Route path="studios/web/custom-build" element={<CustomUse />} />
             <Route path="studios/app_studio" element={<AppStudio />} />
-            <Route path="studios/app_studio" element={<AppStudio />} />
-             <Route path="studios/agentic_studio" element={<AgenticStudio />} />
+            <Route path="studios/agentic_studio" element={<AgenticStudio />} />
           </Routes>
         </LayoutWrapper>
       </div>

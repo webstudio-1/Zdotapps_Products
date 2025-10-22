@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import hireLogo from "./images/z_hire_white.svg";
-import hireLogo1 from "../../../images/hire_wlogo.png";
+import logo from "../../../images/hire_wlogo.png";
 import zHireBg from "./images/z_hire.png";
 
 const Zhire = () => {
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
-    phone: "",
-    position: "",
-    experience: "",
     message: "",
   });
 
@@ -82,7 +79,7 @@ const Zhire = () => {
         .cta-text { font-size: 1.5rem; }
         .cta-subtitle { font-size: 1.125rem; color: #d1d5db; }
         .form-title { font-size: 2rem; font-weight: bold; }
-        .btn-yellow { background-color: #ffc107; border-color: #ffc107; color: #000; font-weight: 500; transition: all 0.3s ease; }
+        .btn-yellow { background-color: #ffc107; border-color: #ffc107; color: #000; font-weight: 500; transition: all 0.3s ease; align-items: center; justify-content: center;}
         .btn-yellow:hover { background-color: #ffca2c; border-color: #ffca2c; color: #000; }
         @media (max-width: 991.98px) { .brand-text { font-size: clamp(1.6rem, 5vw, 2.25rem); } .brand-logo { height: 70px; } }
       `}</style>
@@ -92,8 +89,8 @@ const Zhire = () => {
 
         <div className="container-fluid content d-flex align-items-start">
           <div className="container inner-wrap px-0 mt-5 py-5">
-            <div className="text-center mt-5">
-              <img src={hireLogo} alt="z.hire logo" className="brand-logo mt-2" style={{ height: "80px" }} />
+            <div className="text-center mt-2">
+              <img src={logo} alt="z.hire logo" className="brand-logo" style={{ height: "110px" }} />
             </div>
 
             <div className="row h-100 gx-3 gx-lg-4 align-items-start justify-content-between mt-3">
@@ -149,15 +146,27 @@ const Zhire = () => {
                     <div className="card glass-card border-0">
                       <div className="card-body">
                         <form onSubmit={handleSubmit}>
-                               <div className="mb-3">
-                            <label htmlFor="email" className="form-label text-white">Full Name</label>
+                          <div className="mb-3">
+                            <label htmlFor="firstName" className="form-label text-white">First Name</label>
                             <input
-                              type="name"
+                              type="text"
                               className="form-control glass-input"
-                              id="email"
-                              placeholder="Enter your name"
-                              value={formData.email}
-                              onChange={(e) => handleChange("email", e.target.value)}
+                              id="firstName"
+                              placeholder="Enter your first name"
+                              value={formData.firstName}
+                              onChange={(e) => handleChange("firstName", e.target.value)}
+                              required
+                            />
+                          </div>
+                          <div className="mb-3">
+                            <label htmlFor="lastName" className="form-label text-white">Last Name</label>
+                            <input
+                              type="text"
+                              className="form-control glass-input"
+                              id="lastName"
+                              placeholder="Enter your last name"
+                              value={formData.lastName}
+                              onChange={(e) => handleChange("lastName", e.target.value)}
                               required
                             />
                           </div>
@@ -173,35 +182,22 @@ const Zhire = () => {
                               required
                             />
                           </div>
-
                           <div className="mb-3">
-                            <label htmlFor="phone" className="form-label text-white">Phone Number</label>
-                            <input
-                              type="tel"
+                            <label htmlFor="message" className="form-label text-white">Message</label>
+                            <textarea
                               className="form-control glass-input"
-                              id="phone"
-                              placeholder="Enter your phone number"
-                              value={formData.phone}
-                              onChange={(e) => handleChange("phone", e.target.value)}
+                              id="message"
+                              placeholder="Enter your message"
+                              rows="3"
+                              value={formData.message}
+                              onChange={(e) => handleChange("message", e.target.value)}
                             />
                           </div>
-                             <div className="mb-3">
-  <label htmlFor="message" className="form-label text-white">Message</label>
-  <textarea
-    className="form-control glass-input"
-    id="message"
-    placeholder="Enter your message"
-    value={formData.message}
-    onChange={(e) => handleChange("message", e.target.value)}
-    rows={4} // adjust height
-  />
-</div>
-
-                          <div className="text">
-                            <button type="submit" className="btn btn-yellow px-4 py-2 w-100">
-                              Submit
-                            </button>
-                          </div>
+                              <div className="text-center">
+                                <button type="submit" className="btn btn-yellow px-4 py-2 w-50 rounded-pill">
+                                  Submit
+                                </button>
+                              </div>
                         </form>
                       </div>
                     </div>

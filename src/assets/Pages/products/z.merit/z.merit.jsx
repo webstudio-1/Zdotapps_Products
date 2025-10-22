@@ -8,6 +8,22 @@ import meritLogo1 from '../../../images/merit_wlogo.png';
 
 const Zmerit = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Thank you for your interest! We will get back to you soon.");
+  };
 
   const features = [
     {
@@ -60,10 +76,10 @@ const Zmerit = () => {
           <div className="row align-items-center">
             {/* Left content */}
             <div className="col-lg-7 col-xl-7">
-              <div className="mb-3 pe-5">
-                <img src={meritLogo1} alt="Z.merit" style={{ height: 84, marginLeft: -25, marginTop: -150 }} />
+              <div className="mb-1 mt-5 py-1 pt-3 pe-5">
+                <img src={meritLogo1} alt="Z.merit" style={{ height: 84, marginLeft: -25, }} />
               </div>
-              <h1 className="display-3 fw-bold mb-5 text-white" style={{ lineHeight: 1.1, marginTop: -60 }}>
+              <h1 className="display-3 fw-bold mb-5 text-white" style={{ lineHeight: 1.1, marginTop: -10 }}>
                 <span>Assess.</span>{' '}
                 <span className="text-warning">Trust.</span>{' '}
                 <span>Improve.</span>
@@ -128,27 +144,56 @@ const Zmerit = () => {
                 <div className="form-overlay">
                 <div className="card glass-card border-0">
                   <div className="card-header bg-transparent border-0 text-center pt-4">
-                    <h6 className="mb-1 text-white fw-bold fs-3 mt-3">Start Your Talent Hunt With Z.hire</h6>
+                    <h6 className="mb-1 text-white fw-bold fs-3 mt-3">Start Your Assessment With Z.Merit</h6>
                   </div>
                   <div className="card-body pb-4 text-white-75">
-                    <form onSubmit={(e)=>e.preventDefault()}>
+                    <form onSubmit={handleSubmit}>
                       <div className="mb-3">
-                        <input type="text" className="form-control glass-input py-2" placeholder="Your full name" required />
+                        <label className="form-label text-white">First Name</label>
+                        <input 
+                          type="text" 
+                          className="form-control glass-input py-2" 
+                          placeholder="Enter your first name" 
+                          value={formData.firstName}
+                          onChange={(e) => handleChange("firstName", e.target.value)}
+                          required 
+                        />
                       </div>
                       <div className="mb-3">
-                        <input type="text" className="form-control glass-input py-2" placeholder="Company name" />
+                        <label className="form-label text-white">Last Name</label>
+                        <input 
+                          type="text" 
+                          className="form-control glass-input py-2" 
+                          placeholder="Enter your last name" 
+                          value={formData.lastName}
+                          onChange={(e) => handleChange("lastName", e.target.value)}
+                          required 
+                        />
                       </div>
                       <div className="mb-3">
-                        <input type="email" className="form-control glass-input py-2" placeholder="you@example.com" required />
+                        <label className="form-label text-white">Email Address</label>
+                        <input 
+                          type="email" 
+                          className="form-control glass-input py-2" 
+                          placeholder="Enter your email" 
+                          value={formData.email}
+                          onChange={(e) => handleChange("email", e.target.value)}
+                          required 
+                        />
                       </div>
-                      <div className="mb-4">
-                        <input type="tel" className="form-control glass-input py-2" placeholder="e.g. +91 555 123 4567" />
+                      <div className="mb-3">
+                        <label className="form-label text-white">Message</label>
+                        <textarea 
+                          className="form-control glass-input py-2" 
+                          placeholder="Enter your message" 
+                          rows="3"
+                          value={formData.message}
+                          onChange={(e) => handleChange("message", e.target.value)}
+                        />
                       </div>
-                      <div className="form-check mb-4">
-                        <input className="form-check-input" type="checkbox" id="agreeMerit" />
-                        <label className="form-check-label text-white" htmlFor="agreeMerit">I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></label>
+                      <div className="text-center">
+                        <button type="submit" className="btn btn-warning w-50 rounded-pill py-2">Submit</button>
                       </div>
-                      <button type="submit" className="btn btn-warning w-50 d-block mx-auto rounded-pill py-2">Get started</button>
                     </form>
                   </div>
                 </div>

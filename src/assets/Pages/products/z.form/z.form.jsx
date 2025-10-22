@@ -7,10 +7,10 @@ import zformsLogo1 from '../../../images/forms.png';
 // Bootstrap 5 based Z.forms landing + lead capture form
 export default function Zform() {
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    phone: '',
-    accept: false,
+    message: '',
   });
 
   const navigate = useNavigate();  // Step 2: Get the navigate function
@@ -25,9 +25,9 @@ export default function Zform() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.accept) return; // should be prevented by required, keep as guard
     console.log('Form submitted:', formData);
     alert('Thank you for your interest in Z.forms! We will contact you soon.');
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
   const handleLoginRedirect = () => {
@@ -94,6 +94,11 @@ export default function Zform() {
           </div>
 
           {/* Right Section - Registration Form */}
+          <style>{`
+            .bg-black .form-control::placeholder { color: #ffffff !important; opacity: 1; }
+            .bg-black .form-control:-ms-input-placeholder { color: #ffffff !important; }
+            .bg-black .form-control::-ms-input-placeholder { color: #ffffff !important; }
+          `}</style>
           <div className="col-12 col-lg-6 bg-black text-white d-flex align-items-center">
             <div className="p-4 p-md-5 w-100" style={{ maxWidth: 480, marginInline: 'auto' }}>
               {/* Replace heading with logo */}
@@ -104,14 +109,27 @@ export default function Zform() {
 
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                  <label className="form-label">Full Name</label>
+                  <label className="form-label">First Name</label>
                   <input
                     type="text"
-                    name="fullName"
-                    value={formData.fullName}
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleInputChange}
                     className="form-control bg-transparent text-white border-secondary"
-                    placeholder="Name"
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className="form-control bg-transparent text-secondary border-secondary"
+                    placeholder="Last Name"
                     required
                   />
                 </div>
@@ -123,43 +141,26 @@ export default function Zform() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="form-control bg-transparent text-white border-secondary"
-                    placeholder="Email"
+                    className="form-control bg-transparent text-secondary border-secondary"
+                    placeholder="Email ID"
                     required
                   />
                 </div>
 
                 <div className="mb-3">
-                  <label className="form-label">Phone</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
+                  <label className="form-label">Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
                     onChange={handleInputChange}
-                    className="form-control bg-transparent text-white border-secondary"
-                    placeholder="Phone"
-                    required
+                    className="form-control bg-transparent text-secondary border-secondary"
+                    placeholder="Message"
+                    rows="3"
                   />
-                </div>
-
-                <div className="form-check mb-3 mt-2">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    id="acceptTerms"
-                    name="accept"
-                    checked={formData.accept}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <label className="form-check-label" htmlFor="acceptTerms">
-                    I agree to the <span className="text-warning">Terms of Service</span> and{' '}
-                    <span className="text-warning">Privacy Policy</span>
-                  </label>
                 </div>
 
                 <div className="text-center">
-                  <button type="submit" className="btn btn-warning text-black fw-bold px-4 py-2 rounded-pill">
+                  <button type="submit" className="btn btn-warning text-black fw-bold px-4 py-2 rounded-pill" style={{ width: '50%' }}>
                     Submit
                   </button>
                 </div>

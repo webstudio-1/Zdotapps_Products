@@ -1,9 +1,21 @@
+import { useState } from 'react';
 import { PenTool, Type, Scan, FileText, FolderOpen, Grid3X3, ArrowLeft, Calendar, Download, Share2, Mail, User, Phone } from 'lucide-react';
 import signLogo from "../../../images/sign.png";
 import signLogo1 from "../../../images/sign_wlogo.png";
 
 
 export default function App() {
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for your interest! We will get back to you soon.');
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
+  };
   return (
     <>
       {/* Bootstrap 5 CSS */}
@@ -445,59 +457,60 @@ export default function App() {
                   <p className="mb-0 text-white">on business documents</p>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <input
                       type="text"
-                      placeholder="Your full name"
+                      name="firstName"
+                      placeholder="First Name"
+                      value={formData.firstName}
+                      onChange={handleChange}
                       className="form-control custom-input glass-input"
+                      required
                     />
                   </div>
 
                   <div className="mb-4">
                     <input
                       type="text"
-                      placeholder="Company name"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={formData.lastName}
+                      onChange={handleChange}
                       className="form-control custom-input glass-input"
+                      required
                     />
                   </div>
 
                   <div className="mb-4">
                     <input
                       type="email"
-                      placeholder="you@example.com"
+                      name="email"
+                      placeholder="Email ID"
+                      value={formData.email}
+                      onChange={handleChange}
                       className="form-control custom-input glass-input"
+                      required
                     />
                   </div>
 
                   <div className="mb-4">
-                    <input
-                      type="tel"
-                      placeholder="e.g. +91 555 123 4567"
+                    <textarea
+                      name="message"
+                      placeholder="Message"
+                      value={formData.message}
+                      onChange={handleChange}
                       className="form-control custom-input glass-input"
+                      rows="3"
                     />
                   </div>
-
-                  <div className="d-flex align-items-start gap-3 py-2 mb-4">
-                    <input type="checkbox" id="terms" className="form-check-input mt-1" />
-                    <label htmlFor="terms" className="text-white small">
-                      I agree to the{' '}
-                      <a href="#" className="text-warning text-decoration-underline">
-                        Terms
-                      </a>{' '}
-                      and{' '}
-                      <a href="#" className="text-warning text-decoration-underline">
-                        Privacy Policy
-                      </a>
-                    </label>
-                  </div>
-
 
                   {/* Center aligned button */}
                   <div className="d-flex justify-content-center">
                     <button
                       type="submit"
-                      className="btn btn-black rounded-3 fw-lg text-center"
+                      className="btn btn-black rounded-pill fw-lg text-center"
+                      style={{ width: '50%' }}
                     >
                       Submit
                     </button>

@@ -1,10 +1,11 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards, Navigation } from 'swiper/modules';
+import { EffectCards, Navigation, Autoplay } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 import styles from './z.games.module.css';
 
 // Assets
@@ -18,7 +19,7 @@ const Zgames = () => {
   const navigate = useNavigate();
 
   const [selectedTags, setSelectedTags] = useState([]);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
   const [activeIndex, setActiveIndex] = useState(0);
 
   const games = useMemo(() => [
@@ -61,8 +62,8 @@ const Zgames = () => {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    alert('✨ Thank you! We’ll reach out soon.');
-    setFormData({ name: '', email: '', message: '' });
+    alert('✨ Thank you! We will reach out soon.');
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
     setSelectedTags([]);
   }, []);
 
@@ -97,7 +98,13 @@ const Zgames = () => {
               initialSlide={0}
               speed={600}
               loop
-              modules={[EffectCards, Navigation]}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+                reverseDirection: true,
+              }}
+              modules={[EffectCards, Navigation, Autoplay]}
               navigation
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               className={styles.swiper}
@@ -133,21 +140,29 @@ const Zgames = () => {
           {/* Form */}
           <div className={styles.formCard}>
             <div className={styles.logoWrap}>
-              <img src={games_whiteImg} alt="Z.games" className={styles.logo} />
+            <img src={games_whiteImg} alt="Z.games" className={`mb-0 ${styles.logo}`} />
             </div>
             <form onSubmit={handleSubmit} className={styles.form}>
               <input
                 type="text"
-                name="name"
-                placeholder="Your Name"
-                value={formData.name}
+                name="firstName"
+                placeholder="First Name"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                required
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={formData.lastName}
                 onChange={handleInputChange}
                 required
               />
               <input
                 type="email"
                 name="email"
-                placeholder="you@email.com"
+                placeholder="Email ID"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
@@ -159,7 +174,7 @@ const Zgames = () => {
                 onChange={handleInputChange}
                 rows="3"
               />
-              <button type="submit" className={styles.submitBtn}>
+              <button type="submit" className={`mb-2 ${styles.submitBtn}`}>
                 Submit
               </button>
             </form>

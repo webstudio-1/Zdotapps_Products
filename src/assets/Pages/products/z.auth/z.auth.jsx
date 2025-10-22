@@ -5,7 +5,7 @@ import aAuthLogo from '../../../images/auth_wlogo.png'; // ← your logo file
 import { Link } from "react-router-dom";
 
 export default function ZAuth() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -13,9 +13,9 @@ export default function ZAuth() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(
-      `Form submitted:\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+      `Form submitted:\nFirst Name: ${formData.firstName}\nLast Name: ${formData.lastName}\nEmail: ${formData.email}\nMessage: ${formData.message}`
     );
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
   return (
@@ -71,29 +71,36 @@ export default function ZAuth() {
               <form onSubmit={handleSubmit} className={styles.formInner}>
                 <input
                   type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
                   onChange={handleChange}
                   required
                 />
                 <input
                   type="email"
                   name="email"
-                  placeholder="Your Email"
+                  placeholder="Email ID"
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
                 <textarea
                   name="message"
-                  placeholder="Your Message"
-                  rows="4"
+                  placeholder="Message"
+                  rows="3"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
               </form>
             </div>
           </div>

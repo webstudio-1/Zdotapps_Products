@@ -198,7 +198,6 @@
 
 .logoWrap {
   text-align: center;
-  margin-bottom: 1.2rem;
 }
 
 .logo {
@@ -212,6 +211,7 @@
   flex-direction: column;
   gap: 1rem;
   margin-top: 3rem;
+  align-items: center;
 }
 
 .form input,
@@ -242,13 +242,17 @@
   background: #ffc94a;
   color: #1a1a2e;
   border: none;
-  padding: 0.9rem;
-  border-radius: 14px;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
   font-weight: 600;
   font-size: 1.05rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 2.5rem;
+  width: 50%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .submitBtn:hover {
