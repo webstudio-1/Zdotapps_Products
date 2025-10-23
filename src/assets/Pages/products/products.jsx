@@ -17,13 +17,15 @@ import formsImage from "../../images/forms.png";
 
 const productList = [
   {
-    desc: "Engagement app for everyone’s needs",
+    name: "z.engage",
+    desc: "Engagement app for everyone's needs",
     img: zengageImage,
     btn: "Know More",
     link: "/z.engage",
     category: "Engagement",
   },
   {
+    name: "z.flow",
     desc: "Streamlined workflow and project management solutions",
     img: zflowImage,
     btn: "Know More",
@@ -31,6 +33,7 @@ const productList = [
     category: "Productivity",
   },
   {
+    name: "z.hire",
     desc: "Hiring platform for smarter recruitment",
     img: zhireImage,
     btn: "Know More",
@@ -38,6 +41,7 @@ const productList = [
     category: "Business Services",
   },
   {
+    name: "z.merit",
     desc: "Skill testing and evaluation made simple",
     img: zmeritImage,
     btn: "Know More",
@@ -45,6 +49,7 @@ const productList = [
     category: "Rewards",
   },
   {
+    name: "z.games",
     desc: "Interactive social games for individuals and teams",
     img: zgamesImage,
     btn: "Know More",
@@ -52,6 +57,7 @@ const productList = [
     category: "Entertainment",
   },
   {
+    name: "z.auth",
     desc: "Secure authentication for enterprises",
     img: zauthImage,
     btn: "Know More",
@@ -59,6 +65,7 @@ const productList = [
     category: "Security",
   },
   {
+    name: "Kirazee",
     desc: "Unified Platform for Kirana Stores",
     img: kiraazee,
     btn: "Know More",
@@ -66,6 +73,7 @@ const productList = [
     category: "Technology",
   },
   {
+    name: "giDER",
     desc: "Project execution app for tangible results",
     img: giderImage,
     btn: "Know More",
@@ -73,6 +81,7 @@ const productList = [
     category: "Creative Tools",
   },
   {
+    name: "z.qui",
     desc: "Quizzes for instant engagement",
     img: quiImage,
     btn: "Know More",
@@ -80,6 +89,7 @@ const productList = [
     category: "Creative Tools",
   },
   {
+    name: "z.sign",
     desc: "Secure digital signatures on business documents",
     img: signImage,
     btn: "Know More",
@@ -87,11 +97,20 @@ const productList = [
     category: "Creative Tools",
   },
   {
+    name: "z.forms",
     desc: "Interactive online forms for businesses",
     img: formsImage,
     btn: "Know More",
     link: "/z.form",
     category: "Creative Tools",
+  },
+  {
+    name: "z.box",
+    desc: "Secure file storage and collaboration platform",
+    img: giderImage, // Using gider image as placeholder - you can replace with z.box specific image
+    btn: "Know More",
+    link: "/z.box",
+    category: "Storage",
   },
 ];
 
@@ -119,6 +138,7 @@ const Products = () => {
     if (searchTerm) {
       current = current.filter(
         (p) =>
+          p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
           p.category.toLowerCase().includes(searchTerm.toLowerCase())
       );
@@ -222,7 +242,6 @@ const Products = () => {
                         />
                       </div>
                     )}
-                    <h3 className={styles.productName}>{product.name}</h3>
                     <p className={styles.description}>{product.desc}</p>
 
                     <div className={styles.ctaWrapper}>

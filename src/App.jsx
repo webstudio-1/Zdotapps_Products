@@ -34,6 +34,7 @@ import Zauth from "./assets/Pages/products/z.auth/z.auth";
 import GiDER from "./assets/Pages/products/giDER/giDER";
 import Zsign from "./assets/Pages/products/z.sign/z.sign";
 import Zform from "./assets/Pages/products/z.form/z.form";
+import Zbox from "./assets/Pages/products/z.box/z.box";
 import ZappsLanding from "./assets/Pages/home/zappsLanding";
 import Ready from "./assets/Pages/ready/ready"
 import WebStudio from "./assets/Pages/web/web";
@@ -90,6 +91,7 @@ function App() {
             <Route path="z.sign" element={<Zsign />} />
             <Route path="z.qui" element={<Zqui />} />
             <Route path="z.form" element={<Zform />} />
+            <Route path="z.box" element={<Zbox />} />
             <Route path="zapps" element={<ZappsLanding />} />
             <Route path="ready" element={<Ready/>}/>
             <Route path="studios/web" element={<WebStudio />} />

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styles from "./z.form.module.css";
-import formsImage from "../../../images/forms.png";
+import styles from "./z.box.module.css";
+import zboxImage from "../../../images/gider_black.png"; // Using gider image as placeholder
 import { useNavigate } from "react-router-dom";
 
-const Zform = () => {
+const ZBox = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ 
     firstName: '', 
@@ -13,7 +13,7 @@ const Zform = () => {
   });
 
   const handleButtonClick = () => {
-    navigate("/login"); // Redirects to z.forms login page
+    navigate("/login"); // Redirects to z.box login page
   };
 
   const handleChange = (e) => {
@@ -22,7 +22,7 @@ const Zform = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your interest in z.forms! We will get back to you soon.');
+    alert('Thank you for your interest in z.box! We will get back to you soon.');
     setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
@@ -30,35 +30,35 @@ const Zform = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Build. Collect. <span className={styles.highlight}>z.forms</span>
+          Secure. Organize. <span className={styles.highlight}>z.box</span>
         </h1>
 
-        <p className={styles.subtitle}>Interactive Online Forms Platform</p>
+        <p className={styles.subtitle}>Advanced Digital Vault Platform</p>
 
         <p className={styles.description}>
-          z.forms enables data collection, surveys, and workflows with simplicity
-          and flexibility for your business success and growth.
+          Z.Box is an advanced digital vault that applies enterprise-grade security 
+          to keep your documents protected, organized, and instantly accessible.
         </p>
 
         <ul className={styles.features}>
-          <li>Custom form builder</li>
-          <li>Advanced analytics</li>
-          <li>Workflow integration</li>
-          <li>Secure data collection</li>
+          <li>Secure by design with advanced encryption</li>
+          <li>Always accessible without downtime</li>
+          <li>Effortless sharing with complete control</li>
+          <li>Smart organization and intelligent storage</li>
         </ul>
 
         <button
           className={`btn btn-warning btn-lg ${styles.cta}`}
           onClick={handleButtonClick}
         >
-          Access z.forms
+          Access z.box
         </button>
       </div>
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start building forms with</h5>
-          <img src={formsImage} alt="z.forms Logo" className={styles.formLogo} />
+          <h5>Start securing your documents with</h5>
+          <img src={zboxImage} alt="z.box Logo" className={styles.formLogo} />
 
           <label>
             First Name
@@ -97,7 +97,7 @@ const Zform = () => {
             Message
             <textarea
               name="message"
-              placeholder="Tell us about your form needs"
+              placeholder="Tell us about your document security needs"
               value={formData.message}
               onChange={handleChange}
               style={{ height: "90px" }}
@@ -112,4 +112,4 @@ const Zform = () => {
   );
 };
 
-export default Zform;
+export default ZBox;

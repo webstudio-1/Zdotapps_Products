@@ -1,57 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./z.iot.module.css";
-import kirazeeeImage from "./images/kirazee_1.png";
-import kirazeeImage from "../../../images/kirazee_new.png"; // Replace video with image
+import kirazeeImage from "../../../images/kirazee_new.png";
+import { useNavigate } from "react-router-dom";
 
 const Ziot = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', message: '' });
+
+  const handleButtonClick = () => {
+    navigate("/login");
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Thank you for your interest in Kirazee! We will get back to you soon.');
+    setFormData({ firstName: '', lastName: '', email: '', message: '' });
+  };
+
   return (
-    <div className={styles.page}>
-      {/* Fullscreen Image Background */}
-      <img
-        src={kirazeeeImage}
-        alt="Kirazee"
-        className={styles.fullScreenVideo} // reuse same class for sizing
-      />
-
-      {/* Overlay Content */}
-      <div className={styles.overlay}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.textCol}>
-            <h1 className={styles.title}>
-              <span className={styles.gradientText}>Kirazee</span>
-              <br />
-              Connecting the Future
-            </h1>
-   <p className={styles.description}>
-              Kirazee brings Consumers, Businesses, and Delivery partners together in one powerful app order, manage, and deliver with ease.
-          
-            </p>
-                <a
-                href="https://kirazee.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-warning btn-lg yellow-text fw-bold"
-              >
-                {" "}
-                Login to Kirazee
-              </a>
-          </div>
-
-          <div className={styles.formCol}>
-                <div className={styles.logoWrap}>
-                        <img src={kirazeeImage} alt="a.auth logo" />
-                      </div>
-            <form className={styles.form}>
-              {/* <h2>Contact Us</h2> */}
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <textarea placeholder="Message"></textarea>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
+    <section className={styles.hero}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>
+          Connect. Deliver. <span className={styles.highlight}>Kirazee</span>
+        </h1>
+        <p className={styles.subtitle}>Unified Platform for Kirana Stores</p>
+        <p className={styles.description}>
+          Kirazee connects consumers, businesses, and delivery partners in one powerful
+          platform for seamless ordering, management, and delivery operations.
+        </p>
+        <ul className={styles.features}>
+          <li>Unified marketplace platform</li>
+          <li>Seamless order management</li>
+          <li>Integrated delivery network</li>
+          <li>Real-time tracking system</li>
+        </ul>
+        <button className={`btn btn-warning btn-lg ${styles.cta}`} onClick={handleButtonClick}>
+          Access Kirazee
+        </button>
       </div>
-    </div>
+      <div className={styles.formWrapper}>
+        <form className={styles.contactForm} onSubmit={handleSubmit}>
+          <h5>Join the marketplace with</h5>
+          <img src={kirazeeImage} alt="Kirazee Logo" className={styles.formLogo} />
+          <label>
+            First Name
+            <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} required />
+          </label>
+          <label>
+            Last Name
+            <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="Email ID" value={formData.email} onChange={handleChange} required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" placeholder="Tell us about your business needs" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
+          </label>
+          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+        </form>
+      </div>
+    </section>
   );
 };
 
