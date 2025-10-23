@@ -2,8 +2,8 @@
 
 :root {
   --primary-color: #EFC426;       /* Gold/Yellow */
-  --secondary-color: #1E40AF;    /* Darker Blue */
-  --accent-color: #3B82F6;       /* Lighter Blue */
+  --secondary-color: #EFC426;    /* Darker Blue */
+  --accent-color:  #EFC426;       /* Lighter Blue */
   --white: #FFFFFF;
   --light-gray: #F3F4F6;
   --dark-gray: #1F2937;
@@ -157,6 +157,15 @@ body {
   padding-right: 2.5rem;
   border-radius: 20px;
 }
+/* Dropdown option highlight color fix */
+.filterSelect option:focus,
+.filterSelect option:checked {
+  background-color: #EFC426 !important;
+  color: #000 !important;
+}
+
+
+
 
 .noResults {
   font-size: 1.2rem;

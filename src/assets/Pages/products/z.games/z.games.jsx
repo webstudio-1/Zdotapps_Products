@@ -139,7 +139,7 @@ const Zgames = () => {
 
           {/* Form */}
           <div className={styles.formCard}>
-            <h5 style={{ textAlign: 'center' }} className="mt-3">Connect with us and level up your fun and learning with</h5>
+            <h5 style={{ textAlign: 'center' }} className="mt-3">Level Up your Fun and Learn with</h5>
             <div className={styles.logoWrap}>
             <img src={games_whiteImg} alt="Z.games" className={`${styles.logo}`} />
             </div>

@@ -22,7 +22,7 @@ const Zform = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your interest in z.forms! We will get back to you soon.');
+    alert('Thank you for your interest in Z.Forms! We will get back to you soon.');
     setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
@@ -30,13 +30,13 @@ const Zform = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Build. Collect. <span className={styles.highlight}>z.forms</span>
+          Build. Collect. <span className={styles.highlight}>Z.Forms</span>
         </h1>
 
         <p className={styles.subtitle}>Interactive Online Forms Platform</p>
 
         <p className={styles.description}>
-          z.forms enables data collection, surveys, and workflows with simplicity
+          Z.Forms enables data collection, surveys, and workflows with simplicity
           and flexibility for your business success and growth.
         </p>
 
@@ -51,13 +51,13 @@ const Zform = () => {
           className={`btn btn-warning btn-lg ${styles.cta}`}
           onClick={handleButtonClick}
         >
-          Access z.forms
+          Access Z.Forms
         </button>
       </div>
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start building forms with</h5>
+          <h5 style={{ textAlign: 'center' }}>Create forms, collect answers, gain insights</h5>
           <img src={formsImage} alt="z.forms Logo" className={styles.formLogo} />
 
           <label>
@@ -97,7 +97,7 @@ const Zform = () => {
             Message
             <textarea
               name="message"
-              placeholder="Tell us about your form needs"
+              placeholder="Tell us about your form requirements"
               value={formData.message}
               onChange={handleChange}
               style={{ height: "90px" }}

@@ -44,7 +44,7 @@ const Ziot = () => {
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Join the marketplace with</h5>
+          <h5 style={{ textAlign: 'center' }}>Launch Your Digital Store. Unlock 3X Sales</h5>
           <img src={kirazeeImage} alt="Kirazee Logo" className={styles.formLogo} />
           <label>
             First Name
@@ -60,7 +60,7 @@ const Ziot = () => {
           </label>
           <label>
             Message
-            <textarea name="message" placeholder="Tell us about your business needs" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
+            <textarea name="message" placeholder="Tell us about your business requirements" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
           </label>
           <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
         </form>

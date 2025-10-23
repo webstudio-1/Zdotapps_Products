@@ -22,7 +22,7 @@ const Zhire = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your interest in z.hire! We will get back to you soon.');
+    alert('Thank you for your interest in Z.Hire! We will get back to you soon.');
     setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
@@ -30,11 +30,11 @@ const Zhire = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Hire. Match. <span className={styles.highlight}>z.hire</span>
+          Hire. Match. <span className={styles.highlight}>Z.hire</span>
         </h1>
         <p className={styles.subtitle}>Smart Recruitment Platform</p>
         <p className={styles.description}>
-          z.hire revolutionizes recruitment with AI-powered candidate matching,
+          Z.hire revolutionizes recruitment with AI-powered candidate matching,
           streamlined sourcing, and automated shortlisting for faster, smarter hiring decisions.
         </p>
         <ul className={styles.features}>
@@ -44,12 +44,12 @@ const Zhire = () => {
           <li>Seamless communication tools</li>
         </ul>
         <button className={`btn btn-warning btn-lg ${styles.cta}`} onClick={handleButtonClick}>
-          Access z.hire
+          Access Z.hire
         </button>
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start hiring smarter with</h5>
+          <h5>Smarter Hiring Starts with</h5>
           <img src={hireImage} alt="z.hire Logo" className={styles.formLogo} />
           <label>
             First Name
@@ -65,7 +65,7 @@ const Zhire = () => {
           </label>
           <label>
             Message
-            <textarea name="message" placeholder="Tell us about your hiring needs" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
+            <textarea name="message" placeholder="Tell us about your hiring requirements" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
           </label>
           <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
         </form>

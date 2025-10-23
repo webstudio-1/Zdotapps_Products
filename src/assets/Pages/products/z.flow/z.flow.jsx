@@ -144,7 +144,7 @@ const ZFlow = () => {
                               className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
                               onClick={handleLoginRedirect}  // Trigger the redirect
                             >
-                              Login to z.flow
+                              Login to Z.flow
                             </button>
                           </div>
                         )}
@@ -183,7 +183,7 @@ const ZFlow = () => {
           {/* Right Contact Form */}
           <div className="col-md-4 d-flex">
             <div className={`${styles.contactFormWrapper} flex-fill`}>
-              <h5 style={{ textAlign: 'center' }}>Power Your App with</h5>
+              <h5 style={{ textAlign: 'center' }}>Onboard your workflows with</h5>
               <img
                 src={flowIllustration}
                 alt="Z.Flow Logo"
@@ -205,7 +205,7 @@ const ZFlow = () => {
                 </label>
                 <label>
                   Message
-                  <textarea name="message" placeholder="Tell us about your workflow needs" style={{ height: "90px" }} />
+                  <textarea name="message" placeholder="Tell us about your workflow requirements" style={{ height: "90px" }} />
                 </label>
                 <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
                   Submit

@@ -232,7 +232,7 @@ const Zengage = () => {
 
         {/* Contact form with chips select */}
         <div className={`${styles.contactFormWrapper} mt-4 pt-4`}>
-          <h5 style={{ textAlign: 'center' }}>Begin your journey of seamless engagements with</h5>
+          <h5 style={{ textAlign: 'center' }}>Begin your Engagement with</h5>
           <img src={engage} alt="Z.Engage Logo" className={styles.logo} />
 
 <form className={styles.contactForm} onSubmit={handleSubmit}>
@@ -250,7 +250,7 @@ const Zengage = () => {
   </label>
   <label>
     Message
-    <textarea name="message" placeholder="Tell us about your engagement needs" style={{ height: "90px" }} />
+    <textarea name="message" placeholder="Share your engagement requirements" style={{ height: "90px" }} />
   </label>
   <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
     Submit

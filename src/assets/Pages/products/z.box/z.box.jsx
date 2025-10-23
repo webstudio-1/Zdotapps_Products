@@ -97,7 +97,7 @@ const ZBox = () => {
             Message
             <textarea
               name="message"
-              placeholder="Tell us about your document security needs"
+              placeholder="Share your document security requirements"
               value={formData.message}
               onChange={handleChange}
               style={{ height: "90px" }}

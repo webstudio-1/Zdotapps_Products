@@ -453,8 +453,7 @@ export default function App() {
                   <img src={signLogo1} alt="z.sign" style={{ width: '151px' }} />
                 </div>
                 <div className="text-center mb-4">
-                  <p className="mb-0 text-white">Start Your Secure digital signatures</p>
-                  <p className="mb-0 text-white">on business documents</p>
+                  <p className="mb-0 text-white">Secure Digital Signatures for Business Documents</p>
                 </div>
 
                 <form onSubmit={handleSubmit}>

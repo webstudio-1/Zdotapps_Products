@@ -25,11 +25,11 @@ const Zauth = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Secure. Authenticate. <span className={styles.highlight}>z.auth</span>
+          Secure. Authenticate. <span className={styles.highlight}>Z.auth</span>
         </h1>
         <p className={styles.subtitle}>Enterprise Identity Solutions</p>
         <p className={styles.description}>
-          z.auth provides enterprise-grade authentication and authorization
+          Z.auth provides enterprise-grade authentication and authorization
           with seamless integration and scalable cloud architecture for modern businesses.
         </p>
         <ul className={styles.features}>
@@ -39,12 +39,12 @@ const Zauth = () => {
           <li>Multi-factor authentication</li>
         </ul>
         <button className={`btn btn-warning btn-lg ${styles.cta}`} onClick={handleButtonClick}>
-          Access z.auth
+          Access Z.auth
         </button>
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Secure your identity with</h5>
+          <h5 style={{ textAlign: 'center' }}>A Frictionless Gateway to a Fortified Enterprise</h5>
           <img src={authImage} alt="z.auth Logo" className={styles.formLogo} />
           <label>
             First Name
@@ -60,7 +60,7 @@ const Zauth = () => {
           </label>
           <label>
             Message
-            <textarea name="message" placeholder="Tell us about your security needs" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
+            <textarea name="message" placeholder="Tell us about your security requirements" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
           </label>
           <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
         </form>

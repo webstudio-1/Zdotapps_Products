@@ -16,6 +16,7 @@ import signImage from "../../images/sign.png";
 import formsImage from "../../images/forms.png";
 import boxImage from "../../images/box.png";
 
+// Product list
 const productList = [
   {
     name: "z.engage",
@@ -23,7 +24,6 @@ const productList = [
     img: zengageImage,
     btn: "Know More",
     link: "/z.engage",
-    category: "Engagement",
   },
   {
     name: "z.flow",
@@ -31,7 +31,6 @@ const productList = [
     img: zflowImage,
     btn: "Know More",
     link: "/z.flow",
-    category: "Productivity",
   },
   {
     name: "z.hire",
@@ -39,7 +38,6 @@ const productList = [
     img: zhireImage,
     btn: "Know More",
     link: "/z.hire",
-    category: "Business Services",
   },
   {
     name: "z.merit",
@@ -47,7 +45,6 @@ const productList = [
     img: zmeritImage,
     btn: "Know More",
     link: "/z.merit",
-    category: "Rewards",
   },
   {
     name: "z.games",
@@ -55,7 +52,6 @@ const productList = [
     img: zgamesImage,
     btn: "Know More",
     link: "/z.games",
-    category: "Entertainment",
   },
   {
     name: "z.auth",
@@ -63,7 +59,6 @@ const productList = [
     img: zauthImage,
     btn: "Know More",
     link: "/z.auth",
-    category: "Security",
   },
   {
     name: "Kirazee",
@@ -71,7 +66,6 @@ const productList = [
     img: kiraazee,
     btn: "Know More",
     link: "/z.iot",
-    category: "Technology",
   },
   {
     name: "giDER",
@@ -79,7 +73,6 @@ const productList = [
     img: giderImage,
     btn: "Know More",
     link: "/giDER",
-    category: "Creative Tools",
   },
   {
     name: "z.qui",
@@ -87,7 +80,6 @@ const productList = [
     img: quiImage,
     btn: "Know More",
     link: "/z.qui",
-    category: "Creative Tools",
   },
   {
     name: "z.sign",
@@ -95,7 +87,6 @@ const productList = [
     img: signImage,
     btn: "Know More",
     link: "/z.sign",
-    category: "Creative Tools",
   },
   {
     name: "z.forms",
@@ -103,7 +94,6 @@ const productList = [
     img: formsImage,
     btn: "Know More",
     link: "/z.form",
-    category: "Creative Tools",
   },
   {
     name: "Z.Box",
@@ -111,9 +101,19 @@ const productList = [
     img: boxImage,
     btn: "Know More",
     link: "/z.box",
-    category: "Storage",
   },
 ];
+
+// ✅ Category Mapping — Custom logic you specified
+const categoryMap = {
+  Engagement: ["z.engage"],
+  Productivity: ["z.flow", "giDER"],
+  Merit: ["z.merit", "z.hire"],
+  Hiring: ["z.hire", "z.merit"],
+  Security: ["Z.Box", "z.sign"],
+  Business: ["z.forms", "Kirazee"],
+  "E-Commerce": ["Kirazee"],
+};
 
 const Products = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -122,7 +122,7 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState(productList);
   const navigate = useNavigate();
 
-  const categories = ["All", ...new Set(productList.map((p) => p.category))];
+  const categories = ["All", ...Object.keys(categoryMap)];
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 50);
@@ -132,16 +132,18 @@ const Products = () => {
   useEffect(() => {
     let current = productList;
 
+    // Apply category filter
     if (filterCategory !== "All") {
-      current = current.filter((p) => p.category === filterCategory);
+      const productsInCategory = categoryMap[filterCategory] || [];
+      current = current.filter((p) => productsInCategory.includes(p.name));
     }
 
-    if (searchTerm) {
+    // Apply search filter
+    if (searchTerm.trim() !== "") {
       current = current.filter(
         (p) =>
           p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          p.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          p.category.toLowerCase().includes(searchTerm.toLowerCase())
+          p.desc.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -175,9 +177,14 @@ const Products = () => {
               <div className={styles.underline}></div>
 
               {/* Search + Filter */}
-              <div className={`${styles.controlsContainer} d-flex justify-content-center`}>
+              <div
+                className={`${styles.controlsContainer} d-flex justify-content-center`}
+              >
                 <div className={styles.searchBox}>
-                  <i className={`fa fa-search ${styles.searchIcon}`} aria-hidden="true"></i>
+                  <i
+                    className={`fa fa-search ${styles.searchIcon}`}
+                    aria-hidden="true"
+                  ></i>
                   <input
                     type="text"
                     placeholder="Search products..."
@@ -224,7 +231,7 @@ const Products = () => {
                   transform: isVisible ? "translateY(0)" : "translateY(20px)",
                   transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
                 }}
-                onClick={() => handleClick(product)} // Make the entire card clickable
+                onClick={() => handleClick(product)}
               >
                 <article
                   className={`${styles.card} h-100 d-flex flex-column align-items-center text-center`}
@@ -249,7 +256,7 @@ const Products = () => {
                       <button
                         className={styles.ctaCircle}
                         onClick={(e) => {
-                          e.stopPropagation(); // Avoid double navigation if parent was clickable
+                          e.stopPropagation();
                           handleClick(product);
                         }}
                       >
@@ -262,8 +269,8 @@ const Products = () => {
                       <a
                         href="#"
                         onClick={(e) => {
-                          e.preventDefault(); // Prevent default link behavior
-                          e.stopPropagation(); // Avoid double navigation if parent was clickable
+                          e.preventDefault();
+                          e.stopPropagation();
                           handleClick(product);
                         }}
                         className={styles.tryNowTextLink}

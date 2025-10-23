@@ -292,7 +292,7 @@ export default function ZQui() {
         {/* RIGHT SIDE: Contact Form */}
         <div className={styles.formContainer}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h5 style={{ textAlign: 'center' }}>Challenge yourself with</h5>
+            <h5 style={{ textAlign: 'center' }}>Create Engaging Quizzes for Anyone, in Minutes.</h5>
             <img src={quiLogo} alt="logo" className={styles.logo} style={{ width: "150px", alignItems: "center" }} />
             
             <input

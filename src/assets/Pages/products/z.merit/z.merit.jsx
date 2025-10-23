@@ -17,7 +17,7 @@ const Zmerit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your interest in z.merit! We will get back to you soon.');
+    alert('Thank you for your interest in Z.merit! We will get back to you soon.');
     setFormData({ firstName: '', lastName: '', email: '', message: '' });
   };
 
@@ -25,11 +25,11 @@ const Zmerit = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Assess. Trust. <span className={styles.highlight}>z.merit</span>
+          Assess. Trust. <span className={styles.highlight}>Z.merit</span>
         </h1>
         <p className={styles.subtitle}>Intelligent Evaluation Platform</p>
         <p className={styles.description}>
-          z.merit provides advanced proctoring and evaluation tools with enterprise-grade
+          Z.merit provides advanced proctoring and evaluation tools with enterprise-grade
           security for comprehensive skill assessment and merit evaluation.
         </p>
         <ul className={styles.features}>
@@ -39,12 +39,12 @@ const Zmerit = () => {
           <li>Scalable & secure testing</li>
         </ul>
         <button className={`btn btn-warning btn-lg ${styles.cta}`} onClick={handleButtonClick}>
-          Access z.merit
+          Access Z.merit
         </button>
       </div>
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
-          <h5>Start assessing with</h5>
+          <h5>Find Your Next Star Player. Explore</h5>
           <img src={meritImage} alt="z.merit Logo" className={styles.formLogo} />
           <label>
             First Name
@@ -60,7 +60,7 @@ const Zmerit = () => {
           </label>
           <label>
             Message
-            <textarea name="message" placeholder="Tell us about your assessment needs" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
+            <textarea name="message" placeholder="Tell us about your assessment requirements" value={formData.message} onChange={handleChange} style={{ height: "90px" }} />
           </label>
           <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
         </form>
