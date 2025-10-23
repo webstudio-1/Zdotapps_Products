@@ -183,6 +183,7 @@ const ZFlow = () => {
           {/* Right Contact Form */}
           <div className="col-md-4 d-flex">
             <div className={`${styles.contactFormWrapper} flex-fill`}>
+              <h5 style={{ textAlign: 'center' }}>Start flowing with</h5>
               <img
                 src={flowIllustration}
                 alt="Z.Flow Logo"
@@ -190,28 +191,23 @@ const ZFlow = () => {
               />
 
               <form className={styles.contactForm} onSubmit={handleSubmit}>
-                <input type="text" placeholder="Your Name" required />
-                <input type="email" placeholder="Your Email" required />
-                <textarea placeholder="Your Message" required />
-
-                <p className="text-sm text-gray-200 font-medium mt-0 text-right">
-                  Select your interests:
-                </p>
-
-                <div className={styles.chipContainer}>
-                  {chipOptions.map((option) => (
-                    <span
-                      key={option}
-                      className={`${styles.chip} ${
-                        selectedTags.includes(option) ? styles.chipActive : ''
-                      }`}
-                      onClick={() => toggleTag(option)}
-                    >
-                      {option}
-                    </span>
-                  ))}
-                </div>
-                <button type="submit" className={styles['btn-primary']}>
+                <label>
+                  First Name
+                  <input type="text" name="firstName" placeholder="First Name" required />
+                </label>
+                <label>
+                  Last Name
+                  <input type="text" name="lastName" placeholder="Last Name" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" name="email" placeholder="Email ID" required />
+                </label>
+                <label>
+                  Message
+                  <textarea name="message" placeholder="Tell us about your workflow needs" style={{ height: "90px" }} />
+                </label>
+                <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
                   Submit
                 </button>
               </form>

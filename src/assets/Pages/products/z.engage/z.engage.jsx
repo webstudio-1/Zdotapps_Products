@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './z.engage.module.css';
 import carelonLogo from './images/carelon_logo.png';
 import campusLifeLogo from './images/campus_life_logo.png';
@@ -112,6 +112,15 @@ const Zengage = () => {
 
   const goToSlide = (index) => setCurrentIndex(index);
 
+  // Auto-scroll carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % cardsData.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // You can collect other form inputs as well
@@ -222,40 +231,30 @@ const Zengage = () => {
         </div>
 
         {/* Contact form with chips select */}
-        <div className={styles.contactFormWrapper}>
+        <div className={`${styles.contactFormWrapper} mt-4 pt-5`}>
+          <h5 style={{ textAlign: 'center' }}>Start engaging with</h5>
           <img src={engage} alt="Z.Engage Logo" className={styles.logo} />
-          {/* <h2>Contact Us</h2> */}
 
 <form className={styles.contactForm} onSubmit={handleSubmit}>
-  
-  <input type="text" placeholder="Your Name" required />
-  <input type="email" placeholder="Your Email" required />
-  <textarea placeholder="Your Message" required />
-  
- <p className="text-sm text-gray-200 font-medium mt-2 text-right">
-  Select your engagement path:
-</p>
-
-  <div className={styles.chipContainer}>
-    {chipOptions.map((option) => (
-      <span
-        key={option}
-        className={`${styles.chip} ${
-          selectedTags.includes(option) ? styles.chipActive : ''
-        }`}
-        onClick={() => toggleTag(option)}
-      >
-        {option}
-      </span>
-    ))}
-  </div>
-<button
-  type="submit"
-  className={`${styles['btn-primary']} mt-5`}
->
-  Submit
-</button>
-
+  <label>
+    First Name
+    <input type="text" name="firstName" placeholder="First Name" required />
+  </label>
+  <label>
+    Last Name
+    <input type="text" name="lastName" placeholder="Last Name" required />
+  </label>
+  <label>
+    Email
+    <input type="email" name="email" placeholder="Email ID" required />
+  </label>
+  <label>
+    Message
+    <textarea name="message" placeholder="Tell us about your engagement needs" style={{ height: "90px" }} />
+  </label>
+  <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>
+    Submit
+  </button>
 </form>
 
         </div>

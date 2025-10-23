@@ -139,8 +139,9 @@ const Zgames = () => {
 
           {/* Form */}
           <div className={styles.formCard}>
+            <h5 style={{ textAlign: 'center' }}>Start gaming with</h5>
             <div className={styles.logoWrap}>
-            <img src={games_whiteImg} alt="Z.games" className={`mb-0 ${styles.logo}`} />
+            <img src={games_whiteImg} alt="Z.games" className={`${styles.logo}`} />
             </div>
             <form onSubmit={handleSubmit} className={styles.form}>
               <input

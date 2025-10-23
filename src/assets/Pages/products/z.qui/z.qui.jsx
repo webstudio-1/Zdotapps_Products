@@ -277,58 +277,59 @@ export default function ZQui() {
           {quizData[selectedCategory].map((quiz, index) => (
             <QuizCard key={index} title={quiz.title} questions={quiz.questions} />
           ))}
+            {/* Login Button at the top */}
+            <button
+              type="button"
+              className={`btn btn-warning fw-semibold ${styles.loginBtnTop}`}
+              onClick={() => {
+                window.location.href = "login";
+              }}
+            >
+              Login to Z.Qui
+            </button>
         </div>
-
+        
         {/* RIGHT SIDE: Contact Form */}
-        <form className={styles.form} onSubmit={handleSubmit}>
-        <img src={quiLogo} alt="logo" className={styles.logo} style={{ width: "160px", alignItems: "center" }} />
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email ID"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Message"
-            value={formData.message}
-            onChange={handleChange}
-          ></textarea>
-          <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
-        </form>
+        <div className={styles.formContainer}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <h5 style={{ textAlign: 'center' }}>Start quizzing with</h5>
+            <img src={quiLogo} alt="logo" className={styles.logo} style={{ width: "160px", alignItems: "center" }} />
+            
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email ID"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Message"
+              value={formData.message}
+              onChange={handleChange}
+            ></textarea>
+            <button type="submit" style={{ width: '50%', borderRadius: '50px', alignSelf: 'center' }}>Submit</button>
+          </form>
+        </div>
       </div>
 
-      {/* RIGHT-ALIGNED LOGIN BUTTON */}
-
-<div className={styles.loginContainer}>
-  <button
-    className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
-    onClick={() => {
-      // Redirect directly to Gider login page
-      window.location.href = "login"; // <-- Replace with actual Gider login URL
-    }}
-  >
-    Login to Z.Qui
-  </button>
-</div>
 
     </section>
   );

@@ -50,16 +50,16 @@
 
 /* ----- Main Layout ----- */
 .mainSection {
-  padding: 2rem 1.5rem 4rem;
+ 
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 320px 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 /* ----- Swiper Carousel ----- */
@@ -67,7 +67,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120%;
+  flex: 1;
+  max-width: 500px;
 }
 
 .swiper {
@@ -188,12 +189,14 @@
   background: rgba(20, 20, 40, 0.7);
   backdrop-filter: blur(16px);
   border-radius: 24px;
-  padding: 2.2rem;
+  padding: 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-  width: 140%;
-  margin-left: 20rem;
-  height: 560px;
+  width: 100%;
+  max-width: 420px;
+  height: fit-content;
+  margin: 0;
+  flex-shrink: 0;
 }
 
 .logoWrap {
@@ -247,9 +250,9 @@
   font-weight: 600;
   font-size: 1.05rem;
   cursor: pointer;
-  transition: all 0.3s ease;
   width: 50%;
   align-self: center;
+  transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;

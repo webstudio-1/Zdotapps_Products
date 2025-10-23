@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./z.box.module.css";
-import zboxImage from "../../../images/gider_black.png"; // Using gider image as placeholder
+import zboxImage from "../../../images/box.png";
 import { useNavigate } from "react-router-dom";
 
 const ZBox = () => {
@@ -30,7 +30,7 @@ const ZBox = () => {
     <section className={styles.hero}>
       <div className={styles.content}>
         <h1 className={styles.title}>
-          Secure. Organize. <span className={styles.highlight}>z.box</span>
+          Secure. Organize. <span className={styles.highlight}>Z.Box</span>
         </h1>
 
         <p className={styles.subtitle}>Advanced Digital Vault Platform</p>
@@ -51,14 +51,14 @@ const ZBox = () => {
           className={`btn btn-warning btn-lg ${styles.cta}`}
           onClick={handleButtonClick}
         >
-          Access z.box
+          Access Z.Box
         </button>
       </div>
 
       <div className={styles.formWrapper}>
         <form className={styles.contactForm} onSubmit={handleSubmit}>
           <h5>Start securing your documents with</h5>
-          <img src={zboxImage} alt="z.box Logo" className={styles.formLogo} />
+          <img src={zboxImage} alt="Z.Box Logo" className={styles.formLogo} />
 
           <label>
             First Name

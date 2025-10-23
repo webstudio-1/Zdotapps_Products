@@ -14,6 +14,7 @@ import kiraazee from "../../images/kirazee_new.png";
 import quiImage from "../../images/qui.png";
 import signImage from "../../images/sign.png";
 import formsImage from "../../images/forms.png";
+import boxImage from "../../images/box.png";
 
 const productList = [
   {
@@ -105,9 +106,9 @@ const productList = [
     category: "Creative Tools",
   },
   {
-    name: "z.box",
+    name: "Z.Box",
     desc: "Secure file storage and collaboration platform",
-    img: giderImage, // Using gider image as placeholder - you can replace with z.box specific image
+    img: boxImage,
     btn: "Know More",
     link: "/z.box",
     category: "Storage",
