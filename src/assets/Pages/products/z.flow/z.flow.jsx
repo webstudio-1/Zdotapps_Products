@@ -183,7 +183,7 @@ const ZFlow = () => {
           {/* Right Contact Form */}
           <div className="col-md-4 d-flex">
             <div className={`${styles.contactFormWrapper} flex-fill`}>
-              <h5 style={{ textAlign: 'center' }}>Start flowing with</h5>
+              <h5 style={{ textAlign: 'center' }}>Power Your App with</h5>
               <img
                 src={flowIllustration}
                 alt="Z.Flow Logo"

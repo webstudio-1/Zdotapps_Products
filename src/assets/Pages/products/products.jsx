@@ -19,7 +19,7 @@ import boxImage from "../../images/box.png";
 const productList = [
   {
     name: "z.engage",
-    desc: "Engagement app for everyone's needs",
+    desc: "Engagement app for everyone's requirements",
     img: zengageImage,
     btn: "Know More",
     link: "/z.engage",
