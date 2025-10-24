@@ -82,7 +82,7 @@ const productList = [
     link: "/z.qui",
   },
   {
-    name: "z.sign",
+    name: "Z.SIGN",
     desc: "Secure digital signatures on business documents",
     img: signImage,
     btn: "Know More",

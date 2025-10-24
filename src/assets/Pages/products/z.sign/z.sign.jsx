@@ -28,7 +28,7 @@ export default function App() {
       
       <style>{`
         :root {
-        --yellow-400: #000000;
+        --yellow-400: #f8f9fa;
           --primary-color: #ffc107;
           --primary-foreground: #ffffff;
         }
@@ -38,10 +38,10 @@ export default function App() {
         }
         
         .glass-effect {
-          background: rgba(255, 255, 255, 0.25);
+          background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.18);
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .glass-input {
@@ -65,13 +65,15 @@ export default function App() {
         
         .phone-border {
           border-radius: 3rem;
-          background-color: black ;
+          background-color: white;
+          border: 2px solid #000000;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .phone-screen {
           border-radius: 2.25rem;
           height: 100%;
-          border: 4px solid black;
+          border: 2px solid #000000;
           overflow: hidden;
           position: relative;
         }
@@ -201,6 +203,27 @@ export default function App() {
           font-size: 0.875rem;
           font-weight: 500;
         }
+        
+        .login-button {
+          background-color: #ffc107;
+          color: white;
+          border: none;
+          border-radius: 50px;
+          padding: 12px 40px;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          margin-top: 2rem;
+          width: 100%;
+          max-width: 300px;
+        }
+        
+        .login-button:hover {
+          background-color: #e0a800;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+        }
         /* Mobile Responsive Media Queries */
         @media (max-width: 1200px) {
           .container-fluid { padding-top: 110px !important; }
@@ -215,25 +238,25 @@ export default function App() {
         }
         @media (max-width: 768px) {
           .container-fluid { padding-top: 95px !important; }
-          .description-banner p { font-size: 1.25rem !important; }
+          .description-banner p { font-size: 1.25rem !important; color: #333 !important; }
           .phone-container { width: 260px !important; height: 520px !important; }
           .form-container { padding: 1rem !important; }
         }
         @media (max-width: 576px) {
           .container-fluid { padding-top: 90px !important; }
-          .description-banner p { font-size: 1.1rem !important; padding: 0 1rem !important; }
+          .description-banner p { font-size: 1.1rem !important; padding: 0 1rem !important; color: #333 !important; }
           .phone-container { width: 240px !important; height: 480px !important; }
           .custom-input { padding: 0.5rem 0.75rem !important; font-size: 0.9rem !important; }
           .btn-black { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
         }
         @media (max-width: 480px) {
           .container-fluid { padding-top: 85px !important; }
-          .description-banner p { font-size: 1rem !important; }
+          .description-banner p { font-size: 1rem !important; color: #333 !important; }
           .phone-container { width: 220px !important; height: 440px !important; }
         }
         @media (max-width: 375px) {
           .container-fluid { padding-top: 80px !important; }
-          .description-banner p { font-size: 0.95rem !important; }
+          .description-banner p { font-size: 0.95rem !important; color: #333 !important; }
           .phone-container { width: 200px !important; height: 400px !important; }
           .form-container { padding: 0.75rem !important; }
         }
@@ -243,11 +266,11 @@ export default function App() {
         <div className="container-fluid mb-5 mt-5 py-5" style={{ maxWidth: '1452px' }}>
           {/* Single centered heading */}
           <div className="text-center">
-            <img src={signLogo1} alt="z.sign" style={{ height: '100px' }} />
+            <img src={signLogo} alt="z.sign" style={{ height: '80px' }} />
           </div>
           {/* Centered description above images */}
-          <div className="text-center mb-4 description-banner">
-            <p className="text-white mb-3 mt-0 fs-3">Complete electronic signature solution with draw, type, and document signing capabilities</p>
+          <div className="text-center mb-5 description-banner">
+            <p className="mb-3 mt-0 fs-3" style={{ color: '#333' }}>All-in-one e-sign solution for draw, type, and sign</p>
           </div>
           
           <div className="d-flex">
@@ -347,6 +370,16 @@ export default function App() {
                       </div>
                     </div>
                   </div>
+                </div>
+                
+                {/* Login Button below first phone */}
+                <div className="d-flex justify-content-center" style={{ marginTop: '-1.5rem' }}>
+                  <button 
+                    className="login-button"
+                    onClick={() => window.location.href = 'login'}
+                  >
+                    Login to Z.Sign
+                  </button>
                 </div>
               </div>
 
@@ -483,17 +516,15 @@ export default function App() {
               </div>
             </div>
 
-           {/* Contact Form with Glass Effect - Increased Width */}
-            <div className="d-flex flex-column align-items-end flex-fill w-100 mt-3">
-              <div className="form-container glass-effect rounded-4 shadow mt-4">
-                <div className="text-center mb-0">
-                  <img src={signLogo1} alt="z.sign" style={{ width: '151px' }} />
-                </div>
-                <div className="text-center mb-4">
-                  <p className="mb-0 text-white">Secure Digital Signatures for Business Documents</p>
-                </div>
+            {/* Contact Form with Glass Effect - Right Side */}
+            <div className="d-flex flex-column align-items-end flex-fill w-100 mt-5">
+            <div className="form-container glass-effect rounded-4 shadow">
+              <div className="text-center mb-3">
+                <p className="mb-2 mt-2" style={{ color: 'black',fontSize: '1.2rem' }}>Secure Digital Signatures for Business Docs</p>
+                <img src={signLogo} alt="z.sign logo" style={{ height: '60px', marginTop: '0.5rem' }} />
+              </div>
 
-                <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <input
                       type="text"
@@ -501,58 +532,58 @@ export default function App() {
                       placeholder="First Name"
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="form-control custom-input glass-input"
-                      required
-                    />
-                  </div>
+                    className="form-control custom-input glass-input"
+                    required
+                  />
+                </div>
 
-                  <div className="mb-4">
-                    <input
-                      type="text"
+                <div className="mb-4">
+                  <input
+                    type="text"
                       name="lastName"
                       placeholder="Last Name"
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="form-control custom-input glass-input"
-                      required
-                    />
-                  </div>
+                    className="form-control custom-input glass-input"
+                    required
+                  />
+                </div>
 
-                  <div className="mb-4">
-                    <input
-                      type="email"
+                <div className="mb-4">
+                  <input
+                    type="email"
                       name="email"
                       placeholder="Email ID"
                       value={formData.email}
                       onChange={handleChange}
-                      className="form-control custom-input glass-input"
-                      required
-                    />
-                  </div>
+                    className="form-control custom-input glass-input"
+                    required
+                  />
+                </div>
 
-                  <div className="mb-4">
-                    <textarea
+                <div className="mb-4">
+                  <textarea
                       name="message"
                       placeholder="Message"
                       value={formData.message}
                       onChange={handleChange}
-                      className="form-control custom-input glass-input"
-                      rows="3"
-                    />
-                  </div>
+                    className="form-control custom-input glass-input"
+                    rows="3"
+                  />
+                </div>
 
-                  {/* Center aligned button */}
-                  <div className="d-flex justify-content-center">
-                    <button
-                      type="submit"
-                      className="btn btn-black rounded-pill fw-lg text-center"
-                      style={{ width: '50%' }}
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
+                {/* Center aligned button */}
+                <div className="d-flex justify-content-center">
+                  <button
+                    type="submit"
+                    className="btn btn-black rounded-pill fw-lg text-center"
+                    style={{ width: '50%' }}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
             </div>
           </div>
         </div>

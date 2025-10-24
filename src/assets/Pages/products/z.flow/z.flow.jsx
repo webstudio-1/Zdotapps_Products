@@ -9,10 +9,10 @@ const cardsData = [
     title: 'Clickstream Analytics',
     bgColor: '#EFC426',
     features: [
-      'Track clickstreams across every user journey',
-      'Map how users move through your product',
-      'See paths and deviations in real time',
-      'Spot bottlenecks before they grow',
+      'Track user clickstreams',
+      'Map user journeys',
+      'View paths in real time',
+      'Detect bottlenecks early',
     ],
     image: flowIllustration,
     alt: 'Journey map (Step 1 → Step 2 → Step 3) with arrows, and a highlighted drop-off at Step 2',
@@ -21,10 +21,10 @@ const cardsData = [
     title: 'Optimization Insights',
     bgColor: '#EFC426',
     features: [
-      'Suggestions for workflow optimization',
-      'Compare before vs after improvements',
-      'Integrate insights with product teams',
-      'Drive efficiency and growth',
+      'Optimize workflows',
+      'Compare performance',
+      'Share insights with teams',
+      'Boost efficiency and growth',
     ],
     image: flowIllustration,
     alt: 'Two workflow diagrams side by side: Before (with red bottleneck marker) vs After (smooth flow with green checkmarks)',
@@ -120,7 +120,8 @@ const ZFlow = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          marginBottom: 20,
+                          marginBottom: 30,
+                          marginTop: 20,
                         }}
                       >
                         <h2
@@ -136,40 +137,19 @@ const ZFlow = () => {
                             {feature}
                           </li>
                         ))}
-
-                        {/* Extra button only for Clickstream Analytics */}
-                        {card.title === 'Clickstream Analytics' && (
-                          <div style={{ marginTop: '15px', marginLeft: '20px' }}>
-                            <button
-                              className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
-                              onClick={handleLoginRedirect}  // Trigger the redirect
-                            >
-                              Login to Z.flow
-                            </button>
-                          </div>
-                        )}
                       </ul>
 
-                      <div
-                        className={styles.dots}
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          marginTop: 20,
-                          width: '100%',
-                        }}
-                      >
-                        {cardsData.map((_, dotIdx) => (
-                          <span
-                            key={dotIdx}
-                            className={`${styles.dot} ${
-                              currentIndex === dotIdx ? styles.active : ''
-                            }`}
-                            onClick={() => goToSlide(dotIdx)}
-                            style={{ cursor: 'pointer' }}
-                          />
-                        ))}
-                      </div>
+                      {/* Extra button only for Clickstream Analytics */}
+                      {card.title === 'Clickstream Analytics' && (
+                        <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '50px', marginBottom: '20px' }} className="ms-5">
+                          <button
+                            className={`btn btn-warning fw-semibold btn-lg ${styles.loginBtn}`}
+                            onClick={handleLoginRedirect}  // Trigger the redirect
+                          >
+                            Login to Z.flow
+                          </button>
+                        </div>
+                      )}
                     </div>
 
                     <div className={styles['image-wrapper']}>

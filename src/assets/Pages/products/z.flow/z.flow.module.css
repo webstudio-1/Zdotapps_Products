@@ -103,23 +103,24 @@
 
 .feature-text-h2 {
   font-size: 2.2rem;
-  margin-bottom: 16px;
   color: #000;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
 }
 
 .feature-text ul {
   list-style-type: none;
-  margin: 20px 0;
-  margin-bottom: 70px;
+  margin-bottom: 30px;
+  max-width: fit-content;
+  text-align: left;
 }
 
 .feature-text-li {
-  margin: 12px 0;
+  margin: 15px 0;
   position: relative;
-  padding-left: 28px;
-  font-size: 25.5px;
+  padding-left: 40px;
+  font-size: 20px;
+  text-align: left;
 }
 
 .feature-text-li::before {
@@ -128,8 +129,8 @@
   font-weight: bold;
   position: absolute;
   left: 0;
-  font-size: 32px;
-  margin-top: -8px;
+  font-size: 28px;
+  margin-top: -5px;
 }
 
 .btn-primary {
@@ -143,6 +144,7 @@
   font-size: 15px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(239, 196, 38, 0.3);
+  align-items: left;
  
 }
 

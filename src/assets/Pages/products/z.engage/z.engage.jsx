@@ -167,7 +167,7 @@ const Zengage = () => {
                 }}
               >
                 <div className={styles['feature-text']}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '15px', marginBottom: '20px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '15px', marginBottom: '20px', marginLeft: '0' }}>
                     <img
                       src={card.logo}
                       alt={`${card.title} logo`}
@@ -176,10 +176,11 @@ const Zengage = () => {
                         height: 80,
                         borderRadius: 16,
                         background: '#fff',
-                        flexShrink: 0
+                        flexShrink: 0,
+                        marginLeft: 0
                       }}
                     />
-                    <h2 className={styles['feature-text-h2']} style={{ margin: 0 }}>
+                    <h2 className={styles['feature-text-h2']} style={{ margin: 0, textAlign: 'left' }}>
                       {card.title}
                     </h2>
                   </div>

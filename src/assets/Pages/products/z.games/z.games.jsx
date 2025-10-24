@@ -1,10 +1,9 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCards, Navigation, Autoplay } from 'swiper/modules';
+import { EffectCards, Autoplay } from 'swiper/modules';
 import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
-import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import styles from './z.games.module.css';
 
@@ -104,8 +103,7 @@ const Zgames = () => {
                 pauseOnMouseEnter: true,
                 reverseDirection: true,
               }}
-              modules={[EffectCards, Navigation, Autoplay]}
-              navigation
+              modules={[EffectCards, Autoplay]}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
               className={styles.swiper}
             >
