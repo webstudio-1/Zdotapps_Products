@@ -78,7 +78,6 @@ export default function App() {
         
         .phone-content {
           height: calc(100% - 50px);
-          padding: 8px;
           background: rgba(255, 255, 255, 0.95);
           margin: 8px;
           border-radius: 16px;
@@ -86,6 +85,7 @@ export default function App() {
         
         .bg-primary-custom {
           background-color: var(--primary-color) !important;
+          border-radius: 50px !important;
         }
         
         .text-primary-foreground {
@@ -95,6 +95,7 @@ export default function App() {
         .icon-container {
           width: 32px;
           height: 32px;
+          border-radius: 50% !important;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -199,6 +200,42 @@ export default function App() {
           border-radius: 50px;
           font-size: 0.875rem;
           font-weight: 500;
+        }
+        /* Mobile Responsive Media Queries */
+        @media (max-width: 1200px) {
+          .container-fluid { padding-top: 110px !important; }
+        }
+        @media (max-width: 992px) {
+          .container-fluid { padding-top: 100px !important; padding-left: 1rem !important; padding-right: 1rem !important; }
+          .container-fluid > .d-flex { flex-direction: column !important; align-items: center !important; }
+          .d-flex.flex-column.flex-lg-row { flex-direction: column !important; align-items: center !important; padding-right: 0 !important; margin-bottom: 2rem; width: 100%; }
+          .d-flex.flex-column.align-items-end { align-items: center !important; width: 100% !important; margin-top: 2rem !important; }
+          .form-container { max-width: 500px !important; width: 100% !important; }
+          .description-banner p { font-size: 1.5rem !important; }
+        }
+        @media (max-width: 768px) {
+          .container-fluid { padding-top: 95px !important; }
+          .description-banner p { font-size: 1.25rem !important; }
+          .phone-container { width: 260px !important; height: 520px !important; }
+          .form-container { padding: 1rem !important; }
+        }
+        @media (max-width: 576px) {
+          .container-fluid { padding-top: 90px !important; }
+          .description-banner p { font-size: 1.1rem !important; padding: 0 1rem !important; }
+          .phone-container { width: 240px !important; height: 480px !important; }
+          .custom-input { padding: 0.5rem 0.75rem !important; font-size: 0.9rem !important; }
+          .btn-black { padding: 0.5rem 0.9rem !important; font-size: 0.9rem !important; }
+        }
+        @media (max-width: 480px) {
+          .container-fluid { padding-top: 85px !important; }
+          .description-banner p { font-size: 1rem !important; }
+          .phone-container { width: 220px !important; height: 440px !important; }
+        }
+        @media (max-width: 375px) {
+          .container-fluid { padding-top: 80px !important; }
+          .description-banner p { font-size: 0.95rem !important; }
+          .phone-container { width: 200px !important; height: 400px !important; }
+          .form-container { padding: 0.75rem !important; }
         }
       `}</style>
       

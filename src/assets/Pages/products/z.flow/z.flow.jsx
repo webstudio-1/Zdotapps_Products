@@ -119,8 +119,8 @@ const ZFlow = () => {
                         style={{
                           display: 'flex',
                           alignItems: 'center',
-                          marginTop: 30,
-                          marginLeft: 30,
+                          justifyContent: 'center',
+                          marginBottom: 20,
                         }}
                       >
                         <h2
@@ -153,9 +153,10 @@ const ZFlow = () => {
                       <div
                         className={styles.dots}
                         style={{
+                          display: 'flex',
                           justifyContent: 'center',
-                          marginTop: 40,
-                          marginLeft: 410,
+                          marginTop: 20,
+                          width: '100%',
                         }}
                       >
                         {cardsData.map((_, dotIdx) => (

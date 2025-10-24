@@ -167,16 +167,16 @@ const Zengage = () => {
                 }}
               >
                 <div className={styles['feature-text']}>
-                  <div style={{ display: 'flex', alignItems: 'center' , marginLeft: 30}}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '15px', marginBottom: '20px' }}>
                     <img
                       src={card.logo}
                       alt={`${card.title} logo`}
                       style={{
-                        width: 100,
-                        height: 100,
-                        marginRight: 20,
+                        width: 80,
+                        height: 80,
                         borderRadius: 16,
                         background: '#fff',
+                        flexShrink: 0
                       }}
                     />
                     <h2 className={styles['feature-text-h2']} style={{ margin: 0 }}>
@@ -204,10 +204,7 @@ const Zengage = () => {
                       </a>
                     )}
                   </div>
-                    <div
-  className={`col-md-11 ${styles.dots}`}
-  style={{ justifyContent: 'center', marginTop: 40, marginLeft: 310 }}
->
+                    <div className={styles.dots}>
             {cardsData.map((_, dotIdx) => (
               <span
                 key={dotIdx}
@@ -231,7 +228,7 @@ const Zengage = () => {
         </div>
 
         {/* Contact form with chips select */}
-        <div className={`${styles.contactFormWrapper} mt-4 pt-4`}>
+        <div className={`${styles.contactFormWrapper} mt-3`}>
           <h5 style={{ textAlign: 'center' }}>Begin your Engagement with</h5>
           <img src={engage} alt="Z.Engage Logo" className={styles.logo} />
 

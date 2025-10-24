@@ -177,9 +177,7 @@ const Products = () => {
               <div className={styles.underline}></div>
 
               {/* Search + Filter */}
-              <div
-                className={`${styles.controlsContainer} d-flex justify-content-center`}
-              >
+              <div className={styles.controlsContainer}>
                 <div className={styles.searchBox}>
                   <i
                     className={`fa fa-search ${styles.searchIcon}`}
@@ -214,16 +212,16 @@ const Products = () => {
       {/* Products Grid */}
       <div className="container">
         <div className="row g-4 justify-content-center py-5">
-          <center>
+          <div className="col-12 text-center">
             <h1 className={`${styles.homeTitle} display-3 fw-bold mb-4`}>
               Explore our <span className={styles.highlightText}>products</span>
             </h1>
-          </center>
+          </div>
 
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, idx) => (
               <div
-                className="col-12 col-sm-6 col-md-4 col-lg-3"
+                className="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
                 key={product.name}
                 style={{
                   animationDelay: `${idx * 0.1}s`,
