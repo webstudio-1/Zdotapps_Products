@@ -19,10 +19,15 @@ import schoolsIcon from '../../images/child_care.png';
 // import updated_logoIcon from '../../images/updated_logo.png';
 import websiteImage from '../../images/websites.png';
 import child_careIcon from '../../images/child_care.png';
-import lifecycle1Img from '../../images/life_1.png';
+import lifecycle1Img from '../../images/image.png';
 import lifecycle2Img from '../../images/life_2.png';
-import lifecycle3Img from '../../images/life_3.png';
-
+import lifecycle3Img from '../../images/campus.png';
+import mall360Img from '../../images/mall360.jpeg';
+import apexaImg from '../../images/apexa.jpeg';
+import factopsImg from '../../images/factops.jpeg';
+import agentsImg from '../../images/agents.png';
+import agent2Img from '../../images/agent2.jpeg';
+import agent3Img from '../../images/agent3.jpeg';
 import { Link } from 'react-router-dom';
 
 
@@ -716,7 +721,7 @@ const styles = `
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100%);
+    transform: translateY(-50%);
   }
 }
 
@@ -751,25 +756,26 @@ const HeroSection = () => {
     {
       title: "Websites",
       images: [
-        websiteImage,
-        websiteImage,
-        websiteImage,
+        mall360Img,
+        apexaImg,
+        factopsImg,
       ]
     },
     {
       title: "App",
       images: [
-       lifecycle1Img,
-        lifecycle2Img,
-        lifecycle3Img,
+      
+      lifecycle1Img,
+      lifecycle2Img,
+      lifecycle3Img,
       ]
     },
     {
       title: "Agents",
       images: [
-        websiteImage,
-        websiteImage,
-        websiteImage,
+        agentsImg,
+        agent2Img,
+        agent3Img,
       ]
     }
   ];
@@ -777,7 +783,7 @@ const HeroSection = () => {
   return (
   <section className="hero-section-main">
       <div className="container">
-        <p className="hero-subtitle" style={{ color: '#ffc94a' }}> We've Got You Covered. </p> <h1 className="hero-title" style={{ color: '#ffffff' }}> Pick a Template or Build Your </h1>
+        <p className="hero-subtitle" style={{ color: '#ffc94a' }}> We've Got You Covered. </p> <h1 className="hero-title" style={{ color: '#ffffff' }}> Pick a Template or Build Your Own</h1>
 
 
   <div className='text-center fs-1'  id="flip">
@@ -892,7 +898,7 @@ const StudiosSection = () => {
               if (currentCardIndex > activeIndex) {
                 const offset = currentCardIndex - activeIndex;
                 zIndex = 10 - offset; // Decrease z-index for cards further back
-                translateY = offset * 25; // Increase vertical offset for deeper stack
+                translateY = offset * -25; // Increase vertical offset for deeper stack
                 scale = 1 - (offset * 0.05); // Decrease scale for cards further back
                 opacity = 1 - (offset * 0.2); // Decrease opacity
                 // Ensure opacity doesn't go below 0
@@ -1080,107 +1086,117 @@ const ScrollingCards = () => {
 
   return (
     <section className="py-5" style={{ backgroundColor: '#0f0f0f' }}>
-      <div className="container">
-        <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
-          We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
-        </h2>
-        <div className="row g-4 align-items-stretch">
-          <div className="col-lg-6">
-            <img
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
-              alt="Support team"
-              className="img-fluid w-100"
-              style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
-            />
-          </div>
-          <div className="col-lg-6 d-flex flex-column gap-3">
-            <div
-              className="scroll-container"
-              style={{
-                height: '410px',
-                overflowY: 'hidden',
-                position: 'relative',
-              }}
-              onMouseEnter={() => setIsScrollingPaused(true)}
-              onMouseLeave={() => setIsScrollingPaused(false)}
-            >
+  <div className="container">
+    <h2 className="fw-bold text-center mb-4" style={{ color: '#ffffff' }}>
+      We Don’t Just Say It, <span style={{ color: '#F2C94C' }}>We Deliver</span>
+    </h2>
+    <div className="row g-4 align-items-stretch">
+      <div className="col-lg-6">
+        <img
+          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&auto=format&fit=crop&q=60"
+          alt="Support team"
+          className="img-fluid w-100"
+          style={{ borderRadius: 20, height: 420, objectFit: 'cover' }}
+        />
+      </div>
+      <div className="col-lg-6 d-flex flex-column gap-3">
+        <div
+          className="scroll-container"
+          style={{
+            height: '410px',
+            overflowY: 'hidden',
+            position: 'relative',
+          }}
+          // --- CHANGE 1: Added event handlers ---
+          onMouseEnter={() => setIsScrollingPaused(true)}
+          onMouseLeave={() => setIsScrollingPaused(false)}
+        >
+          <div
+            className="scroll-content"
+            style={{
+              // --- CHANGE 2: Added animationPlayState controlled by state ---
+              animation: 'scroll 11s linear infinite',
+              animationPlayState: isScrollingPaused ? 'paused' : 'running',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            {/* Original cards */}
+            {[
+              {
+                title: 'Quick around Cycles',
+                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
+              },
+              {
+                title: 'Built for Scale',
+                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
+              },
+              {
+                title: 'Reliable Support',
+                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
+              },
+            ].map((card, idx) => (
               <div
-                className="scroll-content"
+                key={idx}
+                className="p-4"
                 style={{
-                  animation: 'scroll 11s linear infinite',
-                  animationPlayState: isScrollingPaused ? 'paused' : 'running',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  overflowY: 'auto',
-                  maxHeight: '410px',
+                  background: 'rgba(21,21,21,0.85)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
+                  marginTop: '20px', // Add margin between cards
                 }}
               >
-                {[{
-                  title: 'Quick around Cycles',
-                  text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
-                }, {
-                  title: 'Built for Scale',
-                  text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
-                }, {
-                  title: 'Reliable Support',
-                  text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
-                }].map((card, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4"
-                    style={{
-                      background: 'rgba(21,21,21,0.85)',
-                      borderRadius: 16,
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
-                      marginTop: '20px',
-                    }}
-                  >
-                    <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
-                      {card.title}
-                    </h4>
-                    <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                      {card.text}
-                    </p>
-                  </div>
-                ))}
-
-                {/* Cloned cards for infinite loop */}
-                {[{
-                  title: 'Quick around Cycles',
-                  text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
-                }, {
-                  title: 'Built for Scale',
-                  text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
-                }, {
-                  title: 'Reliable Support',
-                  text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
-                }].map((card, idx) => (
-                  <div
-                    key={idx + 3} // Ensure unique keys
-                    className="p-4"
-                    style={{
-                      background: 'rgba(21,21,21,0.85)',
-                      borderRadius: 16,
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
-                      marginTop: '20px',
-                    }}
-                  >
-                    <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
-                      {card.title}
-                    </h4>
-                    <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
-                      {card.text}
-                    </p>
-                  </div>
-                ))}
+                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
+                  {card.title}
+                </h4>
+                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  {card.text}
+                </p>
               </div>
-            </div>
+            ))}
+            
+            {/* Cloned cards for infinite loop */}
+            {[
+              {
+                title: 'Quick around Cycles',
+                text: 'We understand the importance of speed and efficiency. Our quick turnovers ensure a seamless, hassle-free experience every time.',
+              },
+              {
+                title: 'Built for Scale',
+                text: 'Our teams work at godspeed to deliver results for scaling businesses, ensuring fast, efficient, and hassle-free solutions every time.',
+              },
+              {
+                title: 'Reliable Support',
+                text: 'Get expert guidance whenever you need it, ensuring smooth operations and seamless support for your business at every step.',
+              },
+            ].map((card, idx) => (
+              <div
+                key={idx + 3} // Ensure unique keys
+                className="p-4"
+                style={{
+                  background: 'rgba(21,21,21,0.85)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  boxShadow: '0 10px 24px rgba(0,0,0,0.45)',
+                  marginTop: '20px', // Add margin between cards
+                }}
+              >
+                <h4 className="fw-bold mb-2" style={{ color: '#ffffff' }}>
+                  {card.title}
+                </h4>
+                <p className="mb-0" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  {card.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   );
 };
 
