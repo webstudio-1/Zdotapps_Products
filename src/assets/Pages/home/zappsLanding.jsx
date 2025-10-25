@@ -196,7 +196,7 @@ const styles = `
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Align items to the top to see the stack better */
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   /* Card Styles */
